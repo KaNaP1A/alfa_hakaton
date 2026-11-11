@@ -1,0 +1,1282 @@
+[
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 0.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 0.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 0.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 0.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 0.5,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 0.5,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 0.5,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 0.5,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 1.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 1.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 1.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 1.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 2.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 2.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 2.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 2.0,
+      "industries": 0.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 0.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 0.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 0.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 0.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 0.5,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 0.5,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 0.5,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 0.5,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 1.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 1.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 1.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 1.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 2.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 2.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 2.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 2.0,
+      "industries": 0.5,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 0.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 0.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 0.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 0.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 0.5,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 0.5,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 0.5,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 0.5,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 1.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 1.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 1.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 1.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 2.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 2.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 2.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 2.0,
+      "industries": 1.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 0.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 0.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 0.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 0.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 0.5,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 0.5,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 0.5,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 0.5,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 1.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 1.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 1.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 1.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.0,
+      "tags": 2.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 0.5,
+      "tags": 2.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 1.0,
+      "tags": 2.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  },
+  {
+    "parameters": {
+      "title": 4.0,
+      "description": 1.0,
+      "topics": 2.0,
+      "tags": 2.0,
+      "industries": 2.0,
+      "body": 0.25,
+      "lessons": 0.75,
+      "dense_weight": 0.5,
+      "selection_boost": 0.25,
+      "rrf_k": 60,
+      "candidate_count": 60
+    },
+    "validation": {
+      "ndcg5_pooled": 0.59291,
+      "recall60_judged": 0.85,
+      "judged_at_5": 0.22
+    }
+  }
+]

@@ -1,0 +1,7 @@
+05_code/artifacts/
+**/__pycache__/
+*.backup
+*.sqlite
+*.sql
+.env
+.venv/

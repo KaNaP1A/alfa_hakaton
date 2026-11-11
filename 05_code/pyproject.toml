@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alfa-reco"
+version = "0.2.0"
+description = "Local catalog import and hybrid search for Alfa Course hackathon"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+alfa-reco = "alfa_reco.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "UP"]
+
+[tool.setuptools.package-data]
+alfa_reco = ["web/*.html", "web/*.css", "web/*.js", "web/*.svg"]

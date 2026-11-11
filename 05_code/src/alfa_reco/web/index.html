@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f2">
+  <title>Курс · Лаборатория поиска</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand" aria-label="Курс — главная"><span class="brand-mark">А</span><span>курс<span class="brand-dot">.</span></span></a>
+    <div class="topbar-meta"><span class="lab-label">ЛАБОРАТОРИЯ ПОИСКА</span><span class="local-badge"><i></i>Локальная версия</span></div>
+  </header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow"><span></span> ОТ ВОПРОСА — К ДЕЙСТВИЮ</p>
+      <h1>Чему хотите<br><span>научиться сегодня?</span></h1>
+      <p class="intro-copy">Опишите свою задачу. Найдём курсы, статьи и документы,<br class="desktop-break"> которые помогут сделать следующий шаг.</p>
+    </section>
+    <div class="workspace">
+      <section class="main-column" aria-label="Поиск материалов">
+        <form id="search-form" class="search-panel" autocomplete="off">
+          <label for="query" class="field-label">ВАША ЗАДАЧА</label>
+          <div class="search-row">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></svg>
+            <input id="query" name="q" type="text" maxlength="300" placeholder="Например, хочу открыть кофейню" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestion-list" aria-describedby="input-help" spellcheck="false">
+            <button id="search-button" class="primary-button" type="submit" disabled>Найти <span aria-hidden="true">↗</span></button>
+          </div>
+          <div id="selected-wrap" class="selected-wrap" hidden><span>Уточнение:</span><button type="button" id="clear-selection" class="selected-chip" title="Убрать уточнение"><span id="selected-label"></span><span aria-hidden="true">×</span></button></div>
+          <p id="input-help" class="input-help">Начните писать — предложим материалы и связанные темы.</p>
+          <div id="suggestion-panel" class="suggestion-panel" hidden>
+            <div class="suggestion-top"><span id="suggestion-caption">Подсказки из каталога</span><span class="keyboard-hint">↑ ↓ &nbsp; Enter</span></div>
+            <div id="suggestion-list" role="listbox" aria-label="Подсказки и темы"></div>
+          </div>
+        </form>
+        <div class="examples"><span>Попробуйте</span><button type="button" data-query="Хочу открыть кофейню">Открыть кофейню <span>↗</span></button><button type="button" data-query="Как повысить лояльность сотрудников">Лояльность сотрудников <span>↗</span></button><button type="button" data-query="Нужен шаблон договора аренды">Договор аренды <span>↗</span></button></div>
+        <div id="message" class="message" role="status" hidden></div>
+        <section id="welcome" class="welcome">
+          <div class="welcome-art" aria-hidden="true"><span class="paper back"></span><span class="paper front"><i></i><i></i><i></i><b>↗</b></span><span class="spark">✳</span></div>
+          <div><h2>Одна задача. Разные способы разобраться.</h2><p>Ищите среди курсов, статей, шаблонов документов<br class="desktop-break"> и других материалов — в одном месте.</p><span id="catalog-caption" class="catalog-caption">Подключаем каталог…</span></div>
+        </section>
+        <section id="results-section" hidden aria-label="Результаты поиска">
+          <div class="results-heading"><div><p class="eyebrow small">ВАША ПОДБОРКА</p><h2 id="results-title">Материалы</h2><p id="results-query"></p></div><button id="copy-json" type="button" class="text-button" hidden>Скопировать JSON</button></div>
+          <p id="results-note" class="results-note"></p>
+          <div id="results" class="results" aria-live="polite" aria-busy="false"></div>
+        </section>
+      </section>
+      <aside class="settings" aria-label="Настройки тестирования">
+        <div class="settings-title"><span class="settings-icon" aria-hidden="true">☷</span><h2>Настроить поиск</h2></div>
+        <p class="settings-copy">Проверьте, как меняется выдача<br>при разных параметрах.</p>
+        <label for="mode">Способ поиска</label>
+        <select id="mode"><option value="bm25">По словам · BM25</option><option value="hybrid" disabled>По словам и смыслу</option><option value="catboost" disabled>CatBoost · эксперимент</option></select>
+        <p id="mode-help" class="control-help">Проверяем доступность модели…</p>
+        <label for="kind">Тип материала</label>
+        <select id="kind"><option value="">Все материалы</option><option value="course">Курсы</option><option value="article">Статьи</option><option value="document">Документы</option><option value="glossary">Термины</option><option value="podcast">Подкасты</option><option value="webinar">Вебинары</option></select>
+        <label for="top">Количество результатов</label>
+        <select id="top"><option value="5">5 материалов</option><option value="10">10 материалов</option><option value="20">20 материалов</option></select>
+        <div class="settings-divider"></div>
+        <label class="toggle-row" for="diagnostics"><span><strong>Режим исследования</strong><small>Оценки, совпадения и JSON</small></span><input id="diagnostics" type="checkbox"><span class="toggle" aria-hidden="true"></span></label>
+        <div class="local-note"><span aria-hidden="true">◉</span><p>Данные и поиск работают локально.<br>Запросы не отправляются в LLM.</p></div>
+      </aside>
+    </div>
+    <footer><span>Курс · Прототип для хакатона</span><span id="connection" role="status"><i></i>Подключение…</span><span>Проверяем алгоритм на реальных данных</span></footer>
+  </main>
+</body>
+</html>
