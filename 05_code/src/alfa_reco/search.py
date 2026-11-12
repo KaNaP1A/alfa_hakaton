@@ -3,17 +3,23 @@
 import json
 import threading
 
+from .retrieval import COVERAGE_COLUMN, SELECTION_COLUMN, RankingConfig
 from .suggestions import SuggestionIndex, validate_query
 from .text import tokens
 
 
 class SearchEngine:
-    def __init__(self, output, semantic=False):
-        # Import here to keep CLI compatibility without circular initialization.
-        from .cli import load_bundle, model, sha256
+    def __init__(self, output, semantic=False, llm_enabled=False):
+        from .bundle import load_bundle, model, sha256
 
         self.path, self.manifest, self.catalog = load_bundle(output)
         self.generation = self.path.name
+        from .clarifications import ClarificationTokens
+
+        self.clarifications = ClarificationTokens(self.generation, self.catalog)
+        from .query_interpreter import OllamaInterpreter
+
+        self.interpreter = OllamaInterpreter() if llm_enabled else None
         self.suggestions = None
         spec = self.manifest.get("suggestions")
         if spec:
@@ -23,16 +29,31 @@ class SearchEngine:
             data = json.loads(path.read_text())
             if data["catalog_sha256"] != self.manifest["catalog_sha256"]:
                 raise ValueError("Suggestion index belongs to another catalog")
+            eligible = {item["entity_key"] for item in self.catalog if item["kind"] != "glossary"}
+            entries = [
+                {**entry, "entity_keys": [key for key in entry["entity_keys"] if key in eligible]}
+                for entry in data["entries"]
+            ]
+            data = {**data, "entries": [entry for entry in entries if entry["entity_keys"]]}
             self.suggestions = SuggestionIndex(data, self.catalog, self.generation)
         from .retrieval import FieldRetriever
 
         self.retriever = FieldRetriever(self.catalog)
+        self.ranking_config = RankingConfig()
+        config_path = self.path / "ranking_config.json"
+        if config_path.exists():
+            config_data = json.loads(config_path.read_text())
+            if config_data.get("catalog_sha256") != self.manifest["catalog_sha256"]:
+                raise ValueError("Ranking configuration belongs to a different catalog")
+            self.ranking_config = RankingConfig(**config_data["parameters"])
         self.units = None
-        self.ranker = None
+        self.rankers = {}
+        self._relevance = None
         self.encoder = None
         self.vectors = None
         self.encoder_lock = threading.Lock()
         self.vocabulary = set().union(*self.retriever.term_sets)
+        self.card_vocabulary = set().union(*self.retriever.context_terms)
         if semantic:
             import numpy as np
 
@@ -58,15 +79,22 @@ class SearchEngine:
                     source: np.array([unit["source"] == source for unit in self.units])
                     for source in ("card", "body", "lesson")
                 }
+            if sem.get("local_path") and sem.get("local_model_fingerprint"):
+                from .bundle import model_fingerprint
+
+                if model_fingerprint(sem["local_path"]) != sem["local_model_fingerprint"]:
+                    raise ValueError("Embedding model files differ from the indexed model")
             self.encoder = model(sem["local_path"])
 
     def dense_signals(self, query):
         import numpy as np
 
+        from .text import embedding_query
+
         if self.encoder is None:
             raise ValueError("Engine started without embeddings")
         with self.encoder_lock:
-            vector = self.encoder.encode([query], normalize_embeddings=True)
+            vector = self.encoder.encode([embedding_query(query)], normalize_embeddings=True)
         raw = self.vectors @ vector[0]
         result = {
             source: np.zeros(len(self.catalog), dtype=np.float32)
@@ -84,91 +112,399 @@ class SearchEngine:
             raise ValueError("Build the suggestion index first")
         return self.suggestions.suggest(query, limit)
 
+    def relevance_backend(self):
+        if self._relevance is None:
+            from .relevance import RelevanceBackend
+
+            with self.encoder_lock:
+                if self._relevance is None:
+                    self._relevance = RelevanceBackend(self)
+        return self._relevance
+
+    def _model_order(self, mode, ranked, signals, config=None):
+        from .bundle import sha256
+        from .retrieval import FEATURE_NAMES
+
+        if mode != "catboost":
+            raise ValueError("Unsupported CatBoost mode")
+        # Existing filename kept for backward-compatible artifacts; only this ranker is used.
+        prefix = "catboost_small"
+        model_path = self.path / (prefix + ".cbm")
+        meta_path = self.path / (prefix + "_meta.json")
+        if not meta_path.exists() or not model_path.exists():
+            raise ValueError("Experimental CatBoost model is unavailable for this catalog")
+        meta = json.loads(meta_path.read_text())
+        config = config or self.ranking_config
+        trained_config = RankingConfig(**meta.get("retrieval_parameters", {}))
+        if (config.bm25_k1, config.bm25_b) != (trained_config.bm25_k1, trained_config.bm25_b):
+            raise ValueError("CatBoost BM25 features changed; retrain the model first")
+        if (
+            meta.get("catalog_sha256") != self.manifest["catalog_sha256"]
+            or meta.get("vectors_sha256") != self.manifest.get("semantic", {}).get("vectors_sha256")
+            or not meta.get("vectors_sha256")
+            or sha256(model_path) != meta.get("model_sha256")
+        ):
+            raise ValueError("CatBoost artifact does not match catalog/embeddings or is corrupt")
+        try:
+            from catboost import CatBoostRanker
+        except ImportError as error:
+            raise ValueError("Install CatBoost to use this experimental mode") from error
+        feature_names = meta.get("feature_names", FEATURE_NAMES)
+        if len(set(feature_names)) != len(feature_names) or any(
+            name not in FEATURE_NAMES for name in feature_names
+        ):
+            raise ValueError("Unsupported CatBoost feature schema")
+        feature_columns = [FEATURE_NAMES.index(name) for name in feature_names]
+        with self.encoder_lock:
+            if prefix not in self.rankers:
+                ranker = CatBoostRanker()
+                ranker.load_model(str(model_path))
+                if ranker.feature_names_ != feature_names:
+                    raise ValueError("CatBoost model feature names do not match metadata")
+                self.rankers[prefix] = ranker
+            predictions = (
+                self.rankers[prefix].predict(
+                    [[signals["features"][i][column] for column in feature_columns] for i in ranked]
+                )
+                if ranked
+                else []
+            )
+        model_scores = {i: float(score) for i, score in zip(ranked, predictions, strict=True)}
+        ranked = sorted(ranked, key=lambda i: (-model_scores[i], self.catalog[i]["entity_key"]))
+        return ranked, model_scores
+
+    def component_rankings(self, query, signals, allowed, config):
+        """Run all components over a shared candidate calculation."""
+        # Apply a selected topic exactly once after fusion, not inside a component.
+        neutral = signals
+        if any(row[SELECTION_COLUMN] for row in signals["features"]):
+            neutral = {
+                **signals,
+                "features": [
+                    row[:SELECTION_COLUMN] + [0.0] + row[SELECTION_COLUMN + 1 :]
+                    for row in signals["features"]
+                ],
+            }
+        hybrid, lexical, dense, fused, ranks = self.retriever.rank(neutral, config, allowed, True)
+        bm25, *_ = self.retriever.rank(neutral, config, allowed, False)
+        catboost, model_scores = self._model_order("catboost", list(hybrid), neutral, config)
+        lists = {
+            "bm25": bm25[:60],
+            "hybrid": hybrid[:60],
+            "catboost": catboost[:60],
+        }
+        return lists, lexical, dense, fused, ranks, model_scores
+
+    def _ensemble_weights(self, config=None):
+        from .bundle import sha256
+        from .ensemble import validate_weights
+        from .retrieval import RankingConfig
+
+        path = self.path / "ensemble_config.json"
+        if not path.exists():
+            raise ValueError("Ensemble weights are unavailable for this catalog; run calibration")
+        data = json.loads(path.read_text())
+        if data.get("catalog_sha256") != self.manifest["catalog_sha256"] or data.get(
+            "vectors_sha256"
+        ) != self.manifest.get("semantic", {}).get("vectors_sha256"):
+            raise ValueError("Ensemble weights do not match catalog or vectors")
+        if RankingConfig(**data["retrieval_parameters"]) != (config or self.ranking_config):
+            raise ValueError("Ensemble weights do not match the retrieval configuration")
+        if data.get("rrf_k", 60) != 60 or data.get("top_per_method", 60) != 60:
+            raise ValueError("Unsupported ensemble fusion configuration; recalibrate first")
+        if data.get("model_sha256") != sha256(self.path / "catboost_small.cbm"):
+            raise ValueError("Ensemble weights do not match the trained model")
+        validate_weights(data["weights"])
+        bonus = data.get("llm_boost", 0.0)
+        if not isinstance(bonus, (int, float)) or not 0 <= bonus <= 0.2:
+            raise ValueError("Invalid LLM boost")
+        return data
+
     def search(
         self,
         query,
-        mode="hybrid",
+        mode="ensemble",
         top=5,
         kind=None,
         selection_id=None,
         selection_generation=None,
+        clarification_token=None,
+        clarification_text=None,
+        *,
+        ranking_config=None,
     ):
-        from .cli import KINDS
+        from .eligibility import USER_KINDS, candidate_support
 
         validate_query(query)
         if not query.strip():
             raise ValueError("Enter a non-empty query")
-        if mode not in {"bm25", "hybrid", "catboost"}:
+        if mode not in {"bm25", "hybrid", "catboost", "ensemble", "relevance"}:
             raise ValueError("Unsupported search mode")
-        if not 1 <= top <= 50:
+        if type(top) is not int or not 1 <= top <= 50:
             raise ValueError("top must be between 1 and 50")
-        if kind is not None and kind not in KINDS.values():
+        if kind is not None and (kind not in USER_KINDS):
             raise ValueError("Unsupported material kind")
         if bool(selection_id) != bool(selection_generation):
             raise ValueError("selection_id and selection_generation must be supplied together")
+        if clarification_token and clarification_text:
+            raise ValueError("Choose either a clarification option or text")
+        if (clarification_token or clarification_text) and selection_id:
+            raise ValueError("Choose either a suggestion or clarification")
+        if clarification_text is not None:
+            validate_query(clarification_text)
+            if not clarification_text.strip() or len(clarification_text) > 100:
+                raise ValueError("Clarification must contain 1 to 100 characters")
+        focus = (
+            self.clarifications.resolve(query, clarification_token) if clarification_token else None
+        )
         selection = None
         if selection_id:
             if self.suggestions is None:
                 raise ValueError("Build the suggestion index first")
             selection = self.suggestions.resolve(selection_id, selection_generation)
-        allowed = {i for i, item in enumerate(self.catalog) if kind is None or item["kind"] == kind}
-        from .retrieval import RankingConfig
+            if selection["kind"] == "title":
+                chosen = next(
+                    (
+                        item
+                        for item in self.catalog
+                        if item["entity_key"] in selection["entity_keys"]
+                        and item["title"] == selection["label"]
+                        and item["kind"] != "glossary"
+                    ),
+                    None,
+                )
+                if chosen:
+                    focus = {
+                        "kind": "material",
+                        "entity_key": chosen["entity_key"],
+                        "label": chosen["title"],
+                    }
+        from .query_rules import exclusion_multiplier, intent_multiplier, plan_query
 
-        config = RankingConfig()
-        config_path = self.path / "ranking_config.json"
-        if config_path.exists():
-            config = RankingConfig(**json.loads(config_path.read_text())["parameters"])
-        semantic = mode in {"hybrid", "catboost"}
-        dense_by_source = self.dense_signals(query) if semantic else None
-        selected_keys = set(selection["entity_keys"]) if selection else set()
-        signals = self.retriever.signals(query, dense_by_source, selected_keys)
-        ranked, lexical, dense_values, fused, ranks = self.retriever.rank(
-            signals, config, allowed, semantic
+        original_plan = plan_query(query)
+        effective_query = (
+            focus["label"]
+            if focus and focus["kind"] == "material"
+            else " ".join(
+                part for part in [query, focus["label"] if focus else clarification_text] if part
+            )
         )
-        dense = dense_values if semantic else None
-        if mode == "catboost":
-            from .cli import sha256
+        plan = plan_query(effective_query)
+        retrieval_query = plan.retrieval_query
 
-            model_path = self.path / "catboost.cbm"
-            meta_path = self.path / "catboost_meta.json"
-            if not meta_path.exists() or not model_path.exists():
-                raise ValueError("Experimental CatBoost model is unavailable for this catalog")
-            meta = json.loads(meta_path.read_text())
-            if meta.get("catalog_sha256") != self.manifest["catalog_sha256"] or sha256(
-                model_path
-            ) != meta.get("model_sha256"):
-                raise ValueError("CatBoost artifact does not match catalog or is corrupt")
-            try:
-                from catboost import CatBoostRanker
-            except ImportError as error:
-                raise ValueError("Install CatBoost to use this experimental mode") from error
-            with self.encoder_lock:
-                if self.ranker is None:
-                    self.ranker = CatBoostRanker()
-                    self.ranker.load_model(str(model_path))
-                predictions = (
-                    self.ranker.predict([signals["features"][i] for i in ranked]) if ranked else []
+        allowed = {
+            i
+            for i, item in enumerate(self.catalog)
+            if item["kind"] in USER_KINDS and (kind is None or item["kind"] == kind)
+        }
+        focus_index = next(
+            (
+                i
+                for i in allowed
+                if focus and focus.get("entity_key") == self.catalog[i]["entity_key"]
+            ),
+            None,
+        )
+        if focus and focus["kind"] == "material" and focus_index is None:
+            raise ValueError(
+                "Выбранный материал не соответствует фильтру типа. Уберите фильтр и повторите поиск."
+            )
+        # Explicit override is for offline experiments; HTTP never accepts ranking parameters.
+        config = self.ranking_config if ranking_config is None else ranking_config
+        if not isinstance(config, RankingConfig):
+            raise ValueError("ranking_config must be a RankingConfig")
+        semantic = mode in {"hybrid", "catboost", "ensemble"}
+        dense_by_source = self.dense_signals(retrieval_query) if semantic else None
+        selected_keys = set(selection["entity_keys"]) if selection else set()
+        relevance = None
+        if mode == "relevance":
+            backend = self.relevance_backend()
+            if config != backend.config:
+                raise ValueError("Relevance model does not match ranking parameters")
+            relevance = backend.result(effective_query, allowed, selected_keys)
+            dense_by_source = relevance["dense"]
+            signals = relevance["signals"]
+        else:
+            signals = self.retriever.signals(
+                retrieval_query, dense_by_source, selected_keys, config=config
+            )
+        ranked = []
+        lexical = dense = fused = ranks = None
+        if mode == "relevance":
+            ranked = relevance["ranked"]
+            lexical = relevance["lexical"]
+            dense = dense_by_source["card"]
+            fused, ranks = relevance["fused"], relevance["ranks"]
+        elif mode != "ensemble":
+            ranked, lexical, dense_values, fused, ranks = self.retriever.rank(
+                signals, config, allowed, semantic
+            )
+            dense = dense_values if semantic else None
+        model_scores = relevance["model_scores"] if relevance is not None else {}
+        ensemble_scores = {}
+        contribution_by_item = {}
+        component_ranks = {}
+        interpretation = {
+            "status": "disabled",
+            "route": "disabled",
+            "goal": "",
+            "object": "",
+            "constraints": [],
+            "negation_present": False,
+            "discarded": 0,
+        }
+        llm_applied = False
+        llm_bonus_by_item = {}
+        if mode == "ensemble":
+            from .ensemble import fuse
+
+            ensemble_config = self._ensemble_weights(config)
+            weights = ensemble_config["weights"]
+            if self.interpreter is not None and not (focus and focus["kind"] == "material"):
+                interpretation = self.interpreter.analyze(effective_query)
+            lists, lexical, dense_values, fused, ranks, model_scores = self.component_rankings(
+                retrieval_query, signals, allowed, config
+            )
+            dense = dense_values
+            ensemble_scores, contribution_by_item = fuse(lists, weights)
+            component_ranks = {
+                name: {i: rank + 1 for rank, i in enumerate(items)} for name, items in lists.items()
+            }
+            from .query_interpreter import grounded_match
+
+            boost = ensemble_config.get("llm_boost", 0.0)
+            expected_digest = ensemble_config.get("llm_digest")
+            model_matches = bool(
+                boost
+                and expected_digest
+                and interpretation.get("status") == "ok"
+                and not interpretation.get("negation_present")
+                and self.interpreter is not None
+                and self.interpreter.model == ensemble_config.get("llm_model")
+                and self.interpreter.model_digest() == expected_digest
+            )
+            for i in ensemble_scores:
+                score = (
+                    grounded_match(interpretation, self.retriever.context_terms[i])
+                    if model_matches
+                    else 0.0
                 )
-            ranked = [i for _, i in sorted(zip(-predictions, ranked, strict=True))]
-            if selection:
-                model_rank = {i: rank + 1 for rank, i in enumerate(ranked)}
-                ranked.sort(
-                    key=lambda i: (
-                        -(1 / (config.rrf_k + model_rank[i]))
-                        * (
-                            1
-                            + config.selection_boost
-                            * signals["features"][i][10]
-                            * signals["features"][i][12]
-                        ),
-                        self.catalog[i]["entity_key"],
-                    )
+                llm_bonus_by_item[i] = score
+                llm_applied = llm_applied or bool(score)
+                ensemble_scores[i] *= 1 + boost * score
+                ensemble_scores[i] *= (
+                    1
+                    + config.selection_boost
+                    * signals["features"][i][COVERAGE_COLUMN]
+                    * signals["features"][i][SELECTION_COLUMN]
                 )
-        ranked = ranked[:60]
-        results = []
-        query_terms = set(tokens(query))
-        for i in ranked[:top]:
+                ensemble_scores[i] *= exclusion_multiplier(
+                    self.retriever.title_terms[i], plan.excluded_terms
+                )
+                ensemble_scores[i] *= intent_multiplier(self.catalog[i]["title"], plan)
+            ranked = sorted(
+                ensemble_scores, key=lambda i: (-ensemble_scores[i], self.catalog[i]["entity_key"])
+            )
+        elif mode == "catboost":
+            ranked, model_scores = self._model_order(mode, ranked, signals, config)
+        if mode in {"catboost", "relevance"} and selection:
+            model_rank = {i: rank + 1 for rank, i in enumerate(ranked)}
+            ranked.sort(
+                key=lambda i: (
+                    -(1 / (config.rrf_k + model_rank[i]))
+                    * (
+                        1
+                        + config.selection_boost
+                        * signals["features"][i][COVERAGE_COLUMN]
+                        * signals["features"][i][SELECTION_COLUMN]
+                    ),
+                    self.catalog[i]["entity_key"],
+                )
+            )
+        ranking_scores = dict(
+            ensemble_scores
+            if mode == "ensemble"
+            else model_scores
+            if mode in {"catboost", "relevance"}
+            else fused
+        )
+        if mode in {"catboost", "relevance"} and selection:
+            ranking_scores = {
+                i: (1 / (config.rrf_k + model_rank[i]))
+                * (
+                    1
+                    + config.selection_boost
+                    * signals["features"][i][COVERAGE_COLUMN]
+                    * signals["features"][i][SELECTION_COLUMN]
+                )
+                for i in ranked
+            }
+        if mode != "ensemble" and (
+            plan.excluded_terms or plan.retention_expansion or plan.debt_expansion
+        ):
+            prior = {i: rank + 1 for rank, i in enumerate(ranked)}
+            ranking_scores = {
+                i: exclusion_multiplier(self.retriever.title_terms[i], plan.excluded_terms)
+                * intent_multiplier(self.catalog[i]["title"], plan)
+                / (config.rrf_k + prior[i])
+                for i in ranked
+            }
+            ranked.sort(key=lambda i: (-ranking_scores[i], self.catalog[i]["entity_key"]))
+        exact_indices = [
+            i
+            for i in allowed
+            if tokens(plan.positive_query)
+            and tokens(plan.positive_query) == tokens(self.catalog[i]["title"].rstrip(" ,.;!?"))
+        ]
+        priority = ([focus_index] if focus_index is not None else []) + sorted(
+            exact_indices, key=lambda i: self.catalog[i]["entity_key"]
+        )
+        ranked = list(dict.fromkeys(priority + ranked))[:60]
+        candidates = []
+        from .evidence import coverage_signal, evidence_for
+
+        query_terms = set(tokens(plan.positive_query))
+        from .promotions import promotion_for
+
+        admitted_count = alternative_count = 0
+        for i in ranked:
             item = self.catalog[i]
+            support = (
+                self.relevance_backend().support(
+                    relevance,
+                    i,
+                    selected=i == focus_index,
+                    conflict=exclusion_multiplier(
+                        self.retriever.title_terms[i], plan.excluded_terms
+                    )
+                    < 1
+                    or intent_multiplier(item["title"], plan) < 1,
+                )
+                if relevance is not None
+                else candidate_support(
+                    plan.retrieval_query,
+                    item,
+                    dense_by_source["card"][i] if dense_by_source else None,
+                    dense_by_source["lesson"][i] if dense_by_source else None,
+                    selected=i == focus_index,
+                    conflict=exclusion_multiplier(
+                        self.retriever.title_terms[i], plan.excluded_terms
+                    )
+                    < 1
+                    or intent_multiplier(item["title"], plan) < 1,
+                )
+            )
+            if not support["admitted"] and not support["alternative"]:
+                continue
+            if support["admitted"]:
+                if admitted_count >= top:
+                    continue
+                admitted_count += 1
+            else:
+                if alternative_count >= min(top, 3):
+                    continue
+                alternative_count += 1
+            source_ranks = {channel: rank[i] for channel, rank in ranks.items() if i in rank}
             matched_lessons = [
                 {
                     "lesson_id": lesson["lesson_id"],
@@ -178,7 +514,7 @@ class SearchEngine:
                 for lesson in item.get("lessons", [])
                 if query_terms & set(tokens(lesson["title"] + " " + lesson["description"]))
             ][:3]
-            results.append(
+            candidates.append(
                 {
                     **{
                         key: item[key]
@@ -196,34 +532,130 @@ class SearchEngine:
                             "data_quality_flags",
                         ]
                     },
+                    "promotion": promotion_for(item),
+                    "support": support,
                     "scores": {
                         "bm25": round(lexical[i], 5),
                         "cosine": round(dense[i], 5) if dense is not None else None,
-                        "rrf": round(fused[i], 6),
+                        "rrf": round(fused.get(i, 0.0), 6),
+                        "catboost": round(model_scores[i], 6) if i in model_scores else None,
+                        "final_score": round(ranking_scores.get(i, 0.0), 8),
                     },
+                    "ranking_override": "explicit_selection"
+                    if i == focus_index
+                    else "exact_title"
+                    if i in exact_indices
+                    else None,
                     "matched_words": sorted(query_terms & self.retriever.term_sets[i]),
-                    "source_ranks": {
-                        channel: rank[i] for channel, rank in ranks.items() if i in rank
+                    "source_ranks": source_ranks,
+                    "ensemble_ranks": {
+                        name: ranks[i] for name, ranks in component_ranks.items() if i in ranks
                     },
+                    "ensemble_contributions": {
+                        name: round(value, 6)
+                        for name, value in contribution_by_item.get(i, {}).items()
+                    },
+                    "llm_grounded_match": round(llm_bonus_by_item.get(i, 0.0), 6)
+                    if mode == "ensemble"
+                    else None,
+                    "selection_multiplier": round(
+                        1
+                        + config.selection_boost
+                        * signals["features"][i][COVERAGE_COLUMN]
+                        * signals["features"][i][SELECTION_COLUMN],
+                        6,
+                    )
+                    if mode == "ensemble"
+                    else None,
                     "selection_match": item["entity_key"] in selected_keys,
                     "matched_lessons": matched_lessons,
+                    "evidence": evidence_for(
+                        item, plan.positive_query, source_ranks, item["entity_key"] in selected_keys
+                    ),
                 }
             )
+        from .personalization import clarification
+
+        results = [item for item in candidates if item["support"]["admitted"]][:top]
+        alternatives = [item for item in candidates if item["support"]["alternative"]][
+            : min(top, 3)
+        ]
+        coverage = coverage_signal(plan.positive_query, self.card_vocabulary) if results else "none"
+        from .confidence import assess_results
+
+        confidence = assess_results(results, (plan, original_plan))
+        if relevance is not None:
+            confidence.update(policy="e5_relevance_v1", **backend.policy)
+        choices = [
+            {**self.catalog[i], "matched_words": sorted(query_terms & self.retriever.term_sets[i])}
+            for i in ranked[:10]
+        ]
+        question = (
+            clarification(
+                plan.positive_query,
+                choices,
+                needs_context=not results
+                or all(item["support"]["card_coverage"] < 0.85 for item in results),
+            )
+            if not (focus or selection or clarification_text)
+            and not any(item["support"]["exact_title"] for item in results)
+            else None
+        )
+        if question:
+            question = {
+                **question,
+                "options": [
+                    {
+                        "label": option["label"],
+                        "kind": option["kind"],
+                        "token": self.clarifications.issue(query, option),
+                    }
+                    for option in question["options"]
+                ],
+            }
         return {
             "query": query,
             "generation": self.generation,
-            "mode": "catboost_experimental"
-            if mode == "catboost"
+            "focus": focus
+            or ({"kind": "text", "label": clarification_text} if clarification_text else None),
+            "mode": mode + "_experimental"
+            if mode in {"ensemble", "catboost", "relevance"}
             else "hybrid_rrf"
             if mode == "hybrid"
             else "bm25_rrf"
             if selection
             else "bm25",
             "catalog_count": len(self.catalog),
-            "model_trained": mode == "catboost",
+            "model_trained": mode in {"ensemble", "catboost", "relevance"},
+            "relevance_profile": {
+                "normalization": relevance["view"]["normalization"],
+                "canonicalized": relevance["view"]["canonicalized"],
+                "encoder": "intfloat/multilingual-e5-small",
+                "independent_human_validation": False,
+            }
+            if relevance is not None
+            else None,
+            "ensemble_weights": weights if mode == "ensemble" else None,
+            "query_interpretation": interpretation,
+            "query_rules": {
+                "contrast_applied": plan.contrast_applied,
+                "excluded_terms": list(plan.excluded_terms),
+                "retention_expansion": plan.retention_expansion,
+                "unresolved_negation": plan.unresolved_negation,
+                "debt_expansion": plan.debt_expansion,
+                "debt_unspecified": plan.debt_unspecified,
+                "synonym_rules": list(plan.synonym_rules),
+                "unsupported_constraints": sorted(
+                    set(plan.unsupported_constraints) | set(original_plan.unsupported_constraints)
+                ),
+            },
+            "llm_ranking_applied": llm_applied,
             "selection": {"id": selection_id, "label": selection["label"]} if selection else None,
             "unmatched_query_terms": sorted(query_terms - self.vocabulary),
-            "coverage": "unknown" if results else "none",
+            "coverage": coverage,
+            "confidence": confidence,
+            "clarification": question,
+            "alternatives": alternatives,
             "notice": "Candidate search; weights and relevance thresholds are not validated.",
             "results": results,
         }

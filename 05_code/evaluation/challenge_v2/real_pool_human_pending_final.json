@@ -1,0 +1,10 @@
+{
+  "queries": 75,
+  "completed_queries": 0,
+  "pending_queries": 75,
+  "candidate_judgments": 814,
+  "resolved_judgments": 0,
+  "unresolved_disagreements": 0,
+  "metrics_by_split_and_method": {},
+  "limitations": "Metrics include only fully judged pools; NDCG ideal is restricted to pooled candidates. Unjudged cases are excluded, not treated as zero. A pool cannot establish absence in the whole catalog."
+}

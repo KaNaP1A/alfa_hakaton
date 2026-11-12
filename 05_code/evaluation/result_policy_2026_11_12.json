@@ -1,0 +1,695 @@
+{
+  "description": "Regression checks written by developer. These assertions are not independent judgments of relevance.",
+  "catalog_generation": "generation-c9cd546ed3bf-904256290a10-8b410e53abd0",
+  "queries": [
+    {
+      "query": "хочу открыть столовую",
+      "confidence": {
+        "status": "uncertain",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [],
+      "alternatives": [
+        "Как открыть пекарню с нуля: пошаговый чек-лист",
+        "Какие документы нужны для открытия кафе"
+      ]
+    },
+    {
+      "query": "Как открыть ИП",
+      "confidence": {
+        "status": "unvalidated",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [
+        {
+          "title": "Как открыть ИП",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.3218,
+            "exact_title": true,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Превратите идею бизнеса в конкретный план регистрации: разберитесь с ОКВЭД и налоговым режимом, подготовкой и подписанием документов онлайн.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Можно ли открыть ИП, если официально трудоустроен",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.4084,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Совмещайте работу и планы на своё дело осознанно: разберитесь, как открыть ИП при официальном трудоустройстве и зачем это может понадобиться.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Как открыть ИП онлайн",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.2882,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Начните регистрацию бизнеса онлайн: узнайте, куда обращаться, какие документы подготовить и что делать после подачи.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Можно ли открыть ИП в декрете",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.3606,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Планируете своё дело во время декрета? Разберите возможность регистрации ИП и узнайте, как подойти к открытию бизнеса.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Как открыть ИП после банкротства",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.2521,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Вернитесь к планам на своё дело с пониманием условий: узнайте, можно ли зарегистрировать ИП после банкротства и как это сделать.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      ],
+      "alternatives": []
+    },
+    {
+      "query": "открыть кофейню",
+      "confidence": {
+        "status": "unvalidated",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [
+        {
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.5,
+            "card_cosine": 0.7099,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Рассматриваете кофейню по франшизе? Разберитесь в выборе франшизы до того, как принимать решение об открытии.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      ],
+      "alternatives": [
+        "Сеть трендовых кофеен в московских ЖК",
+        "Какие документы нужны для открытия кафе"
+      ]
+    },
+    {
+      "query": "закрытие долгов",
+      "confidence": {
+        "status": "unvalidated",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [
+        {
+          "title": "Налоговая задолженность по ИП: как проверить и погасить",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.75,
+            "card_cosine": 0.6595,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Разберитесь с налоговыми долгами: узнайте, как проверить задолженность, чем грозит просрочка и что делать, если денег на погашение сейчас нет.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Долг платежом красен: как оформить договор займа",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.25,
+            "card_cosine": 0.7263,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Уделите условиям возврата внимание до передачи денег: разберитесь в оформлении договора займа и подготовке соглашения.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "«Верну потом»: как ИП выдать другому ИП заём без процентов",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.25,
+            "card_cosine": 0.6552,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Подготовьтесь к передаче денег в долг другому предпринимателю: разберите беспроцентный заём и связанные с ним риски штрафов.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Акт взаимозачёта",
+          "kind": "document",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.25,
+            "card_cosine": 0.6264,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Рассмотрите взаимозачёт как способ оформить погашение встречных долгов: ознакомьтесь с образцом акта и проверьте, подходит ли он вашим обязательствам.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      ],
+      "alternatives": [
+        "Налог на имущество: что будет, если не платить вовремя",
+        "Скоро рассвет, выхода нет: какие документы нужны для банкротства ИП",
+        "Как закрыть расчётный счёт юрлица"
+      ]
+    },
+    {
+      "query": "договор аренды",
+      "confidence": {
+        "status": "unvalidated",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [
+        {
+          "title": "Договор аренды нежилого помещения",
+          "kind": "document",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.6777,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Подготовьтесь к разговору об аренде помещения: изучите образец договора и определите, какие условия нужно согласовать для вашей ситуации.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Уведомление о расторжении договора аренды",
+          "kind": "document",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.6316,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Подготовьтесь письменно сообщить о прекращении аренды: изучите образец уведомления и проверьте применимость к своему договору.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Гарантийное письмо о заключении договора аренды между двумя ООО",
+          "kind": "document",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.7167,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Зафиксируйте намерения сторон до подписания аренды: ознакомьтесь с образцом гарантийного письма между компаниями и проверьте условия для своей сделки.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Договор аренды земельного участка",
+          "kind": "document",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.6338,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Подойдите к аренде участка подготовленнее: ознакомьтесь с образцом договора и проверьте, какие условия важны для вашей сделки.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Гарантийное письмо о заключении договора аренды между ИП и ООО",
+          "kind": "document",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.6391,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Оформите предварительные договорённости об аренде между ИП и компанией: изучите образец письма и подготовьте вопросы по условиям сделки.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      ],
+      "alternatives": [
+        "Как составить и оформить договор лизинга",
+        "Договор коммерческой концессии или договор франчайзинга",
+        "Счёт-договор"
+      ]
+    },
+    {
+      "query": "frontend",
+      "confidence": {
+        "status": "uncertain",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [],
+      "alternatives": []
+    },
+    {
+      "query": "хочу изучать квантовую телепортацию",
+      "confidence": {
+        "status": "uncertain",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [],
+      "alternatives": []
+    },
+    {
+      "query": "удержать сотрудников",
+      "confidence": {
+        "status": "unvalidated",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [
+        {
+          "title": "Как управлять командой",
+          "kind": "course",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.4,
+            "card_cosine": 0.7116,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Перейдите от собранной команды к осмысленному управлению: разберитесь, как поддерживать сотрудников и развивать бизнес вместе с ними.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Распределённая команда: что такое, как собрать и как управлять",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.2,
+            "card_cosine": 0.6353,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Подготовьтесь управлять удалённой командой: сопоставьте плюсы и минусы формата, разберите метрики эффективности и контроль работы.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Команды в малом бизнесе: секрет продуктивной работы",
+          "kind": "podcast",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.2,
+            "card_cosine": 0.6516,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Посмотрите на команду через общую цель, ценности и правила. Разберите эти основы и подумайте, что стоит обсудить со своими сотрудниками.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Положительная характеристика на сотрудника",
+          "kind": "document",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.4,
+            "card_cosine": 0.6579,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Подготовьте характеристику сотрудника с понятной структурой: ознакомьтесь с образцом и продумайте, какие профессиональные и личные качества отразить.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Почему сотрудники массово увольняются и что с этим делать",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 0.2,
+            "card_cosine": 0.6646,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Не оставайтесь один на один с уходом команды: изучите рекомендации HR и определите, какие шаги стоит рассмотреть в своей компании.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      ],
+      "alternatives": [
+        "Пять советов по подбору сотрудников",
+        "Подбор и адаптация команды продаж",
+        "Ситуационное лидерство: как гибко управлять командой"
+      ]
+    },
+    {
+      "query": "как открыть пекарню с нуля",
+      "confidence": {
+        "status": "unvalidated",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85
+      },
+      "results": [
+        {
+          "title": "Как открыть пекарню с нуля: пошаговый чек-лист",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.6262,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Посчитайте стартовые затраты и определитесь с оборудованием до открытия пекарни. Пройдите по чек-листу и разберите нюансы запуска.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      ],
+      "alternatives": [
+        "Что такое ресейл и как начать заниматься им с нуля"
+      ]
+    },
+    {
+      "query": "бесплатный курс по маркетингу без опыта",
+      "confidence": {
+        "status": "uncertain",
+        "policy": "per_card_v1",
+        "semantic_min": 0.62,
+        "lexical_min": 0.85,
+        "reason": "unresolved_negation"
+      },
+      "results": [
+        {
+          "title": "Контент-маркетинг здорового человека: как привлечь клиентов",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.6579,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Подберите подход к привлечению аудитории через контент: разберите инструменты контент-маркетинга и начните планировать продвижение.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Что такое маркетинг 360 и как он работает?",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.7042,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Посмотрите на продвижение бизнеса шире: разберите маркетинг 360, работу с целевой аудиторией и оценку вложений в рекламу.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Как использовать теорию поколений в маркетинге",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.652,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Посмотрите на свою аудиторию через теорию поколений: разберитесь в подходе и подумайте, как учитывать его в общении с клиентами.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Интернет-маркетинг: разбираемся с экспертами",
+          "kind": "course",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.6718,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Продумайте продвижение своих товаров и услуг в интернете. Разберите тему с экспертами и выберите направления для дальнейшей работы.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        },
+        {
+          "title": "Инфлюенс-маркетинг: как продвигать бизнес через блогеров",
+          "kind": "article",
+          "support": {
+            "admitted": true,
+            "alternative": false,
+            "card_coverage": 1.0,
+            "card_cosine": 0.6862,
+            "exact_title": false,
+            "explicit_selection": false
+          },
+          "promotion": {
+            "text": "Подготовьте рекламу у блогеров осмысленно: пройдите путь от выбора площадки до оценки эффективности размещения.",
+            "source": "reviewed_catalog_copy",
+            "source_fields": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      ],
+      "alternatives": [
+        "Топ-8 курсов по маркетплейсам",
+        "Как разработать стратегию продвижения в интернете",
+        "Восемь шагов для развития личного бренда"
+      ]
+    }
+  ],
+  "selection": {
+    "original_query": "хочу открыть столовую",
+    "focus": {
+      "kind": "material",
+      "entity_key": "article:436d99ec-50d7-4abc-a0ed-ddd2f7d122d9",
+      "label": "Как открыть ИП"
+    },
+    "confidence": {
+      "status": "unvalidated",
+      "policy": "per_card_v1",
+      "semantic_min": 0.62,
+      "lexical_min": 0.85
+    },
+    "first_title": "Как открыть ИП"
+  },
+  "order_pairs": [
+    {
+      "first": "хочу открыть кофейню",
+      "second": "открыть кофейню хочу",
+      "same_order": true
+    },
+    {
+      "first": "договор аренды",
+      "second": "аренды договор",
+      "same_order": true
+    }
+  ]
+}

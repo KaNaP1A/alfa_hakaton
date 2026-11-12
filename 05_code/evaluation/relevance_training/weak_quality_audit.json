@@ -1,0 +1,28 @@
+{
+  "queries": 193,
+  "automatically_flagged": [
+    {
+      "query": "Сколько дней отпуска может быть предоставлен?",
+      "target": "document:6c52bc39-54f7-49bc-832f-e200fd5d2fd6",
+      "unsupported_constraints": [
+        "duration"
+      ],
+      "negation": false
+    },
+    {
+      "query": "Какое количество дней отпускных получит сотрудник?",
+      "target": "document:6c52bc39-54f7-49bc-832f-e200fd5d2fd6",
+      "unsupported_constraints": [
+        "duration"
+      ],
+      "negation": false
+    },
+    {
+      "query": "Как оценить потенциальный спрос на продукт, не тратя время и ресурсы на разработку?",
+      "target": "article:565520c2-9067-4842-9c52-a53a56c00920",
+      "unsupported_constraints": [],
+      "negation": true
+    }
+  ],
+  "sample_audit": "Some questions are plausible; others broaden or invent context. Source preference is weak. No independent factual or relevance validation has been performed. Flags are not gold grades."
+}

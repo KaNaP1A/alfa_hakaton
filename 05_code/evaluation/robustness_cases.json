@@ -1,0 +1,518 @@
+{
+  "assessor": "assistant_authored_regression_not_gold",
+  "note": "Synonym pairs approximate intent equivalence, not universal linguistic equivalence. Changed-meaning controls must not be forced invariant. Empty/empty is measured separately.",
+  "pairs": [
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "хочу открыть кофейню",
+        "открыть кофейню хочу"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "открыть пекарню",
+        "пекарню открыть"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "налоги ИП",
+        "ИП налоги"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "найм сотрудников",
+        "сотрудников найм"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "аренда офиса",
+        "офиса аренда"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "управление командой",
+        "командой управление"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "мотивация сотрудников",
+        "сотрудников мотивация"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "расчет зарплаты",
+        "зарплаты расчет"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "закрытие долгов",
+        "долгов закрытие"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "товарный знак",
+        "знак товарный"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "договор подряда",
+        "подряда договор"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "продвижение магазина",
+        "магазина продвижение"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "хочу найти поставщика",
+        "поставщика найти хочу"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "нужен бизнес план",
+        "бизнес план нужен"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "найти бухгалтера",
+        "бухгалтера найти"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "получить кредит",
+        "кредит получить"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "лояльность клиентов",
+        "клиентов лояльность"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "открыть ресторан",
+        "ресторан открыть"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "ведение бухгалтерии",
+        "бухгалтерии ведение"
+      ]
+    },
+    {
+      "type": "word_order",
+      "domain": "business",
+      "queries": [
+        "налоговая задолженность",
+        "задолженность налоговая"
+      ]
+    },
+    {
+      "type": "long_order",
+      "domain": "hospitality",
+      "queries": [
+        "Нужен договор аренды нежилого помещения для небольшой кофейни",
+        "Для небольшой кофейни нужен договор аренды нежилого помещения"
+      ]
+    },
+    {
+      "type": "long_order",
+      "domain": "employment",
+      "queries": [
+        "Как оформить увольнение сотрудника по соглашению сторон",
+        "По соглашению сторон как оформить увольнение сотрудника"
+      ]
+    },
+    {
+      "type": "long_order",
+      "domain": "finance",
+      "queries": [
+        "Как выбрать налоговый режим для ИП в сфере услуг",
+        "Для ИП в сфере услуг как выбрать налоговый режим"
+      ]
+    },
+    {
+      "type": "long_order",
+      "domain": "retail",
+      "queries": [
+        "Как открыть интернет магазин и найти первых покупателей",
+        "Как найти первых покупателей и открыть интернет магазин"
+      ]
+    },
+    {
+      "type": "long_order",
+      "domain": "marketing",
+      "queries": [
+        "Как оценить эффективность рекламы при небольшом бюджете",
+        "При небольшом бюджете как оценить эффективность рекламы"
+      ]
+    },
+    {
+      "type": "long_order",
+      "domain": "law",
+      "queries": [
+        "Как зарегистрировать товарный знак для нового бренда",
+        "Для нового бренда как зарегистрировать товарный знак"
+      ]
+    },
+    {
+      "type": "long_order",
+      "domain": "technology",
+      "queries": [
+        "Как применять нейросети для рекламных текстов малого бизнеса",
+        "Для рекламных текстов малого бизнеса как применять нейросети"
+      ]
+    },
+    {
+      "type": "long_order",
+      "domain": "cashflow",
+      "queries": [
+        "Как составить платежный календарь и избежать кассового разрыва",
+        "Как избежать кассового разрыва и составить платежный календарь"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "hr",
+      "queries": [
+        "управление персоналом",
+        "управление сотрудниками"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "hr",
+      "queries": [
+        "мотивация персонала",
+        "мотивация сотрудников"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "hr",
+      "queries": [
+        "поиск персонала",
+        "поиск сотрудников"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "hr",
+      "queries": [
+        "наём сотрудников",
+        "найм сотрудников"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "hr",
+      "queries": [
+        "управление работниками",
+        "управление сотрудниками"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "hr",
+      "queries": [
+        "мотивация работников",
+        "мотивация сотрудников"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "hr",
+      "queries": [
+        "снизить текучесть кадров",
+        "уменьшить текучесть сотрудников"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "hr",
+      "queries": [
+        "нанять работника",
+        "принять сотрудника на работу"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "sales",
+      "queries": [
+        "удержание клиентов",
+        "удержание покупателей"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "sales",
+      "queries": [
+        "привлечение клиентов",
+        "привлечение покупателей"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "business",
+      "queries": [
+        "открыть кофейню",
+        "запустить кофейню"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "business",
+      "queries": [
+        "открыть бизнес",
+        "начать свое дело"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "finance",
+      "queries": [
+        "погасить задолженность",
+        "выплатить долг"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "finance",
+      "queries": [
+        "заработная плата",
+        "зарплата"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "finance",
+      "queries": [
+        "ведение бухгалтерского учета",
+        "ведение бухгалтерии"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "law",
+      "queries": [
+        "расторжение трудового договора",
+        "прекращение трудового договора"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "marketing",
+      "queries": [
+        "продвижение бизнеса",
+        "маркетинг бизнеса"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "technology",
+      "queries": [
+        "искусственный интеллект для бизнеса",
+        "нейросети для бизнеса"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "law",
+      "queries": [
+        "товарный знак",
+        "торговая марка"
+      ]
+    },
+    {
+      "type": "synonym",
+      "domain": "supply",
+      "queries": [
+        "выбрать поставщика",
+        "подобрать поставщика"
+      ]
+    },
+    {
+      "type": "negative_equivalence",
+      "domain": "hr",
+      "queries": [
+        "мотивация сотрудников, а не клиентов",
+        "мотивация не клиентов, а сотрудников"
+      ]
+    },
+    {
+      "type": "negative_equivalence",
+      "domain": "finance",
+      "queries": [
+        "налоги ИП, а не физических лиц",
+        "налоги не физических лиц, а ИП"
+      ]
+    },
+    {
+      "type": "negative_equivalence",
+      "domain": "sales",
+      "queries": [
+        "удержание клиентов, а не сотрудников",
+        "удержание не сотрудников, а клиентов"
+      ]
+    },
+    {
+      "type": "negative_equivalence",
+      "domain": "law",
+      "queries": [
+        "договор аренды, а не подряда",
+        "договор не подряда, а аренды"
+      ]
+    },
+    {
+      "type": "changed_meaning_control",
+      "domain": "hr",
+      "queries": [
+        "удержание сотрудников",
+        "удержания из зарплаты сотрудников"
+      ]
+    },
+    {
+      "type": "changed_meaning_control",
+      "domain": "finance",
+      "queries": [
+        "погасить долг поставщику",
+        "взыскать долг с поставщика"
+      ]
+    },
+    {
+      "type": "changed_meaning_control",
+      "domain": "hr",
+      "queries": [
+        "мотивация сотрудников, а не клиентов",
+        "мотивация клиентов, а не сотрудников"
+      ]
+    },
+    {
+      "type": "changed_meaning_control",
+      "domain": "sales",
+      "queries": [
+        "продать бизнес",
+        "купить бизнес"
+      ]
+    },
+    {
+      "type": "changed_meaning_control",
+      "domain": "law",
+      "queries": [
+        "регистрация ИП",
+        "закрытие ИП"
+      ]
+    },
+    {
+      "type": "changed_meaning_control",
+      "domain": "payments",
+      "queries": [
+        "перевод денег от клиента",
+        "перевод денег клиенту"
+      ]
+    },
+    {
+      "type": "changed_meaning_control",
+      "domain": "employment",
+      "queries": [
+        "уволить сотрудника",
+        "нанять сотрудника"
+      ]
+    },
+    {
+      "type": "changed_meaning_control",
+      "domain": "business",
+      "queries": [
+        "как открыть кофейню",
+        "как закрыть кофейню"
+      ]
+    },
+    {
+      "type": "formatting",
+      "domain": "finance",
+      "queries": [
+        "налоги ИП",
+        "  НАЛОГИ   ИП  "
+      ]
+    },
+    {
+      "type": "formatting",
+      "domain": "hr",
+      "queries": [
+        "наём сотрудников",
+        "наем сотрудников"
+      ]
+    },
+    {
+      "type": "formatting",
+      "domain": "law",
+      "queries": [
+        "договор аренды",
+        "договор аренды."
+      ]
+    },
+    {
+      "type": "formatting",
+      "domain": "marketing",
+      "queries": [
+        "бизнес план",
+        "бизнес-план"
+      ]
+    }
+  ]
+}

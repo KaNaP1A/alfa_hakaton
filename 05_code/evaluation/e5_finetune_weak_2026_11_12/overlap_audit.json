@@ -1,0 +1,17 @@
+{
+  "normalized_query_overlap": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "canonicalized_query_overlap": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  },
+  "heldout_positive_full_text_seen_as_train_positive_or_sampled_negative": {
+    "validation": 0,
+    "test": 0
+  },
+  "limitations": "Exact matches only. Semantic overlap and original E5 pretraining data are unknown. Queries were used previously in CatBoost training."
+}

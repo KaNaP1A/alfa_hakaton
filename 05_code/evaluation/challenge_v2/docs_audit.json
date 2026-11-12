@@ -1,0 +1,152 @@
+{
+  "documents": [
+    {
+      "path": "05_code/README.md",
+      "lines": 94,
+      "sha256": "8f0ea26cb5e900fb68e9e02da81a5bca5e61bcaa62e664946db551330e653be4"
+    },
+    {
+      "path": "05_code/README_STAGE3.md",
+      "lines": 7,
+      "sha256": "a96c0286822a7df95c7594dbb16179ea214e77c4c995c146014da273abd02829"
+    },
+    {
+      "path": "05_code/RUN_REPORT.md",
+      "lines": 56,
+      "sha256": "65cf6062d95022c71786d64b8650a2ba2f4bf31d6a3d0ddfcd4218b321bec42f"
+    },
+    {
+      "path": "05_code/STAGE2_REPORT.md",
+      "lines": 46,
+      "sha256": "516a4e8ad2a7bdd3b4eab1962d957c5f3ca57bc3db04f7c92f4fb6aceff5a1b9"
+    },
+    {
+      "path": "05_code/docs/ANNOTATION_GUIDE.md",
+      "lines": 45,
+      "sha256": "0b595150539c584765facd548fea2cec2979394c05033555329c21c5d58b8096"
+    },
+    {
+      "path": "05_code/docs/AUDIT_2026-11-11.md",
+      "lines": 36,
+      "sha256": "83eca9c741684e379e36fc304f5de2227eaffee8ba2f26e2aa514030957e9807"
+    },
+    {
+      "path": "05_code/docs/AUTOCOMPLETE.md",
+      "lines": 112,
+      "sha256": "30384780a4e0bade7b6301546be553ed45ec1eaef91d9c4eec0a9657b178d489"
+    },
+    {
+      "path": "05_code/docs/CHALLENGE_1000_2026-11-12.md",
+      "lines": 96,
+      "sha256": "116fb920ea799649a4bfcfe736f59f7133f96918c4d5d94c9f451191c499231c"
+    },
+    {
+      "path": "05_code/docs/LOCAL_UI.md",
+      "lines": 46,
+      "sha256": "dc62036dee8294f42dac3041f18da55c2a0f9a2c4fdeba09d67849102d65b7ff"
+    },
+    {
+      "path": "05_code/docs/ML_DATA_PLAN.md",
+      "lines": 58,
+      "sha256": "c09b442e421fcb6d2ebd728400d24bf8e214d3abb10fcf324d222d06a1b07a5e"
+    },
+    {
+      "path": "05_code/docs/MODEL_EXPLAINED.md",
+      "lines": 57,
+      "sha256": "4914572fe8e008aa86e6a9c6a2d14a8af89537020a1ad186c475847b7af0239b"
+    },
+    {
+      "path": "05_code/docs/NEW_USER_2026-11-12.md",
+      "lines": 72,
+      "sha256": "7ffb109863b986d136bc46c6cfe7493720a9b42221a74cbacb09a285de25f6df"
+    },
+    {
+      "path": "05_code/docs/OLLAMA.md",
+      "lines": 25,
+      "sha256": "cf0941d15c14aadd50ca69c4292596c40998303804500cefba05ffb0fcc93a2f"
+    },
+    {
+      "path": "05_code/docs/RANKING_AUDIT_2026-11-12.md",
+      "lines": 103,
+      "sha256": "f91b95e2b97dd8d8dfcded1c4c0f9fef0e5cb8343efb11ae8e9baf183994d65e"
+    },
+    {
+      "path": "05_code/docs/RELEVANCE_TRAINING_2026-11-12.md",
+      "lines": 120,
+      "sha256": "1da32e5fa92c6b44f60054ca2b91aab32976b78dec6c151bfab23d610063be9d"
+    },
+    {
+      "path": "05_code/docs/RESULT_POLICY_2026-11-12.md",
+      "lines": 48,
+      "sha256": "528e511c8b0173c9083f225c68c83b4fbb5bd9153116f16f586fa24cd5f2fd1e"
+    },
+    {
+      "path": "05_code/docs/ROADMAP_NEXT.md",
+      "lines": 14,
+      "sha256": "c6da92a887a20cc34b92105e77b60b91cfbc464b3c2fc82fcc086a9a1f4b0367"
+    },
+    {
+      "path": "05_code/docs/SEARCH_QUALITY_2026-11-12.md",
+      "lines": 38,
+      "sha256": "f8cc2b5f08bb398dc5a992c694aecf29b036a2d28f23f1ae044fa623d0e88858"
+    },
+    {
+      "path": "05_code/docs/SYNTHETIC_GENERATOR.md",
+      "lines": 78,
+      "sha256": "06e685131aada9e5024ce031114d4c81032741edcf260fa3b0696636f61291a5"
+    },
+    {
+      "path": "05_code/evaluation/MANUAL_TESTS.md",
+      "lines": 38,
+      "sha256": "cc6728449c52adc38823519b8c81827216bd8afa45d8a7493a399b9a640336b5"
+    },
+    {
+      "path": "05_code/evaluation/README.md",
+      "lines": 41,
+      "sha256": "0ec6eb30fd82f1e1968f0a50e0419a381a5842b31892f732762e82d3d670a0de"
+    },
+    {
+      "path": "05_code/evaluation/challenge_v2/README.md",
+      "lines": 15,
+      "sha256": "6a3b3de646b23bbd653a89781653e9a2f06d27bb339c1463de9535da8b0ba493"
+    },
+    {
+      "path": "05_code/evaluation/ensemble_results/README.md",
+      "lines": 82,
+      "sha256": "103b20db55d771fd404d6741a3ca235d34f31f9ffb2f7d9576f8a55615acf09c"
+    },
+    {
+      "path": "05_code/evaluation/ensemble_results_v2/README.md",
+      "lines": 51,
+      "sha256": "11a8070029fd59d01ddd987350f198141741c2ab3560cfdfdd4acdb1a19955a9"
+    },
+    {
+      "path": "05_code/evaluation/large_results/README.md",
+      "lines": 36,
+      "sha256": "ae4c0bc1d1e6f4fbe52e36347e9fc25ee698a58833a69800da2533853663bdea"
+    },
+    {
+      "path": "05_code/evaluation/llm_ranking_results/README.md",
+      "lines": 54,
+      "sha256": "d45bec21aecfa93b168430b5584c3d2a2825346114184b28169a5af964a14124"
+    },
+    {
+      "path": "05_code/evaluation/ollama_results/README.md",
+      "lines": 15,
+      "sha256": "3e924fa9a60036823efad4071bd1c729b7dd7a61bfb4e5e907618d2b05469333"
+    },
+    {
+      "path": "README.md",
+      "lines": 12,
+      "sha256": "702d7f460f59aa68d85b3869ab8012cf6272df499795ee1d16d9aa08197b11e8"
+    },
+    {
+      "path": "docs/ALGORITHM_SPEC.md",
+      "lines": 71,
+      "sha256": "f234ab4196fac93c0f59f9516d36ecd884990f9dd14d2c1c5a325c011520c32a"
+    }
+  ],
+  "count": 29,
+  "broken_local_links": [],
+  "scope": "Project Markdown only; generated artifact reviews, dependencies, remote URLs and anchors are not validated."
+}

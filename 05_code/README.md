@@ -1,125 +1,94 @@
-# Импорт, гибридный поиск и подсказки
+# Локальный поиск и рекомендации Alfa
 
-**Экспериментальный этап 3:** [оценка, полные тексты и CatBoost](README_STAGE3.md). Ниже сохранено описание предыдущего этапа, включая его ограничения; фактические результаты этапа 3 приведены отдельно.
+**Новое:** [как обучена ML и что показал новый синтетический подбор](docs/ML_AND_SYNTHETIC_HOLDOUT_2026-11-12.md). Также: [1000 сценариев + 120 сложных, разметка и ограничения](docs/CHALLENGE_1000_2026-11-12.md). Для поиска, проверки просмотров и разметки откройте **`Открыть лабораторию.command`**. Повторное обучение — `Обучить ML локально.command`.
 
-**Локальный интерфейс:** дважды нажмите `Запустить демо.command`, затем откройте http://127.0.0.1:8000. [Инструкция и возможности](docs/LOCAL_UI.md).
+Проект импортирует PostgreSQL backup в SQLite, строит каталог, подсказки и поисковые индексы. Есть BM25, гибрид BM25 + embeddings, экспериментальный CatBoost и ансамбль. Отдельная эвристика главной страницы учитывает выбранные направления и локальные интересы; история пользователя не передаётся в поиск по задаче.
 
-Рабочий первый этап алгоритма: чтение PostgreSQL backup, локальная база всех исходных таблиц, нормализованный каталог и поиск BM25 + локальные embeddings + RRF.
+Снимок содержит 1469 карточек; поиск показывает 1118 после исключения 351 термина. Это локальный прототип. Цены, права пользователя и доступность URL не подтверждены онлайн.
 
-Подсказки, уроки и HTTP API реализованы. См. [полное описание этапа и контракт для фронтенда](docs/AUTOCOMPLETE.md) и [отчёт проверки второго этапа](STAGE2_REPORT.md).
+## Запуск на этом компьютере
 
-```bash
-PYTHONPATH=src python3 -m alfa_reco suggest "открыть коф"
-PYTHONPATH=src python3 -m alfa_reco serve --port 8000
-```
-
-## Что уже проверено
-
-- Импортированы **62 таблицы, 102 128 строк**.
-- В каталог включены **1 469 карточек**: 834 статьи, 26 курсов, 247 документов, 351 термин, 8 подкастов, 3 вебинара.
-- Подготовлены 384-мерные embeddings; поиск выполняется локально.
-- Повторный импорт воспроизводит контрольные хеши каталога и SQLite, сохраняет совместимый векторный индекс.
-- Тесты и запросы описаны в [отчёте запуска](RUN_REPORT.md).
-
-В этой версии `build` импортирует все COPY-таблицы в **SQLite**, не поднимая PostgreSQL-сервер. Все исходные поля сохраняются как TEXT/NULL; исходные индексы, ограничения и PostgreSQL-типы не воспроизводятся. Это безопасная локальная копия данных для исследования и поиска. SQL/JS из записей не исполняется. Для нативного PostgreSQL отдельно подготовлен рецепт Docker ниже; он здесь не запускался, Docker отсутствует.
-
-## Быстрый запуск на этом компьютере
-
-Откройте терминал в `05_code`. Подготовленные данные уже находятся в `artifacts/catalog/`.
+Все команды ниже выполняются из `05_code`. Дважды нажмите `Запустить демо.command` или запустите:
 
 ```bash
-PYTHONPATH=src python3 -m alfa_reco search "Хочу открыть кофейню"
-PYTHONPATH=src python3 -m alfa_reco search "Как повысить лояльность сотрудников"
-PYTHONPATH=src python3 -m alfa_reco search "Нужен шаблон договора аренды" --kind document
-PYTHONPATH=src python3 -m alfa_reco search "Frontend" --mode bm25
-PYTHONPATH=src python3 scripts/run_examples.py
+PYTHONPATH=src .venv/bin/python -m alfa_reco serve --hybrid --no-llm --open-browser --port 0
 ```
 
-Результат JSON содержит реальные названия, темы, типы, source ranks, BM25/cosine/RRF и пометки неопределённости. Это внутренние оценки поиска, не вероятности покупки. `unmatched_query_terms` показывает слова/нормализованные формы без буквального совпадения; это диагностический сигнал, а не доказательство отсутствия смыслового ответа.
+Порт выбирается автоматически. Для включения локального разбора Gemma уберите `--no-llm`; он требует Ollama. В установленном ансамбле `llm_boost=0`, поэтому разбор не меняет порядок. Терминал остаётся открытым; остановка — Ctrl+C.
 
-## Повторить импорт из исходного backup
-
-На этом Mac сохранён локально собранный PostgreSQL 17.6 `pg_restore` и его библиотека. Они находятся в `artifacts/tools/`, исключены из Git и не являются переносимыми бинарниками для Linux/Windows.
+Лаборатория с одним поисковым профилем: `serve --relevance --no-llm --open-browser --start-page /lab --port 0`. Она не требует генеративной LLM. Другие алгоритмы доступны для локальных экспериментов отдельно от пользовательского интерфейса.
 
 ```bash
-PYTHONPATH=src python3 -m alfa_reco build \
-  --backup ../02_data/raw/alfa_course_hackathon.backup \
-  --pg-restore ./artifacts/tools/pg_restore \
-  --output artifacts/catalog
+PYTHONPATH=src .venv/bin/python -m alfa_reco search "налоги ИП" --mode hybrid --no-llm
+PYTHONPATH=src .venv/bin/python -m alfa_reco search "договор аренды" --mode bm25 --kind document
+PYTHONPATH=src .venv/bin/python -m alfa_reco suggest "открыть коф"
 ```
 
-На другом компьютере установите PostgreSQL client tools 17 и используйте `--pg-restore pg_restore`. Требуется Python 3.11 или новее; импорт и BM25 не требуют Python-зависимостей. Протестировано на локальном Python 3.13.
+CLI по умолчанию использует экспериментальный `ensemble`, которому нужны embeddings, CatBoost и совместимые веса. Для самостоятельного лексического режима укажите `--mode bm25`. API без загруженных embeddings по умолчанию использует BM25; при `serve --hybrid` — ансамбль. Неподготовленный режим возвращает ошибку, а не случайные результаты. Интерфейс рассчитан на подготовленный ансамбль.
 
-Программа сначала строит поколение во временной директории, проверяет целостность SQLite и хеши, затем переключает `CURRENT.json`. Сбой нового импорта не переключает рабочую версию. Одновременные build/embed для одной директории отклоняются файловой блокировкой (macOS/Linux).
+## Установка на другом компьютере
 
-## Установка semantic-зависимостей на новом компьютере
+Требуется Python 3.11+; файловые блокировки импорта рассчитаны на macOS/Linux. Импорт, BM25 и подсказки работают на стандартной библиотеке.
 
 ```bash
 python3 -m venv .venv
-. .venv/bin/activate
-python -m pip install -r requirements-semantic.txt
-PYTHONPATH=src python -m alfa_reco embed --output artifacts/catalog
+.venv/bin/python -m pip install -e .
+.venv/bin/python -m pip install -r requirements-dev.txt
+# Для hybrid и экспериментов:
+.venv/bin/python -m pip install -r requirements-semantic.txt -r requirements-rank.txt
 ```
 
-Модель: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`, revision `e8f8c211226b894fcb81acc59f3b34ba3efd5f42`. Первый запуск без `--model-path` скачает эту ревизию. На этом компьютере использован существующий локальный snapshot; его путь зафиксирован в manifest. При переносе пересоберите embeddings на новом компьютере или передайте `embed --model-path /absolute/path/to/model`. Нельзя подменять модель запроса другой моделью без пересчёта каталога.
+Зафиксированы верхнеуровневые версии, полного переносимого lock-файла транзитивных зависимостей пока нет. Не копируйте `.venv` с другого компьютера.
 
-Основные библиотеки зафиксированы в requirements; это не полный lock транзитивных зависимостей для всех платформ. Подбор лучшей retrieval-модели и переносимый lock остаются следующими задачами. Обработка queries и каталога локальная; внешние LLM API не используются.
+## Импорт и embeddings
 
-## Docker для импорта и BM25
+Исходный backup передаётся извне. PostgreSQL client tools 17 должны содержать `pg_restore`.
 
 ```bash
-docker build -t alfa-reco-stage1 .
-docker run --rm \
-  -v "$PWD/../02_data/raw:/input:ro" \
-  -v "$PWD/artifacts:/artifacts" \
-  alfa-reco-stage1 build --backup /input/alfa_course_hackathon.backup --output /artifacts/catalog
-docker run --rm -v "$PWD/artifacts:/artifacts" \
-  alfa-reco-stage1 search "договор аренды" --output /artifacts/catalog --mode bm25
+PYTHONPATH=src .venv/bin/python -m alfa_reco build \
+  --backup /absolute/path/alfa_course_hackathon.backup \
+  --pg-restore pg_restore --output artifacts/catalog
+PYTHONPATH=src .venv/bin/python -m alfa_reco embed --output artifacts/catalog
 ```
 
-Этот образ намеренно содержит только импорт и lexical search. Для hybrid нужны semantic-зависимости/модель. Docker-рецепт не проверен запуском в текущем окружении.
+Первый `embed` может скачать закреплённую ревизию `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`. Для полностью локальной загрузки передайте `--model-path /absolute/path/to/model`. Векторы запроса и каталога должны использовать одну модель. На текущем компьютере инструменты и модели уже есть локально; `artifacts/tools/pg_restore` не является переносимым бинарником.
 
-## Нативное восстановление PostgreSQL
+Импорт сохраняет 62 таблицы/102128 строк как TEXT/NULL в SQLite, без восстановления PostgreSQL-типов и ограничений. Значения не исполняются как SQL/JS. Новое поколение публикуется через `CURRENT.json` после проверки хешей. Одновременные `build/embed` запрещены. `embed` обновляет несколько файлов существующего поколения: **остановите сервер перед пересчётом**; атомарная публикация всего embedding-комплекта ещё не реализована.
+
+Полные тексты индексируются только по консервативной политике открытости. Уроки прикрепляются к курсам после проверки binding и предков. Условия допуска и уточнений: [RESULT_POLICY](docs/RESULT_POLICY_2026-11-12.md), [подсказки и уроки](docs/AUTOCOMPLETE.md). `free_only` отклоняется: проверенного фильтра бесплатности нет.
+
+## Подготовка экспериментального CatBoost и ансамбля
+
+Для нового каталога нужны собственные совместимые артефакты:
 
 ```bash
-cp .env.example .env
-# Задайте свой локальный POSTGRES_PASSWORD в .env.
-sh scripts/restore_postgres.sh
+PYTHONPATH=src .venv/bin/python scripts/large_experiment.py --install-small
+PYTHONPATH=src .venv/bin/python scripts/ensemble_experiment.py --install
 ```
 
-Скрипт запускает PostgreSQL 17.6, проверяет, что public-схема пустая, и выполняет транзакционное восстановление схемы и данных из backup. Уже существующие таблицы не перезаписывает. База не публикует TCP-порт наружу; доступ через `docker compose exec db psql -U alfa -d alfa`. Секреты не коммитить. Рецепт предоставлен, но его фактический запуск ещё не проверен.
+Обучение использует слабую синтетику и не доказывает качество для людей. Второй скрипт — исторический подбор по внутренним спискам; итоговую выдачу проверяйте через новый аудит ниже. Его предварительные веса не следует объявлять оптимальными. Имена рабочих файлов: `catboost_small.cbm`, `catboost_small_meta.json`, `ensemble_config.json` в активном поколении. [Объяснение установленной модели](docs/MODEL_EXPLAINED.md).
 
-## Каталог и ограничения первого этапа
-
-- Используются название, описание, существующие темы, теги и отрасли. HTML очищается, script/style удаляются.
-- Полные тексты закрытых уроков, ArticleEmbedItems и LessonEmbedItems не используются в поисковом индексе этого этапа.
-- Черновики, удалённые и `IsClosed=true` исключены консервативно.
-- Калькуляторы сохранены в исходной SQLite, но не вошли в поисковый каталог: в их таблице нет подтверждённого статуса публикации. 235 допустимых связей уроков включены в поисковый текст курсов; отдельные карточки уроков не создаются.
-- `Published=null` у опубликованных документов не блокирует включение.
-- Тип доступа не равен цене или подтверждённому праву пользователя. `free_only` пока явно отклоняется вместо ложной фильтрации.
-- Поле source_url сохраняется без изменений. canonical_url заполняется только для абсолютного HTTPS URL домена kurs.alfabank.ru; относительные slug не превращаются в придуманный адрес. Доступность URL по сети не проверялась.
-- Это CLI для исследования кандидатов, не готовая публичная выдача: карточки с непроверенной ссылкой показываются с флагом url_unverified.
-- Нормализация русских окончаний — лёгкая эвристика, не полноценная лемматизация.
-- BM25 k1=1.5, b=0.75; title повторён дважды; RRF k=60, равные вклады, до 60 кандидатов на источник. Это стартовый baseline, не подобранные веса.
-- Dense-канал всегда находит ближайшие векторы даже вне темы. Поле coverage остаётся unknown, пока не настроен gate по разметке. Не считать каждую выдачу релевантной автоматически.
-- Подсказки и локальный HTTP API реализованы. CatBoost, персонализация и LLM ещё не подключены.
-
-## Файлы
-
-- `src/alfa_reco/cli.py` — импорт и команды; поиск, уроки и подсказки вынесены в отдельные модули.
-- `tests/test_pipeline.py` — проверки чтения COPY, безопасности ссылок, очистки и lexical search.
-- `scripts/run_examples.py` — несколько фактических поисковых запросов.
-- `artifacts/catalog/CURRENT.json` — активное поколение.
-- `artifacts/catalog/generation-*/source.sqlite` — все исходные таблицы, закрытые данные остаются локальными.
-- `artifacts/catalog/generation-*/catalog.json` — нормализованный каталог.
-- `artifacts/catalog/generation-*/manifest.json` — версии, количества, хеши и причины исключения.
-- `artifacts/catalog/generation-*/vectors.npy` — локальные embeddings.
-- `artifacts/search_examples.json` — результаты примеров.
-
-`artifacts/` содержит исходные и производные данные и должен оставаться вне публичного Git. [Спецификация](../04_docs/architecture/ALGORITHM_SPEC.md) и [навигация](../README.md).
-
-## Тесты
+## Проверки и подбор BM25
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests -v
+PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v
+.venv/bin/ruff check src tests scripts
+.venv/bin/ruff check src --extend-select S
+.venv/bin/ruff format --check src tests scripts
+PYTHONPATH=src HF_HUB_OFFLINE=1 .venv/bin/python scripts/audit_ranking.py \
+  --phase full --output evaluation/my_new_audit
+PYTHONPATH=src .venv/bin/python scripts/audit_training_data.py \
+  --output evaluation/my_training_audit.json
 ```
+
+Каталог и embeddings должны быть подготовлены. Для аудита нужен совместимый CatBoost; LLM в нём отключена. Папка вывода должна быть новой. `baseline` проверяет четыре режима, 193 запроса, 64 пары, отсутствие ответа и BM25 на 50000 документов; `calibrate` отдельно подбирает параметры на validation. Тесты API требуют доступ к loopback-порту.
+
+Результат подбора сохраняется как `selected_config.json`, автоматически не устанавливается. Его можно использовать через `SearchEngine.search(..., ranking_config=RankingConfig(...))` для эксперимента. При ручном переносе в `ranking_config.json` активного поколения требуется перезапуск сервера. Изменение `bm25_k1/bm25_b` требует переобучения CatBoost и пересчёта весов ансамбля; несовместимые параметры отклоняются.
+
+[Результаты аудита](docs/RANKING_AUDIT_2026-11-12.md), [ML и синтетические данные](docs/ML_DATA_PLAN.md), [методика оценки](evaluation/README.md), [инструкция разметки](docs/ANNOTATION_GUIDE.md).
+
+## HTTP API
+
+Локальный сервер слушает `127.0.0.1`, проверяет Host/Origin и не записывает запросы в access log. Маршруты: `GET /health`, `/suggest`, `/search`, `/catalog`, `/lab/data`, `/lab/pool`, `/lab/template`; `POST /recommend`. `/lab` — интерфейс лаборатории. JSON содержит исходный запрос, результаты, альтернативы, уточнение и диагностические скоры. `top` — максимум, а не обязательное число результатов. Скор не является вероятностью. Исходный запрос и выбранный фокус возвращаются раздельно.
+
+Это development-сервер. Docker-рецепт и нативное восстановление PostgreSQL сохранены в `Dockerfile`, `compose.yaml`, `scripts/restore_postgres.sh`, но в этом аудите не запускались. Дамп, SQLite, векторы, локальные профили и секреты не публикуются.

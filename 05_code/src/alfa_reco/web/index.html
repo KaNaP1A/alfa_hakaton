@@ -12,7 +12,7 @@
 <body>
   <header class="topbar">
     <a href="/" class="brand" aria-label="Курс — главная"><span class="brand-mark">А</span><span>курс<span class="brand-dot">.</span></span></a>
-    <div class="topbar-meta"><span class="lab-label">ЛАБОРАТОРИЯ ПОИСКА</span><span class="local-badge"><i></i>Локальная версия</span></div>
+    <div class="topbar-meta"><a href="/lab">Тесты и история ↗</a><span class="lab-label">ЛАБОРАТОРИЯ ПОИСКА</span><span class="local-badge"><i></i>Локальная версия</span></div>
   </header>
   <main>
     <section class="intro">
@@ -42,25 +42,30 @@
           <div class="welcome-art" aria-hidden="true"><span class="paper back"></span><span class="paper front"><i></i><i></i><i></i><b>↗</b></span><span class="spark">✳</span></div>
           <div><h2>Одна задача. Разные способы разобраться.</h2><p>Ищите среди курсов, статей, шаблонов документов<br class="desktop-break"> и других материалов — в одном месте.</p><span id="catalog-caption" class="catalog-caption">Подключаем каталог…</span></div>
         </section>
+        <section id="home-recommendations" hidden aria-label="Рекомендации по интересам">
+          <div class="results-heading"><div><p class="eyebrow small">ДЛЯ ВАС</p><h2>По вашим интересам</h2><p>Подборка по выбранным направлениям и материалам, которыми вы интересовались в этом браузере.</p></div><button id="clear-history" type="button" class="text-button">Очистить историю</button></div>
+          <div id="home-cards" class="results"></div>
+        </section>
         <section id="results-section" hidden aria-label="Результаты поиска">
           <div class="results-heading"><div><p class="eyebrow small">ВАША ПОДБОРКА</p><h2 id="results-title">Материалы</h2><p id="results-query"></p></div><button id="copy-json" type="button" class="text-button" hidden>Скопировать JSON</button></div>
           <p id="results-note" class="results-note"></p>
+          <div id="clarification" class="clarification" hidden></div>
           <div id="results" class="results" aria-live="polite" aria-busy="false"></div>
         </section>
       </section>
       <aside class="settings" aria-label="Настройки тестирования">
         <div class="settings-title"><span class="settings-icon" aria-hidden="true">☷</span><h2>Настроить поиск</h2></div>
         <p class="settings-copy">Проверьте, как меняется выдача<br>при разных параметрах.</p>
-        <label for="mode">Способ поиска</label>
-        <select id="mode"><option value="bm25">По словам · BM25</option><option value="hybrid" disabled>По словам и смыслу</option><option value="catboost" disabled>CatBoost · эксперимент</option></select>
+        <label>Ранжирование</label>
+        <div class="ranker-badge">Комбинированный поиск</div>
         <p id="mode-help" class="control-help">Проверяем доступность модели…</p>
         <label for="kind">Тип материала</label>
-        <select id="kind"><option value="">Все материалы</option><option value="course">Курсы</option><option value="article">Статьи</option><option value="document">Документы</option><option value="glossary">Термины</option><option value="podcast">Подкасты</option><option value="webinar">Вебинары</option></select>
+        <select id="kind"><option value="">Все материалы</option><option value="course">Курсы</option><option value="article">Статьи</option><option value="document">Документы</option><option value="podcast">Подкасты</option><option value="webinar">Вебинары</option></select>
         <label for="top">Количество результатов</label>
         <select id="top"><option value="5">5 материалов</option><option value="10">10 материалов</option><option value="20">20 материалов</option></select>
         <div class="settings-divider"></div>
         <label class="toggle-row" for="diagnostics"><span><strong>Режим исследования</strong><small>Оценки, совпадения и JSON</small></span><input id="diagnostics" type="checkbox"><span class="toggle" aria-hidden="true"></span></label>
-        <div class="local-note"><span aria-hidden="true">◉</span><p>Данные и поиск работают локально.<br>Запросы не отправляются в LLM.</p></div>
+        <div class="local-note"><span aria-hidden="true">◉</span><p>Данные и поиск работают локально.<br>Некоторые запросы разбирает локальная Gemma.</p></div>
       </aside>
     </div>
     <footer><span>Курс · Прототип для хакатона</span><span id="connection" role="status"><i></i>Подключение…</span><span>Проверяем алгоритм на реальных данных</span></footer>

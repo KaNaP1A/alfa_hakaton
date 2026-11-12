@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "weights": {
+    "bm25": 0.5,
+    "hybrid": 0.2,
+    "catboost": 0.3
+  },
+  "rrf_k": 60,
+  "top_per_method": 60,
+  "catalog_sha256": "904256290a10eeec3f1eaffec7636de032f294f53953a008839ded9f3263941f",
+  "vectors_sha256": "773157e811c0d972ca13293a2f2122f205bc70025681b35ae9b78938930f31c2",
+  "model_sha256": "4472d090dc75cc333c889c13223620cbc321547a1e2513f77a34c07f3b30aa5d",
+  "dataset_sha256": "1f7b81eb9d254c385c347bd998f0b83117865d22660e01566cb34e37290dd5fa",
+  "method": "validation_grid_0.1_min_0.1_pooled_ndcg5",
+  "retrieval_parameters": {
+    "title": 2.0,
+    "description": 1.0,
+    "topics": 0.5,
+    "tags": 0.5,
+    "industries": 0.5,
+    "body": 0.25,
+    "lessons": 0.75,
+    "dense_weight": 1.0,
+    "selection_boost": 0.25,
+    "rrf_k": 60,
+    "candidate_count": 60
+  },
+  "llm_model": "gemma3:1b",
+  "llm_digest": "97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c",
+  "llm_boost": 0.0,
+  "warning": "Provisional assistant labels, four judgments/query; unjudged treated as 0. Test previously observed, some new target cards may have been in CatBoost synthetic training. Scores are not unbiased and cannot establish superiority."
+}

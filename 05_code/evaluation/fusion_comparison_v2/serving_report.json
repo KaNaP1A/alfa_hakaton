@@ -1,0 +1,1536 @@
+{
+  "weights": {
+    "bm25": 0.2,
+    "minilm": 0.2,
+    "e5": 0.3,
+    "catboost": 0.3
+  },
+  "counts": {
+    "validation": {
+      "queries": 6,
+      "comparable": 4,
+      "unjudged_results": 2,
+      "returned": 60
+    },
+    "train": {
+      "queries": 54,
+      "comparable": 36,
+      "unjudged_results": 21,
+      "returned": 454
+    },
+    "test": {
+      "queries": 15,
+      "comparable": 13,
+      "unjudged_results": 3,
+      "returned": 102
+    }
+  },
+  "metrics_on_common_fully_judged_queries": {
+    "validation": {
+      "current": {
+        "queries": 4,
+        "families": 2,
+        "ndcg5_pooled": 0.6663947507888549,
+        "precision5_pooled": 0.5,
+        "mrr5_pooled": 0.6666666666666666,
+        "recall5_judged": 0.775,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "selected_fusion": {
+        "queries": 4,
+        "families": 2,
+        "ndcg5_pooled": 0.6561078944642411,
+        "precision5_pooled": 0.5,
+        "mrr5_pooled": 0.6666666666666666,
+        "recall5_judged": 0.775,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      }
+    },
+    "train": {
+      "current": {
+        "queries": 36,
+        "families": 17,
+        "ndcg5_pooled": 0.46391862065785844,
+        "precision5_pooled": 0.1450980392156863,
+        "mrr5_pooled": 0.33431372549019606,
+        "recall5_judged": 0.3308994708994709,
+        "judged5": 0.7764705882352941,
+        "returned5": 3.8823529411764706,
+        "empty": 0.0196078431372549
+      },
+      "selected_fusion": {
+        "queries": 36,
+        "families": 17,
+        "ndcg5_pooled": 0.4786156566735998,
+        "precision5_pooled": 0.1568627450980392,
+        "mrr5_pooled": 0.3330065359477124,
+        "recall5_judged": 0.36925925925925923,
+        "judged5": 0.7764705882352941,
+        "returned5": 3.8823529411764706,
+        "empty": 0.0196078431372549
+      }
+    },
+    "test": {
+      "current": {
+        "queries": 13,
+        "families": 5,
+        "ndcg5_pooled": 0.4388893798576434,
+        "precision5_pooled": 0.09333333333333334,
+        "mrr5_pooled": 0.31666666666666665,
+        "recall5_judged": 0.5,
+        "judged5": 0.6799999999999999,
+        "returned5": 3.4,
+        "empty": 0.26666666666666666
+      },
+      "selected_fusion": {
+        "queries": 13,
+        "families": 5,
+        "ndcg5_pooled": 0.42152428158615357,
+        "precision5_pooled": 0.08,
+        "mrr5_pooled": 0.23888888888888887,
+        "recall5_judged": 0.4583333333333333,
+        "judged5": 0.6799999999999999,
+        "returned5": 3.4,
+        "empty": 0.26666666666666666
+      }
+    }
+  },
+  "details": [
+    {
+      "query_id": "bff57c8ab6bddc87976a0bee",
+      "split": "validation",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:8a259667-075a-45f8-8a84-384b545dc833",
+          "article:7dc31c2f-15dc-471a-a6aa-312d23090597",
+          "article:f1432598-d54e-4db6-8c50-f350822a6696",
+          "article:cfffd342-4864-4248-9fba-90dd954e69c0",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6"
+        ],
+        "selected_fusion": [
+          "article:8a259667-075a-45f8-8a84-384b545dc833",
+          "article:f1432598-d54e-4db6-8c50-f350822a6696",
+          "article:7dc31c2f-15dc-471a-a6aa-312d23090597",
+          "article:cfffd342-4864-4248-9fba-90dd954e69c0",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6"
+        ]
+      }
+    },
+    {
+      "query_id": "b4d72a18cb0016ac2f6288fc",
+      "split": "validation",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "article:4edc4abf-1f3c-41db-be25-25dfae8486b0",
+          "article:39e17b4e-dfc9-4280-a5a0-02d6c66f8306",
+          "article:902ff81d-ab85-454a-977e-a7dd219c80cd",
+          "article:f1432598-d54e-4db6-8c50-f350822a6696"
+        ],
+        "selected_fusion": [
+          "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "article:f1432598-d54e-4db6-8c50-f350822a6696",
+          "article:9ab9dbe8-1b4f-4856-af5b-e6f047f83ceb",
+          "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "article:b53f49f7-23dc-4ce0-9706-56aac7240074"
+        ]
+      }
+    },
+    {
+      "query_id": "42f8d0449381bac069c945d6",
+      "split": "validation",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "article:7dc31c2f-15dc-471a-a6aa-312d23090597",
+          "article:a88811d9-0479-4f6c-ad53-087dc31395cb",
+          "article:902ff81d-ab85-454a-977e-a7dd219c80cd",
+          "article:cfffd342-4864-4248-9fba-90dd954e69c0"
+        ],
+        "selected_fusion": [
+          "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "article:a88811d9-0479-4f6c-ad53-087dc31395cb",
+          "article:7dc31c2f-15dc-471a-a6aa-312d23090597",
+          "article:902ff81d-ab85-454a-977e-a7dd219c80cd",
+          "article:cfffd342-4864-4248-9fba-90dd954e69c0"
+        ]
+      }
+    },
+    {
+      "query_id": "980f054679d39d429867b570",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:d4f61ab6-af97-44ac-876d-93596068e726"
+        ],
+        "selected_fusion": [
+          "article:d4f61ab6-af97-44ac-876d-93596068e726"
+        ]
+      }
+    },
+    {
+      "query_id": "76be0efdf3aa15ebc7a673cb",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:50f16dfc-c93e-45f8-b5de-00caea9e972c",
+          "article:00312ff2-f294-40eb-aaa1-9fb8d2dd78a6",
+          "article:e41162e3-c13a-4939-a951-1bd9ecf1351a",
+          "course:a26fad9d-4380-4ba2-a8b9-27e495eeb721",
+          "article:1a73c636-dedd-4981-8e85-421de27fdf15"
+        ],
+        "selected_fusion": [
+          "article:50f16dfc-c93e-45f8-b5de-00caea9e972c",
+          "article:00312ff2-f294-40eb-aaa1-9fb8d2dd78a6",
+          "article:e41162e3-c13a-4939-a951-1bd9ecf1351a",
+          "article:1a73c636-dedd-4981-8e85-421de27fdf15",
+          "course:a26fad9d-4380-4ba2-a8b9-27e495eeb721"
+        ]
+      }
+    },
+    {
+      "query_id": "cda2d1663ffcf00bfd90a1d5",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:4b60e952-d492-47c3-a9f5-914ebcd5c1de",
+          "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602",
+          "article:3ee3c392-4c6d-49e4-ad46-a138fdd3a8d7",
+          "article:2510d8b3-f2e8-443f-95be-6942c978edc4",
+          "article:e5c8d28a-79c0-4877-80dd-06b68ba67576"
+        ],
+        "selected_fusion": [
+          "article:4b60e952-d492-47c3-a9f5-914ebcd5c1de",
+          "article:39356586-699d-4e96-a1fa-6dd76debbf80",
+          "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602",
+          "article:629f4784-7c39-4871-b7e6-630a3e11b49e",
+          "article:c3ecd3f3-097d-4ef5-968d-1a9cb4d6f8b7"
+        ]
+      }
+    },
+    {
+      "query_id": "7aa58f50afdcc0ea621842a7",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:2db46ed3-fb05-4380-bd20-30dff4f4a4c6",
+          "article:d67faea3-4947-4c0e-98b2-a2b11883dfc7",
+          "article:d5732053-6144-40bf-b2a8-532b5f01f43f",
+          "article:9e33739c-5c5b-4c46-ba32-d49713a33065",
+          "article:386cdfd3-a335-4446-a415-b251f52f0f57"
+        ],
+        "selected_fusion": [
+          "article:2db46ed3-fb05-4380-bd20-30dff4f4a4c6",
+          "article:d67faea3-4947-4c0e-98b2-a2b11883dfc7",
+          "course:3d17b03e-0e69-44cf-aa04-110e92437016",
+          "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "article:9e33739c-5c5b-4c46-ba32-d49713a33065"
+        ]
+      }
+    },
+    {
+      "query_id": "25e8a3ea2e379eeed41ebfe2",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:7a64ac4f-2302-4c3b-9d4a-0f4cd8b133ea",
+          "article:e41162e3-c13a-4939-a951-1bd9ecf1351a",
+          "article:441225ac-0947-4951-baa3-f065f645d667",
+          "article:48c91697-84dd-48e0-a2f3-e4353cffec0a",
+          "article:2db46ed3-fb05-4380-bd20-30dff4f4a4c6"
+        ],
+        "selected_fusion": [
+          "article:2db46ed3-fb05-4380-bd20-30dff4f4a4c6",
+          "article:7a64ac4f-2302-4c3b-9d4a-0f4cd8b133ea",
+          "article:44d494bd-de03-44dd-818a-93b7001130a8",
+          "course:b9045d6e-07ad-407f-a305-472e82fef797",
+          "article:441225ac-0947-4951-baa3-f065f645d667"
+        ]
+      }
+    },
+    {
+      "query_id": "7cad261793801e8aa4c478d7",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:7e67e83b-7680-4a28-8939-fb2ff849e133"
+        ],
+        "selected_fusion": [
+          "article:7e67e83b-7680-4a28-8939-fb2ff849e133"
+        ]
+      }
+    },
+    {
+      "query_id": "f03ab8d5767df491cda7063c",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:33e658a1-7913-4448-9977-05288162efa1",
+          "article:fc4fbb08-dd18-4605-a774-b6f3f51553a8",
+          "article:b763f7e8-106e-4cd2-b144-55de179ca494",
+          "article:329aefef-d5d3-4c98-8a92-e347cbab8283",
+          "article:59b21966-6020-4a41-ba40-9c6ce3fba90d"
+        ],
+        "selected_fusion": [
+          "article:33e658a1-7913-4448-9977-05288162efa1",
+          "article:fc4fbb08-dd18-4605-a774-b6f3f51553a8",
+          "course:55e903e5-a65f-40b0-83db-17fc050e565a",
+          "article:59b21966-6020-4a41-ba40-9c6ce3fba90d",
+          "article:b763f7e8-106e-4cd2-b144-55de179ca494"
+        ]
+      }
+    },
+    {
+      "query_id": "5462b168e87f07cf890d9c5d",
+      "split": "test",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:0aa82f3c-7bc7-4518-a323-393da042feab",
+          "podcast:296e7be7-e4ff-4ed9-9302-7f3dacad8d8b",
+          "document:9ea51a72-ff8a-4752-a164-b8c40a3cbea1",
+          "article:45f7d69b-a227-4e5c-9081-7ec83b15bdec",
+          "article:c64542fe-a0c4-4939-a62c-f1519102d0eb"
+        ],
+        "selected_fusion": [
+          "article:0aa82f3c-7bc7-4518-a323-393da042feab",
+          "podcast:296e7be7-e4ff-4ed9-9302-7f3dacad8d8b",
+          "document:9ea51a72-ff8a-4752-a164-b8c40a3cbea1",
+          "article:45f7d69b-a227-4e5c-9081-7ec83b15bdec",
+          "document:d9ab218b-82e7-4910-87b9-0b4b25015ed1"
+        ]
+      }
+    },
+    {
+      "query_id": "2cfefa7c2a4f8a8e5db2eb00",
+      "split": "test",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:0aa82f3c-7bc7-4518-a323-393da042feab",
+          "article:3145e621-6410-4625-a85a-9a59388de537",
+          "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "article:f79ac376-8637-4285-b9a0-cc989ff57b1c",
+          "article:91744992-36ea-46b7-944b-465542a01aee"
+        ],
+        "selected_fusion": [
+          "article:3145e621-6410-4625-a85a-9a59388de537",
+          "article:0aa82f3c-7bc7-4518-a323-393da042feab",
+          "article:1c34dffb-6d03-4537-aabe-f9d22dbd8ba6",
+          "article:2bfd2876-6813-43c2-ab4a-2c74638fea40",
+          "article:f79ac376-8637-4285-b9a0-cc989ff57b1c"
+        ]
+      }
+    },
+    {
+      "query_id": "1a27aa2bf3829edbbc46db16",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:d67faea3-4947-4c0e-98b2-a2b11883dfc7",
+          "article:c83c3334-dc32-4822-9c1f-ae4b238fd3dd",
+          "article:13ec2ab7-f9f4-4680-a2fd-7e01c01e25ba",
+          "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "course:3d17b03e-0e69-44cf-aa04-110e92437016"
+        ],
+        "selected_fusion": [
+          "article:d67faea3-4947-4c0e-98b2-a2b11883dfc7",
+          "article:13ec2ab7-f9f4-4680-a2fd-7e01c01e25ba",
+          "article:c83c3334-dc32-4822-9c1f-ae4b238fd3dd",
+          "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "article:b75739d2-fe92-4c2f-929d-ec8793e8e1a2"
+        ]
+      }
+    },
+    {
+      "query_id": "31e5e298351eeb5f31c93f0c",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:9cde3f78-d963-42fe-b168-ee1a9d689860"
+        ],
+        "selected_fusion": [
+          "article:9cde3f78-d963-42fe-b168-ee1a9d689860"
+        ]
+      }
+    },
+    {
+      "query_id": "f638a887a2f9c565d02871a8",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "article:95f98421-9166-4826-b657-ea8a024a9397"
+        ],
+        "selected_fusion": [
+          "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "article:95f98421-9166-4826-b657-ea8a024a9397"
+        ]
+      }
+    },
+    {
+      "query_id": "2c76a147200500a42bdf4752",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c",
+          "document:8be68310-80d3-4df5-a066-5ceea73a27ae",
+          "document:c55e1597-6991-492f-9832-1ac1ecdb1d87",
+          "document:1f20359f-d5b2-4110-961e-622be6a03a25",
+          "article:97f4e4ca-da22-460f-bbb0-e7c2da887f78"
+        ],
+        "selected_fusion": [
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c",
+          "article:97f4e4ca-da22-460f-bbb0-e7c2da887f78",
+          "document:1f20359f-d5b2-4110-961e-622be6a03a25",
+          "document:c55e1597-6991-492f-9832-1ac1ecdb1d87",
+          "document:8be68310-80d3-4df5-a066-5ceea73a27ae"
+        ]
+      }
+    },
+    {
+      "query_id": "f483cb892af315929dcc663b",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:8be68310-80d3-4df5-a066-5ceea73a27ae",
+          "article:7242c8bc-1f9b-43b7-9244-7b46b89072d5",
+          "document:7a8e7938-5b79-4fb9-8128-784b0e0adbea",
+          "document:1f20359f-d5b2-4110-961e-622be6a03a25",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c"
+        ],
+        "selected_fusion": [
+          "document:8be68310-80d3-4df5-a066-5ceea73a27ae",
+          "article:7242c8bc-1f9b-43b7-9244-7b46b89072d5",
+          "document:7a8e7938-5b79-4fb9-8128-784b0e0adbea",
+          "document:1f20359f-d5b2-4110-961e-622be6a03a25",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c"
+        ]
+      }
+    },
+    {
+      "query_id": "bad2039e826f4bab95e05803",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:7a8e7938-5b79-4fb9-8128-784b0e0adbea",
+          "document:d727dcbd-6394-45c6-8cff-a096e1995676",
+          "document:1f20359f-d5b2-4110-961e-622be6a03a25",
+          "article:74791c96-bd58-40d8-9bce-cf24d9aa5e2e",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c"
+        ],
+        "selected_fusion": [
+          "document:7a8e7938-5b79-4fb9-8128-784b0e0adbea",
+          "document:1f20359f-d5b2-4110-961e-622be6a03a25",
+          "document:d727dcbd-6394-45c6-8cff-a096e1995676",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c",
+          "article:74791c96-bd58-40d8-9bce-cf24d9aa5e2e"
+        ]
+      }
+    },
+    {
+      "query_id": "48cd4da6177e13b572303f88",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+          "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "article:9e536393-e0d5-4004-bb77-83856d788885",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6",
+          "article:d1e67c81-f364-4724-bfac-d02293e87cb8"
+        ],
+        "selected_fusion": [
+          "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6",
+          "article:9e536393-e0d5-4004-bb77-83856d788885",
+          "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "article:d1e67c81-f364-4724-bfac-d02293e87cb8"
+        ]
+      }
+    },
+    {
+      "query_id": "b3524665eb01bdec57eb328d",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "podcast:3ec43e4d-43b5-4b5e-8b9a-9f6d0b5ffde6",
+          "article:f262e03b-e7aa-45db-801c-5a4b3e67ee73",
+          "course:a8184af0-7007-4bc3-98c1-1ff55c949a97",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6",
+          "article:49cbf816-4625-4dcd-acad-557e1c7c1d05"
+        ],
+        "selected_fusion": [
+          "podcast:3ec43e4d-43b5-4b5e-8b9a-9f6d0b5ffde6",
+          "article:f262e03b-e7aa-45db-801c-5a4b3e67ee73",
+          "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "article:49cbf816-4625-4dcd-acad-557e1c7c1d05",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6"
+        ]
+      }
+    },
+    {
+      "query_id": "b0be7c5d479f82e4d0abdca2",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "article:74791c96-bd58-40d8-9bce-cf24d9aa5e2e",
+          "article:a0de1a97-1261-49bd-89e1-ac3bba5c530f",
+          "article:4edc4abf-1f3c-41db-be25-25dfae8486b0",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6"
+        ],
+        "selected_fusion": [
+          "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "article:39e17b4e-dfc9-4280-a5a0-02d6c66f8306",
+          "article:6913bf2b-913b-4b60-aff8-9cde382a73f6",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6",
+          "article:f262e03b-e7aa-45db-801c-5a4b3e67ee73"
+        ]
+      }
+    },
+    {
+      "query_id": "03f5762c44c394a39fe8d153",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:3f654e6f-0cd3-4610-83be-a1722bf23b43",
+          "article:46876929-7b71-4a72-a031-ddd319704063",
+          "article:8b00df93-d3cc-4485-a498-a63ba01baf50",
+          "document:d31f75b1-ea47-4f0e-bdd1-e2e00c5bdb95",
+          "article:aed2b05f-6be7-4f3b-a59c-0836f87baf19"
+        ],
+        "selected_fusion": [
+          "article:3f654e6f-0cd3-4610-83be-a1722bf23b43",
+          "article:46876929-7b71-4a72-a031-ddd319704063",
+          "article:8b00df93-d3cc-4485-a498-a63ba01baf50",
+          "article:0b62bb93-d954-4ab1-9d58-f4bfb3d10e53",
+          "article:f8e7de9c-eca1-4902-b19b-89ff46fd4b52"
+        ]
+      }
+    },
+    {
+      "query_id": "512592bf032e8014e7b3109a",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [],
+        "selected_fusion": []
+      }
+    },
+    {
+      "query_id": "ae98830e91b79ec939a691cc",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:8b00df93-d3cc-4485-a498-a63ba01baf50",
+          "document:d31f75b1-ea47-4f0e-bdd1-e2e00c5bdb95",
+          "article:c9f8690c-f796-4452-9ca7-df20a7eea946",
+          "article:371a9768-556e-47ef-bdc2-de8c9f00c14f",
+          "article:f8e7de9c-eca1-4902-b19b-89ff46fd4b52"
+        ],
+        "selected_fusion": [
+          "article:8b00df93-d3cc-4485-a498-a63ba01baf50",
+          "document:d31f75b1-ea47-4f0e-bdd1-e2e00c5bdb95",
+          "article:371a9768-556e-47ef-bdc2-de8c9f00c14f",
+          "article:c9f8690c-f796-4452-9ca7-df20a7eea946",
+          "article:f8e7de9c-eca1-4902-b19b-89ff46fd4b52"
+        ]
+      }
+    },
+    {
+      "query_id": "b2896b1b642445495493f22e",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "article:87d2e893-2aed-4207-a017-3fdb90fa523f",
+          "article:59dd50be-4f4d-4ff8-8ebf-5f02092a244f"
+        ],
+        "selected_fusion": [
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:87d2e893-2aed-4207-a017-3fdb90fa523f",
+          "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "article:59dd50be-4f4d-4ff8-8ebf-5f02092a244f"
+        ]
+      }
+    },
+    {
+      "query_id": "d1fcded37138d1548d49945b",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:a89ce40d-3d3c-465a-9d62-7f60e53bfc60",
+          "article:c3ecd3f3-097d-4ef5-968d-1a9cb4d6f8b7",
+          "article:f9261eb6-848e-4de0-a64a-ed7e35893a46",
+          "article:46f698ef-1bfe-4ccd-bcbb-47a02ca60fac",
+          "article:f5015a97-663d-45a9-ac77-8952d8253ebb"
+        ],
+        "selected_fusion": [
+          "article:46f698ef-1bfe-4ccd-bcbb-47a02ca60fac",
+          "article:f9261eb6-848e-4de0-a64a-ed7e35893a46",
+          "document:6dc02745-9109-4a2a-a1fe-e080e568d552",
+          "article:a89ce40d-3d3c-465a-9d62-7f60e53bfc60",
+          "article:2bfd2876-6813-43c2-ab4a-2c74638fea40"
+        ]
+      }
+    },
+    {
+      "query_id": "106346befcbb980e4ab7a472",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "article:c134d479-ddda-48b3-9316-08c86a3df1e7",
+          "article:2887002e-8d61-4bb6-b2ad-eb4d97101ae8",
+          "document:44a7dd3f-f103-49ba-aa36-83dabc9769b4",
+          "course:28e2a868-0b58-4fd6-af4d-7aa268ae91b4"
+        ],
+        "selected_fusion": [
+          "article:c134d479-ddda-48b3-9316-08c86a3df1e7",
+          "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "article:2887002e-8d61-4bb6-b2ad-eb4d97101ae8",
+          "document:44a7dd3f-f103-49ba-aa36-83dabc9769b4",
+          "article:4d77d664-85cf-4546-92ae-37f16080c278"
+        ]
+      }
+    },
+    {
+      "query_id": "016ffa8a23c5fa2921760b6d",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:a4d9713c-9e28-4492-bd8b-267982847265",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c",
+          "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6"
+        ],
+        "selected_fusion": [
+          "article:a4d9713c-9e28-4492-bd8b-267982847265",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c",
+          "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6"
+        ]
+      }
+    },
+    {
+      "query_id": "6cb532dc93bee23d29406737",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:44a7dd3f-f103-49ba-aa36-83dabc9769b4",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c",
+          "document:71d40c2b-8c6b-4521-b26a-22a0b6e95a2d"
+        ],
+        "selected_fusion": [
+          "document:71d40c2b-8c6b-4521-b26a-22a0b6e95a2d",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c",
+          "document:44a7dd3f-f103-49ba-aa36-83dabc9769b4"
+        ]
+      }
+    },
+    {
+      "query_id": "a328eb9a2bde0fdeae928c3d",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:4ab44237-5945-425b-b1c0-8fc87499066d",
+          "article:f79ac376-8637-4285-b9a0-cc989ff57b1c",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c",
+          "article:809a25eb-5161-4f1f-8924-434fd86e7210",
+          "document:1f20359f-d5b2-4110-961e-622be6a03a25"
+        ],
+        "selected_fusion": [
+          "article:4ab44237-5945-425b-b1c0-8fc87499066d",
+          "article:f79ac376-8637-4285-b9a0-cc989ff57b1c",
+          "article:809a25eb-5161-4f1f-8924-434fd86e7210",
+          "article:bfc159df-4a6a-4ec1-9343-9920f1654c92",
+          "document:c7119fe0-3a8f-4cf1-9ff4-eca2047d2c5c"
+        ]
+      }
+    },
+    {
+      "query_id": "99bbbbf2a0a773097d7b4de0",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "article:04f034bf-c03a-4490-ac56-124be52a7916",
+          "article:c7a80aac-ce08-485d-af8c-4459a595fae6",
+          "article:4de5b0c5-cf1f-4105-828c-49d23a309e6b",
+          "article:19635307-516d-4308-b57d-c0e55e52ac09"
+        ],
+        "selected_fusion": [
+          "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "article:04f034bf-c03a-4490-ac56-124be52a7916",
+          "article:c7a80aac-ce08-485d-af8c-4459a595fae6",
+          "article:4de5b0c5-cf1f-4105-828c-49d23a309e6b",
+          "article:19635307-516d-4308-b57d-c0e55e52ac09"
+        ]
+      }
+    },
+    {
+      "query_id": "ca012af92c8688a2bc2989ce",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:f79ac376-8637-4285-b9a0-cc989ff57b1c",
+          "article:a4d9713c-9e28-4492-bd8b-267982847265",
+          "article:8db13ee7-5b80-4eba-ad78-382cf4224df5",
+          "article:2bfd2876-6813-43c2-ab4a-2c74638fea40",
+          "article:293e0962-7aa1-491e-ab4b-ed9e787428c2"
+        ],
+        "selected_fusion": [
+          "article:a4d9713c-9e28-4492-bd8b-267982847265",
+          "article:293e0962-7aa1-491e-ab4b-ed9e787428c2",
+          "article:f79ac376-8637-4285-b9a0-cc989ff57b1c",
+          "article:d04cb5b7-0abe-4ed7-bfd7-0354ed96c841",
+          "article:8db13ee7-5b80-4eba-ad78-382cf4224df5"
+        ]
+      }
+    },
+    {
+      "query_id": "af2fb176f2f88f9f1c529638",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "article:27aae11d-0320-4233-b123-3be4b0d955f0",
+          "article:c7a80aac-ce08-485d-af8c-4459a595fae6",
+          "article:d67faea3-4947-4c0e-98b2-a2b11883dfc7",
+          "article:8db13ee7-5b80-4eba-ad78-382cf4224df5"
+        ],
+        "selected_fusion": [
+          "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "article:27aae11d-0320-4233-b123-3be4b0d955f0",
+          "article:c7a80aac-ce08-485d-af8c-4459a595fae6",
+          "document:8d8205d1-8b09-47ab-aec0-7c564bcc507b",
+          "article:6b3a0b39-c29c-4d19-b89f-e577815c168a"
+        ]
+      }
+    },
+    {
+      "query_id": "8f886860260497827677792f",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:312ad20d-cad5-4d57-ba9b-58c769fab7af",
+          "document:8cbdb08e-247f-4a68-aebd-09df5f4cfa73",
+          "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "document:71d511c1-ef1a-46e4-a958-15a64b9078b7",
+          "article:c9ee7322-b61b-4c33-bd4f-a025447467c1"
+        ],
+        "selected_fusion": [
+          "document:312ad20d-cad5-4d57-ba9b-58c769fab7af",
+          "document:8cbdb08e-247f-4a68-aebd-09df5f4cfa73",
+          "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "article:f3870706-b145-4f4b-a891-203aedb4e86e",
+          "document:71d511c1-ef1a-46e4-a958-15a64b9078b7"
+        ]
+      }
+    },
+    {
+      "query_id": "2528057a9cd39df22d87f8fc",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "document:312ad20d-cad5-4d57-ba9b-58c769fab7af",
+          "article:4db15dcc-c697-4da0-920e-f0f2c4157da3",
+          "document:4d32dccd-7ec5-4848-8938-82061848659f",
+          "document:2eaadeb8-19bc-44ac-b118-8e5dbcc0dc69"
+        ],
+        "selected_fusion": [
+          "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "article:4db15dcc-c697-4da0-920e-f0f2c4157da3",
+          "document:01df7ea0-8244-4149-b1a0-57731a9ced49",
+          "document:312ad20d-cad5-4d57-ba9b-58c769fab7af",
+          "document:fbe6b869-8368-4027-ab7a-c3c4c26cc0a2"
+        ]
+      }
+    },
+    {
+      "query_id": "6d1fd54bb0b6d9975ac8a9cf",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:312ad20d-cad5-4d57-ba9b-58c769fab7af",
+          "document:71d511c1-ef1a-46e4-a958-15a64b9078b7",
+          "document:9f2398f2-2c23-4dbe-ad76-4daf4935ae32",
+          "document:5a08a823-858a-414f-b83f-58f7736659f7",
+          "document:198d3c32-3cf2-4cf5-8c5f-1d4ee23d971d"
+        ],
+        "selected_fusion": [
+          "document:312ad20d-cad5-4d57-ba9b-58c769fab7af",
+          "document:71d511c1-ef1a-46e4-a958-15a64b9078b7",
+          "document:9f2398f2-2c23-4dbe-ad76-4daf4935ae32",
+          "document:5a08a823-858a-414f-b83f-58f7736659f7",
+          "document:2eaadeb8-19bc-44ac-b118-8e5dbcc0dc69"
+        ]
+      }
+    },
+    {
+      "query_id": "b5fef736f53a590dc8f0272a",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "article:7952326f-3866-43b1-92c9-8504fde903f8",
+          "document:a093ad51-e629-43f0-9b58-f33117c2444a",
+          "article:52d541b1-6057-4780-8251-296daf2ce575"
+        ],
+        "selected_fusion": [
+          "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "article:7952326f-3866-43b1-92c9-8504fde903f8",
+          "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "article:de0b8a92-9c76-45f8-9976-25cbf43cccb6"
+        ]
+      }
+    },
+    {
+      "query_id": "00b46a686a437052199e38f2",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:a093ad51-e629-43f0-9b58-f33117c2444a",
+          "article:ac2d06cf-b68a-434f-aa42-1c43faa1c527",
+          "article:7952326f-3866-43b1-92c9-8504fde903f8",
+          "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "article:e558d79c-7680-42d1-9408-110cc93e0b85"
+        ],
+        "selected_fusion": [
+          "document:a093ad51-e629-43f0-9b58-f33117c2444a",
+          "article:e558d79c-7680-42d1-9408-110cc93e0b85",
+          "article:ac2d06cf-b68a-434f-aa42-1c43faa1c527",
+          "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "article:7952326f-3866-43b1-92c9-8504fde903f8"
+        ]
+      }
+    },
+    {
+      "query_id": "28782c64f43a64dd82c4ccba",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "article:7bb64aa5-f7f8-4799-83de-e51c9fbe66b7",
+          "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "article:52d541b1-6057-4780-8251-296daf2ce575"
+        ],
+        "selected_fusion": [
+          "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "article:7bb64aa5-f7f8-4799-83de-e51c9fbe66b7",
+          "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "article:52d541b1-6057-4780-8251-296daf2ce575"
+        ]
+      }
+    },
+    {
+      "query_id": "18392a0daefffed6304e6ffd",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "podcast:2d89a271-a4ff-4631-ba5a-9d66815918fe",
+          "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602",
+          "article:565520c2-9067-4842-9c52-a53a56c00920"
+        ],
+        "selected_fusion": [
+          "podcast:2d89a271-a4ff-4631-ba5a-9d66815918fe",
+          "article:565520c2-9067-4842-9c52-a53a56c00920",
+          "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602"
+        ]
+      }
+    },
+    {
+      "query_id": "b4705e112b535d35b826b0a9",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [],
+        "selected_fusion": []
+      }
+    },
+    {
+      "query_id": "9d8b7c0cd3fabafea7e02ede",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:41b2acff-d220-4e81-a90f-706444ce22c2"
+        ],
+        "selected_fusion": [
+          "article:41b2acff-d220-4e81-a90f-706444ce22c2"
+        ]
+      }
+    },
+    {
+      "query_id": "21c6871c471565e3ac5183d3",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "article:4448ff54-48d0-44b1-8aff-a63375ef8ef2",
+          "document:1b97767f-10ab-4453-84d0-f1da8d8546a9",
+          "document:1083a3cf-8f38-420b-aa80-adbc505786e4",
+          "article:9ab9dbe8-1b4f-4856-af5b-e6f047f83ceb"
+        ],
+        "selected_fusion": [
+          "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "article:9ab9dbe8-1b4f-4856-af5b-e6f047f83ceb",
+          "article:4448ff54-48d0-44b1-8aff-a63375ef8ef2",
+          "document:1b97767f-10ab-4453-84d0-f1da8d8546a9",
+          "document:a89ac72a-5e40-4213-8787-aeed9402c7ec"
+        ]
+      }
+    },
+    {
+      "query_id": "0b52d6ab6fc0efbec65d173d",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:1b97767f-10ab-4453-84d0-f1da8d8546a9",
+          "article:009c57b6-c38c-42f0-8fd6-e26e1e488e8e",
+          "article:a249d0a2-5826-4b55-908a-a632e5e3e020",
+          "document:7207cfe0-6f77-417a-a9d1-975a163aedc0",
+          "article:386cdfd3-a335-4446-a415-b251f52f0f57"
+        ],
+        "selected_fusion": [
+          "article:009c57b6-c38c-42f0-8fd6-e26e1e488e8e",
+          "article:a249d0a2-5826-4b55-908a-a632e5e3e020",
+          "document:1b97767f-10ab-4453-84d0-f1da8d8546a9",
+          "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "document:2290aa7b-8749-4e7e-96b1-e043841254f2"
+        ]
+      }
+    },
+    {
+      "query_id": "0a24ef7e8fb8569c5a260a02",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:d6a2ec70-1293-4393-ab47-d28c18fb996e",
+          "document:7207cfe0-6f77-417a-a9d1-975a163aedc0",
+          "article:0ef06d7e-2e86-4bf8-a5fd-7b0b75d9322c",
+          "document:5a08a823-858a-414f-b83f-58f7736659f7",
+          "document:a1db453d-d4c8-4fbc-b17b-bd89e9933fd7"
+        ],
+        "selected_fusion": [
+          "article:d6a2ec70-1293-4393-ab47-d28c18fb996e",
+          "document:7207cfe0-6f77-417a-a9d1-975a163aedc0",
+          "document:5a08a823-858a-414f-b83f-58f7736659f7",
+          "document:2eaadeb8-19bc-44ac-b118-8e5dbcc0dc69",
+          "document:a1db453d-d4c8-4fbc-b17b-bd89e9933fd7"
+        ]
+      }
+    },
+    {
+      "query_id": "0f42bca187be9ad7ec1dd099",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:e41162e3-c13a-4939-a951-1bd9ecf1351a",
+          "article:cde83cc5-07e3-4f7b-8024-32dda41502dd",
+          "article:c98035fa-6d13-4f4e-9a5f-29df31af8a63",
+          "article:902ff81d-ab85-454a-977e-a7dd219c80cd",
+          "article:8a1e091c-89d8-422e-a864-d67aa56f9ec4"
+        ],
+        "selected_fusion": [
+          "article:e41162e3-c13a-4939-a951-1bd9ecf1351a",
+          "article:cde83cc5-07e3-4f7b-8024-32dda41502dd",
+          "article:c98035fa-6d13-4f4e-9a5f-29df31af8a63",
+          "article:24e2108c-72f7-4a08-bc96-9354aeaaa7a4",
+          "article:c134d479-ddda-48b3-9316-08c86a3df1e7"
+        ]
+      }
+    },
+    {
+      "query_id": "b9e76178b536dafb4d37b787",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "course:eb371f34-34ea-4cb3-991a-cbbea147eda2",
+          "article:73b264a5-0b02-4bc4-9c4a-613d8a25f7cd",
+          "course:3d17b03e-0e69-44cf-aa04-110e92437016",
+          "course:a8184af0-7007-4bc3-98c1-1ff55c949a97",
+          "article:5a5d6364-9ffc-465f-aa4f-3401aeb3e877"
+        ],
+        "selected_fusion": [
+          "course:eb371f34-34ea-4cb3-991a-cbbea147eda2",
+          "article:73b264a5-0b02-4bc4-9c4a-613d8a25f7cd",
+          "course:3d17b03e-0e69-44cf-aa04-110e92437016",
+          "course:a8184af0-7007-4bc3-98c1-1ff55c949a97",
+          "podcast:3ec43e4d-43b5-4b5e-8b9a-9f6d0b5ffde6"
+        ]
+      }
+    },
+    {
+      "query_id": "75286687ea7d60f45fdc0aeb",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:902ff81d-ab85-454a-977e-a7dd219c80cd"
+        ],
+        "selected_fusion": [
+          "article:902ff81d-ab85-454a-977e-a7dd219c80cd"
+        ]
+      }
+    },
+    {
+      "query_id": "afd5d1b3942a33cacfad8b45",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:a5530eb4-e157-447d-b74c-2d58da34f357"
+        ],
+        "selected_fusion": [
+          "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "document:053a1d75-a078-442a-a6ef-cd56bf788693",
+          "article:60fb52dc-f3b0-4747-9a37-a97148ec160d"
+        ]
+      }
+    },
+    {
+      "query_id": "1a4e8438535aa476f45da015",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:2ddee156-763a-475a-9254-71303d34eb3b",
+          "article:694edd8f-2b39-44c7-bcb6-599f41911a84",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6",
+          "course:3d17b03e-0e69-44cf-aa04-110e92437016",
+          "article:9ede4cb3-1b6c-467e-81de-d5dcc2ee2465"
+        ],
+        "selected_fusion": [
+          "article:2ddee156-763a-475a-9254-71303d34eb3b",
+          "article:9ede4cb3-1b6c-467e-81de-d5dcc2ee2465",
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6",
+          "article:694edd8f-2b39-44c7-bcb6-599f41911a84",
+          "article:9e536393-e0d5-4004-bb77-83856d788885"
+        ]
+      }
+    },
+    {
+      "query_id": "22292be275f31e8bd153460f",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "article:9a1e6145-ca33-4d18-bf8a-0be4d8bd028d",
+          "article:28fa7835-2c31-4d6a-ac86-c63361f8e7a8",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+        ],
+        "selected_fusion": [
+          "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "article:28fa7835-2c31-4d6a-ac86-c63361f8e7a8",
+          "article:9a1e6145-ca33-4d18-bf8a-0be4d8bd028d",
+          "article:60fb52dc-f3b0-4747-9a37-a97148ec160d",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70"
+        ]
+      }
+    },
+    {
+      "query_id": "2361f16dcd6d06d80bba64ed",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:891a237a-dcaa-42ea-8c9b-67604ae01bfe",
+          "article:2d631645-9d25-4382-969a-caa029740771",
+          "article:a249d0a2-5826-4b55-908a-a632e5e3e020"
+        ],
+        "selected_fusion": [
+          "article:891a237a-dcaa-42ea-8c9b-67604ae01bfe",
+          "article:2d631645-9d25-4382-969a-caa029740771",
+          "article:a249d0a2-5826-4b55-908a-a632e5e3e020"
+        ]
+      }
+    },
+    {
+      "query_id": "d4c7849dcfc4ea38f4465a8e",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:55791895-4544-4b54-86de-cd911b09f615",
+          "article:9a1e6145-ca33-4d18-bf8a-0be4d8bd028d",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c"
+        ],
+        "selected_fusion": [
+          "article:55791895-4544-4b54-86de-cd911b09f615",
+          "article:9a1e6145-ca33-4d18-bf8a-0be4d8bd028d",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "article:60fb52dc-f3b0-4747-9a37-a97148ec160d",
+          "article:28fa7835-2c31-4d6a-ac86-c63361f8e7a8"
+        ]
+      }
+    },
+    {
+      "query_id": "5f358ec4132dede49b3e5eeb",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:f262e03b-e7aa-45db-801c-5a4b3e67ee73",
+          "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+          "article:976fff06-faf5-4277-8e2f-ec76dcc7c8ca",
+          "article:437c3e25-fb43-4f9b-97e9-64ae70450b47",
+          "article:f1432598-d54e-4db6-8c50-f350822a6696"
+        ],
+        "selected_fusion": [
+          "article:f262e03b-e7aa-45db-801c-5a4b3e67ee73",
+          "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+          "article:976fff06-faf5-4277-8e2f-ec76dcc7c8ca",
+          "article:19e0b3c8-544e-40df-9c4c-3f71ee51bfa5",
+          "article:f1432598-d54e-4db6-8c50-f350822a6696"
+        ]
+      }
+    },
+    {
+      "query_id": "feeaf9ad80254aa734de7c50",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:f54d3396-1d01-4ee4-990b-efe1b25b6cda",
+          "article:4edc4abf-1f3c-41db-be25-25dfae8486b0",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "course:d0aa4598-3da2-478b-bbf8-bda81b231b58"
+        ],
+        "selected_fusion": [
+          "article:f54d3396-1d01-4ee4-990b-efe1b25b6cda",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:4edc4abf-1f3c-41db-be25-25dfae8486b0",
+          "course:8be9c4dc-d301-4af3-9548-0a091b8cf441"
+        ]
+      }
+    },
+    {
+      "query_id": "cb5600ba9847472deb017269",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6"
+        ],
+        "selected_fusion": [
+          "article:835ed5fe-195d-4c3c-947f-397c43364fe6"
+        ]
+      }
+    },
+    {
+      "query_id": "8b2f62daa797f81001d51ecb",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:9e33739c-5c5b-4c46-ba32-d49713a33065",
+          "course:3d17b03e-0e69-44cf-aa04-110e92437016",
+          "article:9c884290-7757-4a84-adaf-e0979386a584",
+          "article:74791c96-bd58-40d8-9bce-cf24d9aa5e2e",
+          "article:c5729151-8770-41ad-9394-be906d9e5680"
+        ],
+        "selected_fusion": [
+          "article:f54d3396-1d01-4ee4-990b-efe1b25b6cda",
+          "article:9e33739c-5c5b-4c46-ba32-d49713a33065",
+          "course:8be9c4dc-d301-4af3-9548-0a091b8cf441",
+          "course:3d17b03e-0e69-44cf-aa04-110e92437016",
+          "article:9c884290-7757-4a84-adaf-e0979386a584"
+        ]
+      }
+    },
+    {
+      "query_id": "0bcaff1aa4c1111f4cee7409",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [],
+        "selected_fusion": []
+      }
+    },
+    {
+      "query_id": "3fed813e5def4091aad8f55b",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [],
+        "selected_fusion": []
+      }
+    },
+    {
+      "query_id": "0978ca7d1ccb0ba083ba6ae2",
+      "split": "test",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [],
+        "selected_fusion": []
+      }
+    },
+    {
+      "query_id": "89cdd0b043fb1095ee8fb7ac",
+      "split": "validation",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:05086558-c899-414f-a677-6422a7f5e329",
+          "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "document:fb1905db-279d-4375-a44e-3c1bef4e3b4f",
+          "document:71d40c2b-8c6b-4521-b26a-22a0b6e95a2d",
+          "document:54e212ae-d4ec-4595-81d1-c134a847edfb"
+        ],
+        "selected_fusion": [
+          "article:05086558-c899-414f-a677-6422a7f5e329",
+          "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "document:54e212ae-d4ec-4595-81d1-c134a847edfb",
+          "document:47b5dd8e-b9fc-41b1-96a0-2e9bab4cd272"
+        ]
+      }
+    },
+    {
+      "query_id": "d8f7e56c446b1b40db2ba5bb",
+      "split": "validation",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "article:05086558-c899-414f-a677-6422a7f5e329",
+          "document:ce9b5708-ee0a-46c9-8cfb-aaa64e0e7d19",
+          "document:fb1905db-279d-4375-a44e-3c1bef4e3b4f",
+          "document:47b5dd8e-b9fc-41b1-96a0-2e9bab4cd272"
+        ],
+        "selected_fusion": [
+          "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "article:05086558-c899-414f-a677-6422a7f5e329",
+          "document:ce9b5708-ee0a-46c9-8cfb-aaa64e0e7d19",
+          "document:fb1905db-279d-4375-a44e-3c1bef4e3b4f",
+          "document:47b5dd8e-b9fc-41b1-96a0-2e9bab4cd272"
+        ]
+      }
+    },
+    {
+      "query_id": "4e188d9180b189bd2cf0d7f9",
+      "split": "validation",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:05086558-c899-414f-a677-6422a7f5e329",
+          "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "document:ce9b5708-ee0a-46c9-8cfb-aaa64e0e7d19",
+          "document:47b5dd8e-b9fc-41b1-96a0-2e9bab4cd272",
+          "article:73b264a5-0b02-4bc4-9c4a-613d8a25f7cd"
+        ],
+        "selected_fusion": [
+          "article:05086558-c899-414f-a677-6422a7f5e329",
+          "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "document:ce9b5708-ee0a-46c9-8cfb-aaa64e0e7d19",
+          "document:47b5dd8e-b9fc-41b1-96a0-2e9bab4cd272",
+          "article:d678ce91-2927-4a7d-9b86-b800e00c186d"
+        ]
+      }
+    },
+    {
+      "query_id": "2bacfaac26e89be732bb82e6",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:f22bd5b4-9fbb-440b-83a1-ee0bfb05dfbb"
+        ],
+        "selected_fusion": [
+          "article:f22bd5b4-9fbb-440b-83a1-ee0bfb05dfbb"
+        ]
+      }
+    },
+    {
+      "query_id": "861ce7e2c9ee16136e645a7b",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:f22bd5b4-9fbb-440b-83a1-ee0bfb05dfbb",
+          "document:8cbdb08e-247f-4a68-aebd-09df5f4cfa73",
+          "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "article:639382e9-9687-415a-a444-eaabc97082e4"
+        ],
+        "selected_fusion": [
+          "article:f22bd5b4-9fbb-440b-83a1-ee0bfb05dfbb",
+          "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "course:a25c8282-94c7-458e-abf6-9fbd7b996ef7",
+          "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "document:8cbdb08e-247f-4a68-aebd-09df5f4cfa73"
+        ]
+      }
+    },
+    {
+      "query_id": "c013d555979b530cf7376fd5",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:ce10a90f-8257-4ac9-9b86-e586d81c5c6c",
+          "article:18454a82-5ebc-4144-b3e4-ec403ec44e93"
+        ],
+        "selected_fusion": [
+          "article:ce10a90f-8257-4ac9-9b86-e586d81c5c6c",
+          "article:18454a82-5ebc-4144-b3e4-ec403ec44e93"
+        ]
+      }
+    },
+    {
+      "query_id": "60b58bba57006ac4f23b054a",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:a8c9930d-31a3-4223-a8bf-eca1553f5772",
+          "article:1bc869a7-fd16-4833-ab7a-81fe79dd5bab",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "article:f75d459b-87c4-415e-ac58-e310609a84e8"
+        ],
+        "selected_fusion": [
+          "article:a8c9930d-31a3-4223-a8bf-eca1553f5772",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:1bc869a7-fd16-4833-ab7a-81fe79dd5bab",
+          "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "article:7b920a0a-4fe0-4d59-b350-b3322ec30cd1"
+        ]
+      }
+    },
+    {
+      "query_id": "600b3eb59a503fcd1e8322e8",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:1bc869a7-fd16-4833-ab7a-81fe79dd5bab",
+          "document:a2e5b190-3f33-41df-8764-f9cffbf5eb07",
+          "article:f78dc106-10bc-4d37-9bab-5d36c17352d8",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:f88bc94f-cf5c-4b33-8b58-dd62852d636f"
+        ],
+        "selected_fusion": [
+          "article:1bc869a7-fd16-4833-ab7a-81fe79dd5bab",
+          "document:6093a0d0-31d9-4e0f-b557-8760b75a24e1",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "document:a2e5b190-3f33-41df-8764-f9cffbf5eb07",
+          "article:f88bc94f-cf5c-4b33-8b58-dd62852d636f"
+        ]
+      }
+    },
+    {
+      "query_id": "e93e7026bc603fc304421dbd",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:a8c9930d-31a3-4223-a8bf-eca1553f5772",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:1bc869a7-fd16-4833-ab7a-81fe79dd5bab",
+          "article:905154f6-d8ab-4fde-be88-f18d46d59769",
+          "article:f88bc94f-cf5c-4b33-8b58-dd62852d636f"
+        ],
+        "selected_fusion": [
+          "article:a8c9930d-31a3-4223-a8bf-eca1553f5772",
+          "article:1bc869a7-fd16-4833-ab7a-81fe79dd5bab",
+          "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+          "article:905154f6-d8ab-4fde-be88-f18d46d59769",
+          "article:0f81566e-73c1-45b8-96b7-1230c02ad62c"
+        ]
+      }
+    },
+    {
+      "query_id": "faf3743f07c7ce3b545949c9",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:436d99ec-50d7-4abc-a0ed-ddd2f7d122d9",
+          "article:27aae11d-0320-4233-b123-3be4b0d955f0",
+          "article:3edf6dc5-f2d6-4c15-b00c-1c475693c587",
+          "article:f37de927-fadd-41d5-af2e-8d4668d070ac",
+          "article:41b2acff-d220-4e81-a90f-706444ce22c2"
+        ],
+        "selected_fusion": [
+          "article:436d99ec-50d7-4abc-a0ed-ddd2f7d122d9",
+          "article:27aae11d-0320-4233-b123-3be4b0d955f0",
+          "article:3edf6dc5-f2d6-4c15-b00c-1c475693c587",
+          "article:f37de927-fadd-41d5-af2e-8d4668d070ac",
+          "article:7e67e83b-7680-4a28-8939-fb2ff849e133"
+        ]
+      }
+    },
+    {
+      "query_id": "cf929136175fc55ef05eaa34",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:27aae11d-0320-4233-b123-3be4b0d955f0",
+          "article:3edf6dc5-f2d6-4c15-b00c-1c475693c587",
+          "article:6f8718f4-8106-4411-a374-87c5d2387d57",
+          "document:c7784aea-a9b0-43b5-b7e7-08efebe37cc4",
+          "article:9dbe4002-0c1a-40a1-8e9a-6465543e9f90"
+        ],
+        "selected_fusion": [
+          "article:3edf6dc5-f2d6-4c15-b00c-1c475693c587",
+          "article:27aae11d-0320-4233-b123-3be4b0d955f0",
+          "article:6f8718f4-8106-4411-a374-87c5d2387d57",
+          "article:681da181-fde3-49d0-a818-80e71b8bf56d",
+          "article:179f8e09-ff00-4f4c-b2aa-b11bbaf9691f"
+        ]
+      }
+    },
+    {
+      "query_id": "66ffcca41ee854dc242c984f",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:49cbf816-4625-4dcd-acad-557e1c7c1d05",
+          "article:6b3a0b39-c29c-4d19-b89f-e577815c168a",
+          "article:7e67e83b-7680-4a28-8939-fb2ff849e133",
+          "article:9dbe4002-0c1a-40a1-8e9a-6465543e9f90",
+          "article:f3a571cf-a9d9-467b-9d22-97577f30b73d"
+        ],
+        "selected_fusion": [
+          "article:49cbf816-4625-4dcd-acad-557e1c7c1d05",
+          "article:6b3a0b39-c29c-4d19-b89f-e577815c168a",
+          "article:d23bf6a3-6e0d-46b2-b6a2-cc398c04df70",
+          "article:7e67e83b-7680-4a28-8939-fb2ff849e133",
+          "article:6ae74f45-10b5-4287-a010-78a4ca0a1beb"
+        ]
+      }
+    },
+    {
+      "query_id": "40d3c8b6b7c9b2e5c1df0a68",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:4f960bb4-28b4-4277-a369-52da2eeb9154",
+          "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a",
+          "article:2be11f43-fb99-4a29-acd0-1643edeb6496",
+          "article:de95fb1b-35cb-4a3f-9d36-9a5e672bf466",
+          "article:1be29dd4-be13-4d09-baca-69c3901d6dda"
+        ],
+        "selected_fusion": [
+          "article:4f960bb4-28b4-4277-a369-52da2eeb9154",
+          "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a",
+          "article:de95fb1b-35cb-4a3f-9d36-9a5e672bf466",
+          "article:2be11f43-fb99-4a29-acd0-1643edeb6496",
+          "article:1be29dd4-be13-4d09-baca-69c3901d6dda"
+        ]
+      }
+    },
+    {
+      "query_id": "c8e626c2266de495f8673047",
+      "split": "train",
+      "all_returned_judged": false,
+      "orders": {
+        "current": [
+          "article:de95fb1b-35cb-4a3f-9d36-9a5e672bf466",
+          "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a",
+          "article:2be11f43-fb99-4a29-acd0-1643edeb6496",
+          "article:8a1e091c-89d8-422e-a864-d67aa56f9ec4",
+          "document:a093ad51-e629-43f0-9b58-f33117c2444a"
+        ],
+        "selected_fusion": [
+          "article:de95fb1b-35cb-4a3f-9d36-9a5e672bf466",
+          "article:2be11f43-fb99-4a29-acd0-1643edeb6496",
+          "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a",
+          "article:8a1e091c-89d8-422e-a864-d67aa56f9ec4",
+          "article:162d4d7d-a295-48a7-90c2-43280b78fe20"
+        ]
+      }
+    },
+    {
+      "query_id": "6e604b9a62ff40fb3732dae0",
+      "split": "train",
+      "all_returned_judged": true,
+      "orders": {
+        "current": [
+          "article:de95fb1b-35cb-4a3f-9d36-9a5e672bf466",
+          "article:ae7f94cf-175c-4732-86f9-aff6d1bb706b",
+          "article:a5eb9564-d2b3-4b85-a423-312ec2557246",
+          "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a",
+          "article:fde2bacb-a795-4454-90f7-ea364f904b5c"
+        ],
+        "selected_fusion": [
+          "article:de95fb1b-35cb-4a3f-9d36-9a5e672bf466",
+          "article:ae7f94cf-175c-4732-86f9-aff6d1bb706b",
+          "article:a5eb9564-d2b3-4b85-a423-312ec2557246",
+          "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a",
+          "article:976fff06-faf5-4277-8e2f-ec76dcc7c8ca"
+        ]
+      }
+    }
+  ],
+  "limits": "End-to-end includes existing candidate generation, exact-title priority, admission rules and alternatives; the fusion is experimental and min-max normalized within retrieved candidates. Only real queries where every returned item from BOTH methods is in the existing automatically judged pool contribute to metrics. Others are excluded, never assigned zero. This subset can be biased. Prior validation and test are small and already observed; no human labels, no independent holdout, no model installation."
+}

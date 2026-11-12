@@ -23,6 +23,8 @@ FEATURE_NAMES = (
     ]
     + [f"kind_{kind}" for kind in KINDS]
 )
+COVERAGE_COLUMN = FEATURE_NAMES.index("query_coverage")
+SELECTION_COLUMN = FEATURE_NAMES.index("selection_match")
 
 
 @dataclass(frozen=True)
@@ -38,10 +40,12 @@ class RankingConfig:
     selection_boost: float = 0.25
     rrf_k: int = 60
     candidate_count: int = 60
+    bm25_k1: float = 1.5
+    bm25_b: float = 0.75
 
     def __post_init__(self):
         for name, value in asdict(self).items():
-            if not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+            if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
                 raise ValueError(f"Invalid ranking parameter: {name}")
         if not 1 <= self.rrf_k <= 1000 or not 1 <= self.candidate_count <= 500:
             raise ValueError("Invalid RRF/candidate range")
@@ -49,30 +53,44 @@ class RankingConfig:
             raise ValueError("RRF/candidate parameters must be integers")
         if self.selection_boost > 1:
             raise ValueError("selection_boost must not exceed 1")
+        if self.bm25_k1 <= 0 or self.bm25_b > 1:
+            raise ValueError("BM25 requires k1 > 0 and 0 <= b <= 1")
 
 
 class BM25Index:
     def __init__(self, texts, k1=1.5, b=0.75):
+        self._validate(k1, b)
         self.docs = [Counter(tokens(text)) for text in texts]
         self.lengths = [sum(doc.values()) for doc in self.docs]
         self.df = Counter(term for doc in self.docs for term in doc)
         self.average = sum(self.lengths) / max(len(self.docs), 1) or 1
         self.k1, self.b = k1, b
+        self.postings = {}
+        for i, doc in enumerate(self.docs):
+            for term, frequency in doc.items():
+                self.postings.setdefault(term, []).append((i, frequency))
 
-    def score(self, query):
-        terms = set(tokens(query))
+    @staticmethod
+    def _validate(k1, b):
+        if any(type(v) not in (int, float) or not math.isfinite(v) for v in (k1, b)):
+            raise ValueError("BM25 parameters must be finite numbers")
+        if k1 <= 0 or not 0 <= b <= 1:
+            raise ValueError("BM25 requires k1 > 0 and 0 <= b <= 1")
+
+    def score(self, query, *, k1=None, b=None):
+        k1 = self.k1 if k1 is None else k1
+        b = self.b if b is None else b
+        self._validate(k1, b)
+        # Fixed summation order also makes scores reproducible across Python hash seeds.
+        terms = sorted(set(tokens(query)))
         n = len(self.docs)
-        return [
-            sum(
-                math.log(1 + (n - self.df[term] + 0.5) / (self.df[term] + 0.5))
-                * doc[term]
-                * (self.k1 + 1)
-                / (doc[term] + self.k1 * (1 - self.b + self.b * length / self.average))
-                for term in terms
-                if doc.get(term)
-            )
-            for doc, length in zip(self.docs, self.lengths, strict=True)
-        ]
+        scores = [0.0] * n
+        for term in terms:
+            idf = math.log1p((n - self.df[term] + 0.5) / (self.df[term] + 0.5))
+            for i, frequency in self.postings.get(term, ()):
+                norm = k1 * (1 - b + b * self.lengths[i] / self.average)
+                scores[i] += idf * frequency * (k1 + 1) / (frequency + norm)
+        return scores
 
 
 def field_text(item, field):
@@ -96,10 +114,21 @@ class FieldRetriever:
             for item in catalog
         ]
         self.title_terms = [set(tokens(item["title"])) for item in catalog]
+        self.context_terms = [
+            set(tokens(item["title"] + " " + item.get("description", ""))) for item in catalog
+        ]
+        self.facet_terms = {
+            field: [set(tokens(field_text(item, field))) for item in catalog]
+            for field in ("topics", "tags", "industries")
+        }
 
-    def signals(self, query, dense=None, selected_keys=()):
+    def signals(self, query, dense=None, selected_keys=(), config=None):
         terms = set(tokens(query))
-        scores = {field: index.score(query) for field, index in self.indexes.items()}
+        config = config or RankingConfig()
+        scores = {
+            field: index.score(query, k1=config.bm25_k1, b=config.bm25_b)
+            for field, index in self.indexes.items()
+        }
         dense = dense or {
             source: [0.0] * len(self.catalog) for source in ["card", "body", "lesson"]
         }
@@ -114,14 +143,14 @@ class FieldRetriever:
                     float(item["entity_key"] in selected_keys),
                 ]
                 + [
-                    len(terms & set(tokens(field_text(item, field)))) / max(len(terms), 1)
+                    len(terms & self.facet_terms[field][i]) / max(len(terms), 1)
                     for field in ["topics", "tags", "industries"]
                 ]
                 + [float(item["kind"] == kind) for kind in KINDS]
             )
         return {"fields": scores, "dense": dense, "features": features}
 
-    def rank(self, signals, config, allowed=None, semantic=True, legacy=False):
+    def rank(self, signals, config, allowed=None, semantic=True):
         allowed = set(range(len(self.catalog))) if allowed is None else set(allowed)
         lexical = [
             sum(getattr(config, field) * signals["fields"][field][i] for field in FIELDS)
@@ -147,7 +176,10 @@ class FieldRetriever:
         }
         if semantic:
             ranks["dense"] = {
-                i: r + 1 for r, i in enumerate(ordered(allowed, dense)[: config.candidate_count])
+                i: r + 1
+                for r, i in enumerate(
+                    ordered([i for i in allowed if dense[i] > 0], dense)[: config.candidate_count]
+                )
             }
         candidates = set().union(*(rank.keys() for rank in ranks.values()))
         fused = {}
@@ -159,7 +191,7 @@ class FieldRetriever:
             )
             # Selection boosts only originally retrieved candidates, and is bounded by
             # original-query coverage; it can no longer flood recall with a broad category.
-            coverage = signals["features"][i][10]
-            selected = signals["features"][i][12]
+            coverage = signals["features"][i][COVERAGE_COLUMN]
+            selected = signals["features"][i][SELECTION_COLUMN]
             fused[i] = score * (1 + config.selection_boost * selected * coverage)
         return ordered(candidates, fused), lexical, dense, fused, ranks

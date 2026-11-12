@@ -1,0 +1,21 @@
+{
+  "seed": 42,
+  "method": "source normalized-title group split 60/20/20",
+  "group_counts": {
+    "train": 175,
+    "validation": 58,
+    "test": 59
+  },
+  "query_counts": {
+    "train": 485,
+    "validation": 159,
+    "test": 156
+  },
+  "train_pairs": 485,
+  "preferences_sha256": "ffb3caf5f087386bf7e9ec8ffa99d9dcb2eb92c348d097eab7836828a0dc3f4f",
+  "learning_rate": 2e-05,
+  "batch_size": 8,
+  "max_length_train": 128,
+  "epochs": 1,
+  "limitations": "Weak source-document labels; no human judgments. Previously used by CatBoost; E5 is pretrained on unknown data. Title grouping does not prove semantic independence."
+}

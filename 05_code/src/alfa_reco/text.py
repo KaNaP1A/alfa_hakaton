@@ -82,3 +82,36 @@ def tokens(text):
 
 def words(text):
     return re.findall(r"[\w+#]+", text.casefold().replace("ё", "е"))
+
+
+def embedding_query(text):
+    """Canonicalize only short, simple keyword bags, never explicit relationships.
+
+    Retrieval and interpretation retain the original text. Sorting the content words is
+    a heuristic, not a claim that all permutations have the same meaning.
+    """
+    parts = words(text)
+    protected = {
+        "не",
+        "без",
+        "кроме",
+        "от",
+        "до",
+        "из",
+        "через",
+        "против",
+        "вместо",
+        "между",
+        "над",
+        "под",
+        "после",
+        "перед",
+    }
+    if any(word in protected for word in parts) or any(
+        mark in text for mark in ('"', "«", "»", ":", ";", "?")
+    ):
+        return text
+    content = [word for word in parts if word not in STOP]
+    if 2 <= len(content) <= 4 and len(parts) <= 8:
+        return " ".join(sorted(content))
+    return text

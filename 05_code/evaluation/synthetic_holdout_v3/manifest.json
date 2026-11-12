@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "protocol": "Family-disjoint, separate catalog and index per split; manual task specification; labels are separate from indexed documents; test frozen before tuning, never used for weight selection. No human judgments. Same pretrained model may have unknown pretraining overlap.",
+  "seed": 73421,
+  "ranker_sha256": "9156bc344e320393244fd00b5a440c10fd6e5593416ab2b6a07214bbffac5267",
+  "test_status": "evaluated_once_no_further_tuning",
+  "hashes": {
+    "validation/queries.jsonl": "1c6e3ebf93539fac1fcec67e88cf6844b125007a51b9558b50316fffc9eed681",
+    "validation/labels.jsonl": "b6123feaef6a5ff89e8f56bcd23ff5b0634d67244721161b74cb31e672860aa3",
+    "validation/catalog/generation-synthetic/catalog.json": "1829e3471a81be5be1d877f0727215820533a16a0211a59c2d077d02b6265f05",
+    "validation/catalog/generation-synthetic/manifest.json": "3d9c3631a14b425b2e11fa18a7ed51e14e6f7bdd2729f11f26544636200700c9",
+    "validation/catalog/generation-synthetic/suggestions.json": "a111a40f432cc4e473007f3b91371fdb85696126ae11ad8c7dcf0fd10c8c0c07",
+    "validation/catalog/CURRENT.json": "9a06442ee369b851340f3d8e14fa061d7dcaf10651c2ca4f844db557613acd37",
+    "test/queries.jsonl": "1c0bd8b30077a524cd77f52729a2ab670c572d5d0bf7d9713ab7c5ab64cbe897",
+    "test/labels.jsonl": "2f7351cbcf4a6105b9dc724e0246ea514c27a144e74a45a1d9e2ab967f65c9eb",
+    "test/catalog/generation-synthetic/catalog.json": "ac057a8c9208a055be4b92045c86860412dd7bd767c24fdc1750906531fe7715",
+    "test/catalog/generation-synthetic/manifest.json": "7fe8107532642f6dfe0fff7bdcb3b00b3ea8b102031510058a9b0f265acf1f46",
+    "test/catalog/generation-synthetic/suggestions.json": "17f222ac1e0b5b4fab44bb5b2e698d16d162141ff907de8e57a635914fe5ef0d",
+    "test/catalog/CURRENT.json": "9a06442ee369b851340f3d8e14fa061d7dcaf10651c2ca4f844db557613acd37"
+  },
+  "counts": {
+    "validation": {
+      "families": 20,
+      "queries": 40,
+      "documents": 80
+    },
+    "test": {
+      "families": 10,
+      "queries": 20,
+      "documents": 40
+    }
+  },
+  "test_report_sha256": "1c82c11b56c1985b811a0445226697d82cbf84ed7c27b9d683735133fc222b12"
+}

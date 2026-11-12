@@ -1,5 +1,6 @@
 """Small, explicit, judged-pool experiment; not a production quality estimate."""
 
+import argparse
 import itertools
 import json
 import math
@@ -29,6 +30,9 @@ def metrics(order, labels):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--result-dir", default="evaluation/results_corrected")
+    args = parser.parse_args()
     dataset = json.loads(Path("evaluation/judgments.json").read_text())
     queries = dataset["queries"]
     families = {}
@@ -135,11 +139,11 @@ def main():
         "selected_validation": evaluate(best, "val"),
         "baseline_test": evaluate(base, "test"),
         "selected_test": evaluate(best, "test"),
-        "catboost_validation": evaluate(best, "val", model),
-        "catboost_test": evaluate(best, "test", model),
-        "note": "Pooled NDCG treats unjudged as 0; judged coverage is reported. Tiny assistant-labeled set, not production evidence.",
+        "catboost_validation": evaluate(base, "val", model),
+        "catboost_test": evaluate(base, "test", model),
+        "note": "Pooled NDCG treats unjudged as 0; judged coverage is reported. Recall60 is ranked recall, not initial candidate recall. CatBoost uses baseline candidate configuration, matching runtime. Tiny assistant-labeled set; test previously observed.",
     }
-    out = Path("evaluation/results")
+    out = Path(args.result_dir)
     out.mkdir(parents=True, exist_ok=True)
     (out / "weight_trials.json").write_text(json.dumps(trials, ensure_ascii=False, indent=2))
     (out / "category_trials.json").write_text(

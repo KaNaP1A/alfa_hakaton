@@ -1,0 +1,26 @@
+{
+  "method": "CatBoost PredictionValuesChange",
+  "warning": "Dataset-dependent, not causal and not category weights.",
+  "values": [
+    {
+      "feature": "bm25_title",
+      "importance": 17.8349
+    },
+    {
+      "feature": "bm25_description",
+      "importance": 21.6408
+    },
+    {
+      "feature": "cosine_card",
+      "importance": 15.8659
+    },
+    {
+      "feature": "query_coverage",
+      "importance": 32.3428
+    },
+    {
+      "feature": "title_coverage",
+      "importance": 12.3157
+    }
+  ]
+}

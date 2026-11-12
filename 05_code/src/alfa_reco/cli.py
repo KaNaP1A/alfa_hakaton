@@ -3,10 +3,8 @@ Never executes SQL or JavaScript stored in source records.
 """
 
 import argparse
-import hashlib
 import html
 import json
-import math
 import os
 import re
 import sqlite3
@@ -17,11 +15,15 @@ from contextlib import closing
 from pathlib import Path
 from urllib.parse import urlparse
 
+from .bundle import MODEL_ID as MODEL_ID
+from .bundle import MODEL_REVISION as MODEL_REVISION
+from .bundle import atomic_json as atomic_json
+from .bundle import load_bundle as load_bundle
+from .bundle import model as model
+from .bundle import model_fingerprint as model_fingerprint
+from .bundle import sha256 as sha256
 from .lessons import attach_lessons, parse_as_of
-from .text import tokens
 
-MODEL_ID = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-MODEL_REVISION = "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
 KINDS = {
     "Articles": "article",
     "Courses": "course",
@@ -32,14 +34,6 @@ KINDS = {
     "Calculators": "calculator",
 }
 PUBLIC_STATUS = "Опубликовано"
-
-
-def sha256(path):
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for b in iter(lambda: f.read(1048576), b""):
-            h.update(b)
-    return h.hexdigest()
 
 
 def quote(s):
@@ -271,12 +265,6 @@ def normalize(conn):
     return catalog, dict(exclusions)
 
 
-def atomic_json(path, data):
-    tmp = path.with_suffix(path.suffix + ".tmp")
-    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(tmp, path)
-
-
 def build(args):
     from .storage import output_lock
 
@@ -370,26 +358,6 @@ def build_locked(args):
     )
 
 
-def load_bundle(output):
-    root = Path(output)
-    generation = json.loads((root / "CURRENT.json").read_text())["generation"]
-    if "/" in generation or generation.startswith("."):
-        raise ValueError("Invalid generation")
-    path = root / generation
-    manifest = json.loads((path / "manifest.json").read_text())
-    if sha256(path / "catalog.json") != manifest["catalog_sha256"]:
-        raise ValueError("Catalog hash mismatch")
-    return path, manifest, json.loads((path / "catalog.json").read_text())
-
-
-def model(local_path=None):
-    from sentence_transformers import SentenceTransformer
-
-    if local_path:
-        return SentenceTransformer(str(local_path), device="cpu", local_files_only=True)
-    return SentenceTransformer(MODEL_ID, revision=MODEL_REVISION, device="cpu")
-
-
 def embed(args):
     from .storage import output_lock
 
@@ -420,6 +388,7 @@ def embed_locked(args):
         "model_id": MODEL_ID if not args.model_path else "local",
         "revision": MODEL_REVISION if not args.model_path else None,
         "local_path": str(Path(args.model_path).resolve()) if args.model_path else None,
+        "local_model_fingerprint": model_fingerprint(args.model_path) if args.model_path else None,
         "unit_count": len(units),
         "units_sha256": sha256(path / "units.json"),
         "window_tokens": window,
@@ -441,23 +410,10 @@ def embed_locked(args):
 
 
 def bm25(query, catalog):
-    docs = [Counter(tokens(x["search_text"])) for x in catalog]
-    if not docs:
-        return []
-    df = Counter(k for d in docs for k in d)
-    lengths = [sum(d.values()) for d in docs]
-    avg = sum(lengths) / len(docs) or 1
-    n = len(docs)
-    scores = []
-    for d, length in zip(docs, lengths, strict=True):
-        score = 0.0
-        for term in set(tokens(query)):
-            f = d.get(term, 0)
-            if f:
-                idf = math.log(1 + (n - df[term] + 0.5) / (df[term] + 0.5))
-                score += idf * f * 2.5 / (f + 1.5 * (0.25 + 0.75 * length / avg))
-        scores.append(score)
-    return scores
+    """Compatibility wrapper using the same BM25 implementation as retrieval."""
+    from .retrieval import BM25Index
+
+    return BM25Index([item["search_text"] for item in catalog]).score(query)
 
 
 def search(args):
@@ -465,7 +421,11 @@ def search(args):
 
     if args.free_only:
         raise ValueError("Verified free-only filtering is not implemented")
-    engine = SearchEngine(args.output, semantic=args.mode in {"hybrid", "catboost"})
+    engine = SearchEngine(
+        args.output,
+        semantic=args.mode in {"hybrid", "catboost", "ensemble"},
+        llm_enabled=args.mode == "ensemble" and not args.no_llm,
+    )
     payload = engine.search(
         args.query,
         args.mode,
@@ -503,10 +463,15 @@ def main():
     s = sub.add_parser("search")
     s.add_argument("query")
     s.add_argument("--output", default="artifacts/catalog")
-    s.add_argument("--mode", choices=["bm25", "hybrid", "catboost"], default="hybrid")
+    s.add_argument(
+        "--mode",
+        choices=["bm25", "hybrid", "catboost", "ensemble", "relevance"],
+        default="ensemble",
+    )
     s.add_argument("--top", type=int, default=5)
     s.add_argument("--kind", choices=sorted(KINDS.values()))
     s.add_argument("--free-only", action="store_true")
+    s.add_argument("--no-llm", action="store_true")
     s.add_argument("--selection-id")
     s.add_argument("--selection-generation")
     s.set_defaults(func=search)
@@ -521,7 +486,14 @@ def main():
     v.add_argument("--output", default="artifacts/catalog")
     v.add_argument("--port", type=int, default=8000)
     v.add_argument("--hybrid", action="store_true")
+    v.add_argument(
+        "--relevance",
+        action="store_true",
+        help="Use the locally trained experimental relevance model",
+    )
     v.add_argument("--open-browser", action="store_true")
+    v.add_argument("--start-page", choices=["/", "/lab"], default="/")
+    v.add_argument("--no-llm", action="store_true")
     v.set_defaults(func=serve)
     args = parser.parse_args()
     try:

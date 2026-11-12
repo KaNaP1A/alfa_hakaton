@@ -1,0 +1,18 @@
+{
+  "generation": "generation-c9cd546ed3bf-904256290a10-8b410e53abd0",
+  "catalog_sha256": "904256290a10eeec3f1eaffec7636de032f294f53953a008839ded9f3263941f",
+  "materials": 1469,
+  "publication_status_snapshot": {
+    "Опубликовано": 1469
+  },
+  "access_metadata": {
+    "open": 861,
+    "paid": 1,
+    "subscription": 9,
+    "unknown": 598
+  },
+  "absolute_urls": 0,
+  "source_slugs_or_urls": 1469,
+  "price_values": 1,
+  "caveat": "Snapshot metadata only: no current publication, price, URL, entitlement or live site status has been verified."
+}

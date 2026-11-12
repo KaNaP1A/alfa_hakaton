@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "catalog_sha256": "904256290a10eeec3f1eaffec7636de032f294f53953a008839ded9f3263941f",
+  "parent_pool_sha256": "0ad37f9096d2b78574749e1093fc618391b12212eddb239f80fe1056ca95e40f",
+  "relevance_manifest_sha256": "8c6631369f4efaadba79c2ddca6e4b1c9fc41d1323b03847d00ee67fd773ca59",
+  "queries": 75,
+  "candidates": 814,
+  "hashes_before_review": {
+    "pool.jsonl": "34199ee52be9644c62f7e41162aeba53b45005d151b17bdf27b4ce7a23a78e93",
+    "rankings.jsonl": "3fb57aec08b03068f7a84431981ce56cf38b665a700150b61de19a0773d8d031",
+    "judgments.jsonl": "8f496873191d6573d657ca715f1e8fe1887d292f1659cbff0800142ada182f9b"
+  },
+  "note": "No labels generated. Previous assistant-authored pool extended with frozen ML top-5. Historical baselines retain their creation snapshot; this is not a fresh blind test. Reviewers must not view rankings.jsonl."
+}

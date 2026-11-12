@@ -132,3 +132,32 @@ class PipelineTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ModelFingerprintTests(unittest.TestCase):
+    def test_local_model_mutation_is_detectable(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+
+        from alfa_reco.cli import model_fingerprint
+
+        names = [
+            "model.safetensors",
+            "config.json",
+            "modules.json",
+            "tokenizer.json",
+            "tokenizer_config.json",
+            "1_Pooling/config.json",
+        ]
+        with TemporaryDirectory() as temp:
+            root = Path(temp)
+            for name in names:
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(name.encode())
+            before = model_fingerprint(root)
+            (root / "tokenizer.json").write_text("changed")
+            self.assertNotEqual(before, model_fingerprint(root))
+            (root / "model.safetensors").unlink()
+            with self.assertRaisesRegex(ValueError, "fingerprint"):
+                model_fingerprint(root)

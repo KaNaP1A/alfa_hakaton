@@ -198,7 +198,7 @@ class SuggestionIndex:
 
     def suggest(self, query, limit=6):
         validate_query(query)
-        if not 1 <= limit <= 10:
+        if type(limit) is not int or not 1 <= limit <= 10:
             raise ValueError("limit must be between 1 and 10")
         response = {
             "query": query,

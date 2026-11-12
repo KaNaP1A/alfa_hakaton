@@ -1,0 +1,461 @@
+{
+  "description": "Ручные ожидания разработчика про обнаружение, а не оценка релевантности. Требуется независимая проверка всей пятерки.",
+  "n": 20,
+  "matched": 20,
+  "results": [
+    {
+      "query": "продажи покупателям, а не сотрудникам",
+      "expected": "contrast",
+      "observed": "contrast",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": true,
+        "excluded_terms": [
+          "сотрудник"
+        ],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Договор купли-продажи пункта выдачи заказов",
+        "Бизнес на Авито: лёгкая продажа товаров",
+        "Как контролировать качество продаж",
+        "Договор купли-продажи",
+        "Как увеличить повторные продажи"
+      ]
+    },
+    {
+      "query": "не покупателей, а сотрудников нужно обучить",
+      "expected": "contrast",
+      "observed": "contrast",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": true,
+        "excluded_terms": [
+          "покупател"
+        ],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Стандарты обслуживания клиентов: как внедрить и контролировать",
+        "Операция «стажёр»: как его принять и обучить, чтобы не платить зря",
+        "Первый сотрудник: подготовка к найму",
+        "Положительная характеристика на сотрудника",
+        "Сколько стоит сотрудник"
+      ]
+    },
+    {
+      "query": "договор аренды помещения, а не земли",
+      "expected": "contrast",
+      "observed": "contrast",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": true,
+        "excluded_terms": [
+          "земл"
+        ],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Договор аренды нежилого помещения",
+        "Составляем договор аренды нежилого помещения: пошаговая инструкция",
+        "Уведомление о расторжении договора аренды",
+        "Договор субаренды нежилого помещения",
+        "Гарантийное письмо о заключении договора аренды между ИП и ООО"
+      ]
+    },
+    {
+      "query": "маркетинг в интернете, а не на телевидении",
+      "expected": "contrast",
+      "observed": "contrast",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": true,
+        "excluded_terms": [
+          "телевидени"
+        ],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Интернет-маркетинг: разбираемся с экспертами",
+        "Контент-маркетинг здорового человека: как привлечь клиентов",
+        "Как разработать стратегию продвижения в интернете",
+        "Что такое маркетинг 360 и как он работает?",
+        "Как использовать теорию поколений в маркетинге"
+      ]
+    },
+    {
+      "query": "налоги ИП, а не ООО",
+      "expected": "contrast",
+      "observed": "contrast",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": true,
+        "excluded_terms": [
+          "ооо"
+        ],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Налоги и взносы ИП: полный иллюстрированный гайд",
+        "НДС в 2026 году: как работает налог",
+        "УСН для ИП в 2026 году: налоги, взносы и отчётность",
+        "Отсрочка и рассрочка по налогам: как их получить",
+        "Налог на профессиональный доход (НПД)"
+      ]
+    },
+    {
+      "query": "продажа товаров, но не услуг",
+      "expected": "contrast",
+      "observed": "contrast",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": true,
+        "excluded_terms": [
+          "услуг"
+        ],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Бизнес на Авито: лёгкая продажа товаров",
+        "Как грамотно выбрать товар для продажи на маркетплейсе",
+        "Доставка товаров: как выстроить логистику и увеличить продажи",
+        "Оборачиваемость товара: как считать и держать запасы под контролем",
+        "Договор купли-продажи"
+      ]
+    },
+    {
+      "query": "как не потерять клиентов",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Какая ставка НДС при УСН выгоднее: 5, 7 или 22%",
+        "НДС на УСН с 2026 года: что изменится и как не потерять прибыль",
+        "Готовимся к распродаже: частые ошибки начинающих селлеров",
+        "«А все бегут, бегут, бегут…»: как удержать клиентов",
+        "Клиент не всегда прав: как отказать в обслуживании по закону"
+      ]
+    },
+    {
+      "query": "как не допустить кассовый разрыв",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Кассовый разрыв — не приговор: как управлять финансами бизнеса",
+        "Дискриминация при приёме на работу",
+        "Почему отказывают в регистрации товарного знака и как этого избежать",
+        "Как снять деньги с расчётного счёта ООО и не нарушить закон",
+        "Как защитить стартап: от идеи до успешного бизнеса"
+      ]
+    },
+    {
+      "query": "обучение без отрыва от работы",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Машинное обучение (ML)",
+        "Без паники: базовый набор документов для работы с ПДн",
+        "Организация работы с поставщиками товаров: от договора до претензий",
+        "Как выбрать схему работы с маркетплейсами",
+        "От производителя до потребителя: как стать дистрибьютором"
+      ]
+    },
+    {
+      "query": "курсы по продажам без опыта",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": [
+          "experience"
+        ]
+      },
+      "top5": [
+        "Топ-8 курсов по маркетплейсам",
+        "Подбор и адаптация команды продаж",
+        "Как контролировать качество продаж",
+        "Как бизнесу меньше зависеть от курса валют",
+        "Показатели эффективности менеджеров по продажам"
+      ]
+    },
+    {
+      "query": "исключая кредитные договоры",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Кредитные каникулы для бизнеса",
+        "Как предпринимателю оформить кредитные каникулы",
+        "Денежно-кредитная политика",
+        "Договор займа",
+        "Невозобновляемая кредитная линия"
+      ]
+    },
+    {
+      "query": "не только маркетинг, а также продажи",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Как контролировать качество продаж",
+        "Маркетинг",
+        "Контент-маркетинг здорового человека: как привлечь клиентов",
+        "Как использовать теорию поколений в маркетинге",
+        "Инфлюенс-маркетинг: как продвигать бизнес через блогеров"
+      ]
+    },
+    {
+      "query": "не только клиенты, но и сотрудники",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Маникюрная студия: открываем с экспертами",
+        "Врёшь, не уйдёшь: как помешать корпоративному мошенничеству",
+        "Как создать программу лояльности для клиентов салона красоты",
+        "Как проверить подлинность диплома сотрудника или соискателя",
+        "У меня зазвонил телефон: как общаться с клиентами"
+      ]
+    },
+    {
+      "query": "продажи, а не маркетинг но только онлайн",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Контент-маркетинг здорового человека: как привлечь клиентов",
+        "Что такое маркетинг 360 и как он работает?",
+        "Онлайн или офлайн: какой формат выбрать для бизнеса в 2026 году",
+        "Как контролировать качество продаж",
+        "Онлайн-кассы. Вопрос — ответ"
+      ]
+    },
+    {
+      "query": "не показывать курсы по кадрам",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Кадров на стройке не хватает: почему так и что делать бизнесу",
+        "Как бизнесу меньше зависеть от курса валют",
+        "Топ-8 курсов по маркетплейсам",
+        "Хочу расширить свой бизнес и не прогореть",
+        "USDT"
+      ]
+    },
+    {
+      "query": "налоги кроме НДС",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "НДС в 2026 году: как работает налог",
+        "НДС на УСН с 2026 года: что изменится и как не потерять прибыль",
+        "Отсрочка и рассрочка по налогам: как их получить",
+        "НДС в 2025 году: что меняется, а что остаётся",
+        "Налоги с продаж на маркетплейсе"
+      ]
+    },
+    {
+      "query": "все кроме курса по налогам",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": true,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "НДС в 2026 году: как работает налог",
+        "Отсрочка и рассрочка по налогам: как их получить",
+        "Курсовые разницы в налоге на прибыль",
+        "Налоги с продаж на маркетплейсе",
+        "Налоги и взносы ИП: полный иллюстрированный гайд"
+      ]
+    },
+    {
+      "query": "запуск бизнеса с нуля",
+      "expected": "plain",
+      "observed": "plain",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Вендинговый бизнес: руководство по запуску",
+        "Бизнес-план магазина одежды с нуля: выбираем нишу",
+        "Бизнес по грузоперевозкам с нуля: как стать боссом на колёсах",
+        "Что такое ресейл и как начать заниматься им с нуля",
+        "Запуск благотворительной акции: идеи и план действий для бизнеса"
+      ]
+    },
+    {
+      "query": "налоговая задолженность ИП",
+      "expected": "plain",
+      "observed": "plain",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Налоговая задолженность по ИП: как проверить и погасить",
+        "Дебиторская задолженность",
+        "Налоговые вычеты для ИП: ФНС, у нас отмена",
+        "Земельный налог для ИП и ООО",
+        "Налоговый вычет"
+      ]
+    },
+    {
+      "query": "обучение сотрудников маркетингу",
+      "expected": "plain",
+      "observed": "plain",
+      "matches_expectation": true,
+      "rules": {
+        "contrast_applied": false,
+        "excluded_terms": [],
+        "retention_expansion": false,
+        "unresolved_negation": false,
+        "debt_expansion": false,
+        "debt_unspecified": false,
+        "unsupported_constraints": []
+      },
+      "top5": [
+        "Маркетинг",
+        "Что такое маркетинг 360 и как он работает?",
+        "Контент-маркетинг здорового человека: как привлечь клиентов",
+        "Машинное обучение (ML)",
+        "Инфлюенс-маркетинг: как продвигать бизнес через блогеров"
+      ]
+    }
+  ]
+}

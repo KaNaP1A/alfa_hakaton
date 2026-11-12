@@ -1,0 +1,159 @@
+{
+  "assessment_source": "local_model_draft_not_human_gold",
+  "expected_pairs": 814,
+  "assessed_pairs": 814,
+  "graded_pairs": 814,
+  "queries": 75,
+  "fully_graded_queries": 75,
+  "excluded_incomplete_queries": [],
+  "models_by_pair": {
+    "freehuntx/qwen3-coder:8b": 27,
+    "gemma3:1b": 787
+  },
+  "quality": {
+    "validation": {
+      "historical_bm25": {
+        "queries": 6,
+        "families": 2,
+        "ndcg5_pooled": 0.4437497912574563,
+        "precision5_pooled": 0.2666666666666667,
+        "mrr5_pooled": 0.42222222222222217,
+        "recall5_judged": 0.39603174603174607,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "historical_ensemble": {
+        "queries": 6,
+        "families": 2,
+        "ndcg5_pooled": 0.6181991014890307,
+        "precision5_pooled": 0.43333333333333335,
+        "mrr5_pooled": 0.6527777777777778,
+        "recall5_judged": 0.5698412698412698,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "historical_hybrid": {
+        "queries": 6,
+        "families": 2,
+        "ndcg5_pooled": 0.5405833780791741,
+        "precision5_pooled": 0.36666666666666664,
+        "mrr5_pooled": 0.5555555555555556,
+        "recall5_judged": 0.3753968253968254,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "relevance": {
+        "queries": 6,
+        "families": 2,
+        "ndcg5_pooled": 0.6269360261136492,
+        "precision5_pooled": 0.5,
+        "mrr5_pooled": 0.6944444444444444,
+        "recall5_judged": 0.6992063492063492,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      }
+    },
+    "train": {
+      "historical_bm25": {
+        "queries": 54,
+        "families": 18,
+        "ndcg5_pooled": 0.48656224332495435,
+        "precision5_pooled": 0.17407407407407408,
+        "mrr5_pooled": 0.28302469135802466,
+        "recall5_judged": 0.403233392122281,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "historical_ensemble": {
+        "queries": 54,
+        "families": 18,
+        "ndcg5_pooled": 0.5309003463275481,
+        "precision5_pooled": 0.2111111111111111,
+        "mrr5_pooled": 0.37222222222222223,
+        "recall5_judged": 0.5282554379776602,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "historical_hybrid": {
+        "queries": 54,
+        "families": 18,
+        "ndcg5_pooled": 0.5862830408275941,
+        "precision5_pooled": 0.23333333333333334,
+        "mrr5_pooled": 0.43703703703703706,
+        "recall5_judged": 0.5673794826572605,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "relevance": {
+        "queries": 54,
+        "families": 18,
+        "ndcg5_pooled": 0.4369998829674341,
+        "precision5_pooled": 0.15925925925925927,
+        "mrr5_pooled": 0.31419753086419755,
+        "recall5_judged": 0.3291813639035861,
+        "judged5": 0.8407407407407408,
+        "returned5": 4.203703703703703,
+        "empty": 0.018518518518518517
+      }
+    },
+    "test": {
+      "historical_bm25": {
+        "queries": 15,
+        "families": 5,
+        "ndcg5_pooled": 0.621907776535984,
+        "precision5_pooled": 0.22666666666666666,
+        "mrr5_pooled": 0.5522222222222222,
+        "recall5_judged": 0.6444444444444445,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "historical_ensemble": {
+        "queries": 15,
+        "families": 5,
+        "ndcg5_pooled": 0.5742205440221628,
+        "precision5_pooled": 0.2,
+        "mrr5_pooled": 0.4577777777777778,
+        "recall5_judged": 0.6,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "historical_hybrid": {
+        "queries": 15,
+        "families": 5,
+        "ndcg5_pooled": 0.5723344303083274,
+        "precision5_pooled": 0.14666666666666667,
+        "mrr5_pooled": 0.36666666666666664,
+        "recall5_judged": 0.3833333333333333,
+        "judged5": 1.0,
+        "returned5": 5,
+        "empty": 0.0
+      },
+      "relevance": {
+        "queries": 15,
+        "families": 5,
+        "ndcg5_pooled": 0.3814298395655752,
+        "precision5_pooled": 0.14666666666666667,
+        "mrr5_pooled": 0.36333333333333334,
+        "recall5_judged": 0.4111111111111111,
+        "judged5": 0.6799999999999999,
+        "returned5": 3.4,
+        "empty": 0.26666666666666666
+      }
+    }
+  },
+  "hashes": {
+    "pool": "34199ee52be9644c62f7e41162aeba53b45005d151b17bdf27b4ce7a23a78e93",
+    "rankings": "3fb57aec08b03068f7a84431981ce56cf38b665a700150b61de19a0773d8d031",
+    "ratings": "4f2e139464afeaeabd19457516483591f751b2ceac355e001c018cf644e6abd8"
+  },
+  "limits": "Automatic diagnostic only. No human agreement or reliability established. Historical baseline snapshots can differ from current serving policies. NDCG ideal is computed over each entire pooled candidate set, not the full catalog. These numbers cannot be compared directly with earlier four-judgment NDCG. No training or threshold selection uses these draft labels."
+}

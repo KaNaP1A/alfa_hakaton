@@ -1,0 +1,777 @@
+{
+  "schema_version": 1,
+  "catalog_sha256": "904256290a10eeec3f1eaffec7636de032f294f53953a008839ded9f3263941f",
+  "source": "synthetic_title_and_description_fragments_not_real_queries",
+  "warning": "Weak positives and sampled unjudged negatives. This measures known-target retrieval, not actual relevance or purchase. Test target IDs and manually judged item IDs excluded from training.",
+  "split_counts": {
+    "train": 1406,
+    "validation": 187,
+    "test": 415
+  },
+  "source_counts": {
+    "title_fragment": 1042,
+    "description_without_title_words": 966
+  },
+  "validation_trials": [
+    {
+      "model": "content_PairLogit_depth3",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "bm25_body",
+        "bm25_lessons",
+        "cosine_card",
+        "cosine_body",
+        "cosine_lesson",
+        "query_coverage",
+        "title_coverage"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "full_no_selection_PairLogit_depth3",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "bm25_topics",
+        "bm25_tags",
+        "bm25_industries",
+        "bm25_body",
+        "bm25_lessons",
+        "cosine_card",
+        "cosine_body",
+        "cosine_lesson",
+        "query_coverage",
+        "title_coverage",
+        "topic_overlap",
+        "tag_overlap",
+        "industry_overlap",
+        "kind_article",
+        "kind_course",
+        "kind_document",
+        "kind_glossary",
+        "kind_podcast",
+        "kind_webinar",
+        "kind_calculator"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "full_no_selection_PairLogit_depth5",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "bm25_topics",
+        "bm25_tags",
+        "bm25_industries",
+        "bm25_body",
+        "bm25_lessons",
+        "cosine_card",
+        "cosine_body",
+        "cosine_lesson",
+        "query_coverage",
+        "title_coverage",
+        "topic_overlap",
+        "tag_overlap",
+        "industry_overlap",
+        "kind_article",
+        "kind_course",
+        "kind_document",
+        "kind_glossary",
+        "kind_podcast",
+        "kind_webinar",
+        "kind_calculator"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "full_no_selection_YetiRank_depth3",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "bm25_topics",
+        "bm25_tags",
+        "bm25_industries",
+        "bm25_body",
+        "bm25_lessons",
+        "cosine_card",
+        "cosine_body",
+        "cosine_lesson",
+        "query_coverage",
+        "title_coverage",
+        "topic_overlap",
+        "tag_overlap",
+        "industry_overlap",
+        "kind_article",
+        "kind_course",
+        "kind_document",
+        "kind_glossary",
+        "kind_podcast",
+        "kind_webinar",
+        "kind_calculator"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "full_no_selection_YetiRank_depth5",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "bm25_topics",
+        "bm25_tags",
+        "bm25_industries",
+        "bm25_body",
+        "bm25_lessons",
+        "cosine_card",
+        "cosine_body",
+        "cosine_lesson",
+        "query_coverage",
+        "title_coverage",
+        "topic_overlap",
+        "tag_overlap",
+        "industry_overlap",
+        "kind_article",
+        "kind_course",
+        "kind_document",
+        "kind_glossary",
+        "kind_podcast",
+        "kind_webinar",
+        "kind_calculator"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "minimal_PairLogit_depth3",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "cosine_card",
+        "query_coverage",
+        "title_coverage"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "minimal_PairLogit_depth5",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "cosine_card",
+        "query_coverage",
+        "title_coverage"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "minimal_YetiRank_depth3",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "cosine_card",
+        "query_coverage",
+        "title_coverage"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "minimal_YetiRank_depth5",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "cosine_card",
+        "query_coverage",
+        "title_coverage"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 1.0,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 1.0
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 1.0
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "content_PairLogit_depth5",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "bm25_body",
+        "bm25_lessons",
+        "cosine_card",
+        "cosine_body",
+        "cosine_lesson",
+        "query_coverage",
+        "title_coverage"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 0.997326,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 0.996403
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 0.994505
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "content_YetiRank_depth3",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "bm25_body",
+        "bm25_lessons",
+        "cosine_card",
+        "cosine_body",
+        "cosine_lesson",
+        "query_coverage",
+        "title_coverage"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 0.997326,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 0.996403
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 0.994505
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    },
+    {
+      "model": "content_YetiRank_depth5",
+      "features": [
+        "bm25_title",
+        "bm25_description",
+        "bm25_body",
+        "bm25_lessons",
+        "cosine_card",
+        "cosine_body",
+        "cosine_lesson",
+        "query_coverage",
+        "title_coverage"
+      ],
+      "validation": {
+        "queries": 187,
+        "mrr_at_10": 0.997326,
+        "target_hit_at_10": 1.0,
+        "candidate_recall": 1.0,
+        "mrr_by_kind": {
+          "article": {
+            "n": 139,
+            "mrr": 0.996403
+          },
+          "course": {
+            "n": 10,
+            "mrr": 1.0
+          },
+          "document": {
+            "n": 38,
+            "mrr": 1.0
+          }
+        },
+        "mrr_by_source": {
+          "description_without_title_words": {
+            "n": 91,
+            "mrr": 0.994505
+          },
+          "title_fragment": {
+            "n": 96,
+            "mrr": 1.0
+          }
+        }
+      }
+    }
+  ],
+  "selected_model": "content_PairLogit_depth3",
+  "baseline_test": {
+    "queries": 415,
+    "mrr_at_10": 0.780004,
+    "target_hit_at_10": 0.944578,
+    "candidate_recall": 1.0,
+    "mrr_by_kind": {
+      "article": {
+        "n": 309,
+        "mrr": 0.764128
+      },
+      "course": {
+        "n": 8,
+        "mrr": 0.875
+      },
+      "document": {
+        "n": 80,
+        "mrr": 0.812187
+      },
+      "glossary": {
+        "n": 12,
+        "mrr": 0.958333
+      },
+      "podcast": {
+        "n": 2,
+        "mrr": 0.555556
+      },
+      "webinar": {
+        "n": 4,
+        "mrr": 0.75
+      }
+    },
+    "mrr_by_source": {
+      "description_without_title_words": {
+        "n": 200,
+        "mrr": 0.634871
+      },
+      "title_fragment": {
+        "n": 215,
+        "mrr": 0.915011
+      }
+    }
+  },
+  "test_by_profile": {
+    "minimal": {
+      "model": "minimal_PairLogit_depth3",
+      "queries": 415,
+      "mrr_at_10": 0.995984,
+      "target_hit_at_10": 1.0,
+      "candidate_recall": 1.0,
+      "mrr_by_kind": {
+        "article": {
+          "n": 309,
+          "mrr": 0.994606
+        },
+        "course": {
+          "n": 8,
+          "mrr": 1.0
+        },
+        "document": {
+          "n": 80,
+          "mrr": 1.0
+        },
+        "glossary": {
+          "n": 12,
+          "mrr": 1.0
+        },
+        "podcast": {
+          "n": 2,
+          "mrr": 1.0
+        },
+        "webinar": {
+          "n": 4,
+          "mrr": 1.0
+        }
+      },
+      "mrr_by_source": {
+        "description_without_title_words": {
+          "n": 200,
+          "mrr": 1.0
+        },
+        "title_fragment": {
+          "n": 215,
+          "mrr": 0.992248
+        }
+      }
+    },
+    "content": {
+      "model": "content_PairLogit_depth3",
+      "queries": 415,
+      "mrr_at_10": 0.995984,
+      "target_hit_at_10": 1.0,
+      "candidate_recall": 1.0,
+      "mrr_by_kind": {
+        "article": {
+          "n": 309,
+          "mrr": 0.996224
+        },
+        "course": {
+          "n": 8,
+          "mrr": 1.0
+        },
+        "document": {
+          "n": 80,
+          "mrr": 0.99375
+        },
+        "glossary": {
+          "n": 12,
+          "mrr": 1.0
+        },
+        "podcast": {
+          "n": 2,
+          "mrr": 1.0
+        },
+        "webinar": {
+          "n": 4,
+          "mrr": 1.0
+        }
+      },
+      "mrr_by_source": {
+        "description_without_title_words": {
+          "n": 200,
+          "mrr": 0.9975
+        },
+        "title_fragment": {
+          "n": 215,
+          "mrr": 0.994574
+        }
+      }
+    },
+    "full_no_selection": {
+      "model": "full_no_selection_PairLogit_depth3",
+      "queries": 415,
+      "mrr_at_10": 0.997189,
+      "target_hit_at_10": 1.0,
+      "candidate_recall": 1.0,
+      "mrr_by_kind": {
+        "article": {
+          "n": 309,
+          "mrr": 0.996224
+        },
+        "course": {
+          "n": 8,
+          "mrr": 1.0
+        },
+        "document": {
+          "n": 80,
+          "mrr": 1.0
+        },
+        "glossary": {
+          "n": 12,
+          "mrr": 1.0
+        },
+        "podcast": {
+          "n": 2,
+          "mrr": 1.0
+        },
+        "webinar": {
+          "n": 4,
+          "mrr": 1.0
+        }
+      },
+      "mrr_by_source": {
+        "description_without_title_words": {
+          "n": 200,
+          "mrr": 1.0
+        },
+        "title_fragment": {
+          "n": 215,
+          "mrr": 0.994574
+        }
+      }
+    }
+  },
+  "manual_reviewed_58_not_blind": {
+    "baseline": {
+      "ndcg5_pooled": 0.609802,
+      "recall60_judged": 0.896552,
+      "judged_at_5": 0.251724
+    },
+    "minimal": {
+      "ndcg5_pooled": 0.602162,
+      "recall60_judged": 0.896552,
+      "judged_at_5": 0.248276
+    },
+    "content": {
+      "ndcg5_pooled": 0.61373,
+      "recall60_judged": 0.896552,
+      "judged_at_5": 0.258621
+    },
+    "full_no_selection": {
+      "ndcg5_pooled": 0.632781,
+      "recall60_judged": 0.896552,
+      "judged_at_5": 0.265517
+    }
+  }
+}

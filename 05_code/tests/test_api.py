@@ -43,6 +43,42 @@ class ApiTests(unittest.TestCase):
         finally:
             connection.close()
 
+    def test_default_search_works_without_optional_models(self):
+        status, result = self.request("/search", {"q": "кофейню"})
+        self.assertEqual(status, 200)
+        self.assertEqual(result["mode"], "bm25")
+
+    def post(self, path, body, headers=None):
+        connection = http.client.HTTPConnection("127.0.0.1", self.server.server_port, timeout=5)
+        try:
+            connection.request(
+                "POST",
+                path,
+                json.dumps(body),
+                {"Content-Type": "application/json", **(headers or {})},
+            )
+            response = connection.getresponse()
+            return response.status, json.loads(response.read())
+        finally:
+            connection.close()
+
+    def test_profile_endpoint_validates_generation_and_origin(self):
+        payload = {"generation": self.engine.generation, "categories": ["business"], "viewed": []}
+        status, result = self.post("/recommend", payload)
+        self.assertEqual(status, 200)
+        self.assertEqual(result["results"][0]["entity_key"], "article:1")
+        self.assertEqual(self.post("/recommend", {**payload, "generation": "stale"})[0], 400)
+        self.assertEqual(self.post("/recommend", {**payload, "viewed": ["bad"]})[0], 400)
+        self.assertEqual(self.post("/recommend", payload, {"Origin": "https://evil.test"})[0], 403)
+
+    def test_latency_summary_contains_no_query(self):
+        self.request("/search", {"q": "кофейня", "mode": "bm25"})
+        self.request("/search", {"q": "кофейня", "mode": "invalid"})
+        _, health = self.request("/health")
+        self.assertGreaterEqual(health["latency_ms"]["/search"]["n"], 1)
+        self.assertGreaterEqual(health["http_errors"]["/search"]["4xx"], 1)
+        self.assertNotIn("кофейня", json.dumps(health, ensure_ascii=False))
+
     def test_ui_assets_are_allowlisted_and_have_security_headers(self):
         for path, mime in [
             ("/", "text/html"),
@@ -111,6 +147,36 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(result["query"], "открыть коф")
         self.assertTrue(result["results"][0]["selection_match"])
+
+    def test_evidence_and_unverified_constraints_are_returned(self):
+        status, result = self.request(
+            "/search", {"q": "бесплатный курс по кофейне без опыта", "mode": "bm25"}
+        )
+        self.assertEqual(status, 200)
+        self.assertEqual(
+            set(result["query_rules"]["unsupported_constraints"]), {"price", "experience"}
+        )
+        self.assertTrue(result["results"])
+        self.assertTrue(result["results"][0]["evidence"]["facts"])
+        self.assertEqual(result["confidence"]["status"], "uncertain")
+
+    def test_clarification_preserves_query_and_selects_a_material(self):
+        query = "открыть столовую"
+        token = self.engine.clarifications.issue(query, {"kind": "material", "value": "article:1"})
+        status, result = self.request(
+            "/search", {"q": query, "mode": "bm25", "clarification_token": token}
+        )
+        self.assertEqual(status, 200)
+        self.assertEqual(result["query"], query)
+        self.assertEqual(result["focus"]["label"], "Как открыть кофейню")
+        self.assertEqual(result["results"][0]["entity_key"], "article:1")
+        self.assertNotEqual(result["confidence"]["status"], "uncertain")
+        self.assertEqual(
+            self.request(
+                "/search", {"q": "новый запрос", "mode": "bm25", "clarification_token": token}
+            )[0],
+            400,
+        )
 
     def test_bad_input_stale_selection_and_unknown_routes(self):
         for path, params in [

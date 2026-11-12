@@ -226,3 +226,88 @@ class SuggestionTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 with output_lock(root):
                     pass
+
+
+class RankingArtifactTests(unittest.TestCase):
+    def test_invalid_config_catalog_is_rejected(self):
+        with tempfile.TemporaryDirectory() as root:
+            path = write_bundle(root, [material("article:a", "Как открыть кофейню")])
+            atomic_json(
+                path / "ranking_config.json", {"catalog_sha256": "different", "parameters": {}}
+            )
+            with self.assertRaisesRegex(ValueError, "different catalog"):
+                SearchEngine(root)
+
+    def test_small_ranker_schema_integrity_and_output(self):
+        import importlib.util
+
+        if (
+            importlib.util.find_spec("catboost") is None
+            or importlib.util.find_spec("numpy") is None
+        ):
+            self.skipTest("CatBoost and NumPy are optional test dependencies")
+        import numpy as np
+        from catboost import CatBoostRanker, Pool
+
+        from alfa_reco.cli import sha256
+
+        with tempfile.TemporaryDirectory() as root:
+            catalog = [
+                material("article:a", "Как открыть кофейню"),
+                material("article:b", "Договор аренды"),
+            ]
+            path = write_bundle(root, catalog)
+            names = [
+                "bm25_title",
+                "bm25_description",
+                "cosine_card",
+                "query_coverage",
+                "title_coverage",
+            ]
+            model = CatBoostRanker(
+                iterations=2,
+                depth=2,
+                loss_function="PairLogit",
+                thread_count=1,
+                verbose=False,
+                allow_writing_files=False,
+            )
+            model.fit(
+                Pool(
+                    [[1, 0, 0.5, 1, 1], [0, 0, 0.1, 0, 0], [0, 0, 0.1, 0, 0], [1, 0, 0.5, 1, 1]],
+                    [1, 0, 0, 1],
+                    group_id=["a", "a", "b", "b"],
+                    feature_names=names,
+                )
+            )
+            model.save_model(str(path / "catboost_small.cbm"))
+            atomic_json(
+                path / "catboost_small_meta.json",
+                {
+                    "catalog_sha256": sha256(path / "catalog.json"),
+                    "model_sha256": sha256(path / "catboost_small.cbm"),
+                    "feature_names": names,
+                    "vectors_sha256": "test-vectors",
+                },
+            )
+            engine = SearchEngine(root)
+            engine.manifest["semantic"] = {"vectors_sha256": "test-vectors"}
+
+            class Encoder:
+                def encode(self, query, normalize_embeddings=True):
+                    return np.asarray([[1.0, 0.0]])
+
+            engine.encoder = Encoder()
+            engine.vectors = np.asarray([[1.0, 0.0], [0.0, 1.0]])
+            result = engine.search("кофейню", mode="catboost")
+            self.assertEqual(result["mode"], "catboost_experimental")
+            self.assertTrue(result["model_trained"])
+            self.assertEqual(result["results"][0]["entity_key"], "article:a")
+            self.assertIsNotNone(result["results"][0]["scores"]["catboost"])
+            from alfa_reco.retrieval import RankingConfig
+
+            with self.assertRaisesRegex(ValueError, "retrain"):
+                engine.search("кофейню", mode="catboost", ranking_config=RankingConfig(bm25_b=0))
+            (path / "catboost_small.cbm").write_bytes(b"corrupted")
+            with self.assertRaisesRegex(ValueError, "corrupt"):
+                engine.search("кофейню", mode="catboost")

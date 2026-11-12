@@ -1,0 +1,404 @@
+{
+  "description": "Проверка разработчика, предварительные метки, не независимый gold; порог разработан на этом наборе.",
+  "summary": {
+    "present": {
+      "n": 16,
+      "uncertain": 0
+    },
+    "absent": {
+      "n": 16,
+      "uncertain": 16
+    }
+  },
+  "latency_ms": {
+    "n": 32,
+    "p50": 42.4,
+    "p95": 61.4
+  },
+  "results": [
+    {
+      "query": "кофейня",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6893,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+      "elapsed_ms": 284.6
+    },
+    {
+      "query": "договор аренды",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7167,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Договор аренды нежилого помещения",
+      "elapsed_ms": 41.3
+    },
+    {
+      "query": "налоги ИП",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.8609,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Земельный налог для ИП и ООО",
+      "elapsed_ms": 57.7
+    },
+    {
+      "query": "маркетинг",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7185,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Маркетинг",
+      "elapsed_ms": 44.5
+    },
+    {
+      "query": "удержать сотрудников",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7116,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Как управлять командой",
+      "elapsed_ms": 44.0
+    },
+    {
+      "query": "лояльность клиентов",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.8387,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Программа лояльности",
+      "elapsed_ms": 49.4
+    },
+    {
+      "query": "франшиза",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.8491,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Сколько стоит купить франшизу",
+      "elapsed_ms": 33.6
+    },
+    {
+      "query": "найм персонала",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7239,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Автоматизация найма с помощью ИИ: гайд для HR",
+      "elapsed_ms": 48.8
+    },
+    {
+      "query": "банкротство",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7479,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Банкротство",
+      "elapsed_ms": 37.2
+    },
+    {
+      "query": "открыть пекарню",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6796,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Как открыть пекарню с нуля: пошаговый чек-лист",
+      "elapsed_ms": 37.7
+    },
+    {
+      "query": "налоги самозанятого",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.8203,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Налоги с продаж на маркетплейсе",
+      "elapsed_ms": 48.0
+    },
+    {
+      "query": "кассовый разрыв",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6864,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Кассовый разрыв — не приговор: как управлять финансами бизнеса",
+      "elapsed_ms": 34.6
+    },
+    {
+      "query": "реклама",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7011,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Нативная реклама",
+      "elapsed_ms": 38.1
+    },
+    {
+      "query": "товарный знак",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6931,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Товарный знак для франшизы",
+      "elapsed_ms": 38.5
+    },
+    {
+      "query": "бухгалтерия",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6852,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Сличительная ведомость (форма ИНВ-18)",
+      "elapsed_ms": 34.0
+    },
+    {
+      "query": "погасить задолженность",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7415,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Налоговая задолженность по ИП: как проверить и погасить",
+      "elapsed_ms": 40.0
+    },
+    {
+      "query": "frontend",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.5787,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "SKU",
+      "elapsed_ms": 32.6
+    },
+    {
+      "query": "фронтенд",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.9064,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Как составить техническое задание на оказание услуг",
+      "elapsed_ms": 36.7
+    },
+    {
+      "query": "астрофотография",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3507,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Обновлённая форма ЕФС-1: инструкция по применению",
+      "elapsed_ms": 42.4
+    },
+    {
+      "query": "пианино",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.4164,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Нестандартные товарные знаки. Как зарегистрировать звук или аромат",
+      "elapsed_ms": 45.2
+    },
+    {
+      "query": "фывпролджэ",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.8715,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Пассивы",
+      "elapsed_ms": 29.8
+    },
+    {
+      "query": "фотосинтез",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.4076,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Где найти хорошие и легальные картинки для сайта",
+      "elapsed_ms": 43.3
+    },
+    {
+      "query": "ремонт велосипеда",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.4045,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Дефектная ведомость",
+      "elapsed_ms": 47.9
+    },
+    {
+      "query": "вязание крючком",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.5,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Запуск благотворительной акции: идеи и план действий для бизнеса",
+      "elapsed_ms": 55.0
+    },
+    {
+      "query": "орнитология",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.511,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Пассивы",
+      "elapsed_ms": 34.8
+    },
+    {
+      "query": "метеорология",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.4757,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Производственный календарь на июнь 2025 года",
+      "elapsed_ms": 42.9
+    },
+    {
+      "query": "аквариумистика",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.5905,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Пассивы",
+      "elapsed_ms": 31.1
+    },
+    {
+      "query": "спортивные танцы",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3741,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Бизнес-идеи в Тюмени для начинающих и опытных предпринимателей",
+      "elapsed_ms": 58.5
+    },
+    {
+      "query": "как выращивать орхидеи дома",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3867,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Вижу цель — не вижу затрат: бизнес-идеи в Новосибирске",
+      "elapsed_ms": 61.4
+    },
+    {
+      "query": "кулинарный мастер класс",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.569,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Бизнес-идеи для успешного старта во Владимире в 2026 году",
+      "elapsed_ms": 60.9
+    },
+    {
+      "query": "как приготовить борщ",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.6234,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Ресторан в цифрах: ключевые показатели экономики",
+      "elapsed_ms": 39.4
+    },
+    {
+      "query": "ремонт стиральной машины",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3797,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Договор купли продажи машины между ИП и юрлицом",
+      "elapsed_ms": 64.2
+    }
+  ]
+}

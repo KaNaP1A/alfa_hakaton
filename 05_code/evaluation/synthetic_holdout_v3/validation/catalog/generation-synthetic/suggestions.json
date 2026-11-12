@@ -1,0 +1,4028 @@
+{
+  "schema_version": 1,
+  "catalog_sha256": "1829e3471a81be5be1d877f0727215820533a16a0211a59c2d077d02b6265f05",
+  "entries": [
+    {
+      "id": "006410cd838dbc38f9e1ba20",
+      "kind": "phrase",
+      "label": "нового",
+      "entity_keys": [
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "00b6eb5ebbe5cc1963ca401b",
+      "kind": "phrase",
+      "label": "Настройка принтера",
+      "entity_keys": [
+        "document:0ec7988176e6d9a1a5452f5a",
+        "webinar:aeb44fa7ff5deaad0e3f633c"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "01659039247b081c4bd7ffbd",
+      "kind": "phrase",
+      "label": "нового заказа",
+      "entity_keys": [
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "02fb516b42f43741260b01ba",
+      "kind": "topics",
+      "label": "Инновации",
+      "entity_keys": [
+        "article:9cccad868fb11efc6de3bbc4",
+        "course:0ec7361adfa884adc467d362",
+        "document:08069f03f7c34b1fc73b9b5b",
+        "webinar:8094c7d69ab1f654ff078fe4"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "03143fa90174fbfd4204900b",
+      "kind": "phrase",
+      "label": "Контроль холодовой цепи",
+      "entity_keys": [
+        "article:57564fd123f4acfb20a6a759",
+        "course:6d9d95ce7ef54c67e8c03115"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "03d5dd041f87fa130ea1bd4e",
+      "kind": "phrase",
+      "label": "Оформление отпуска",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "05cf8e27a32f85a3a5b786cb",
+      "kind": "phrase",
+      "label": "сотрудника магазина",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "0621298b95cc700d596961be",
+      "kind": "phrase",
+      "label": "покупки",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "091bfc7bc9d1ddfca378d546",
+      "kind": "phrase",
+      "label": "Повышение",
+      "entity_keys": [
+        "article:95e37d116ac4ac820635b38d",
+        "course:80baf503d1c11cfd6b8fbd25",
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "0b3a874c0cd78ad7b8ee79e3",
+      "kind": "topics",
+      "label": "Производство",
+      "entity_keys": [
+        "article:c352a13bb1b372555767b276",
+        "course:f51b480638bb7b131405d0ab",
+        "document:71b29ba6a8d51bd51e4b85e5",
+        "webinar:63d3becd993ced77e0019a0f"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "0b6860619adb28c1baf6c70d",
+      "kind": "phrase",
+      "label": "причин",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "0c3965ccb319f5fb3e578df4",
+      "kind": "phrase",
+      "label": "Обслуживание кассового оборудования",
+      "entity_keys": [
+        "document:99ad7c0e2c17b6cdbe011d76",
+        "webinar:6e719b79a8190bfbcff285fb"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "0e90713a4b2713af0f6067e1",
+      "kind": "phrase",
+      "label": "дизайна",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "0ed53749723689d1607ba5b0",
+      "kind": "phrase",
+      "label": "учебного",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:19b649b640ddd43555a3c32a",
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "11ad791db0e8d4fea5e008ff",
+      "kind": "phrase",
+      "label": "Обслуживание",
+      "entity_keys": [
+        "document:99ad7c0e2c17b6cdbe011d76",
+        "webinar:6e719b79a8190bfbcff285fb"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "11b6a26d49b5b7386bbb84db",
+      "kind": "phrase",
+      "label": "Планирование маршрутов",
+      "entity_keys": [
+        "article:c205907b773b347aa647db32",
+        "course:0335599686f781abb9ddb8b0"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "13c32c89efce312b23bb9210",
+      "kind": "phrase",
+      "label": "кассового",
+      "entity_keys": [
+        "document:99ad7c0e2c17b6cdbe011d76",
+        "webinar:6e719b79a8190bfbcff285fb"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "1443ced1b9a5d7ae4a3bde24",
+      "kind": "phrase",
+      "label": "продукции",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "article:57564fd123f4acfb20a6a759",
+        "article:c352a13bb1b372555767b276",
+        "course:6d9d95ce7ef54c67e8c03115",
+        "course:da71f838e952a9349980f897",
+        "course:f51b480638bb7b131405d0ab"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "14b591d082e151788b6d7113",
+      "kind": "phrase",
+      "label": "пропусков в таблице",
+      "entity_keys": [
+        "article:23bb5a52c86558a0b2325a9d",
+        "course:912e8f832816565d11ff0605"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "1502c7ec8eef0104697065a9",
+      "kind": "phrase",
+      "label": "причин отказа клиентов",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "152ed9b40e54bf9b8e2b76c4",
+      "kind": "phrase",
+      "label": "Оценка освоения материала",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:19b649b640ddd43555a3c32a"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "15b9b16766f8a9c0b6113634",
+      "kind": "phrase",
+      "label": "упаковки",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "15d67f1510977cde5570f5f4",
+      "kind": "phrase",
+      "label": "запуска",
+      "entity_keys": [
+        "article:9cccad868fb11efc6de3bbc4",
+        "course:0ec7361adfa884adc467d362"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "1712c419f6cde366dc58457f",
+      "kind": "phrase",
+      "label": "магазина",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "1760d29059e28095a80509c1",
+      "kind": "phrase",
+      "label": "действующим",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "1782c89af29633b8b9c7cdcc",
+      "kind": "title",
+      "label": "Оценка освоения материала",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:19b649b640ddd43555a3c32a"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "178ba8824f37cf4fe504d067",
+      "kind": "phrase",
+      "label": "аренды",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "article:b774512b065646d50a76e7af",
+        "course:5998236bf6a96c984844d790",
+        "course:cae37e9a65da2256b3b95d27",
+        "document:39d45e212b4c5ee81b5c7bbb",
+        "webinar:5a685d70263a5d1ef58f83d3"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "17dad8550d71878ed217409c",
+      "kind": "phrase",
+      "label": "товаров",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "19125f4ba88b4d619ab7ac81",
+      "kind": "title",
+      "label": "Поиск пропусков в таблице",
+      "entity_keys": [
+        "article:23bb5a52c86558a0b2325a9d",
+        "course:912e8f832816565d11ff0605"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "19b874a37a8a64888cbd1485",
+      "kind": "phrase",
+      "label": "платы",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "1a35dd226b4bf4ebce5dfdac",
+      "kind": "phrase",
+      "label": "Обработка возврата",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "1bf26ad5571f70a1276d9177",
+      "kind": "phrase",
+      "label": "отходов",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "1c8cd4fba99a2a07c7aee866",
+      "kind": "title",
+      "label": "Подбор кредитного продукта",
+      "entity_keys": [
+        "document:f160f6bb3644a1ff739080fa",
+        "webinar:c70314f4b54114bd34b5d6d0"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "1d20e97f71c2ed5eaf5fe702",
+      "kind": "phrase",
+      "label": "сбор отходов",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "1f078c3d0d0a253da00e797c",
+      "kind": "phrase",
+      "label": "продуктов для производства",
+      "entity_keys": [
+        "document:ee0323ab50e2922c1fae8152",
+        "webinar:891a1132809841347c503b3d"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "1fedeedf7fb123b91b0c2578",
+      "kind": "phrase",
+      "label": "Закупка офисных кресел",
+      "entity_keys": [
+        "document:71b29ba6a8d51bd51e4b85e5",
+        "webinar:63d3becd993ced77e0019a0f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "2086eee25622ec46eb9e475b",
+      "kind": "phrase",
+      "label": "данных после",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "20c0ce7f652d77815301f4df",
+      "kind": "phrase",
+      "label": "оборудования закрытого",
+      "entity_keys": [
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "219b5e27de2ad05c51dfa066",
+      "kind": "phrase",
+      "label": "Снижение риска фишинга",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "course:8fe50648e3c59726d94a9201"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "223aeda8dfd71637aadc89fd",
+      "kind": "phrase",
+      "label": "резервных копий",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de",
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "227a176b99cfa6193051f2fc",
+      "kind": "phrase",
+      "label": "пропусков",
+      "entity_keys": [
+        "article:23bb5a52c86558a0b2325a9d",
+        "course:912e8f832816565d11ff0605"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "243a2cf866701a47ac95324e",
+      "kind": "phrase",
+      "label": "Подписание",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "25ac42be481d1efe5c5faabb",
+      "kind": "phrase",
+      "label": "класса",
+      "entity_keys": [
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "25d832d3a481b5e03ab05404",
+      "kind": "topics",
+      "label": "Документы",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790",
+        "document:39d45e212b4c5ee81b5c7bbb",
+        "webinar:5a685d70263a5d1ef58f83d3"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "26bb89165e296722a01ce8c6",
+      "kind": "topics",
+      "label": "Финансы",
+      "entity_keys": [
+        "article:3e0afe212c6ba062460244eb",
+        "course:18bf6cfab44150407bedf2b1",
+        "document:bfcea3b9ada10236f6c902fa",
+        "webinar:5c599416c30813410e12707e"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "26be25eccb78e6853ec3271d",
+      "kind": "phrase",
+      "label": "Проверка",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "article:870a34e30ff4e30449d8fd56",
+        "article:9cccad868fb11efc6de3bbc4",
+        "article:e06d79f087774334e9c60f03",
+        "course:0ec7361adfa884adc467d362",
+        "course:50e342694ccf8c40bc3e84de",
+        "course:8fe50648e3c59726d94a9201",
+        "course:f3e3c9340eac8deb09b95a82"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "27aa7ed53ad89a6b95c4be0b",
+      "kind": "phrase",
+      "label": "действующего",
+      "entity_keys": [
+        "document:08069f03f7c34b1fc73b9b5b",
+        "webinar:8094c7d69ab1f654ff078fe4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "289c3eda6cfb704a11443be8",
+      "kind": "phrase",
+      "label": "освоения материала",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:19b649b640ddd43555a3c32a"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "2b6fc2031631d6d0086e5352",
+      "kind": "phrase",
+      "label": "сбоя",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "2bf8830342d27a37c3d77294",
+      "kind": "phrase",
+      "label": "салона",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27",
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "2d879d361cdd8d92ebd3d978",
+      "kind": "phrase",
+      "label": "принтера в офисе",
+      "entity_keys": [
+        "document:0ec7988176e6d9a1a5452f5a",
+        "webinar:aeb44fa7ff5deaad0e3f633c"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "2dba03f50158eca7274b71eb",
+      "kind": "phrase",
+      "label": "офисных кресел",
+      "entity_keys": [
+        "document:71b29ba6a8d51bd51e4b85e5",
+        "webinar:63d3becd993ced77e0019a0f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "2f3023d31a999dcc491587c1",
+      "kind": "phrase",
+      "label": "заказа",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f",
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "2f37cfc5efc1e14e2fe13a6a",
+      "kind": "title",
+      "label": "Снижение риска фишинга",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "course:8fe50648e3c59726d94a9201"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "2fae9e83a9a9ff3a1e01d819",
+      "kind": "phrase",
+      "label": "Подбор персонала",
+      "entity_keys": [
+        "document:e2b8c9ef64ceed6156d9396a",
+        "webinar:5259fe433caadc8b449ac55f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "2fecb0f531907ca76a4f95f8",
+      "kind": "phrase",
+      "label": "отпуска",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "3155ecf97d9e05d46f3ad73b",
+      "kind": "title",
+      "label": "Раздельный сбор отходов в офисе",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "3175f56d79c13e1d04237641",
+      "kind": "phrase",
+      "label": "договора",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790",
+        "document:39d45e212b4c5ee81b5c7bbb",
+        "webinar:5a685d70263a5d1ef58f83d3"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "31f6e6a1dde5f24683d0b48f",
+      "kind": "title",
+      "label": "Покупка мебели для учебного класса",
+      "entity_keys": [
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "329ee423f313bfd0ff2da1db",
+      "kind": "title",
+      "label": "Контроль качества продукции",
+      "entity_keys": [
+        "article:c352a13bb1b372555767b276",
+        "course:f51b480638bb7b131405d0ab"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "33799abd8ecc45ea6e209079",
+      "kind": "phrase",
+      "label": "Повышение заработной",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "33dc7963eafea57193ee75ff",
+      "kind": "phrase",
+      "label": "старых резервных копий",
+      "entity_keys": [
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "33ef72473fa544fbbc307664",
+      "kind": "phrase",
+      "label": "Прекращение договора",
+      "entity_keys": [
+        "document:39d45e212b4c5ee81b5c7bbb",
+        "webinar:5a685d70263a5d1ef58f83d3"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "3603633c3e6f694ad95b224c",
+      "kind": "title",
+      "label": "Подписание договора аренды помещения",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "367555dc7031cbe1ccc79707",
+      "kind": "phrase",
+      "label": "мебели для учебного",
+      "entity_keys": [
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "36e900693bce2a3bbfd4a8f6",
+      "kind": "title",
+      "label": "Выбор офисного освещения",
+      "entity_keys": [
+        "document:6647c991c6a998188d41a751",
+        "webinar:a299a1365d71421e80ae25ee"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "375d733302c602004bb0695d",
+      "kind": "phrase",
+      "label": "договора аренды помещения",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "37e28e7cec48b1aaa30d08c7",
+      "kind": "phrase",
+      "label": "бизнеса",
+      "entity_keys": [
+        "document:08069f03f7c34b1fc73b9b5b",
+        "webinar:8094c7d69ab1f654ff078fe4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "3af28ddc9e446a0aaf22da48",
+      "kind": "phrase",
+      "label": "Ремонт гостиничных",
+      "entity_keys": [
+        "document:f2c578867ae4b795c6ef1483",
+        "webinar:e3791175205eb62723952773"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "3b867083e011a0da80a49ad5",
+      "kind": "phrase",
+      "label": "сотрудника",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "3c5fd3280283cd4e5bebdf72",
+      "kind": "phrase",
+      "label": "Подготовка к собеседованию",
+      "entity_keys": [
+        "article:4cf5f156d41d3cce75d0d1e8",
+        "course:55dc2e070e93784428876e6f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "3dea48da120cd53a8ed11767",
+      "kind": "phrase",
+      "label": "закрытого салона",
+      "entity_keys": [
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "3ed191df99e85e3b4e2d003b",
+      "kind": "phrase",
+      "label": "действующим сотрудникам",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "3febb12ae2d4b1409ccfcbd2",
+      "kind": "phrase",
+      "label": "надёжности поставщиков",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "course:f3e3c9340eac8deb09b95a82"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "411b6864d47666b48f71c230",
+      "kind": "title",
+      "label": "Повышение заработной платы действующим сотрудникам",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "41296a9f1fc33c5a01e5215f",
+      "kind": "title",
+      "label": "Выбор дизайна транспортной упаковки",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "418c83b036884878ca2f1a39",
+      "kind": "phrase",
+      "label": "освоения",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:19b649b640ddd43555a3c32a"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "425e21ef2b189f4e203ed172",
+      "kind": "phrase",
+      "label": "Восстановление данных после",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "42745ed39cad2c592271020c",
+      "kind": "phrase",
+      "label": "материалов",
+      "entity_keys": [
+        "article:c1eea40bf0d86d601367c0e6",
+        "course:3aad07c37c857151ab8436cc"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "42ad488f0e29ccd88b6b6f7b",
+      "kind": "phrase",
+      "label": "План выкладки товаров",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "4399d64f834636f4179f8473",
+      "kind": "phrase",
+      "label": "копий",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de",
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "43df64308eed3eab0a600add",
+      "kind": "title",
+      "label": "Закупка офисных кресел",
+      "entity_keys": [
+        "document:71b29ba6a8d51bd51e4b85e5",
+        "webinar:63d3becd993ced77e0019a0f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "43fc9c71b7496a2b9c76bb31",
+      "kind": "phrase",
+      "label": "Оценка надёжности поставщиков",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "course:f3e3c9340eac8deb09b95a82"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "452ca1559e51baa24c7b1f16",
+      "kind": "phrase",
+      "label": "План",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "45620cd7507e7c0ac0e12742",
+      "kind": "phrase",
+      "label": "риска фишинга",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "course:8fe50648e3c59726d94a9201"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "458fec25c995de4cab005b1d",
+      "kind": "title",
+      "label": "Продажа действующего бизнеса",
+      "entity_keys": [
+        "document:08069f03f7c34b1fc73b9b5b",
+        "webinar:8094c7d69ab1f654ff078fe4"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "45e94da41572d5ecf730648d",
+      "kind": "title",
+      "label": "Планирование маршрутов доставки",
+      "entity_keys": [
+        "article:c205907b773b347aa647db32",
+        "course:0335599686f781abb9ddb8b0"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "465ecd085f4b26a69f6b8e3c",
+      "kind": "topics",
+      "label": "Обучение",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:19b649b640ddd43555a3c32a",
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "47e308b7dbda09b62c96b13d",
+      "kind": "phrase",
+      "label": "Повышение заполняемости отеля",
+      "entity_keys": [
+        "article:95e37d116ac4ac820635b38d",
+        "course:80baf503d1c11cfd6b8fbd25"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "48055dfdd99e15a8ab52fbee",
+      "kind": "phrase",
+      "label": "закрытого",
+      "entity_keys": [
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "48f0352ce03640e336db6b08",
+      "kind": "title",
+      "label": "Восстановление данных после сбоя",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "4930629d6ea88f42f90570ad",
+      "kind": "title",
+      "label": "Подготовка к собеседованию кандидата",
+      "entity_keys": [
+        "article:4cf5f156d41d3cce75d0d1e8",
+        "course:55dc2e070e93784428876e6f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "499ec595e067b29b335096fa",
+      "kind": "phrase",
+      "label": "договор",
+      "entity_keys": [
+        "document:6e063e21a87ecf98f524bea4",
+        "webinar:0c57a51f813aeb1b71ef25c5"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "4b468581493b412876b85f0c",
+      "kind": "phrase",
+      "label": "после",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "article:e06d79f087774334e9c60f03",
+        "course:19b649b640ddd43555a3c32a",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "4f49a05cb58f2b0289ae64e1",
+      "kind": "phrase",
+      "label": "Подписание договора",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "500c03cfc3807f3ab68fd5d0",
+      "kind": "phrase",
+      "label": "оборудования",
+      "entity_keys": [
+        "document:59d1af36f3a8a7e72b950988",
+        "document:99ad7c0e2c17b6cdbe011d76",
+        "webinar:5401d6c3e7544d88ab7842ad",
+        "webinar:6e719b79a8190bfbcff285fb"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "50d46061835f377920455429",
+      "kind": "topics",
+      "label": "Закупки",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "course:f3e3c9340eac8deb09b95a82",
+        "document:6e063e21a87ecf98f524bea4",
+        "webinar:0c57a51f813aeb1b71ef25c5"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "519103225358fe9473489673",
+      "kind": "phrase",
+      "label": "Создание рекламного баннера",
+      "entity_keys": [
+        "document:b9416320966852c64615ae1d",
+        "webinar:63aee2f6fb8198c9525719bf"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5271f90ce785d0e2cc111fbe",
+      "kind": "phrase",
+      "label": "расторгнуть договор",
+      "entity_keys": [
+        "document:6e063e21a87ecf98f524bea4",
+        "webinar:0c57a51f813aeb1b71ef25c5"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "528c905b215c4736d49ab5a4",
+      "kind": "phrase",
+      "label": "резервных",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de",
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5418c627d62c249203a30aa2",
+      "kind": "phrase",
+      "label": "после сбоя",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "55e656153d7b8a949f7b37bd",
+      "kind": "phrase",
+      "label": "кресел",
+      "entity_keys": [
+        "document:71b29ba6a8d51bd51e4b85e5",
+        "webinar:63d3becd993ced77e0019a0f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "56a701139abecd636c8f63c1",
+      "kind": "phrase",
+      "label": "аренды помещения",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "5819df81d00a8a531a9df2ee",
+      "kind": "phrase",
+      "label": "Отправка нового заказа",
+      "entity_keys": [
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5a25a5b52b9cd8bf72953f4f",
+      "kind": "topics",
+      "label": "Образование",
+      "entity_keys": [
+        "article:c1eea40bf0d86d601367c0e6",
+        "course:3aad07c37c857151ab8436cc",
+        "document:f160f6bb3644a1ff739080fa",
+        "webinar:c70314f4b54114bd34b5d6d0"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "5ae47dd2327c1b1e125389c8",
+      "kind": "phrase",
+      "label": "платы действующим сотрудникам",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5b25e4d15a0699d28218e39c",
+      "kind": "phrase",
+      "label": "офисного",
+      "entity_keys": [
+        "document:6647c991c6a998188d41a751",
+        "webinar:a299a1365d71421e80ae25ee"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5b57e309b44cc3d8c7bb4ad2",
+      "kind": "phrase",
+      "label": "отпуска сотрудника",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5c8ab3927b0fb0b6f46c75a2",
+      "kind": "phrase",
+      "label": "поступлений",
+      "entity_keys": [
+        "article:3e0afe212c6ba062460244eb",
+        "course:18bf6cfab44150407bedf2b1"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5da989f57160c953dd73c0e3",
+      "kind": "phrase",
+      "label": "отказа клиентов",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "5dc04c576f4db196bc39e1ec",
+      "kind": "phrase",
+      "label": "мебели",
+      "entity_keys": [
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5e2675fa1a0808979266da2c",
+      "kind": "phrase",
+      "label": "Покупка",
+      "entity_keys": [
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5e2be1ed4f06425021dc4d7a",
+      "kind": "phrase",
+      "label": "Сбор",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "article:92d9e4fe8fa0434eda865238",
+        "course:15cb40604aca552856a8316f",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5e5e92f02100610c93f05fa6",
+      "kind": "phrase",
+      "label": "доставки",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "article:c205907b773b347aa647db32",
+        "course:0335599686f781abb9ddb8b0",
+        "course:e84f18402ea31c48cd4d3dc7"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "5f324855d471688a5e79476e",
+      "kind": "phrase",
+      "label": "персонала",
+      "entity_keys": [
+        "document:e2b8c9ef64ceed6156d9396a",
+        "webinar:5259fe433caadc8b449ac55f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "60febc789920f9ad9918c672",
+      "kind": "phrase",
+      "label": "цепи",
+      "entity_keys": [
+        "article:57564fd123f4acfb20a6a759",
+        "course:6d9d95ce7ef54c67e8c03115"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "610a0fc42cae707e7138bc4f",
+      "kind": "phrase",
+      "label": "расторгнуть",
+      "entity_keys": [
+        "document:6e063e21a87ecf98f524bea4",
+        "webinar:0c57a51f813aeb1b71ef25c5"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "625c04ce5563ea4cab5a6ef3",
+      "kind": "phrase",
+      "label": "запуска продукта",
+      "entity_keys": [
+        "article:9cccad868fb11efc6de3bbc4",
+        "course:0ec7361adfa884adc467d362"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "6279ad7a9f5147075bece0b7",
+      "kind": "phrase",
+      "label": "заработной платы",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "62bde2ef8626b6fec1194a72",
+      "kind": "phrase",
+      "label": "Продажа",
+      "entity_keys": [
+        "document:08069f03f7c34b1fc73b9b5b",
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad",
+        "webinar:8094c7d69ab1f654ff078fe4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "643fa07d76a1f6a951d1c796",
+      "kind": "title",
+      "label": "План выкладки товаров на полке",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "64c57ebd76e9ce4f5d475ca1",
+      "kind": "phrase",
+      "label": "Раздельный сбор отходов",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "6655885af48cb11098f917bf",
+      "kind": "phrase",
+      "label": "карты",
+      "entity_keys": [
+        "document:bfcea3b9ada10236f6c902fa",
+        "webinar:5c599416c30813410e12707e"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "68ff8e74226ab892e3fdf118",
+      "kind": "phrase",
+      "label": "материала",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:19b649b640ddd43555a3c32a"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "6ab935793fea7d4014ed41e6",
+      "kind": "phrase",
+      "label": "нового заказа покупателю",
+      "entity_keys": [
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "6b9d516394c6c7ad0abb170a",
+      "kind": "title",
+      "label": "Повышение заполняемости отеля",
+      "entity_keys": [
+        "article:95e37d116ac4ac820635b38d",
+        "course:80baf503d1c11cfd6b8fbd25"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "6c41d87b5dbbb3e99e6d3d43",
+      "kind": "phrase",
+      "label": "Контроль качества продукции",
+      "entity_keys": [
+        "article:c352a13bb1b372555767b276",
+        "course:f51b480638bb7b131405d0ab"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "6d01c50b7b3506dbd6941f18",
+      "kind": "phrase",
+      "label": "Выбор дизайна транспортной",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "6e2db4313a3d8780aefda709",
+      "kind": "phrase",
+      "label": "Выбор",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27",
+        "document:40cde5c63718ec7fdea1cb5a",
+        "document:6647c991c6a998188d41a751",
+        "webinar:a299a1365d71421e80ae25ee",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "6e8fd3581d9716352564c048",
+      "kind": "phrase",
+      "label": "Закупка продуктов",
+      "entity_keys": [
+        "document:ee0323ab50e2922c1fae8152",
+        "webinar:891a1132809841347c503b3d"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "6ea0d9d0b7fef737149815d5",
+      "kind": "phrase",
+      "label": "персонала в отдел",
+      "entity_keys": [
+        "document:e2b8c9ef64ceed6156d9396a",
+        "webinar:5259fe433caadc8b449ac55f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "70bb60cc3bbc15395c80ece0",
+      "kind": "phrase",
+      "label": "производства",
+      "entity_keys": [
+        "document:ee0323ab50e2922c1fae8152",
+        "webinar:891a1132809841347c503b3d"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "71ae0f811e82f411b5c6b7be",
+      "kind": "topics",
+      "label": "Цифровая безопасность",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "course:8fe50648e3c59726d94a9201",
+        "document:0ec7988176e6d9a1a5452f5a",
+        "webinar:aeb44fa7ff5deaad0e3f633c"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "725120f09fc9ffa89f6ab039",
+      "kind": "phrase",
+      "label": "продуктов",
+      "entity_keys": [
+        "document:ee0323ab50e2922c1fae8152",
+        "webinar:891a1132809841347c503b3d"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "72606c8e4d193cd1a746df48",
+      "kind": "phrase",
+      "label": "продаж на площадке",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "course:e84f18402ea31c48cd4d3dc7"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "73fa5dd8a3a193d5999a459a",
+      "kind": "phrase",
+      "label": "Подбор кредитного",
+      "entity_keys": [
+        "document:f160f6bb3644a1ff739080fa",
+        "webinar:c70314f4b54114bd34b5d6d0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "78154b6a320e1b39e26df0a6",
+      "kind": "phrase",
+      "label": "Раздельный",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "7819bcd5f188227aa54d6276",
+      "kind": "phrase",
+      "label": "заполняемости",
+      "entity_keys": [
+        "article:95e37d116ac4ac820635b38d",
+        "course:80baf503d1c11cfd6b8fbd25"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "781b753a11b4cca96537935e",
+      "kind": "phrase",
+      "label": "Выбор местоположения парикмахерской",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "78fd4522d02788fef6dbd184",
+      "kind": "phrase",
+      "label": "старых",
+      "entity_keys": [
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "79c01677cc2f20b142508603",
+      "kind": "phrase",
+      "label": "маршрутов",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "article:c205907b773b347aa647db32",
+        "course:0335599686f781abb9ddb8b0",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "7ba3cd175e55b8dd0f185c64",
+      "kind": "phrase",
+      "label": "местоположения",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "7c5a5c404555aef595447947",
+      "kind": "phrase",
+      "label": "таблице",
+      "entity_keys": [
+        "article:23bb5a52c86558a0b2325a9d",
+        "course:912e8f832816565d11ff0605"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "7c763b4d166e922440c7db09",
+      "kind": "phrase",
+      "label": "кредитного",
+      "entity_keys": [
+        "document:f160f6bb3644a1ff739080fa",
+        "webinar:c70314f4b54114bd34b5d6d0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "7c8c4af69642d8fe8950c5b8",
+      "kind": "phrase",
+      "label": "надёжности",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "course:f3e3c9340eac8deb09b95a82"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "7cb29efbd81471cd1614a990",
+      "kind": "phrase",
+      "label": "Проверка идеи",
+      "entity_keys": [
+        "article:9cccad868fb11efc6de3bbc4",
+        "course:0ec7361adfa884adc467d362"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "7cb4009e6ac402202b83177c",
+      "kind": "phrase",
+      "label": "Удаление",
+      "entity_keys": [
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "7cc75dfb0804b15b3d17a221",
+      "kind": "phrase",
+      "label": "холодовой",
+      "entity_keys": [
+        "article:57564fd123f4acfb20a6a759",
+        "course:6d9d95ce7ef54c67e8c03115"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "7e3d42b5a9b3da841ba910d3",
+      "kind": "topics",
+      "label": "Экология",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4",
+        "document:6647c991c6a998188d41a751",
+        "webinar:a299a1365d71421e80ae25ee"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "7f35673e994295ef7976af54",
+      "kind": "phrase",
+      "label": "Контроль",
+      "entity_keys": [
+        "article:57564fd123f4acfb20a6a759",
+        "article:c352a13bb1b372555767b276",
+        "course:6d9d95ce7ef54c67e8c03115",
+        "course:f51b480638bb7b131405d0ab"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "809dc275fa5c900475400313",
+      "kind": "phrase",
+      "label": "освещения",
+      "entity_keys": [
+        "document:6647c991c6a998188d41a751",
+        "webinar:a299a1365d71421e80ae25ee"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "814b6e91f772950ddf0a88f8",
+      "kind": "phrase",
+      "label": "фишинга",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "course:8fe50648e3c59726d94a9201"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "819c46b00ea3cea013e52402",
+      "kind": "phrase",
+      "label": "выкладки товаров",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "823cada0c4846a447c75a235",
+      "kind": "phrase",
+      "label": "Анализ причин отказа",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "83bef783faaa319d66d92085",
+      "kind": "topics",
+      "label": "Розница",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897",
+        "document:99ad7c0e2c17b6cdbe011d76",
+        "webinar:6e719b79a8190bfbcff285fb"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "8462c96a17795a58c2f7f2c3",
+      "kind": "phrase",
+      "label": "возврата",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "862eee3a0dd7bc1296999b44",
+      "kind": "phrase",
+      "label": "договора аренды",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790",
+        "document:39d45e212b4c5ee81b5c7bbb",
+        "webinar:5a685d70263a5d1ef58f83d3"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "863e4a7ad5c6c99988136d1f",
+      "kind": "title",
+      "label": "Удаление старых резервных копий",
+      "entity_keys": [
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "863f7d40e505e7540af3b548",
+      "kind": "topics",
+      "label": "Технологии",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de",
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "869134ef3a7498ba8166959d",
+      "kind": "phrase",
+      "label": "данных",
+      "entity_keys": [
+        "article:23bb5a52c86558a0b2325a9d",
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de",
+        "course:912e8f832816565d11ff0605"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "871ecc2b199060c30b32c616",
+      "kind": "topics",
+      "label": "Логистика",
+      "entity_keys": [
+        "article:57564fd123f4acfb20a6a759",
+        "article:c205907b773b347aa647db32",
+        "course:0335599686f781abb9ddb8b0",
+        "course:6d9d95ce7ef54c67e8c03115",
+        "document:40cde5c63718ec7fdea1cb5a",
+        "document:ee0323ab50e2922c1fae8152",
+        "webinar:891a1132809841347c503b3d",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "876934c36561b8e7c56e729f",
+      "kind": "phrase",
+      "label": "Выбор офисного освещения",
+      "entity_keys": [
+        "document:6647c991c6a998188d41a751",
+        "webinar:a299a1365d71421e80ae25ee"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "87cc06c36faf1c35508d5ef8",
+      "kind": "phrase",
+      "label": "товаров на полке",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "881c097a2f8ad60862fd1650",
+      "kind": "phrase",
+      "label": "отеля",
+      "entity_keys": [
+        "article:95e37d116ac4ac820635b38d",
+        "course:80baf503d1c11cfd6b8fbd25"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "885415cd5af0b2653bc09dcb",
+      "kind": "phrase",
+      "label": "помещения",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "885976c64068f8a1a640a45b",
+      "kind": "phrase",
+      "label": "продукта",
+      "entity_keys": [
+        "article:9cccad868fb11efc6de3bbc4",
+        "course:0ec7361adfa884adc467d362",
+        "document:f160f6bb3644a1ff739080fa",
+        "webinar:c70314f4b54114bd34b5d6d0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "8900fabc5978c4696f29e91a",
+      "kind": "phrase",
+      "label": "риска",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "course:8fe50648e3c59726d94a9201"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "89b8a740d464f18ab776b94b",
+      "kind": "phrase",
+      "label": "площадке",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "course:e84f18402ea31c48cd4d3dc7"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "8a5c72f4fd262b9c2ff72fec",
+      "kind": "phrase",
+      "label": "Оформление банковской карты",
+      "entity_keys": [
+        "document:bfcea3b9ada10236f6c902fa",
+        "webinar:5c599416c30813410e12707e"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "8a710cf0261ad3d8455197c7",
+      "kind": "phrase",
+      "label": "Подготовка",
+      "entity_keys": [
+        "article:4cf5f156d41d3cce75d0d1e8",
+        "course:55dc2e070e93784428876e6f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "8a8670ce244798a8f6088261",
+      "kind": "phrase",
+      "label": "Повышение заработной платы",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "8c0025104edc737052cd70cd",
+      "kind": "title",
+      "label": "Проверка идеи до запуска продукта",
+      "entity_keys": [
+        "article:9cccad868fb11efc6de3bbc4",
+        "course:0ec7361adfa884adc467d362"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "8cce7bc3da6ab26ff908da85",
+      "kind": "phrase",
+      "label": "данных после сбоя",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "8f25626141c0f76c957696f5",
+      "kind": "topics",
+      "label": "Данные",
+      "entity_keys": [
+        "article:23bb5a52c86558a0b2325a9d",
+        "course:912e8f832816565d11ff0605",
+        "document:b9416320966852c64615ae1d",
+        "webinar:63aee2f6fb8198c9525719bf"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "8f780c733914c340d139289b",
+      "kind": "phrase",
+      "label": "Подбор",
+      "entity_keys": [
+        "document:e2b8c9ef64ceed6156d9396a",
+        "document:f160f6bb3644a1ff739080fa",
+        "webinar:5259fe433caadc8b449ac55f",
+        "webinar:c70314f4b54114bd34b5d6d0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "8f9659d8ff71b0b09f4164dc",
+      "kind": "phrase",
+      "label": "учебных материалов",
+      "entity_keys": [
+        "article:c1eea40bf0d86d601367c0e6",
+        "course:3aad07c37c857151ab8436cc"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "9096f3c409c9b5830cc75b8b",
+      "kind": "phrase",
+      "label": "местоположения парикмахерской",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "90beca662addcf54beff80e4",
+      "kind": "phrase",
+      "label": "кредитного продукта",
+      "entity_keys": [
+        "document:f160f6bb3644a1ff739080fa",
+        "webinar:c70314f4b54114bd34b5d6d0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "90f19aa332a77cfebe7bec9c",
+      "kind": "phrase",
+      "label": "заказа покупателю",
+      "entity_keys": [
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "91f28fb185ecc760a35cc04a",
+      "kind": "phrase",
+      "label": "отпуска сотрудника магазина",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "943671e3442c6420badc0b49",
+      "kind": "phrase",
+      "label": "Поиск пропусков",
+      "entity_keys": [
+        "article:23bb5a52c86558a0b2325a9d",
+        "course:912e8f832816565d11ff0605"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "95866fe0df07856569ee33ab",
+      "kind": "phrase",
+      "label": "Удаление старых резервных",
+      "entity_keys": [
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "95d9c9095c3d6566501b9ae4",
+      "kind": "phrase",
+      "label": "банковской карты",
+      "entity_keys": [
+        "document:bfcea3b9ada10236f6c902fa",
+        "webinar:5c599416c30813410e12707e"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "965c2387edf94fb643183528",
+      "kind": "phrase",
+      "label": "Контроль качества",
+      "entity_keys": [
+        "article:c352a13bb1b372555767b276",
+        "course:f51b480638bb7b131405d0ab"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "98870e3548a0174265d695d9",
+      "kind": "phrase",
+      "label": "отдел продаж",
+      "entity_keys": [
+        "document:e2b8c9ef64ceed6156d9396a",
+        "webinar:5259fe433caadc8b449ac55f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "98f65508210f8973ce1d9e62",
+      "kind": "phrase",
+      "label": "качества продукции",
+      "entity_keys": [
+        "article:c352a13bb1b372555767b276",
+        "course:f51b480638bb7b131405d0ab"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "9a248605308bdb989dccc69e",
+      "kind": "phrase",
+      "label": "транспортной",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "9aeb2c5036b61968a5e71803",
+      "kind": "title",
+      "label": "Оформление банковской карты",
+      "entity_keys": [
+        "document:bfcea3b9ada10236f6c902fa",
+        "webinar:5c599416c30813410e12707e"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "9b408109d94b29614bf63b98",
+      "kind": "phrase",
+      "label": "Доступность учебных",
+      "entity_keys": [
+        "article:c1eea40bf0d86d601367c0e6",
+        "course:3aad07c37c857151ab8436cc"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "9d4ac92b2068131559f17c2e",
+      "kind": "phrase",
+      "label": "Закупка офисных",
+      "entity_keys": [
+        "document:71b29ba6a8d51bd51e4b85e5",
+        "webinar:63d3becd993ced77e0019a0f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "9d96898e209345f66f82dcbd",
+      "kind": "phrase",
+      "label": "Оценка",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "article:c205907b773b347aa647db32",
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:0335599686f781abb9ddb8b0",
+        "course:19b649b640ddd43555a3c32a",
+        "course:f3e3c9340eac8deb09b95a82"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "9df011e0ed726f6ca8fd7604",
+      "kind": "phrase",
+      "label": "качества",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "article:c352a13bb1b372555767b276",
+        "course:f3e3c9340eac8deb09b95a82",
+        "course:f51b480638bb7b131405d0ab"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "9df318a862a6a061d35c0071",
+      "kind": "phrase",
+      "label": "Планирование маршрутов доставки",
+      "entity_keys": [
+        "article:c205907b773b347aa647db32",
+        "course:0335599686f781abb9ddb8b0"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "9dfd99377c84b487fcabdd84",
+      "kind": "phrase",
+      "label": "Планирование",
+      "entity_keys": [
+        "article:3e0afe212c6ba062460244eb",
+        "article:c205907b773b347aa647db32",
+        "course:0335599686f781abb9ddb8b0",
+        "course:18bf6cfab44150407bedf2b1"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "a0a1183884ef08589ec09ef1",
+      "kind": "phrase",
+      "label": "поставки",
+      "entity_keys": [
+        "document:6e063e21a87ecf98f524bea4",
+        "webinar:0c57a51f813aeb1b71ef25c5"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a18ead35609704d62258d983",
+      "kind": "phrase",
+      "label": "покупателю",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde",
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a1e3221c4acf0b21e82b5ec6",
+      "kind": "phrase",
+      "label": "дизайна транспортной упаковки",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a1f9f34f65c6259126fe3a40",
+      "kind": "phrase",
+      "label": "собеседованию",
+      "entity_keys": [
+        "article:4cf5f156d41d3cce75d0d1e8",
+        "course:55dc2e070e93784428876e6f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "a22472c4d4f66b15d60c929a",
+      "kind": "phrase",
+      "label": "полке",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "a2c750981db774d647ea98ec",
+      "kind": "title",
+      "label": "Создание рекламного баннера",
+      "entity_keys": [
+        "document:b9416320966852c64615ae1d",
+        "webinar:63aee2f6fb8198c9525719bf"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "a2dee0c478bb314d4f928414",
+      "kind": "topics",
+      "label": "Аналитика",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f",
+        "document:e2b8c9ef64ceed6156d9396a",
+        "webinar:5259fe433caadc8b449ac55f"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "a2f561d8b4f703a4222cea11",
+      "kind": "phrase",
+      "label": "транспортной упаковки",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a35ca1e2ba085815905a4300",
+      "kind": "phrase",
+      "label": "расторгнуть договор поставки",
+      "entity_keys": [
+        "document:6e063e21a87ecf98f524bea4",
+        "webinar:0c57a51f813aeb1b71ef25c5"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a4449b079c8b4bc0ac96f53d",
+      "kind": "phrase",
+      "label": "заработной платы действующим",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a472f35e06f92222f39b7164",
+      "kind": "phrase",
+      "label": "Обработка",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "a54793dc23d81e21c46ac9e6",
+      "kind": "phrase",
+      "label": "рекламного баннера",
+      "entity_keys": [
+        "document:b9416320966852c64615ae1d",
+        "webinar:63aee2f6fb8198c9525719bf"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a80cc77578ddedd0c6511e6d",
+      "kind": "phrase",
+      "label": "номеров",
+      "entity_keys": [
+        "document:f2c578867ae4b795c6ef1483",
+        "webinar:e3791175205eb62723952773"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a82ad86db9513f6a7fc31283",
+      "kind": "phrase",
+      "label": "рекламного",
+      "entity_keys": [
+        "document:b9416320966852c64615ae1d",
+        "webinar:63aee2f6fb8198c9525719bf"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "a8c314ed84bf7822968e4a63",
+      "kind": "title",
+      "label": "Оценка надёжности поставщиков",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "course:f3e3c9340eac8deb09b95a82"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "a9f4496af452953b525dae1b",
+      "kind": "title",
+      "label": "Обслуживание кассового оборудования",
+      "entity_keys": [
+        "document:99ad7c0e2c17b6cdbe011d76",
+        "webinar:6e719b79a8190bfbcff285fb"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "ab7ef8c64823bcebda4353ca",
+      "kind": "phrase",
+      "label": "кандидата",
+      "entity_keys": [
+        "article:4cf5f156d41d3cce75d0d1e8",
+        "course:55dc2e070e93784428876e6f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "abf5ac64e745f0f2d44d2842",
+      "kind": "title",
+      "label": "Прекращение договора аренды",
+      "entity_keys": [
+        "document:39d45e212b4c5ee81b5c7bbb",
+        "webinar:5a685d70263a5d1ef58f83d3"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "ac3501a31e27062619b927f9",
+      "kind": "phrase",
+      "label": "Продажа оборудования",
+      "entity_keys": [
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "ac8c954ec742be172239b866",
+      "kind": "phrase",
+      "label": "парикмахерской",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "adba8d8829420177c52a332a",
+      "kind": "phrase",
+      "label": "Закупка",
+      "entity_keys": [
+        "document:71b29ba6a8d51bd51e4b85e5",
+        "document:ee0323ab50e2922c1fae8152",
+        "webinar:63d3becd993ced77e0019a0f",
+        "webinar:891a1132809841347c503b3d"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "adbfea30c8eb2758cbdee655",
+      "kind": "phrase",
+      "label": "Ремонт гостиничных номеров",
+      "entity_keys": [
+        "document:f2c578867ae4b795c6ef1483",
+        "webinar:e3791175205eb62723952773"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "ade91ac1c58fdeb190affc6e",
+      "kind": "phrase",
+      "label": "сотрудникам",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "ae5dd0684813656bfc576100",
+      "kind": "phrase",
+      "label": "возврата покупки",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "ae8326070bbc4022e8cfb519",
+      "kind": "phrase",
+      "label": "гостиничных",
+      "entity_keys": [
+        "document:f2c578867ae4b795c6ef1483",
+        "webinar:e3791175205eb62723952773"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "ae9cbb3c47899a7ff7ad0f8b",
+      "kind": "phrase",
+      "label": "Снижение риска",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "course:8fe50648e3c59726d94a9201"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "b06797bfb3d55af0fd696ada",
+      "kind": "phrase",
+      "label": "Выбор дизайна",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "b0717461bb2f17021bb9ceed",
+      "kind": "phrase",
+      "label": "отказа",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "b07a4adebaf13791fee374af",
+      "kind": "phrase",
+      "label": "договор поставки",
+      "entity_keys": [
+        "document:6e063e21a87ecf98f524bea4",
+        "webinar:0c57a51f813aeb1b71ef25c5"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "b255c9cd3b899595b55e746f",
+      "kind": "phrase",
+      "label": "Оценка надёжности",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "course:f3e3c9340eac8deb09b95a82"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "b28cc480feb62cb92aa71d62",
+      "kind": "phrase",
+      "label": "идеи",
+      "entity_keys": [
+        "article:9cccad868fb11efc6de3bbc4",
+        "course:0ec7361adfa884adc467d362"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "b3393cafbfe6ed1c8826c071",
+      "kind": "phrase",
+      "label": "старых резервных",
+      "entity_keys": [
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "b464b4f7ad8991edf1f9caa8",
+      "kind": "phrase",
+      "label": "действующего бизнеса",
+      "entity_keys": [
+        "document:08069f03f7c34b1fc73b9b5b",
+        "webinar:8094c7d69ab1f654ff078fe4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "b52e658e619b3db1b6cfc002",
+      "kind": "phrase",
+      "label": "Планирование поступлений",
+      "entity_keys": [
+        "article:3e0afe212c6ba062460244eb",
+        "course:18bf6cfab44150407bedf2b1"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "b5a1f760f53f7b6f028d8d3b",
+      "kind": "phrase",
+      "label": "Поиск",
+      "entity_keys": [
+        "article:23bb5a52c86558a0b2325a9d",
+        "course:912e8f832816565d11ff0605"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "b625f9437c685bc7e03dfd87",
+      "kind": "topics",
+      "label": "Маркетплейсы",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "course:e84f18402ea31c48cd4d3dc7",
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "b7eb1b0e7a3faad771b15638",
+      "kind": "phrase",
+      "label": "баннера",
+      "entity_keys": [
+        "document:b9416320966852c64615ae1d",
+        "webinar:63aee2f6fb8198c9525719bf"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "b8d9aba16a427c218b9fa910",
+      "kind": "phrase",
+      "label": "Обслуживание кассового",
+      "entity_keys": [
+        "document:99ad7c0e2c17b6cdbe011d76",
+        "webinar:6e719b79a8190bfbcff285fb"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "ba00d5ab707e260cfdc77f00",
+      "kind": "phrase",
+      "label": "Раздельный сбор",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "bd00134b56b5c04a74068047",
+      "kind": "phrase",
+      "label": "Удаление старых",
+      "entity_keys": [
+        "document:3e1287a2ff9b9cd17da9edf0",
+        "webinar:fdafc259922893fdca71e6f0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "befa67d03d6ff6ee8d8d3e19",
+      "kind": "topics",
+      "label": "Гостиницы",
+      "entity_keys": [
+        "article:95e37d116ac4ac820635b38d",
+        "course:80baf503d1c11cfd6b8fbd25",
+        "document:f2c578867ae4b795c6ef1483",
+        "webinar:e3791175205eb62723952773"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "bf850f6a233098c55779c2a6",
+      "kind": "phrase",
+      "label": "учебных",
+      "entity_keys": [
+        "article:c1eea40bf0d86d601367c0e6",
+        "course:3aad07c37c857151ab8436cc"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "bf8e4cbcdff5d181b03708cc",
+      "kind": "phrase",
+      "label": "Отправка",
+      "entity_keys": [
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "c08ae83813e894af99276c4d",
+      "kind": "phrase",
+      "label": "заполняемости отеля",
+      "entity_keys": [
+        "article:95e37d116ac4ac820635b38d",
+        "course:80baf503d1c11cfd6b8fbd25"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "c0ea6d78a911c75f87eb2fd1",
+      "kind": "phrase",
+      "label": "Продажа оборудования закрытого",
+      "entity_keys": [
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "c1e98289de34d044d58879cc",
+      "kind": "phrase",
+      "label": "учебного класса",
+      "entity_keys": [
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "c205f42affad000c7dfe35a8",
+      "kind": "title",
+      "label": "Закупка продуктов для производства",
+      "entity_keys": [
+        "document:ee0323ab50e2922c1fae8152",
+        "webinar:891a1132809841347c503b3d"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "c213e1cc54cef6c007317cc8",
+      "kind": "phrase",
+      "label": "кассового оборудования",
+      "entity_keys": [
+        "document:99ad7c0e2c17b6cdbe011d76",
+        "webinar:6e719b79a8190bfbcff285fb"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "c2b2eb8b6768099d3daa818a",
+      "kind": "phrase",
+      "label": "офисе",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4",
+        "document:0ec7988176e6d9a1a5452f5a",
+        "webinar:aeb44fa7ff5deaad0e3f633c"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "c3fadfa8ecc2f62b4f2cceca",
+      "kind": "phrase",
+      "label": "Повышение заполняемости",
+      "entity_keys": [
+        "article:95e37d116ac4ac820635b38d",
+        "course:80baf503d1c11cfd6b8fbd25"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "c5488243843a21481277de1f",
+      "kind": "phrase",
+      "label": "Восстановление данных",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "c6af93b50cab327786d94e51",
+      "kind": "phrase",
+      "label": "Настройка",
+      "entity_keys": [
+        "document:0ec7988176e6d9a1a5452f5a",
+        "webinar:aeb44fa7ff5deaad0e3f633c"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "c70e93a44fb0716bead0e1d9",
+      "kind": "phrase",
+      "label": "клиентов",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "c74ba1323cbd52b58e9a5e52",
+      "kind": "phrase",
+      "label": "Оценка освоения",
+      "entity_keys": [
+        "article:d82d6c5469df06bde55fe4bf",
+        "course:19b649b640ddd43555a3c32a"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "c7e13abf4f650c6e66e344d2",
+      "kind": "phrase",
+      "label": "платы действующим",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "c7eda3ab28fa9d934db2feff",
+      "kind": "title",
+      "label": "Анализ причин отказа клиентов",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "c84d9cf4c9fb1c5ef9f9a9e8",
+      "kind": "title",
+      "label": "Оформление отпуска сотрудника магазина",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "c9c4973382fb67c895f7391a",
+      "kind": "phrase",
+      "label": "Доступность",
+      "entity_keys": [
+        "article:c1eea40bf0d86d601367c0e6",
+        "course:3aad07c37c857151ab8436cc"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "cb7b7acc9afdbe4a4f10d826",
+      "kind": "title",
+      "label": "Ремонт гостиничных номеров",
+      "entity_keys": [
+        "document:f2c578867ae4b795c6ef1483",
+        "webinar:e3791175205eb62723952773"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "cb831e2e17419d89e914d8b9",
+      "kind": "phrase",
+      "label": "банковской",
+      "entity_keys": [
+        "document:bfcea3b9ada10236f6c902fa",
+        "webinar:5c599416c30813410e12707e"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "cc333d57e4820cac33ffa809",
+      "kind": "phrase",
+      "label": "Расчёт прибыли",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "course:e84f18402ea31c48cd4d3dc7"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "cc5ba0bdbe8146be7ae49016",
+      "kind": "phrase",
+      "label": "Покупка мебели",
+      "entity_keys": [
+        "document:eed08f84626c85454f3d68ee",
+        "webinar:44af555050a57aa58e26fce9"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "cc8b22dc992f87a375eca664",
+      "kind": "phrase",
+      "label": "продаж",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "course:e84f18402ea31c48cd4d3dc7",
+        "document:e2b8c9ef64ceed6156d9396a",
+        "webinar:5259fe433caadc8b449ac55f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "cccb3a72e81279c6b83c27a4",
+      "kind": "title",
+      "label": "Доступность учебных материалов",
+      "entity_keys": [
+        "article:c1eea40bf0d86d601367c0e6",
+        "course:3aad07c37c857151ab8436cc"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "cd1b2e134dc9b6edb40f9da9",
+      "kind": "title",
+      "label": "Контроль холодовой цепи",
+      "entity_keys": [
+        "article:57564fd123f4acfb20a6a759",
+        "course:6d9d95ce7ef54c67e8c03115"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "cd8835f55653bad7cef8a7a2",
+      "kind": "phrase",
+      "label": "Оформление",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "document:bfcea3b9ada10236f6c902fa",
+        "webinar:028fff7dcdb671e0a97fb596",
+        "webinar:5c599416c30813410e12707e"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "cdac43d16648244581dad402",
+      "kind": "phrase",
+      "label": "Оформление отпуска сотрудника",
+      "entity_keys": [
+        "document:bf3b3ecb6b0cd2c378b3230d",
+        "webinar:028fff7dcdb671e0a97fb596"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "ced11998a7311478150e3087",
+      "kind": "phrase",
+      "label": "платежей",
+      "entity_keys": [
+        "article:3e0afe212c6ba062460244eb",
+        "course:18bf6cfab44150407bedf2b1"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "cf04d4849055f05bfc659f9e",
+      "kind": "phrase",
+      "label": "поступлений и платежей",
+      "entity_keys": [
+        "article:3e0afe212c6ba062460244eb",
+        "course:18bf6cfab44150407bedf2b1"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "d05160c3ae5bde705bd05d11",
+      "kind": "phrase",
+      "label": "Доступность учебных материалов",
+      "entity_keys": [
+        "article:c1eea40bf0d86d601367c0e6",
+        "course:3aad07c37c857151ab8436cc"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "d1751b260aef63d3fdc4902b",
+      "kind": "phrase",
+      "label": "Отправка нового",
+      "entity_keys": [
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "d1ce8db4124fd81b851baaed",
+      "kind": "phrase",
+      "label": "Восстановление",
+      "entity_keys": [
+        "article:e06d79f087774334e9c60f03",
+        "course:50e342694ccf8c40bc3e84de"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "d369de32c4ea269ee77de060",
+      "kind": "phrase",
+      "label": "Расчёт",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "course:e84f18402ea31c48cd4d3dc7"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "d4db94f4a1d07fe510dd3100",
+      "kind": "phrase",
+      "label": "Анализ",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "d5fef23fbf01909c1268bef6",
+      "kind": "phrase",
+      "label": "дизайна транспортной",
+      "entity_keys": [
+        "document:40cde5c63718ec7fdea1cb5a",
+        "webinar:e1912b30cfd2815429a18241"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "d76dbe078336b15a9a63a071",
+      "kind": "topics",
+      "label": "Продажи",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde",
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "d7749ee2a1540ee3d70729fc",
+      "kind": "phrase",
+      "label": "Обработка возврата покупки",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "d8527668156310fd9b9cfca6",
+      "kind": "title",
+      "label": "Расчёт прибыли от продаж на площадке",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "course:e84f18402ea31c48cd4d3dc7"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "d905994c5f782c498c830af1",
+      "kind": "phrase",
+      "label": "Контроль холодовой",
+      "entity_keys": [
+        "article:57564fd123f4acfb20a6a759",
+        "course:6d9d95ce7ef54c67e8c03115"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "d9882ea6e3872a803784b7ad",
+      "kind": "phrase",
+      "label": "Создание рекламного",
+      "entity_keys": [
+        "document:b9416320966852c64615ae1d",
+        "webinar:63aee2f6fb8198c9525719bf"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "d9b1dc07a0e71d2a073a0ba5",
+      "kind": "phrase",
+      "label": "Продажа действующего",
+      "entity_keys": [
+        "document:08069f03f7c34b1fc73b9b5b",
+        "webinar:8094c7d69ab1f654ff078fe4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "daf8eba14e27acb620019a04",
+      "kind": "phrase",
+      "label": "офисных",
+      "entity_keys": [
+        "document:71b29ba6a8d51bd51e4b85e5",
+        "webinar:63d3becd993ced77e0019a0f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "dc584451fad04a17ff71feca",
+      "kind": "phrase",
+      "label": "Выбор офисного",
+      "entity_keys": [
+        "document:6647c991c6a998188d41a751",
+        "webinar:a299a1365d71421e80ae25ee"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "dd1ea70a61c268870170ab88",
+      "kind": "phrase",
+      "label": "Продажа действующего бизнеса",
+      "entity_keys": [
+        "document:08069f03f7c34b1fc73b9b5b",
+        "webinar:8094c7d69ab1f654ff078fe4"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "ddba85ede64512b4c35c6588",
+      "kind": "phrase",
+      "label": "принтера",
+      "entity_keys": [
+        "document:0ec7988176e6d9a1a5452f5a",
+        "webinar:aeb44fa7ff5deaad0e3f633c"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "dfc7238933f654fcf1b1598e",
+      "kind": "phrase",
+      "label": "офисного освещения",
+      "entity_keys": [
+        "document:6647c991c6a998188d41a751",
+        "webinar:a299a1365d71421e80ae25ee"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "e095cc64a80802e2c8750f0e",
+      "kind": "phrase",
+      "label": "причин отказа",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "e0ced0ecb387fee527d164d8",
+      "kind": "title",
+      "label": "Обработка возврата покупки",
+      "entity_keys": [
+        "article:7858ae8c405a4500e554928b",
+        "course:9188629bc293e43fceb5bfde"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "e16642f4e7c7e7a5a43354fa",
+      "kind": "title",
+      "label": "Настройка принтера в офисе",
+      "entity_keys": [
+        "document:0ec7988176e6d9a1a5452f5a",
+        "webinar:aeb44fa7ff5deaad0e3f633c"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "e1c9d2c176c47ddd41d047d0",
+      "kind": "topics",
+      "label": "Команда",
+      "entity_keys": [
+        "article:4cf5f156d41d3cce75d0d1e8",
+        "course:55dc2e070e93784428876e6f",
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "e203e5db1721b8f359de0d12",
+      "kind": "phrase",
+      "label": "План выкладки",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "e3d53447351c398fa2f43a37",
+      "kind": "phrase",
+      "label": "заработной",
+      "entity_keys": [
+        "document:8f1e2aa29ec09a692b4d73f9",
+        "webinar:0facd2146fbc7c736778ff9b"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "e807c104d7dcf07adc01db1d",
+      "kind": "phrase",
+      "label": "собеседованию кандидата",
+      "entity_keys": [
+        "article:4cf5f156d41d3cce75d0d1e8",
+        "course:55dc2e070e93784428876e6f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "e882f5341615e32c3169d4b9",
+      "kind": "phrase",
+      "label": "прибыли",
+      "entity_keys": [
+        "article:bbdaab28f696bf9686026b6e",
+        "course:e84f18402ea31c48cd4d3dc7"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "e88e2a23c5be34d8e3b678ae",
+      "kind": "phrase",
+      "label": "Анализ причин",
+      "entity_keys": [
+        "article:2253391aea24dad68ab9b957",
+        "course:15cb40604aca552856a8316f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "e8a5ff17564b23289d081bfc",
+      "kind": "phrase",
+      "label": "поставщиков",
+      "entity_keys": [
+        "article:870a34e30ff4e30449d8fd56",
+        "course:f3e3c9340eac8deb09b95a82"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "e9dd106daf850e4c2e9f6b42",
+      "kind": "phrase",
+      "label": "Прекращение",
+      "entity_keys": [
+        "document:39d45e212b4c5ee81b5c7bbb",
+        "webinar:5a685d70263a5d1ef58f83d3"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "e9e7c54222020877f7ee1db5",
+      "kind": "title",
+      "label": "Как расторгнуть договор поставки",
+      "entity_keys": [
+        "document:6e063e21a87ecf98f524bea4",
+        "webinar:0c57a51f813aeb1b71ef25c5"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "eaa1285ec19f28106f4a0f5c",
+      "kind": "phrase",
+      "label": "Оформление банковской",
+      "entity_keys": [
+        "document:bfcea3b9ada10236f6c902fa",
+        "webinar:5c599416c30813410e12707e"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "eb25e7bd6619182038a3d9e4",
+      "kind": "phrase",
+      "label": "Снижение",
+      "entity_keys": [
+        "article:3e0db6cdc26350894e96e9f8",
+        "course:8fe50648e3c59726d94a9201"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "ebadbefc9c3053ef9119e700",
+      "kind": "phrase",
+      "label": "отдел",
+      "entity_keys": [
+        "document:e2b8c9ef64ceed6156d9396a",
+        "webinar:5259fe433caadc8b449ac55f"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "ec4543c6abd89c866b57df93",
+      "kind": "phrase",
+      "label": "Ремонт",
+      "entity_keys": [
+        "document:f2c578867ae4b795c6ef1483",
+        "webinar:e3791175205eb62723952773"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "eeed7e61bdc905227853471c",
+      "kind": "phrase",
+      "label": "Создание",
+      "entity_keys": [
+        "article:3e0afe212c6ba062460244eb",
+        "course:18bf6cfab44150407bedf2b1",
+        "document:b9416320966852c64615ae1d",
+        "webinar:63aee2f6fb8198c9525719bf"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "f0a0a80289e7366ad17f5ef8",
+      "kind": "title",
+      "label": "Планирование поступлений и платежей",
+      "entity_keys": [
+        "article:3e0afe212c6ba062460244eb",
+        "course:18bf6cfab44150407bedf2b1"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "f16667105eaedb779268a30d",
+      "kind": "title",
+      "label": "Отправка нового заказа покупателю",
+      "entity_keys": [
+        "document:9a3b573f4dde2f20a7ed1343",
+        "webinar:63f5a4446dcee7543ac33625"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "f1883f1d37983ff79f90e7ee",
+      "kind": "phrase",
+      "label": "Подписание договора аренды",
+      "entity_keys": [
+        "article:23f34c5d35890d5984312a21",
+        "course:5998236bf6a96c984844d790"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "f377fe1b9cd9b5b5060886ac",
+      "kind": "phrase",
+      "label": "оборудования закрытого салона",
+      "entity_keys": [
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "f53cc5d3c81b09d739ec749b",
+      "kind": "phrase",
+      "label": "выкладки",
+      "entity_keys": [
+        "article:4a2aeffa7d5afa648bf98f1f",
+        "course:da71f838e952a9349980f897"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "f598a7b56d7fd894e08b8430",
+      "kind": "phrase",
+      "label": "отходов в офисе",
+      "entity_keys": [
+        "article:92d9e4fe8fa0434eda865238",
+        "course:d05e632cde396a6d646a56d4"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "f79480c26f9adc1aeba3d580",
+      "kind": "topics",
+      "label": "Услуги",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27",
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "topics"
+      ]
+    },
+    {
+      "id": "f8488af9217e848e39081433",
+      "kind": "title",
+      "label": "Подбор персонала в отдел продаж",
+      "entity_keys": [
+        "document:e2b8c9ef64ceed6156d9396a",
+        "webinar:5259fe433caadc8b449ac55f"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "f875d95e78143010711fd606",
+      "kind": "phrase",
+      "label": "Подбор кредитного продукта",
+      "entity_keys": [
+        "document:f160f6bb3644a1ff739080fa",
+        "webinar:c70314f4b54114bd34b5d6d0"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "f99cc8308568ef242162bdfe",
+      "kind": "phrase",
+      "label": "Прекращение договора аренды",
+      "entity_keys": [
+        "document:39d45e212b4c5ee81b5c7bbb",
+        "webinar:5a685d70263a5d1ef58f83d3"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "fa2422f6c4eeb6bc97f61353",
+      "kind": "phrase",
+      "label": "Выбор местоположения",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "fa6da6df53d3902a4995a4c1",
+      "kind": "title",
+      "label": "Продажа оборудования закрытого салона",
+      "entity_keys": [
+        "document:59d1af36f3a8a7e72b950988",
+        "webinar:5401d6c3e7544d88ab7842ad"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "fabee60b50a8a179ab18facb",
+      "kind": "phrase",
+      "label": "гостиничных номеров",
+      "entity_keys": [
+        "document:f2c578867ae4b795c6ef1483",
+        "webinar:e3791175205eb62723952773"
+      ],
+      "sources": [
+        "description",
+        "title"
+      ]
+    },
+    {
+      "id": "fbda4802b2dc5f5baf4e57fd",
+      "kind": "phrase",
+      "label": "маршрутов доставки",
+      "entity_keys": [
+        "article:c205907b773b347aa647db32",
+        "course:0335599686f781abb9ddb8b0"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "fc35c98dbeeea3c50796a865",
+      "kind": "phrase",
+      "label": "холодовой цепи",
+      "entity_keys": [
+        "article:57564fd123f4acfb20a6a759",
+        "course:6d9d95ce7ef54c67e8c03115"
+      ],
+      "sources": [
+        "title"
+      ]
+    },
+    {
+      "id": "ff3b3aa38ba37eb4dfad3fca",
+      "kind": "title",
+      "label": "Выбор местоположения парикмахерской",
+      "entity_keys": [
+        "article:b774512b065646d50a76e7af",
+        "course:cae37e9a65da2256b3b95d27"
+      ],
+      "sources": [
+        "title"
+      ]
+    }
+  ]
+}

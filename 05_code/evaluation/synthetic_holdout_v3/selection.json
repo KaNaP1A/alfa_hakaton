@@ -1,0 +1,27 @@
+{
+  "weights": {
+    "bm25": 0.0,
+    "minilm": 0.0,
+    "e5": 0.0,
+    "catboost": 1.0
+  },
+  "selected_only_by": "family-average validation NDCG@5; deterministic tie break",
+  "validation_report_sha256": "2cb020d0d77bb8bbd8f7585eeb06e6087c7f9ee820f8d99370ccf775db313de5",
+  "model_sha256": "9156bc344e320393244fd00b5a440c10fd6e5593416ab2b6a07214bbffac5267",
+  "dataset_hashes": {
+    "validation/queries.jsonl": "1c6e3ebf93539fac1fcec67e88cf6844b125007a51b9558b50316fffc9eed681",
+    "validation/labels.jsonl": "b6123feaef6a5ff89e8f56bcd23ff5b0634d67244721161b74cb31e672860aa3",
+    "validation/catalog/generation-synthetic/catalog.json": "1829e3471a81be5be1d877f0727215820533a16a0211a59c2d077d02b6265f05",
+    "validation/catalog/generation-synthetic/manifest.json": "3d9c3631a14b425b2e11fa18a7ed51e14e6f7bdd2729f11f26544636200700c9",
+    "validation/catalog/generation-synthetic/suggestions.json": "a111a40f432cc4e473007f3b91371fdb85696126ae11ad8c7dcf0fd10c8c0c07",
+    "validation/catalog/CURRENT.json": "9a06442ee369b851340f3d8e14fa061d7dcaf10651c2ca4f844db557613acd37",
+    "test/queries.jsonl": "1c0bd8b30077a524cd77f52729a2ab670c572d5d0bf7d9713ab7c5ab64cbe897",
+    "test/labels.jsonl": "2f7351cbcf4a6105b9dc724e0246ea514c27a144e74a45a1d9e2ab967f65c9eb",
+    "test/catalog/generation-synthetic/catalog.json": "ac057a8c9208a055be4b92045c86860412dd7bd767c24fdc1750906531fe7715",
+    "test/catalog/generation-synthetic/manifest.json": "7fe8107532642f6dfe0fff7bdcb3b00b3ea8b102031510058a9b0f265acf1f46",
+    "test/catalog/generation-synthetic/suggestions.json": "17f222ac1e0b5b4fab44bb5b2e698d16d162141ff907de8e57a635914fe5ef0d",
+    "test/catalog/CURRENT.json": "9a06442ee369b851340f3d8e14fa061d7dcaf10651c2ca4f844db557613acd37"
+  },
+  "evaluator_sha256": "8f24406fcb714aa4ce2d716b1a1b7dda624e633ee94b9d29f08bedfc291aea2e",
+  "method": "min-max on retrieved candidates, weighted sum, existing candidate generation and admission policy; no fit on test"
+}

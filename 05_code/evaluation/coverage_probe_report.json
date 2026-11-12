@@ -1,0 +1,171 @@
+{
+  "catalog_sha256": "904256290a10eeec3f1eaffec7636de032f294f53953a008839ded9f3263941f",
+  "cases": 32,
+  "likely_absent_flagged": 8,
+  "likely_absent_total": 16,
+  "likely_present_flagged": 0,
+  "likely_present_total": 16,
+  "caveat": "Проверка ассистента, не независимая разметка и не факт отсутствия ответа в полном каталоге или на сайте. Сигнал только о буквальных совпадениях, не семантическая уверенность.",
+  "results": [
+    {
+      "query": "кофейня",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "договор аренды",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "налоги ИП",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "маркетинг",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "удержать сотрудников",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "лояльность клиентов",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "франшиза",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "найм персонала",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "банкротство",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "открыть пекарню",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "налоги самозанятого",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "кассовый разрыв",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "реклама",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "товарный знак",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "бухгалтерия",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "погасить задолженность",
+      "likely": "present",
+      "signal": "unknown"
+    },
+    {
+      "query": "frontend",
+      "likely": "absent",
+      "signal": "no_literal_match"
+    },
+    {
+      "query": "фронтенд",
+      "likely": "absent",
+      "signal": "unknown"
+    },
+    {
+      "query": "астрофотография",
+      "likely": "absent",
+      "signal": "no_literal_match"
+    },
+    {
+      "query": "пианино",
+      "likely": "absent",
+      "signal": "no_literal_match"
+    },
+    {
+      "query": "фывпролджэ",
+      "likely": "absent",
+      "signal": "no_literal_match"
+    },
+    {
+      "query": "фотосинтез",
+      "likely": "absent",
+      "signal": "no_literal_match"
+    },
+    {
+      "query": "ремонт велосипеда",
+      "likely": "absent",
+      "signal": "unknown"
+    },
+    {
+      "query": "вязание крючком",
+      "likely": "absent",
+      "signal": "unknown"
+    },
+    {
+      "query": "орнитология",
+      "likely": "absent",
+      "signal": "no_literal_match"
+    },
+    {
+      "query": "метеорология",
+      "likely": "absent",
+      "signal": "no_literal_match"
+    },
+    {
+      "query": "аквариумистика",
+      "likely": "absent",
+      "signal": "no_literal_match"
+    },
+    {
+      "query": "спортивные танцы",
+      "likely": "absent",
+      "signal": "unknown"
+    },
+    {
+      "query": "как выращивать орхидеи дома",
+      "likely": "absent",
+      "signal": "unknown"
+    },
+    {
+      "query": "кулинарный мастер класс",
+      "likely": "absent",
+      "signal": "unknown"
+    },
+    {
+      "query": "как приготовить борщ",
+      "likely": "absent",
+      "signal": "unknown"
+    },
+    {
+      "query": "ремонт стиральной машины",
+      "likely": "absent",
+      "signal": "unknown"
+    }
+  ]
+}

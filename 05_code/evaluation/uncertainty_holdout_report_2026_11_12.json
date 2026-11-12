@@ -1,0 +1,279 @@
+{
+  "description": "Заранее зафиксированные разработчиком предположительные метки; не независимая экспертная разметка.",
+  "summary": {
+    "present": {
+      "n": 12,
+      "uncertain": 0
+    },
+    "absent": {
+      "n": 12,
+      "uncertain": 11
+    }
+  },
+  "results": [
+    {
+      "query": "как запустить свое кафе",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7428,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Какие документы нужны для открытия кафе"
+    },
+    {
+      "query": "увеличить прибыль магазина",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6541,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Новогодняя реклама: как увеличить продажи в праздники"
+    },
+    {
+      "query": "сотрудники уходят из компании",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7024,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Как привлечь сотрудников в вашу компанию"
+    },
+    {
+      "query": "регистрация индивидуального предпринимателя",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6839,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "ОГРНИП"
+    },
+    {
+      "query": "вести бухгалтерский учет",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.74,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Где и как вести учёт клиентов"
+    },
+    {
+      "query": "найти покупателей для бизнеса",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7757,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Бизнес на Авито: лёгкая продажа товаров"
+    },
+    {
+      "query": "оформить сотрудников на работу",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7373,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Я знаю, ты далеко: как оформить сотрудника на удалённую работу"
+    },
+    {
+      "query": "аренда офиса",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6607,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Договор аренды нежилого помещения"
+    },
+    {
+      "query": "закрыть долги по налогам",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7189,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Налоговая задолженность по ИП: как проверить и погасить"
+    },
+    {
+      "query": "защитить товарный знак",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.8436,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Как аннулировать чужой товарный знак: основания, стоимость, этапы"
+    },
+    {
+      "query": "как выбрать бизнес нишу",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7582,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Как выбрать бизнес-модель"
+    },
+    {
+      "query": "финансовая отчетность организации",
+      "likely": "present",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.7025,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Финансовая отчётность по МСФО в 2026 году: правила составления и новые стандарты"
+    },
+    {
+      "query": "построить космическую ракету",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3738,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Контроль качества в общепите: ХАССП, журналы и требования проверок"
+    },
+    {
+      "query": "уход за кошкой после операции",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3203,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Больничный по уходу за ребёнком"
+    },
+    {
+      "query": "нотная грамота для фортепиано",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.4567,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Характеристика сотрудника для награждения"
+    },
+    {
+      "query": "строение клеток растений",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3078,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Как запустить производство полезной соли: история стартапа из Астрахани"
+    },
+    {
+      "query": "подводная фотография кораллов",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.2919,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Авторское право"
+    },
+    {
+      "query": "прививка фруктовых деревьев",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.4784,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Как получить разрешение на строительство"
+    },
+    {
+      "query": "как выучить испанский язык",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.4412,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Рабочее время — не резиновое: какие есть нормы и как вести учёт"
+    },
+    {
+      "query": "лечение зубов у стоматолога",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.292,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Что изменится в налоговой системе в 2025 году"
+    },
+    {
+      "query": "машинное обучение нейронные сети pytorch",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.594,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Машинное обучение (ML)"
+    },
+    {
+      "query": "создание веб интерфейсов на react",
+      "likely": "absent",
+      "confidence": {
+        "status": "unvalidated",
+        "max_card_cosine": 0.6388,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Интерфейс"
+    },
+    {
+      "query": "вязать шарф из шерсти",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3227,
+        "threshold": 0.62
+      },
+      "coverage": "no_literal_match",
+      "first_title": "Может ли хобби превратиться в прибыльный бизнес?"
+    },
+    {
+      "query": "как ухаживать за аквариумными рыбками",
+      "likely": "absent",
+      "confidence": {
+        "status": "uncertain",
+        "max_card_cosine": 0.3777,
+        "threshold": 0.62
+      },
+      "coverage": "unknown",
+      "first_title": "Ловись, рыбка, большая и маленькая: что такое лид-магниты"
+    }
+  ]
+}

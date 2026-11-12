@@ -1,0 +1,28 @@
+{
+  "course_bindings": 10050,
+  "users_with_course": 7342,
+  "distinct_courses": 29,
+  "single_course_users": 5780,
+  "completed_bindings": 1266,
+  "paid_flag_true": 22,
+  "nonempty_buying_date": 0,
+  "course_completion_before_created": 225,
+  "lesson_bindings": 21489,
+  "lesson_completion_before_created": 9624,
+  "ratings": 8343,
+  "ratings_with_user": 2325,
+  "rating_distribution": {
+    "1": 756,
+    "2": 94,
+    "3": 149,
+    "4": 311,
+    "5": 7033
+  },
+  "limitations": [
+    "Counts describe raw rows, not verified exposure, intent, entitlement or purchases.",
+    "Current completion is not a timestamped past feature; dates require semantic verification.",
+    "Unobserved user-item pairs are unlabeled, not negatives.",
+    "The supplied schema has no verified search-query/impression log."
+  ],
+  "catalog_sha256": "904256290a10eeec3f1eaffec7636de032f294f53953a008839ded9f3263941f"
+}

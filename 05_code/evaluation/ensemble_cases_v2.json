@@ -1,0 +1,5417 @@
+{
+  "schema_version": 2,
+  "assessor": "assistant_curated_provisional_not_verified",
+  "grade_meaning": {
+    "0": "irrelevant",
+    "1": "related_context",
+    "2": "partially_relevant",
+    "3": "direct_answer"
+  },
+  "note": "Synthetic, assistant-labeled, 4 judgments/query; prior test observed; some new targets may occur in CatBoost synthetic training; not independent real-user evaluation.",
+  "queries": [
+    {
+      "id": "coffee_1",
+      "family": "coffee",
+      "split": "train",
+      "query": "как выбрать франшизу кофейни",
+      "judgments": [
+        {
+          "entity_key": "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:95f98421-9166-4826-b657-ea8a024a9397",
+          "title": "Сеть трендовых кофеен в московских ЖК",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "id": "coffee_2",
+      "family": "coffee",
+      "split": "train",
+      "query": "хочу открыть кофейню по франшизе",
+      "judgments": [
+        {
+          "entity_key": "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:95f98421-9166-4826-b657-ea8a024a9397",
+          "title": "Сеть трендовых кофеен в московских ЖК",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "id": "coffee_3",
+      "family": "coffee",
+      "split": "train",
+      "query": "кофейная франшиза какие критерии выбора",
+      "judgments": [
+        {
+          "entity_key": "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:95f98421-9166-4826-b657-ea8a024a9397",
+          "title": "Сеть трендовых кофеен в московских ЖК",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "id": "coffee_4",
+      "family": "coffee",
+      "split": "train",
+      "query": "как предпринимателю выбрать франчайзера для кофейни",
+      "judgments": [
+        {
+          "entity_key": "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:95f98421-9166-4826-b657-ea8a024a9397",
+          "title": "Сеть трендовых кофеен в московских ЖК",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "id": "rent_1",
+      "family": "rent",
+      "split": "train",
+      "query": "шаблон договора аренды помещения",
+      "judgments": [
+        {
+          "entity_key": "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "title": "Договор аренды нежилого помещения",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:05086558-c899-414f-a677-6422a7f5e329",
+          "title": "Составляем договор аренды нежилого помещения: пошаговая инструкция",
+          "grade": 2
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:18dea632-d4a5-4483-8688-0eea17d8642c",
+          "title": "Гарантийное письмо о заключении договора аренды между двумя ООО",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "rent_2",
+      "family": "rent",
+      "split": "train",
+      "query": "нужен договор аренды нежилого офиса",
+      "judgments": [
+        {
+          "entity_key": "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "title": "Договор аренды нежилого помещения",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:05086558-c899-414f-a677-6422a7f5e329",
+          "title": "Составляем договор аренды нежилого помещения: пошаговая инструкция",
+          "grade": 2
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:18dea632-d4a5-4483-8688-0eea17d8642c",
+          "title": "Гарантийное письмо о заключении договора аренды между двумя ООО",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "rent_3",
+      "family": "rent",
+      "split": "train",
+      "query": "нужен образец соглашения об аренде офиса",
+      "judgments": [
+        {
+          "entity_key": "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "title": "Договор аренды нежилого помещения",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:05086558-c899-414f-a677-6422a7f5e329",
+          "title": "Составляем договор аренды нежилого помещения: пошаговая инструкция",
+          "grade": 2
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:18dea632-d4a5-4483-8688-0eea17d8642c",
+          "title": "Гарантийное письмо о заключении договора аренды между двумя ООО",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "rent_4",
+      "family": "rent",
+      "split": "train",
+      "query": "найти типовой договор для найма нежилого помещения",
+      "judgments": [
+        {
+          "entity_key": "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "title": "Договор аренды нежилого помещения",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:05086558-c899-414f-a677-6422a7f5e329",
+          "title": "Составляем договор аренды нежилого помещения: пошаговая инструкция",
+          "grade": 2
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:18dea632-d4a5-4483-8688-0eea17d8642c",
+          "title": "Гарантийное письмо о заключении договора аренды между двумя ООО",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "plan_1",
+      "family": "plan",
+      "split": "train",
+      "query": "как написать бизнес план",
+      "judgments": [
+        {
+          "entity_key": "article:293e0962-7aa1-491e-ab4b-ed9e787428c2",
+          "title": "Как составить бизнес-план: пошаговая инструкция",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:e8f2b3ca-a701-4c25-bffc-75e9cf9d1c7f",
+          "title": "Бизнес-план магазина одежды с нуля: выбираем нишу",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "plan_2",
+      "family": "plan",
+      "split": "train",
+      "query": "составить бизнес-план проекта",
+      "judgments": [
+        {
+          "entity_key": "article:293e0962-7aa1-491e-ab4b-ed9e787428c2",
+          "title": "Как составить бизнес-план: пошаговая инструкция",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:e8f2b3ca-a701-4c25-bffc-75e9cf9d1c7f",
+          "title": "Бизнес-план магазина одежды с нуля: выбираем нишу",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "plan_3",
+      "family": "plan",
+      "split": "train",
+      "query": "подготовить план открытия своего бизнеса",
+      "judgments": [
+        {
+          "entity_key": "article:293e0962-7aa1-491e-ab4b-ed9e787428c2",
+          "title": "Как составить бизнес-план: пошаговая инструкция",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:e8f2b3ca-a701-4c25-bffc-75e9cf9d1c7f",
+          "title": "Бизнес-план магазина одежды с нуля: выбираем нишу",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "plan_4",
+      "family": "plan",
+      "split": "train",
+      "query": "структура и пример составления бизнес проекта",
+      "judgments": [
+        {
+          "entity_key": "article:293e0962-7aa1-491e-ab4b-ed9e787428c2",
+          "title": "Как составить бизнес-план: пошаговая инструкция",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:e8f2b3ca-a701-4c25-bffc-75e9cf9d1c7f",
+          "title": "Бизнес-план магазина одежды с нуля: выбираем нишу",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ip_1",
+      "family": "ip",
+      "split": "train",
+      "query": "как открыть ип онлайн",
+      "judgments": [
+        {
+          "entity_key": "article:41b2acff-d220-4e81-a90f-706444ce22c2",
+          "title": "Как открыть ИП онлайн",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:436d99ec-50d7-4abc-a0ed-ddd2f7d122d9",
+          "title": "Как открыть ИП",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ip_2",
+      "family": "ip",
+      "split": "train",
+      "query": "зарегистрировать индивидуального предпринимателя через интернет",
+      "judgments": [
+        {
+          "entity_key": "article:41b2acff-d220-4e81-a90f-706444ce22c2",
+          "title": "Как открыть ИП онлайн",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:436d99ec-50d7-4abc-a0ed-ddd2f7d122d9",
+          "title": "Как открыть ИП",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ip_3",
+      "family": "ip",
+      "split": "train",
+      "query": "подать документы на открытие ип через интернет",
+      "judgments": [
+        {
+          "entity_key": "article:41b2acff-d220-4e81-a90f-706444ce22c2",
+          "title": "Как открыть ИП онлайн",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:436d99ec-50d7-4abc-a0ed-ddd2f7d122d9",
+          "title": "Как открыть ИП",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ip_4",
+      "family": "ip",
+      "split": "train",
+      "query": "пошаговая регистрация предпринимателя онлайн",
+      "judgments": [
+        {
+          "entity_key": "article:41b2acff-d220-4e81-a90f-706444ce22c2",
+          "title": "Как открыть ИП онлайн",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:436d99ec-50d7-4abc-a0ed-ddd2f7d122d9",
+          "title": "Как открыть ИП",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "self_1",
+      "family": "self",
+      "split": "train",
+      "query": "как стать самозанятым",
+      "judgments": [
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "self_2",
+      "family": "self",
+      "split": "train",
+      "query": "оформить самозанятость с чего начать",
+      "judgments": [
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "self_3",
+      "family": "self",
+      "split": "train",
+      "query": "оформление самозанятости для начинающих",
+      "judgments": [
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "self_4",
+      "family": "self",
+      "split": "train",
+      "query": "какие документы нужны чтобы зарегистрироваться самозанятым",
+      "judgments": [
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "crm_1",
+      "family": "crm",
+      "split": "train",
+      "query": "как выбрать crm для малого бизнеса",
+      "judgments": [
+        {
+          "entity_key": "article:49cbf816-4625-4dcd-acad-557e1c7c1d05",
+          "title": "Как выбрать CRM-систему для малого бизнеса",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:69c0fc4b-2a10-4a6f-be3c-faa57b7d24ea",
+          "title": "CRM-система",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:39356586-699d-4e96-a1fa-6dd76debbf80",
+          "title": "ИИ в CRM-системах: автоматизируем продажи и работу с клиентами",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "crm_2",
+      "family": "crm",
+      "split": "train",
+      "query": "система управления клиентами для компании",
+      "judgments": [
+        {
+          "entity_key": "article:49cbf816-4625-4dcd-acad-557e1c7c1d05",
+          "title": "Как выбрать CRM-систему для малого бизнеса",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:69c0fc4b-2a10-4a6f-be3c-faa57b7d24ea",
+          "title": "CRM-система",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:39356586-699d-4e96-a1fa-6dd76debbf80",
+          "title": "ИИ в CRM-системах: автоматизируем продажи и работу с клиентами",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "crm_3",
+      "family": "crm",
+      "split": "train",
+      "query": "какую crm выбрать небольшой фирме",
+      "judgments": [
+        {
+          "entity_key": "article:49cbf816-4625-4dcd-acad-557e1c7c1d05",
+          "title": "Как выбрать CRM-систему для малого бизнеса",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:69c0fc4b-2a10-4a6f-be3c-faa57b7d24ea",
+          "title": "CRM-система",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:39356586-699d-4e96-a1fa-6dd76debbf80",
+          "title": "ИИ в CRM-системах: автоматизируем продажи и работу с клиентами",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "crm_4",
+      "family": "crm",
+      "split": "train",
+      "query": "выбор программы для управления клиентской базой",
+      "judgments": [
+        {
+          "entity_key": "article:49cbf816-4625-4dcd-acad-557e1c7c1d05",
+          "title": "Как выбрать CRM-систему для малого бизнеса",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:69c0fc4b-2a10-4a6f-be3c-faa57b7d24ea",
+          "title": "CRM-система",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:39356586-699d-4e96-a1fa-6dd76debbf80",
+          "title": "ИИ в CRM-системах: автоматизируем продажи и работу с клиентами",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "market_1",
+      "family": "market",
+      "split": "train",
+      "query": "как начать торговать на маркетплейсах",
+      "judgments": [
+        {
+          "entity_key": "article:28fa7835-2c31-4d6a-ac86-c63361f8e7a8",
+          "title": "Как выходить на маркетплейсы",
+          "grade": 3
+        },
+        {
+          "entity_key": "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "title": "Маркетплейсы: с чего начать и как преуспeть",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "market_2",
+      "family": "market",
+      "split": "train",
+      "query": "выход на wb и ozon с нуля",
+      "judgments": [
+        {
+          "entity_key": "article:28fa7835-2c31-4d6a-ac86-c63361f8e7a8",
+          "title": "Как выходить на маркетплейсы",
+          "grade": 3
+        },
+        {
+          "entity_key": "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "title": "Маркетплейсы: с чего начать и как преуспeть",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "market_3",
+      "family": "market",
+      "split": "train",
+      "query": "с чего продавцу начать работу с маркетплейсами",
+      "judgments": [
+        {
+          "entity_key": "article:28fa7835-2c31-4d6a-ac86-c63361f8e7a8",
+          "title": "Как выходить на маркетплейсы",
+          "grade": 3
+        },
+        {
+          "entity_key": "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "title": "Маркетплейсы: с чего начать и как преуспeть",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "market_4",
+      "family": "market",
+      "split": "train",
+      "query": "как выйти со своим товаром на маркетплейс",
+      "judgments": [
+        {
+          "entity_key": "article:28fa7835-2c31-4d6a-ac86-c63361f8e7a8",
+          "title": "Как выходить на маркетплейсы",
+          "grade": 3
+        },
+        {
+          "entity_key": "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "title": "Маркетплейсы: с чего начать и как преуспeть",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyal_1",
+      "family": "loyal",
+      "split": "train",
+      "query": "повысить лояльность клиентов салона",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:a88811d9-0479-4f6c-ad53-087dc31395cb",
+          "title": "Показатели эффективности менеджеров по продажам",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyal_2",
+      "family": "loyal",
+      "split": "train",
+      "query": "программа лояльности для салона красоты",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:a88811d9-0479-4f6c-ad53-087dc31395cb",
+          "title": "Показатели эффективности менеджеров по продажам",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyal_3",
+      "family": "loyal",
+      "split": "train",
+      "query": "как салону красоты удерживать своих клиентов",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:a88811d9-0479-4f6c-ad53-087dc31395cb",
+          "title": "Показатели эффективности менеджеров по продажам",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyal_4",
+      "family": "loyal",
+      "split": "train",
+      "query": "дисконтная программа лояльности в салоне",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:a88811d9-0479-4f6c-ad53-087dc31395cb",
+          "title": "Показатели эффективности менеджеров по продажам",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalstaff_1",
+      "family": "loyalstaff",
+      "split": "train",
+      "query": "как повысить лояльность сотрудников",
+      "judgments": [
+        {
+          "entity_key": "course:a25c8282-94c7-458e-abf6-9fbd7b996ef7",
+          "title": "Как управлять командой",
+          "grade": 3
+        },
+        {
+          "entity_key": "podcast:4a4798ad-fa00-46a9-b594-46bb642f35c2",
+          "title": "Команды в малом бизнесе: секрет продуктивной работы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalstaff_2",
+      "family": "loyalstaff",
+      "split": "train",
+      "query": "сотрудники не вовлечены как управлять командой",
+      "judgments": [
+        {
+          "entity_key": "course:a25c8282-94c7-458e-abf6-9fbd7b996ef7",
+          "title": "Как управлять командой",
+          "grade": 3
+        },
+        {
+          "entity_key": "podcast:4a4798ad-fa00-46a9-b594-46bb642f35c2",
+          "title": "Команды в малом бизнесе: секрет продуктивной работы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalstaff_3",
+      "family": "loyalstaff",
+      "split": "train",
+      "query": "что делать чтобы сотрудники были довольны работой",
+      "judgments": [
+        {
+          "entity_key": "course:a25c8282-94c7-458e-abf6-9fbd7b996ef7",
+          "title": "Как управлять командой",
+          "grade": 3
+        },
+        {
+          "entity_key": "podcast:4a4798ad-fa00-46a9-b594-46bb642f35c2",
+          "title": "Команды в малом бизнесе: секрет продуктивной работы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalstaff_4",
+      "family": "loyalstaff",
+      "split": "train",
+      "query": "руководителю повысить вовлеченность персонала",
+      "judgments": [
+        {
+          "entity_key": "course:a25c8282-94c7-458e-abf6-9fbd7b996ef7",
+          "title": "Как управлять командой",
+          "grade": 3
+        },
+        {
+          "entity_key": "podcast:4a4798ad-fa00-46a9-b594-46bb642f35c2",
+          "title": "Команды в малом бизнесе: секрет продуктивной работы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "tax_1",
+      "family": "tax",
+      "split": "train",
+      "query": "налоги и взносы ип",
+      "judgments": [
+        {
+          "entity_key": "article:2d631645-9d25-4382-969a-caa029740771",
+          "title": "Налоги и взносы ИП: полный иллюстрированный гайд",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:648db6d2-973a-471d-a81b-5732216928fc",
+          "title": "УСН для ИП в 2026 году: налоги, взносы и отчётность",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:b7de21da-5795-47bd-9926-01cb3887afe7",
+          "title": "Налог на имущество для ИП и юридических лиц: кому, когда и как платить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "tax_2",
+      "family": "tax",
+      "split": "train",
+      "query": "какие налоги платить индивидуальному предпринимателю",
+      "judgments": [
+        {
+          "entity_key": "article:2d631645-9d25-4382-969a-caa029740771",
+          "title": "Налоги и взносы ИП: полный иллюстрированный гайд",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:648db6d2-973a-471d-a81b-5732216928fc",
+          "title": "УСН для ИП в 2026 году: налоги, взносы и отчётность",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:b7de21da-5795-47bd-9926-01cb3887afe7",
+          "title": "Налог на имущество для ИП и юридических лиц: кому, когда и как платить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "tax_3",
+      "family": "tax",
+      "split": "train",
+      "query": "обязательные страховые взносы и налоги предпринимателя",
+      "judgments": [
+        {
+          "entity_key": "article:2d631645-9d25-4382-969a-caa029740771",
+          "title": "Налоги и взносы ИП: полный иллюстрированный гайд",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:648db6d2-973a-471d-a81b-5732216928fc",
+          "title": "УСН для ИП в 2026 году: налоги, взносы и отчётность",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:b7de21da-5795-47bd-9926-01cb3887afe7",
+          "title": "Налог на имущество для ИП и юридических лиц: кому, когда и как платить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "tax_4",
+      "family": "tax",
+      "split": "train",
+      "query": "какие взносы платит ип за себя",
+      "judgments": [
+        {
+          "entity_key": "article:2d631645-9d25-4382-969a-caa029740771",
+          "title": "Налоги и взносы ИП: полный иллюстрированный гайд",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:648db6d2-973a-471d-a81b-5732216928fc",
+          "title": "УСН для ИП в 2026 году: налоги, взносы и отчётность",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:b7de21da-5795-47bd-9926-01cb3887afe7",
+          "title": "Налог на имущество для ИП и юридических лиц: кому, когда и как платить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ai_1",
+      "family": "ai",
+      "split": "train",
+      "query": "нейросети для бизнеса с чего начать",
+      "judgments": [
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602",
+          "title": "Бизнес на автопилоте: ИИ-инструменты для автоматизации",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ai_2",
+      "family": "ai",
+      "split": "train",
+      "query": "начать использовать искусственный интеллект в компании",
+      "judgments": [
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602",
+          "title": "Бизнес на автопилоте: ИИ-инструменты для автоматизации",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ai_3",
+      "family": "ai",
+      "split": "train",
+      "query": "как малому бизнесу начать применять нейросети",
+      "judgments": [
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602",
+          "title": "Бизнес на автопилоте: ИИ-инструменты для автоматизации",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ai_4",
+      "family": "ai",
+      "split": "train",
+      "query": "знакомство предпринимателя с искусственным интеллектом",
+      "judgments": [
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602",
+          "title": "Бизнес на автопилоте: ИИ-инструменты для автоматизации",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "dismiss_1",
+      "family": "dismiss",
+      "split": "train",
+      "query": "уволить работника по соглашению сторон",
+      "judgments": [
+        {
+          "entity_key": "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "title": "Не сошлись характерами: как уволить сотрудника по соглашению сторон",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "dismiss_2",
+      "family": "dismiss",
+      "split": "train",
+      "query": "как оформить увольнение сотрудника по соглашению",
+      "judgments": [
+        {
+          "entity_key": "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "title": "Не сошлись характерами: как уволить сотрудника по соглашению сторон",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "dismiss_3",
+      "family": "dismiss",
+      "split": "train",
+      "query": "как уволить по взаимному соглашению работодателя и работника",
+      "judgments": [
+        {
+          "entity_key": "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "title": "Не сошлись характерами: как уволить сотрудника по соглашению сторон",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "dismiss_4",
+      "family": "dismiss",
+      "split": "train",
+      "query": "оформление расторжения трудового договора по соглашению сторон",
+      "judgments": [
+        {
+          "entity_key": "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "title": "Не сошлись характерами: как уволить сотрудника по соглашению сторон",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ads_1",
+      "family": "ads",
+      "split": "train",
+      "query": "что такое контекстная реклама",
+      "judgments": [
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "title": "Как отследить эффективность рекламы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3ac95853-c2c2-448a-b13b-37b0db0e095f",
+          "title": "Как получить налоговый вычет по ИИС: документы и порядок оформления",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ads_2",
+      "family": "ads",
+      "split": "train",
+      "query": "как работает реклама в поиске",
+      "judgments": [
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "title": "Как отследить эффективность рекламы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3ac95853-c2c2-448a-b13b-37b0db0e095f",
+          "title": "Как получить налоговый вычет по ИИС: документы и порядок оформления",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ads_3",
+      "family": "ads",
+      "split": "train",
+      "query": "объясните принцип работы контекстной рекламы",
+      "judgments": [
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "title": "Как отследить эффективность рекламы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3ac95853-c2c2-448a-b13b-37b0db0e095f",
+          "title": "Как получить налоговый вычет по ИИС: документы и порядок оформления",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ads_4",
+      "family": "ads",
+      "split": "train",
+      "query": "что такое реклама в результатах поисковика",
+      "judgments": [
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "title": "Как отследить эффективность рекламы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3ac95853-c2c2-448a-b13b-37b0db0e095f",
+          "title": "Как получить налоговый вычет по ИИС: документы и порядок оформления",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "workers_1",
+      "family": "workers",
+      "split": "train",
+      "query": "как оформить первого сотрудника",
+      "judgments": [
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a249d0a2-5826-4b55-908a-a632e5e3e020",
+          "title": "Как ИП оформить сотрудника в штат",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "workers_2",
+      "family": "workers",
+      "split": "train",
+      "query": "нанять работника в штат ип",
+      "judgments": [
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a249d0a2-5826-4b55-908a-a632e5e3e020",
+          "title": "Как ИП оформить сотрудника в штат",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "workers_3",
+      "family": "workers",
+      "split": "train",
+      "query": "прием первого работника в штат",
+      "judgments": [
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a249d0a2-5826-4b55-908a-a632e5e3e020",
+          "title": "Как ИП оформить сотрудника в штат",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "workers_4",
+      "family": "workers",
+      "split": "train",
+      "query": "как предпринимателю нанять и оформить работника",
+      "judgments": [
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a249d0a2-5826-4b55-908a-a632e5e3e020",
+          "title": "Как ИП оформить сотрудника в штат",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cash_1",
+      "family": "cash",
+      "split": "train",
+      "query": "нужна ли онлайн касса при qr оплате",
+      "judgments": [
+        {
+          "entity_key": "article:e7c11d26-41e1-4649-b4f7-4f6f8e58ad51",
+          "title": "Нужна ли касса при оплате QR-кодом",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cash_2",
+      "family": "cash",
+      "split": "train",
+      "query": "обязательна касса при платежах по qr коду",
+      "judgments": [
+        {
+          "entity_key": "article:e7c11d26-41e1-4649-b4f7-4f6f8e58ad51",
+          "title": "Нужна ли касса при оплате QR-кодом",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cash_3",
+      "family": "cash",
+      "split": "train",
+      "query": "требуется ли кассовый аппарат при оплате по qr",
+      "judgments": [
+        {
+          "entity_key": "article:e7c11d26-41e1-4649-b4f7-4f6f8e58ad51",
+          "title": "Нужна ли касса при оплате QR-кодом",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cash_4",
+      "family": "cash",
+      "split": "train",
+      "query": "нужна ли онлайн касса если платить по коду",
+      "judgments": [
+        {
+          "entity_key": "article:e7c11d26-41e1-4649-b4f7-4f6f8e58ad51",
+          "title": "Нужна ли касса при оплате QR-кодом",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_1",
+      "family": "franchise",
+      "split": "train",
+      "query": "как купить франшизу и оценить риски",
+      "judgments": [
+        {
+          "entity_key": "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "title": "Как открыть бизнес по франшизе: инструкция по выбору",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_2",
+      "family": "franchise",
+      "split": "train",
+      "query": "выбираю франшизу для открытия бизнеса",
+      "judgments": [
+        {
+          "entity_key": "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "title": "Как открыть бизнес по франшизе: инструкция по выбору",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_3",
+      "family": "franchise",
+      "split": "train",
+      "query": "выбрать франшизу и начать бизнес по готовой модели",
+      "judgments": [
+        {
+          "entity_key": "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "title": "Как открыть бизнес по франшизе: инструкция по выбору",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_4",
+      "family": "franchise",
+      "split": "train",
+      "query": "как оценить франчайзера перед покупкой франшизы",
+      "judgments": [
+        {
+          "entity_key": "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "title": "Как открыть бизнес по франшизе: инструкция по выбору",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "wildberries_1",
+      "family": "wildberries",
+      "split": "train",
+      "query": "как посчитать доходность товаров на маркетплейсе",
+      "judgments": [
+        {
+          "entity_key": "article:ee5abf57-3342-47c1-b770-735fd00053a8",
+          "title": "Юнит-экономика для маркетплейсов: предсказываем прибыль",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "title": "Как рассчитать маржинальность товаров на маркетплейсах",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "wildberries_2",
+      "family": "wildberries",
+      "split": "train",
+      "query": "юнит экономика продаж на маркетплейсах",
+      "judgments": [
+        {
+          "entity_key": "article:ee5abf57-3342-47c1-b770-735fd00053a8",
+          "title": "Юнит-экономика для маркетплейсов: предсказываем прибыль",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "title": "Как рассчитать маржинальность товаров на маркетплейсах",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "wildberries_3",
+      "family": "wildberries",
+      "split": "train",
+      "query": "рассчитать прибыльность продажи товаров на площадке",
+      "judgments": [
+        {
+          "entity_key": "article:ee5abf57-3342-47c1-b770-735fd00053a8",
+          "title": "Юнит-экономика для маркетплейсов: предсказываем прибыль",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "title": "Как рассчитать маржинальность товаров на маркетплейсах",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "wildberries_4",
+      "family": "wildberries",
+      "split": "train",
+      "query": "как определить маржу продавца маркетплейса",
+      "judgments": [
+        {
+          "entity_key": "article:ee5abf57-3342-47c1-b770-735fd00053a8",
+          "title": "Юнит-экономика для маркетплейсов: предсказываем прибыль",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "title": "Как рассчитать маржинальность товаров на маркетплейсах",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalclients_1",
+      "family": "loyalclients",
+      "split": "train",
+      "query": "как удержать клиентов в бизнесе",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalclients_2",
+      "family": "loyalclients",
+      "split": "train",
+      "query": "клиенты уходят способы удержания",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalclients_3",
+      "family": "loyalclients",
+      "split": "train",
+      "query": "как вернуть покупателей и повысить повторные покупки",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalclients_4",
+      "family": "loyalclients",
+      "split": "train",
+      "query": "удержание клиентской базы малого бизнеса",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "usn_1",
+      "family": "usn",
+      "split": "val",
+      "query": "как перейти на усн",
+      "judgments": [
+        {
+          "entity_key": "article:6badb48c-ab30-4f01-80a0-86c24f3605d8",
+          "title": "Переход на УСН: пошаговая инструкция для ИП и ООО",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:bed8c4c5-1a54-4f86-87a7-3149e3d57633",
+          "title": "Какую упрощёнку выбрать, чтобы хватало не только на налоги",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c4f929db-a41d-43cd-960a-4e2f40058419",
+          "title": "Как закрыть расчётный счёт ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "usn_2",
+      "family": "usn",
+      "split": "val",
+      "query": "переход на упрощенную систему налогообложения",
+      "judgments": [
+        {
+          "entity_key": "article:6badb48c-ab30-4f01-80a0-86c24f3605d8",
+          "title": "Переход на УСН: пошаговая инструкция для ИП и ООО",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:bed8c4c5-1a54-4f86-87a7-3149e3d57633",
+          "title": "Какую упрощёнку выбрать, чтобы хватало не только на налоги",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c4f929db-a41d-43cd-960a-4e2f40058419",
+          "title": "Как закрыть расчётный счёт ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "usn_3",
+      "family": "usn",
+      "split": "val",
+      "query": "перевести бизнес на упрощенку инструкция",
+      "judgments": [
+        {
+          "entity_key": "article:6badb48c-ab30-4f01-80a0-86c24f3605d8",
+          "title": "Переход на УСН: пошаговая инструкция для ИП и ООО",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:bed8c4c5-1a54-4f86-87a7-3149e3d57633",
+          "title": "Какую упрощёнку выбрать, чтобы хватало не только на налоги",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c4f929db-a41d-43cd-960a-4e2f40058419",
+          "title": "Как закрыть расчётный счёт ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "usn_4",
+      "family": "usn",
+      "split": "val",
+      "query": "оформление перехода ип на усн",
+      "judgments": [
+        {
+          "entity_key": "article:6badb48c-ab30-4f01-80a0-86c24f3605d8",
+          "title": "Переход на УСН: пошаговая инструкция для ИП и ООО",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:bed8c4c5-1a54-4f86-87a7-3149e3d57633",
+          "title": "Какую упрощёнку выбрать, чтобы хватало не только на налоги",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c4f929db-a41d-43cd-960a-4e2f40058419",
+          "title": "Как закрыть расчётный счёт ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "hiring_1",
+      "family": "hiring",
+      "split": "val",
+      "query": "где искать сотрудников на работу",
+      "judgments": [
+        {
+          "entity_key": "article:694edd8f-2b39-44c7-bcb6-599f41911a84",
+          "title": "Где и как разместить объявления о вакансии",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "hiring_2",
+      "family": "hiring",
+      "split": "val",
+      "query": "как разместить вакансию",
+      "judgments": [
+        {
+          "entity_key": "article:694edd8f-2b39-44c7-bcb6-599f41911a84",
+          "title": "Где и как разместить объявления о вакансии",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "hiring_3",
+      "family": "hiring",
+      "split": "val",
+      "query": "разместить объявление о найме персонала",
+      "judgments": [
+        {
+          "entity_key": "article:694edd8f-2b39-44c7-bcb6-599f41911a84",
+          "title": "Где и как разместить объявления о вакансии",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "hiring_4",
+      "family": "hiring",
+      "split": "val",
+      "query": "на каких площадках искать кандидатов",
+      "judgments": [
+        {
+          "entity_key": "article:694edd8f-2b39-44c7-bcb6-599f41911a84",
+          "title": "Где и как разместить объявления о вакансии",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "trademark_1",
+      "family": "trademark",
+      "split": "val",
+      "query": "как защитить название и логотип компании",
+      "judgments": [
+        {
+          "entity_key": "article:4f960bb4-28b4-4277-a369-52da2eeb9154",
+          "title": "Документы для регистрации товарного знака",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:36f0e0de-948b-4778-9190-377867610ad1",
+          "title": "Логотип для компании: как защитить",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "trademark_2",
+      "family": "trademark",
+      "split": "val",
+      "query": "регистрация товарного знака документы",
+      "judgments": [
+        {
+          "entity_key": "article:4f960bb4-28b4-4277-a369-52da2eeb9154",
+          "title": "Документы для регистрации товарного знака",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:36f0e0de-948b-4778-9190-377867610ad1",
+          "title": "Логотип для компании: как защитить",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "trademark_3",
+      "family": "trademark",
+      "split": "val",
+      "query": "зарегистрировать логотип и товарный знак список документов",
+      "judgments": [
+        {
+          "entity_key": "article:4f960bb4-28b4-4277-a369-52da2eeb9154",
+          "title": "Документы для регистрации товарного знака",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:36f0e0de-948b-4778-9190-377867610ad1",
+          "title": "Логотип для компании: как защитить",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "trademark_4",
+      "family": "trademark",
+      "split": "val",
+      "query": "как защитить бренд своей фирмы юридически",
+      "judgments": [
+        {
+          "entity_key": "article:4f960bb4-28b4-4277-a369-52da2eeb9154",
+          "title": "Документы для регистрации товарного знака",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:36f0e0de-948b-4778-9190-377867610ad1",
+          "title": "Логотип для компании: как защитить",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "returns_1",
+      "family": "returns",
+      "split": "val",
+      "query": "как работать с отзывами на маркетплейсах",
+      "judgments": [
+        {
+          "entity_key": "article:90ae3f77-78dc-4534-b6d7-fd324be9910d",
+          "title": "Отзывы на маркетплейсах: как работать с обратной связью",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:c3ecd3f3-097d-4ef5-968d-1a9cb4d6f8b7",
+          "title": "Как и зачем использовать ИИ для анализа отзывов",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "returns_2",
+      "family": "returns",
+      "split": "val",
+      "query": "обратная связь покупателей на маркетплейсе",
+      "judgments": [
+        {
+          "entity_key": "article:90ae3f77-78dc-4534-b6d7-fd324be9910d",
+          "title": "Отзывы на маркетплейсах: как работать с обратной связью",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:c3ecd3f3-097d-4ef5-968d-1a9cb4d6f8b7",
+          "title": "Как и зачем использовать ИИ для анализа отзывов",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "returns_3",
+      "family": "returns",
+      "split": "val",
+      "query": "как отвечать на отзывы покупателей маркетплейса",
+      "judgments": [
+        {
+          "entity_key": "article:90ae3f77-78dc-4534-b6d7-fd324be9910d",
+          "title": "Отзывы на маркетплейсах: как работать с обратной связью",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:c3ecd3f3-097d-4ef5-968d-1a9cb4d6f8b7",
+          "title": "Как и зачем использовать ИИ для анализа отзывов",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "returns_4",
+      "family": "returns",
+      "split": "val",
+      "query": "обработка комментариев клиентов на торговых площадках",
+      "judgments": [
+        {
+          "entity_key": "article:90ae3f77-78dc-4534-b6d7-fd324be9910d",
+          "title": "Отзывы на маркетплейсах: как работать с обратной связью",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:c3ecd3f3-097d-4ef5-968d-1a9cb4d6f8b7",
+          "title": "Как и зачем использовать ИИ для анализа отзывов",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "aihr_1",
+      "family": "aihr",
+      "split": "val",
+      "query": "автоматизация найма сотрудников с нейросетями",
+      "judgments": [
+        {
+          "entity_key": "article:e5c8d28a-79c0-4877-80dd-06b68ba67576",
+          "title": "Автоматизация найма с помощью ИИ: гайд для HR",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "aihr_2",
+      "family": "aihr",
+      "split": "val",
+      "query": "как hr использовать искусственный интеллект",
+      "judgments": [
+        {
+          "entity_key": "article:e5c8d28a-79c0-4877-80dd-06b68ba67576",
+          "title": "Автоматизация найма с помощью ИИ: гайд для HR",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "aihr_3",
+      "family": "aihr",
+      "split": "val",
+      "query": "автоматизировать подбор персонала с помощью ии",
+      "judgments": [
+        {
+          "entity_key": "article:e5c8d28a-79c0-4877-80dd-06b68ba67576",
+          "title": "Автоматизация найма с помощью ИИ: гайд для HR",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "aihr_4",
+      "family": "aihr",
+      "split": "val",
+      "query": "нейросети для hr и поиска соискателей",
+      "judgments": [
+        {
+          "entity_key": "article:e5c8d28a-79c0-4877-80dd-06b68ba67576",
+          "title": "Автоматизация найма с помощью ИИ: гайд для HR",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cashflow_1",
+      "family": "cashflow",
+      "split": "test",
+      "query": "отчет о движении денежных средств",
+      "judgments": [
+        {
+          "entity_key": "article:3145e621-6410-4625-a85a-9a59388de537",
+          "title": "Отчёт о движении денежных средств: что это и как составить",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cashflow_2",
+      "family": "cashflow",
+      "split": "test",
+      "query": "как составить оддс",
+      "judgments": [
+        {
+          "entity_key": "article:3145e621-6410-4625-a85a-9a59388de537",
+          "title": "Отчёт о движении денежных средств: что это и как составить",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cashflow_3",
+      "family": "cashflow",
+      "split": "test",
+      "query": "составить форму движения денег компании",
+      "judgments": [
+        {
+          "entity_key": "article:3145e621-6410-4625-a85a-9a59388de537",
+          "title": "Отчёт о движении денежных средств: что это и как составить",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cashflow_4",
+      "family": "cashflow",
+      "split": "test",
+      "query": "как вести отчет оддс бизнеса",
+      "judgments": [
+        {
+          "entity_key": "article:3145e621-6410-4625-a85a-9a59388de537",
+          "title": "Отчёт о движении денежных средств: что это и как составить",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "taxdebt_1",
+      "family": "taxdebt",
+      "split": "test",
+      "query": "как проверить долги ип по налогам",
+      "judgments": [
+        {
+          "entity_key": "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "title": "Налоговая задолженность по ИП: как проверить и погасить",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:8de1b480-a7f4-42de-b82c-2a9142f94477",
+          "title": "Как платить налоги и взносы на единый налоговый счёт (ЕНС)",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "taxdebt_2",
+      "family": "taxdebt",
+      "split": "test",
+      "query": "налоговая задолженность предпринимателя",
+      "judgments": [
+        {
+          "entity_key": "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "title": "Налоговая задолженность по ИП: как проверить и погасить",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:8de1b480-a7f4-42de-b82c-2a9142f94477",
+          "title": "Как платить налоги и взносы на единый налоговый счёт (ЕНС)",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "taxdebt_3",
+      "family": "taxdebt",
+      "split": "test",
+      "query": "проверка налоговой задолженности индивидуального предпринимателя",
+      "judgments": [
+        {
+          "entity_key": "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "title": "Налоговая задолженность по ИП: как проверить и погасить",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:8de1b480-a7f4-42de-b82c-2a9142f94477",
+          "title": "Как платить налоги и взносы на единый налоговый счёт (ЕНС)",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "taxdebt_4",
+      "family": "taxdebt",
+      "split": "test",
+      "query": "как ип узнать и погасить долги в фнс",
+      "judgments": [
+        {
+          "entity_key": "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "title": "Налоговая задолженность по ИП: как проверить и погасить",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:8de1b480-a7f4-42de-b82c-2a9142f94477",
+          "title": "Как платить налоги и взносы на единый налоговый счёт (ЕНС)",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "product_1",
+      "family": "product",
+      "split": "test",
+      "query": "выбрать товар для продажи на маркетплейсе",
+      "judgments": [
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:85593183-b695-41cb-96cc-a9d75b6d5d20",
+          "title": "Как выбрать схему работы с маркетплейсами",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "product_2",
+      "family": "product",
+      "split": "test",
+      "query": "какой товар продавать на маркетплейсах",
+      "judgments": [
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:85593183-b695-41cb-96cc-a9d75b6d5d20",
+          "title": "Как выбрать схему работы с маркетплейсами",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "product_3",
+      "family": "product",
+      "split": "test",
+      "query": "подбор товара для начала продаж на маркетплейсе",
+      "judgments": [
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:85593183-b695-41cb-96cc-a9d75b6d5d20",
+          "title": "Как выбрать схему работы с маркетплейсами",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "product_4",
+      "family": "product",
+      "split": "test",
+      "query": "как выбрать продукцию для интернет площадок",
+      "judgments": [
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:85593183-b695-41cb-96cc-a9d75b6d5d20",
+          "title": "Как выбрать схему работы с маркетплейсами",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cyber_1",
+      "family": "cyber",
+      "split": "test",
+      "query": "как защититься от киберугроз бизнесу",
+      "judgments": [
+        {
+          "entity_key": "article:b488fc89-d91b-4747-9770-3f1864c7bbd9",
+          "title": "Актуальные угрозы кибербезопасности и способы защиты от них",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cyber_2",
+      "family": "cyber",
+      "split": "test",
+      "query": "кибербезопасность компании актуальные угрозы",
+      "judgments": [
+        {
+          "entity_key": "article:b488fc89-d91b-4747-9770-3f1864c7bbd9",
+          "title": "Актуальные угрозы кибербезопасности и способы защиты от них",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cyber_3",
+      "family": "cyber",
+      "split": "test",
+      "query": "защита бизнеса от кибератак и информационных угроз",
+      "judgments": [
+        {
+          "entity_key": "article:b488fc89-d91b-4747-9770-3f1864c7bbd9",
+          "title": "Актуальные угрозы кибербезопасности и способы защиты от них",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cyber_4",
+      "family": "cyber",
+      "split": "test",
+      "query": "какие бывают киберугрозы для компаний",
+      "judgments": [
+        {
+          "entity_key": "article:b488fc89-d91b-4747-9770-3f1864c7bbd9",
+          "title": "Актуальные угрозы кибербезопасности и способы защиты от них",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_cost_1",
+      "family": "franchise_cost",
+      "split": "test",
+      "query": "сколько стоит франшиза",
+      "judgments": [
+        {
+          "entity_key": "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "title": "Сколько стоит купить франшизу",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_cost_2",
+      "family": "franchise_cost",
+      "split": "test",
+      "query": "цена покупки франшизы для бизнеса",
+      "judgments": [
+        {
+          "entity_key": "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "title": "Сколько стоит купить франшизу",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_cost_3",
+      "family": "franchise_cost",
+      "split": "test",
+      "query": "во сколько обойдется покупка готовой франшизы",
+      "judgments": [
+        {
+          "entity_key": "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "title": "Сколько стоит купить франшизу",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_cost_4",
+      "family": "franchise_cost",
+      "split": "test",
+      "query": "расходы предпринимателя при покупке франшизы",
+      "judgments": [
+        {
+          "entity_key": "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "title": "Сколько стоит купить франшизу",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "selfip_1",
+      "family": "selfip",
+      "split": "test",
+      "query": "как самозанятому стать ип",
+      "judgments": [
+        {
+          "entity_key": "course:2155a4c8-2293-4b16-b928-cf72f2de72b5",
+          "title": "Как самозанятому стать ИП",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:91744992-36ea-46b7-944b-465542a01aee",
+          "title": "Как ИП перейти на НПД",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "selfip_2",
+      "family": "selfip",
+      "split": "test",
+      "query": "переход с самозанятости на ип",
+      "judgments": [
+        {
+          "entity_key": "course:2155a4c8-2293-4b16-b928-cf72f2de72b5",
+          "title": "Как самозанятому стать ИП",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:91744992-36ea-46b7-944b-465542a01aee",
+          "title": "Как ИП перейти на НПД",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "selfip_3",
+      "family": "selfip",
+      "split": "test",
+      "query": "стать индивидуальным предпринимателем после самозанятости",
+      "judgments": [
+        {
+          "entity_key": "course:2155a4c8-2293-4b16-b928-cf72f2de72b5",
+          "title": "Как самозанятому стать ИП",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:91744992-36ea-46b7-944b-465542a01aee",
+          "title": "Как ИП перейти на НПД",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "selfip_4",
+      "family": "selfip",
+      "split": "test",
+      "query": "как перейти с нпд и зарегистрировать ип",
+      "judgments": [
+        {
+          "entity_key": "course:2155a4c8-2293-4b16-b928-cf72f2de72b5",
+          "title": "Как самозанятому стать ИП",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:91744992-36ea-46b7-944b-465542a01aee",
+          "title": "Как ИП перейти на НПД",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ads_long",
+      "family": "ads",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: что такое контекстная реклама",
+      "judgments": [
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a0f86128-e1e2-450d-ae94-98404a146dfa",
+          "title": "Как отследить эффективность рекламы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3ac95853-c2c2-448a-b13b-37b0db0e095f",
+          "title": "Как получить налоговый вычет по ИИС: документы и порядок оформления",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ai_long",
+      "family": "ai",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: нейросети для бизнеса с чего начать",
+      "judgments": [
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:b9ef7961-cad2-4bc8-9fa4-d57186be1602",
+          "title": "Бизнес на автопилоте: ИИ-инструменты для автоматизации",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "aihr_long",
+      "family": "aihr",
+      "split": "val",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: автоматизация найма сотрудников с нейросетями",
+      "judgments": [
+        {
+          "entity_key": "article:e5c8d28a-79c0-4877-80dd-06b68ba67576",
+          "title": "Автоматизация найма с помощью ИИ: гайд для HR",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:030c2f9d-eba7-4652-a7f1-b6d0f9165e03",
+          "title": "Нейросети для бизнеса: с чего начать",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cash_long",
+      "family": "cash",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: нужна ли онлайн касса при qr оплате",
+      "judgments": [
+        {
+          "entity_key": "article:e7c11d26-41e1-4649-b4f7-4f6f8e58ad51",
+          "title": "Нужна ли касса при оплате QR-кодом",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cashflow_long",
+      "family": "cashflow",
+      "split": "test",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: отчет о движении денежных средств",
+      "judgments": [
+        {
+          "entity_key": "article:3145e621-6410-4625-a85a-9a59388de537",
+          "title": "Отчёт о движении денежных средств: что это и как составить",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "coffee_long",
+      "family": "coffee",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как выбрать франшизу кофейни",
+      "judgments": [
+        {
+          "entity_key": "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:95f98421-9166-4826-b657-ea8a024a9397",
+          "title": "Сеть трендовых кофеен в московских ЖК",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "id": "crm_long",
+      "family": "crm",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как выбрать crm для малого бизнеса",
+      "judgments": [
+        {
+          "entity_key": "article:49cbf816-4625-4dcd-acad-557e1c7c1d05",
+          "title": "Как выбрать CRM-систему для малого бизнеса",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:69c0fc4b-2a10-4a6f-be3c-faa57b7d24ea",
+          "title": "CRM-система",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:39356586-699d-4e96-a1fa-6dd76debbf80",
+          "title": "ИИ в CRM-системах: автоматизируем продажи и работу с клиентами",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "cyber_long",
+      "family": "cyber",
+      "split": "test",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как защититься от киберугроз бизнесу",
+      "judgments": [
+        {
+          "entity_key": "article:b488fc89-d91b-4747-9770-3f1864c7bbd9",
+          "title": "Актуальные угрозы кибербезопасности и способы защиты от них",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:3c3c9249-2790-4109-82cd-30688b1ebeaf",
+          "title": "Закон о защите: как государство борется с кибермошенниками",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "dismiss_long",
+      "family": "dismiss",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: уволить работника по соглашению сторон",
+      "judgments": [
+        {
+          "entity_key": "article:18454a82-5ebc-4144-b3e4-ec403ec44e93",
+          "title": "Не сошлись характерами: как уволить сотрудника по соглашению сторон",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_long",
+      "family": "franchise",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как купить франшизу и оценить риски",
+      "judgments": [
+        {
+          "entity_key": "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "title": "Как открыть бизнес по франшизе: инструкция по выбору",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 1
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_cost_long",
+      "family": "franchise_cost",
+      "split": "test",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: сколько стоит франшиза",
+      "judgments": [
+        {
+          "entity_key": "article:62c9b798-2a15-49af-aba2-9c85fc0858dc",
+          "title": "Сколько стоит купить франшизу",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:52d541b1-6057-4780-8251-296daf2ce575",
+          "title": "Франшиза без иллюзий: как выбрать работающую модель",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "hiring_long",
+      "family": "hiring",
+      "split": "val",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: где искать сотрудников на работу",
+      "judgments": [
+        {
+          "entity_key": "article:694edd8f-2b39-44c7-bcb6-599f41911a84",
+          "title": "Где и как разместить объявления о вакансии",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "ip_long",
+      "family": "ip",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как открыть ип онлайн",
+      "judgments": [
+        {
+          "entity_key": "article:41b2acff-d220-4e81-a90f-706444ce22c2",
+          "title": "Как открыть ИП онлайн",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:436d99ec-50d7-4abc-a0ed-ddd2f7d122d9",
+          "title": "Как открыть ИП",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyal_long",
+      "family": "loyal",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: повысить лояльность клиентов салона",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:a88811d9-0479-4f6c-ad53-087dc31395cb",
+          "title": "Показатели эффективности менеджеров по продажам",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalclients_long",
+      "family": "loyalclients",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как удержать клиентов в бизнесе",
+      "judgments": [
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 3
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "loyalstaff_long",
+      "family": "loyalstaff",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как повысить лояльность сотрудников",
+      "judgments": [
+        {
+          "entity_key": "course:a25c8282-94c7-458e-abf6-9fbd7b996ef7",
+          "title": "Как управлять командой",
+          "grade": 3
+        },
+        {
+          "entity_key": "podcast:4a4798ad-fa00-46a9-b594-46bb642f35c2",
+          "title": "Команды в малом бизнесе: секрет продуктивной работы",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "glossary:900946f1-5390-4a27-bb74-ab4cfdccffec",
+          "title": "Программа лояльности",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "market_long",
+      "family": "market",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как начать торговать на маркетплейсах",
+      "judgments": [
+        {
+          "entity_key": "article:28fa7835-2c31-4d6a-ac86-c63361f8e7a8",
+          "title": "Как выходить на маркетплейсы",
+          "grade": 3
+        },
+        {
+          "entity_key": "course:d0aa4598-3da2-478b-bbf8-bda81b231b58",
+          "title": "Маркетплейсы: с чего начать и как преуспeть",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "plan_long",
+      "family": "plan",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как написать бизнес план",
+      "judgments": [
+        {
+          "entity_key": "article:293e0962-7aa1-491e-ab4b-ed9e787428c2",
+          "title": "Как составить бизнес-план: пошаговая инструкция",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:729c2a77-c965-44a3-bd72-44f0c5ebf7fa",
+          "title": "Шаблон для построения финансовой модели",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:e8f2b3ca-a701-4c25-bffc-75e9cf9d1c7f",
+          "title": "Бизнес-план магазина одежды с нуля: выбираем нишу",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "product_long",
+      "family": "product",
+      "split": "test",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: выбрать товар для продажи на маркетплейсе",
+      "judgments": [
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:85593183-b695-41cb-96cc-a9d75b6d5d20",
+          "title": "Как выбрать схему работы с маркетплейсами",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "rent_long",
+      "family": "rent",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: шаблон договора аренды помещения",
+      "judgments": [
+        {
+          "entity_key": "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "title": "Договор аренды нежилого помещения",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:05086558-c899-414f-a677-6422a7f5e329",
+          "title": "Составляем договор аренды нежилого помещения: пошаговая инструкция",
+          "grade": 2
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:18dea632-d4a5-4483-8688-0eea17d8642c",
+          "title": "Гарантийное письмо о заключении договора аренды между двумя ООО",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "returns_long",
+      "family": "returns",
+      "split": "val",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как работать с отзывами на маркетплейсах",
+      "judgments": [
+        {
+          "entity_key": "article:90ae3f77-78dc-4534-b6d7-fd324be9910d",
+          "title": "Отзывы на маркетплейсах: как работать с обратной связью",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:c3ecd3f3-097d-4ef5-968d-1a9cb4d6f8b7",
+          "title": "Как и зачем использовать ИИ для анализа отзывов",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "self_long",
+      "family": "self",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как стать самозанятым",
+      "judgments": [
+        {
+          "entity_key": "article:3af09f16-7c29-4e18-a4eb-ffaa7fc9a467",
+          "title": "Как стать самозанятым",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "selfip_long",
+      "family": "selfip",
+      "split": "test",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как самозанятому стать ип",
+      "judgments": [
+        {
+          "entity_key": "course:2155a4c8-2293-4b16-b928-cf72f2de72b5",
+          "title": "Как самозанятому стать ИП",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:91744992-36ea-46b7-944b-465542a01aee",
+          "title": "Как ИП перейти на НПД",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:c6e95319-24c6-412f-a16f-45fb9216e6b8",
+          "title": "Как закрыть нулевое ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "tax_long",
+      "family": "tax",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: налоги и взносы ип",
+      "judgments": [
+        {
+          "entity_key": "article:2d631645-9d25-4382-969a-caa029740771",
+          "title": "Налоги и взносы ИП: полный иллюстрированный гайд",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:648db6d2-973a-471d-a81b-5732216928fc",
+          "title": "УСН для ИП в 2026 году: налоги, взносы и отчётность",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:b7de21da-5795-47bd-9926-01cb3887afe7",
+          "title": "Налог на имущество для ИП и юридических лиц: кому, когда и как платить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:19e4aafa-0804-46a5-b875-d1a3b4525e59",
+          "title": "Чем ИП отличается от самозанятого",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "taxdebt_long",
+      "family": "taxdebt",
+      "split": "test",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как проверить долги ип по налогам",
+      "judgments": [
+        {
+          "entity_key": "article:8793fdd5-0bb9-479c-815c-5b6aed65fad6",
+          "title": "Налоговая задолженность по ИП: как проверить и погасить",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:8de1b480-a7f4-42de-b82c-2a9142f94477",
+          "title": "Как платить налоги и взносы на единый налоговый счёт (ЕНС)",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "trademark_long",
+      "family": "trademark",
+      "split": "val",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как защитить название и логотип компании",
+      "judgments": [
+        {
+          "entity_key": "article:4f960bb4-28b4-4277-a369-52da2eeb9154",
+          "title": "Документы для регистрации товарного знака",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:36f0e0de-948b-4778-9190-377867610ad1",
+          "title": "Логотип для компании: как защитить",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:259b2c0b-08c2-439c-b23e-1029e7198213",
+          "title": "Какие документы нужны для регистрации самозанятого",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "usn_long",
+      "family": "usn",
+      "split": "val",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как перейти на усн",
+      "judgments": [
+        {
+          "entity_key": "article:6badb48c-ab30-4f01-80a0-86c24f3605d8",
+          "title": "Переход на УСН: пошаговая инструкция для ИП и ООО",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:bed8c4c5-1a54-4f86-87a7-3149e3d57633",
+          "title": "Какую упрощёнку выбрать, чтобы хватало не только на налоги",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:c4f929db-a41d-43cd-960a-4e2f40058419",
+          "title": "Как закрыть расчётный счёт ИП",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "wildberries_long",
+      "family": "wildberries",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как посчитать доходность товаров на маркетплейсе",
+      "judgments": [
+        {
+          "entity_key": "article:ee5abf57-3342-47c1-b770-735fd00053a8",
+          "title": "Юнит-экономика для маркетплейсов: предсказываем прибыль",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "title": "Как рассчитать маржинальность товаров на маркетплейсах",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:74e781fe-5211-4ec3-90cc-89075e0bfec4",
+          "title": "Штрафы на маркетплейсах: за что наказывают и как защитить бизнес",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:51f6b853-95a0-4c40-b4b6-e7eb9fec39a4",
+          "title": "Льготы и субсидии для самозанятых: плюшки от государства и регионов",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "workers_long",
+      "family": "workers",
+      "split": "train",
+      "query": "Я предприниматель и хочу разобраться в рабочей задаче: как оформить первого сотрудника",
+      "judgments": [
+        {
+          "entity_key": "article:386cdfd3-a335-4446-a415-b251f52f0f57",
+          "title": "Первый сотрудник: подготовка к найму",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a249d0a2-5826-4b55-908a-a632e5e3e020",
+          "title": "Как ИП оформить сотрудника в штат",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2fb24481-abff-48cf-9511-efcd0638ca78",
+          "title": "Нам нужно расстаться: как уволить сотрудника без его желания",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "vat_profit_1",
+      "family": "vat_profit",
+      "split": "train",
+      "query": "как рассчитать налог на прибыль ооо",
+      "judgments": [
+        {
+          "entity_key": "article:0288bdab-dafc-42b8-831f-d234eb929d6b",
+          "title": "Налог на прибыль для ООО в 2026 году: как считать и платить",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:5180ba88-a690-4b0a-9c0b-36595c2ec417",
+          "title": "УСН для ООО в 2026 году: налоги, взносы и отчётность",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:d6165a26-8905-4c67-965d-51c76a54c4c8",
+          "title": "Как закрыть ИП онлайн в 2026 году: ставим точку в бизнесе",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "vat_profit_2",
+      "family": "vat_profit",
+      "split": "train",
+      "query": "налог на прибыль компании расчет",
+      "judgments": [
+        {
+          "entity_key": "article:0288bdab-dafc-42b8-831f-d234eb929d6b",
+          "title": "Налог на прибыль для ООО в 2026 году: как считать и платить",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:5180ba88-a690-4b0a-9c0b-36595c2ec417",
+          "title": "УСН для ООО в 2026 году: налоги, взносы и отчётность",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:d6165a26-8905-4c67-965d-51c76a54c4c8",
+          "title": "Как закрыть ИП онлайн в 2026 году: ставим точку в бизнесе",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "vat_profit_3",
+      "family": "vat_profit",
+      "split": "train",
+      "query": "компании нужно понять как считают и платят налог на прибыль",
+      "judgments": [
+        {
+          "entity_key": "article:0288bdab-dafc-42b8-831f-d234eb929d6b",
+          "title": "Налог на прибыль для ООО в 2026 году: как считать и платить",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:5180ba88-a690-4b0a-9c0b-36595c2ec417",
+          "title": "УСН для ООО в 2026 году: налоги, взносы и отчётность",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:d6165a26-8905-4c67-965d-51c76a54c4c8",
+          "title": "Как закрыть ИП онлайн в 2026 году: ставим точку в бизнесе",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "vacation_1",
+      "family": "vacation",
+      "split": "train",
+      "query": "как отправить сотрудника в отпуск",
+      "judgments": [
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:946fea3f-fa53-4f28-9237-c0b7e28a8bc4",
+          "title": "Как правильно отправить сотрудника в отпуск за свой счёт",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "vacation_2",
+      "family": "vacation",
+      "split": "train",
+      "query": "оформление ежегодного отпуска работнику",
+      "judgments": [
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:946fea3f-fa53-4f28-9237-c0b7e28a8bc4",
+          "title": "Как правильно отправить сотрудника в отпуск за свой счёт",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "vacation_3",
+      "family": "vacation",
+      "split": "train",
+      "query": "хочу разобраться какие документы нужны когда работник идет в отпуск",
+      "judgments": [
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:946fea3f-fa53-4f28-9237-c0b7e28a8bc4",
+          "title": "Как правильно отправить сотрудника в отпуск за свой счёт",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "product_seo_1",
+      "family": "product_seo",
+      "split": "train",
+      "query": "сео карточки товара на маркетплейсе",
+      "judgments": [
+        {
+          "entity_key": "article:5b5a51cb-f4e7-48ba-b290-70d4d5a23f7e",
+          "title": "SEO-оптимизация карточки товара: как попасть в топ на маркетплейсе",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "product_seo_2",
+      "family": "product_seo",
+      "split": "train",
+      "query": "как улучшить поисковую выдачу карточки товара",
+      "judgments": [
+        {
+          "entity_key": "article:5b5a51cb-f4e7-48ba-b290-70d4d5a23f7e",
+          "title": "SEO-оптимизация карточки товара: как попасть в топ на маркетплейсе",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "product_seo_3",
+      "family": "product_seo",
+      "split": "train",
+      "query": "хочу чтобы карточка товара продавца выше попадала в поиске маркетплейса",
+      "judgments": [
+        {
+          "entity_key": "article:5b5a51cb-f4e7-48ba-b290-70d4d5a23f7e",
+          "title": "SEO-оптимизация карточки товара: как попасть в топ на маркетплейсе",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "mark_ads_1",
+      "family": "mark_ads",
+      "split": "train",
+      "query": "как маркировать рекламу erid",
+      "judgments": [
+        {
+          "entity_key": "article:7031320b-1412-48ea-bca8-47ffe9748547",
+          "title": "ОРД, ЕРИР, erid: что всё это значит и как маркировать рекламу",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:5180ba88-a690-4b0a-9c0b-36595c2ec417",
+          "title": "УСН для ООО в 2026 году: налоги, взносы и отчётность",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:ce9b5708-ee0a-46c9-8cfb-aaa64e0e7d19",
+          "title": "Договор субаренды нежилого помещения",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "mark_ads_2",
+      "family": "mark_ads",
+      "split": "train",
+      "query": "орд ерир маркировка рекламы",
+      "judgments": [
+        {
+          "entity_key": "article:7031320b-1412-48ea-bca8-47ffe9748547",
+          "title": "ОРД, ЕРИР, erid: что всё это значит и как маркировать рекламу",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:5180ba88-a690-4b0a-9c0b-36595c2ec417",
+          "title": "УСН для ООО в 2026 году: налоги, взносы и отчётность",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:ce9b5708-ee0a-46c9-8cfb-aaa64e0e7d19",
+          "title": "Договор субаренды нежилого помещения",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "mark_ads_3",
+      "family": "mark_ads",
+      "split": "train",
+      "query": "хочу разобраться с маркировкой интернет рекламы и идентификатором erid",
+      "judgments": [
+        {
+          "entity_key": "article:7031320b-1412-48ea-bca8-47ffe9748547",
+          "title": "ОРД, ЕРИР, erid: что всё это значит и как маркировать рекламу",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:5180ba88-a690-4b0a-9c0b-36595c2ec417",
+          "title": "УСН для ООО в 2026 году: налоги, взносы и отчётность",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:ce9b5708-ee0a-46c9-8cfb-aaa64e0e7d19",
+          "title": "Договор субаренды нежилого помещения",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "pays_1",
+      "family": "pays",
+      "split": "train",
+      "query": "оформление электронной подписи для ип",
+      "judgments": [
+        {
+          "entity_key": "article:dbdf96f4-8022-4cc2-8a2d-3b584941615a",
+          "title": "Спасибо, КЭП: оформляем электронную подпись для ИП и компаний",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:1e3e386a-be8e-44cd-9be8-5ea74fee77b4",
+          "title": "Какие документы нужны для открытия ИП",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "pays_2",
+      "family": "pays",
+      "split": "train",
+      "query": "как ип получить кэп",
+      "judgments": [
+        {
+          "entity_key": "article:dbdf96f4-8022-4cc2-8a2d-3b584941615a",
+          "title": "Спасибо, КЭП: оформляем электронную подпись для ИП и компаний",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:1e3e386a-be8e-44cd-9be8-5ea74fee77b4",
+          "title": "Какие документы нужны для открытия ИП",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "pays_3",
+      "family": "pays",
+      "split": "train",
+      "query": "предпринимателю нужна электронная подпись для работы с документами",
+      "judgments": [
+        {
+          "entity_key": "article:dbdf96f4-8022-4cc2-8a2d-3b584941615a",
+          "title": "Спасибо, КЭП: оформляем электронную подпись для ИП и компаний",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:1e3e386a-be8e-44cd-9be8-5ea74fee77b4",
+          "title": "Какие документы нужны для открытия ИП",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_bakery_1",
+      "family": "franchise_bakery",
+      "split": "train",
+      "query": "как выбрать франшизу пекарни",
+      "judgments": [
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "title": "Как открыть бизнес по франшизе: инструкция по выбору",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_bakery_2",
+      "family": "franchise_bakery",
+      "split": "train",
+      "query": "открыть пекарню по франшизе",
+      "judgments": [
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "title": "Как открыть бизнес по франшизе: инструкция по выбору",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "franchise_bakery_3",
+      "family": "franchise_bakery",
+      "split": "train",
+      "query": "сравниваю готовые варианты пекарен и ищу франчайзера",
+      "judgments": [
+        {
+          "entity_key": "article:74f77833-ac2f-4901-b00c-8c80dda4acef",
+          "title": "Франшизы пекарен: готовый бизнес с ароматом свежей выпечки",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:a48c8334-9984-4fbd-bc48-ef9c6ee9413b",
+          "title": "Как открыть бизнес по франшизе: инструкция по выбору",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:9cde3f78-d963-42fe-b168-ee1a9d689860",
+          "title": "Ваш бизнес готов! Как выбрать франшизу кофейни",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "profits_market_1",
+      "family": "profits_market",
+      "split": "train",
+      "query": "как рассчитать маржинальность товара",
+      "judgments": [
+        {
+          "entity_key": "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "title": "Как рассчитать маржинальность товаров на маркетплейсах",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ee5abf57-3342-47c1-b770-735fd00053a8",
+          "title": "Юнит-экономика для маркетплейсов: предсказываем прибыль",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:7b00d753-32f7-4ea0-a80e-3b0520623e48",
+          "title": "Новогодние премии для сотрудников",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "profits_market_2",
+      "family": "profits_market",
+      "split": "train",
+      "query": "маржа товаров на маркетплейсах",
+      "judgments": [
+        {
+          "entity_key": "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "title": "Как рассчитать маржинальность товаров на маркетплейсах",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ee5abf57-3342-47c1-b770-735fd00053a8",
+          "title": "Юнит-экономика для маркетплейсов: предсказываем прибыль",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:7b00d753-32f7-4ea0-a80e-3b0520623e48",
+          "title": "Новогодние премии для сотрудников",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "profits_market_3",
+      "family": "profits_market",
+      "split": "train",
+      "query": "продавцу нужно посчитать маржинальность товаров на торговой площадке",
+      "judgments": [
+        {
+          "entity_key": "article:ce9e4b30-5716-4188-a1de-dffd3a24be87",
+          "title": "Как рассчитать маржинальность товаров на маркетплейсах",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ee5abf57-3342-47c1-b770-735fd00053a8",
+          "title": "Юнит-экономика для маркетплейсов: предсказываем прибыль",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:7b00d753-32f7-4ea0-a80e-3b0520623e48",
+          "title": "Новогодние премии для сотрудников",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "suppliers_1",
+      "family": "suppliers",
+      "split": "train",
+      "query": "как выбрать поставщика",
+      "judgments": [
+        {
+          "entity_key": "article:a8c9930d-31a3-4223-a8bf-eca1553f5772",
+          "title": "Как выбрать поставщика: основные критерии поиска",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:d6165a26-8905-4c67-965d-51c76a54c4c8",
+          "title": "Как закрыть ИП онлайн в 2026 году: ставим точку в бизнесе",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "suppliers_2",
+      "family": "suppliers",
+      "split": "train",
+      "query": "критерии выбора поставщика",
+      "judgments": [
+        {
+          "entity_key": "article:a8c9930d-31a3-4223-a8bf-eca1553f5772",
+          "title": "Как выбрать поставщика: основные критерии поиска",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:d6165a26-8905-4c67-965d-51c76a54c4c8",
+          "title": "Как закрыть ИП онлайн в 2026 году: ставим точку в бизнесе",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "suppliers_3",
+      "family": "suppliers",
+      "split": "train",
+      "query": "предпринимателю нужно найти надежного поставщика и сравнить условия",
+      "judgments": [
+        {
+          "entity_key": "article:a8c9930d-31a3-4223-a8bf-eca1553f5772",
+          "title": "Как выбрать поставщика: основные критерии поиска",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:585a4e24-eae3-4b58-8a35-d58ed6026e70",
+          "title": "Как грамотно выбрать товар для продажи на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:d6165a26-8905-4c67-965d-51c76a54c4c8",
+          "title": "Как закрыть ИП онлайн в 2026 году: ставим точку в бизнесе",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "seo_ozon_1",
+      "family": "seo_ozon",
+      "split": "train",
+      "query": "реклама на озон",
+      "judgments": [
+        {
+          "entity_key": "article:bce3b299-f89e-49b4-ba0d-717edd50b0f2",
+          "title": "Реклама на Ozon: способы попадать в топ для неволшебников",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:5b5a51cb-f4e7-48ba-b290-70d4d5a23f7e",
+          "title": "SEO-оптимизация карточки товара: как попасть в топ на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "seo_ozon_2",
+      "family": "seo_ozon",
+      "split": "train",
+      "query": "продвижение товаров на ozon",
+      "judgments": [
+        {
+          "entity_key": "article:bce3b299-f89e-49b4-ba0d-717edd50b0f2",
+          "title": "Реклама на Ozon: способы попадать в топ для неволшебников",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:5b5a51cb-f4e7-48ba-b290-70d4d5a23f7e",
+          "title": "SEO-оптимизация карточки товара: как попасть в топ на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "seo_ozon_3",
+      "family": "seo_ozon",
+      "split": "train",
+      "query": "продавцу нужны варианты рекламного продвижения на площадке ozon",
+      "judgments": [
+        {
+          "entity_key": "article:bce3b299-f89e-49b4-ba0d-717edd50b0f2",
+          "title": "Реклама на Ozon: способы попадать в топ для неволшебников",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:5b5a51cb-f4e7-48ba-b290-70d4d5a23f7e",
+          "title": "SEO-оптимизация карточки товара: как попасть в топ на маркетплейсе",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "biz_china_1",
+      "family": "biz_china",
+      "split": "train",
+      "query": "финансы и платежи при бизнесе с китаем",
+      "judgments": [
+        {
+          "entity_key": "course:95f0903b-144f-4e11-9323-81f81d7e703b",
+          "title": "Бизнес с Китаем: финансы и платежи",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2d631645-9d25-4382-969a-caa029740771",
+          "title": "Налоги и взносы ИП: полный иллюстрированный гайд",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "biz_china_2",
+      "family": "biz_china",
+      "split": "train",
+      "query": "как платить китайским поставщикам",
+      "judgments": [
+        {
+          "entity_key": "course:95f0903b-144f-4e11-9323-81f81d7e703b",
+          "title": "Бизнес с Китаем: финансы и платежи",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2d631645-9d25-4382-969a-caa029740771",
+          "title": "Налоги и взносы ИП: полный иллюстрированный гайд",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "biz_china_3",
+      "family": "biz_china",
+      "split": "train",
+      "query": "хочу изучить финансы и переводы при торговле с китаем",
+      "judgments": [
+        {
+          "entity_key": "course:95f0903b-144f-4e11-9323-81f81d7e703b",
+          "title": "Бизнес с Китаем: финансы и платежи",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2d631645-9d25-4382-969a-caa029740771",
+          "title": "Налоги и взносы ИП: полный иллюстрированный гайд",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "nds_1",
+      "family": "nds",
+      "split": "val",
+      "query": "как работает налог ндс",
+      "judgments": [
+        {
+          "entity_key": "article:e3e39c4f-c04d-4e54-941f-a1771b980ed3",
+          "title": "НДС в 2026 году: как работает налог",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0288bdab-dafc-42b8-831f-d234eb929d6b",
+          "title": "Налог на прибыль для ООО в 2026 году: как считать и платить",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "nds_2",
+      "family": "nds",
+      "split": "val",
+      "query": "объясните принцип налога на добавленную стоимость",
+      "judgments": [
+        {
+          "entity_key": "article:e3e39c4f-c04d-4e54-941f-a1771b980ed3",
+          "title": "НДС в 2026 году: как работает налог",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0288bdab-dafc-42b8-831f-d234eb929d6b",
+          "title": "Налог на прибыль для ООО в 2026 году: как считать и платить",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "nds_3",
+      "family": "nds",
+      "split": "val",
+      "query": "нужен обзор правил работы налога на добавленную стоимость",
+      "judgments": [
+        {
+          "entity_key": "article:e3e39c4f-c04d-4e54-941f-a1771b980ed3",
+          "title": "НДС в 2026 году: как работает налог",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0288bdab-dafc-42b8-831f-d234eb929d6b",
+          "title": "Налог на прибыль для ООО в 2026 году: как считать и платить",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "fiscal_1",
+      "family": "fiscal",
+      "split": "val",
+      "query": "как снять онлайн кассу с учета",
+      "judgments": [
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "fiscal_2",
+      "family": "fiscal",
+      "split": "val",
+      "query": "снятие кассового аппарата с учета фнс",
+      "judgments": [
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "fiscal_3",
+      "family": "fiscal",
+      "split": "val",
+      "query": "предпринимателю нужно правильно снять онлайн кассу с налогового учета",
+      "judgments": [
+        {
+          "entity_key": "article:97d65b83-c6e6-4f19-9f2d-35e9279845af",
+          "title": "Снятие онлайн-кассы с учёта: порядок действий и документы для ФНС",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:2f1f8b87-6582-45ef-88a4-b1c14b6dfe9a",
+          "title": "Онлайн-кассы. Вопрос — ответ",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "recruit_sales_1",
+      "family": "recruit_sales",
+      "split": "val",
+      "query": "как адаптировать менеджера по продажам",
+      "judgments": [
+        {
+          "entity_key": "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "title": "Подбор и адаптация команды продаж",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "recruit_sales_2",
+      "family": "recruit_sales",
+      "split": "val",
+      "query": "подбор и адаптация команды продаж",
+      "judgments": [
+        {
+          "entity_key": "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "title": "Подбор и адаптация команды продаж",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "recruit_sales_3",
+      "family": "recruit_sales",
+      "split": "val",
+      "query": "руководителю нужно нанять и обучить новых менеджеров по продажам",
+      "judgments": [
+        {
+          "entity_key": "course:26ae5eeb-9d81-4bfc-85d6-1086d9ab5a44",
+          "title": "Подбор и адаптация команды продаж",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:0f4b5720-a406-4813-89b1-df921a375d6d",
+          "title": "Пять советов по подбору сотрудников",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "sales_retention_1",
+      "family": "sales_retention",
+      "split": "test",
+      "query": "как увеличить повторные продажи",
+      "judgments": [
+        {
+          "entity_key": "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+          "title": "Как увеличить повторные продажи",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "sales_retention_2",
+      "family": "sales_retention",
+      "split": "test",
+      "query": "повторные продажи существующим клиентам",
+      "judgments": [
+        {
+          "entity_key": "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+          "title": "Как увеличить повторные продажи",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "sales_retention_3",
+      "family": "sales_retention",
+      "split": "test",
+      "query": "предпринимателю нужно повысить продажи постоянным покупателям",
+      "judgments": [
+        {
+          "entity_key": "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+          "title": "Как увеличить повторные продажи",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+          "title": "Как создать программу лояльности для клиентов салона красоты",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:50f89e1d-8dca-4d22-93be-c10972b4fa67",
+          "title": "Как отправить сотрудника в отпуск",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "property_rent_1",
+      "family": "property_rent",
+      "split": "test",
+      "query": "договор аренды земли образец",
+      "judgments": [
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "title": "Договор аренды нежилого помещения",
+          "grade": 2
+        },
+        {
+          "entity_key": "document:54e212ae-d4ec-4595-81d1-c134a847edfb",
+          "title": "Уведомление о расторжении договора аренды",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "property_rent_2",
+      "family": "property_rent",
+      "split": "test",
+      "query": "шаблон соглашения об аренде земельного участка",
+      "judgments": [
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "title": "Договор аренды нежилого помещения",
+          "grade": 2
+        },
+        {
+          "entity_key": "document:54e212ae-d4ec-4595-81d1-c134a847edfb",
+          "title": "Уведомление о расторжении договора аренды",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "property_rent_3",
+      "family": "property_rent",
+      "split": "test",
+      "query": "нужен образец документа для аренды земельного участка между сторонами",
+      "judgments": [
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 3
+        },
+        {
+          "entity_key": "document:2e07ccfa-7bf8-4766-9d8b-ebc1eebb988f",
+          "title": "Договор аренды нежилого помещения",
+          "grade": 2
+        },
+        {
+          "entity_key": "document:54e212ae-d4ec-4595-81d1-c134a847edfb",
+          "title": "Уведомление о расторжении договора аренды",
+          "grade": 0
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "telegram_ads_1",
+      "family": "telegram_ads",
+      "split": "test",
+      "query": "как рекламировать бизнес в телеграме",
+      "judgments": [
+        {
+          "entity_key": "article:c26e1425-711e-4df8-940b-83e453ff1b2f",
+          "title": "Реклама в Телеграме в 2026 году",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "telegram_ads_2",
+      "family": "telegram_ads",
+      "split": "test",
+      "query": "реклама в телеграм для компании",
+      "judgments": [
+        {
+          "entity_key": "article:c26e1425-711e-4df8-940b-83e453ff1b2f",
+          "title": "Реклама в Телеграме в 2026 году",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    },
+    {
+      "id": "telegram_ads_3",
+      "family": "telegram_ads",
+      "split": "test",
+      "query": "предпринимателю нужны способы продвижения бизнеса через рекламу в телеграме",
+      "judgments": [
+        {
+          "entity_key": "article:c26e1425-711e-4df8-940b-83e453ff1b2f",
+          "title": "Реклама в Телеграме в 2026 году",
+          "grade": 3
+        },
+        {
+          "entity_key": "article:4ff3cb45-874e-41cc-bf70-30101e9e2633",
+          "title": "Что такое контекстная реклама и как она работает",
+          "grade": 2
+        },
+        {
+          "entity_key": "article:0da00306-584e-4188-9e89-1058dec03c99",
+          "title": "Как понять, что сотрудника пора уволить",
+          "grade": 0
+        },
+        {
+          "entity_key": "document:4d52b1ad-c0dc-4180-b718-46a2dc9668b4",
+          "title": "Договор аренды земельного участка",
+          "grade": 0
+        }
+      ]
+    }
+  ]
+}

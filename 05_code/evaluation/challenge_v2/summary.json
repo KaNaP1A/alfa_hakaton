@@ -1,0 +1,59 @@
+{
+  "main_scenarios": 1000,
+  "main_passed": 976,
+  "main_failed": 24,
+  "extra_stress": {
+    "scenarios": 120,
+    "passed": 72,
+    "failed": 48,
+    "by_type": {
+      "distracting_context": {
+        "n": 40,
+        "passed": 28,
+        "correct_top": 28
+      },
+      "explicit_exclusion": {
+        "n": 40,
+        "passed": 34,
+        "correct_top": 34
+      },
+      "long_permutation": {
+        "n": 40,
+        "passed": 10,
+        "correct_top": 39
+      }
+    }
+  },
+  "code_tests": 152,
+  "human_resolved_pairs": 0,
+  "automatic_pairs": 814,
+  "automatic_test_ndcg5": {
+    "historical_bm25": 0.621907776535984,
+    "historical_ensemble": 0.5742205440221628,
+    "historical_hybrid": 0.5723344303083274,
+    "relevance": 0.3814298395655752
+  },
+  "model_sha256": "9156bc344e320393244fd00b5a440c10fd6e5593416ab2b6a07214bbffac5267",
+  "limits": "Structured synthetic oracle, automatic real-catalog drafts and independent human gold are separate. No independent human gold is available. No fitting on the closed test or extra stress probes.",
+  "verification": {
+    "unit_tests": {
+      "passed": 152,
+      "failed": 0
+    },
+    "python_files_formatted": 85,
+    "markdown_files": 29,
+    "broken_local_links": 0,
+    "http_modes_verified": [
+      "bm25",
+      "hybrid",
+      "catboost",
+      "ensemble",
+      "relevance"
+    ],
+    "human_template_pairs_all_null": 814,
+    "ollama_models_loaded_at_final_check": 0,
+    "post_test_python_changes": {
+      "src/alfa_reco/evaluation.py": "Reject automatic/assisted ratings in blinded human evaluation; no retrieval or ranking changes."
+    }
+  }
+}

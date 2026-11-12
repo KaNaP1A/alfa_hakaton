@@ -1,0 +1,242 @@
+{
+  "split": "test",
+  "cases": 20,
+  "families": 10,
+  "baseline": {
+    "queries": 20,
+    "families": 10,
+    "ndcg5_pooled": 0.7,
+    "precision5_pooled": 0.28,
+    "mrr5_pooled": 0.7,
+    "recall5_judged": 0.7,
+    "judged5": 0.28,
+    "returned5": 1.4,
+    "empty": 0.3
+  },
+  "serving_equivalence_checks": 40,
+  "labels": "Binary synthetic: 3 for two manually designated positive cards, 0 for the rest. No independent human review.",
+  "limits": "Synthetic text is assistant-authored; family split is manually curated, no proof of semantic independence or pretraining exclusion; separate indexes avoid cross-split corpus statistics. Weights optimize this synthetic setup, not proven optimal on real catalog.",
+  "frozen_weights": {
+    "bm25": 0.0,
+    "minilm": 0.0,
+    "e5": 0.0,
+    "catboost": 1.0
+  },
+  "selected_metrics": {
+    "queries": 20,
+    "families": 10,
+    "ndcg5_pooled": 0.7,
+    "precision5_pooled": 0.28,
+    "mrr5_pooled": 0.7,
+    "recall5_judged": 0.7,
+    "judged5": 0.28,
+    "returned5": 1.4,
+    "empty": 0.3
+  },
+  "details": [
+    {
+      "id": "a5f24318249857d92fb34c76",
+      "family": "task-27",
+      "baseline": [
+        "article:74234b131734ec459e558e41",
+        "course:92fc1d3022808c0f04f27dd9"
+      ],
+      "selected": [
+        "article:74234b131734ec459e558e41",
+        "course:92fc1d3022808c0f04f27dd9"
+      ]
+    },
+    {
+      "id": "0d2c366d297bee92c75609f0",
+      "family": "task-02",
+      "baseline": [
+        "course:2d99b04cdd766e8a2319fee2",
+        "article:24ca662bec8c6d7d472bc6f7"
+      ],
+      "selected": [
+        "course:2d99b04cdd766e8a2319fee2",
+        "article:24ca662bec8c6d7d472bc6f7"
+      ]
+    },
+    {
+      "id": "d0263e45e867575a15275d55",
+      "family": "task-19",
+      "baseline": [
+        "course:799c9d23bfd6dbc5a3de0eca",
+        "article:d82dc1946cd6256797811755"
+      ],
+      "selected": [
+        "course:799c9d23bfd6dbc5a3de0eca",
+        "article:d82dc1946cd6256797811755"
+      ]
+    },
+    {
+      "id": "19e7f5b9c60e855569463211",
+      "family": "task-02",
+      "baseline": [
+        "course:2d99b04cdd766e8a2319fee2",
+        "article:24ca662bec8c6d7d472bc6f7"
+      ],
+      "selected": [
+        "course:2d99b04cdd766e8a2319fee2",
+        "article:24ca662bec8c6d7d472bc6f7"
+      ]
+    },
+    {
+      "id": "5bba13dc5041d0ff69014a66",
+      "family": "task-08",
+      "baseline": [
+        "course:b6a264e25c5641708f25015d",
+        "article:297ca53531328a4ab6b4c849"
+      ],
+      "selected": [
+        "course:b6a264e25c5641708f25015d",
+        "article:297ca53531328a4ab6b4c849"
+      ]
+    },
+    {
+      "id": "0dda03ebf2fdd81b14b9e05e",
+      "family": "task-18",
+      "baseline": [],
+      "selected": []
+    },
+    {
+      "id": "16f517cc35c8a8782bdab201",
+      "family": "task-19",
+      "baseline": [
+        "course:799c9d23bfd6dbc5a3de0eca",
+        "article:d82dc1946cd6256797811755"
+      ],
+      "selected": [
+        "course:799c9d23bfd6dbc5a3de0eca",
+        "article:d82dc1946cd6256797811755"
+      ]
+    },
+    {
+      "id": "dfdf84411f581413a604eb56",
+      "family": "task-27",
+      "baseline": [
+        "course:92fc1d3022808c0f04f27dd9",
+        "article:74234b131734ec459e558e41"
+      ],
+      "selected": [
+        "course:92fc1d3022808c0f04f27dd9",
+        "article:74234b131734ec459e558e41"
+      ]
+    },
+    {
+      "id": "75f9f919aee14245f6bd5a47",
+      "family": "task-03",
+      "baseline": [],
+      "selected": []
+    },
+    {
+      "id": "d8d985f1ad76e5c58dda1ea0",
+      "family": "task-18",
+      "baseline": [],
+      "selected": []
+    },
+    {
+      "id": "a19b18d1de31980a2ca54ff0",
+      "family": "task-26",
+      "baseline": [
+        "article:46bc38c6e8e32173e25e8334",
+        "course:8ea7995d26a23f1e9ac87f5a"
+      ],
+      "selected": [
+        "article:46bc38c6e8e32173e25e8334",
+        "course:8ea7995d26a23f1e9ac87f5a"
+      ]
+    },
+    {
+      "id": "02c93ffdc7885144c36a0bc9",
+      "family": "task-11",
+      "baseline": [
+        "course:f125298234770a46dceacdf6",
+        "article:ef93a4956dcd40368fe3a35d"
+      ],
+      "selected": [
+        "course:f125298234770a46dceacdf6",
+        "article:ef93a4956dcd40368fe3a35d"
+      ]
+    },
+    {
+      "id": "e8a0175c71f69749bb75705e",
+      "family": "task-00",
+      "baseline": [
+        "course:a495b7f7ac7e30f0676709a1",
+        "article:ff7afe70f0790f0ed2769b9a"
+      ],
+      "selected": [
+        "course:a495b7f7ac7e30f0676709a1",
+        "article:ff7afe70f0790f0ed2769b9a"
+      ]
+    },
+    {
+      "id": "d6575d06f50412b74234defe",
+      "family": "task-11",
+      "baseline": [],
+      "selected": []
+    },
+    {
+      "id": "cb37084924daefa96d9ad6e3",
+      "family": "task-01",
+      "baseline": [
+        "article:d73ce28ee4c202f81ca7023f",
+        "course:5414ca8039618ec865d70d64"
+      ],
+      "selected": [
+        "article:d73ce28ee4c202f81ca7023f",
+        "course:5414ca8039618ec865d70d64"
+      ]
+    },
+    {
+      "id": "f315d81fd26a65d76a1c5ea2",
+      "family": "task-26",
+      "baseline": [
+        "course:8ea7995d26a23f1e9ac87f5a",
+        "article:46bc38c6e8e32173e25e8334"
+      ],
+      "selected": [
+        "course:8ea7995d26a23f1e9ac87f5a",
+        "article:46bc38c6e8e32173e25e8334"
+      ]
+    },
+    {
+      "id": "9ccaba92e5f9729e1a050734",
+      "family": "task-03",
+      "baseline": [
+        "course:2be68b0a98c885767999573f",
+        "article:77c3177315224a5cbd8a2e71"
+      ],
+      "selected": [
+        "course:2be68b0a98c885767999573f",
+        "article:77c3177315224a5cbd8a2e71"
+      ]
+    },
+    {
+      "id": "07fdeca1052793b1c31a0af4",
+      "family": "task-08",
+      "baseline": [],
+      "selected": []
+    },
+    {
+      "id": "5f5717b72c34a93490a91fb6",
+      "family": "task-00",
+      "baseline": [
+        "course:a495b7f7ac7e30f0676709a1",
+        "article:ff7afe70f0790f0ed2769b9a"
+      ],
+      "selected": [
+        "course:a495b7f7ac7e30f0676709a1",
+        "article:ff7afe70f0790f0ed2769b9a"
+      ]
+    },
+    {
+      "id": "ae9f334691daf277cee2556f",
+      "family": "task-01",
+      "baseline": [],
+      "selected": []
+    }
+  ]
+}

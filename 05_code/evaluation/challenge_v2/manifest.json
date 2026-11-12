@@ -1,0 +1,58 @@
+{
+  "cases": 1000,
+  "split_counts": {
+    "dev": 800,
+    "test": 200
+  },
+  "types": {
+    "retrieval": 320,
+    "equivalence": 160,
+    "contrast": 80,
+    "no_answer": 40,
+    "recommendation_real": 200,
+    "real_identity": 100,
+    "contract": 100
+  },
+  "families": 100,
+  "fictional_documents": 280,
+  "fully_judged_queries": 400,
+  "complete_pair_labels": 112000,
+  "actual_catalog_sha256": "904256290a10eeec3f1eaffec7636de032f294f53953a008839ded9f3263941f",
+  "frozen_model": "9156bc344e320393244fd00b5a440c10fd6e5593416ab2b6a07214bbffac5267",
+  "hashes": {
+    "dev.jsonl": "7c704c9e603d57cc2e6a5e2416b846b21a68f22b67dc6774d4300fa3d5609797",
+    "test.jsonl": "10513bd7ef78d9f2e150a10826cee76c37105f06920206f09fe2fb1678865853",
+    "oracle_dev.jsonl": "8d9c40722d1d5c0cc67200cb66a931a0f49b13ddb19e478c285b55729a24f061",
+    "oracle_test.jsonl": "cc58ca792d86a36ed1b2a8443dd2ea38c4d3f2934fb11513f82fb271b6b71d0c"
+  },
+  "test_status": "evaluated_once_no_further_tuning",
+  "protocol": "Families split before evaluation. No training on this corpus. Test is synthetic operational holdout, not independent human gold. 1000 scenarios are not 1000 independent user intents.",
+  "test_report_sha256": "b764380efb87c73131201b454301239808333396976cc7c3e870fb2e8f09c27c",
+  "supplementary_stress": {
+    "scenarios": 120,
+    "query_texts": 160,
+    "families": 40,
+    "passed": 72,
+    "failed": 48,
+    "by_type": {
+      "distracting_context": {
+        "n": 40,
+        "passed": 28,
+        "correct_top": 28
+      },
+      "explicit_exclusion": {
+        "n": 40,
+        "passed": 34,
+        "correct_top": 34
+      },
+      "long_permutation": {
+        "n": 40,
+        "passed": 10,
+        "correct_top": 39
+      }
+    },
+    "model_sha256": "9156bc344e320393244fd00b5a440c10fd6e5593416ab2b6a07214bbffac5267",
+    "cases_sha256": "e2f0d61f36504db8243b7685648cceb41e4e5a14e4811c0d928bb59fd2256706",
+    "runner_sha256": "a4d781548e205776d60ab0dba6fc4e8de422122eb5e87aeb770f27206de4ac23"
+  }
+}

@@ -1,0 +1,1178 @@
+[
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.3,
+      "catboost": 0.1,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.22,
+      "mrr60_pooled": 0.688925,
+      "ndcg5_pooled": 0.591129,
+      "judged5": 0.22
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.2,
+      "catboost": 0.3,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.676829,
+      "ndcg5_pooled": 0.576652,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.3,
+      "catboost": 0.2,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.686159,
+      "ndcg5_pooled": 0.575833,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.4,
+      "catboost": 0.1,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.21,
+      "mrr60_pooled": 0.685476,
+      "ndcg5_pooled": 0.574917,
+      "judged5": 0.21
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.2,
+      "catboost": 0.2,
+      "catboost_small": 0.5
+    },
+    "validation": {
+      "precision5_pooled": 0.22,
+      "mrr60_pooled": 0.631768,
+      "ndcg5_pooled": 0.570257,
+      "judged5": 0.22
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.2,
+      "catboost": 0.2,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.21,
+      "mrr60_pooled": 0.652075,
+      "ndcg5_pooled": 0.568652,
+      "judged5": 0.21
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.2,
+      "catboost": 0.1,
+      "catboost_small": 0.5
+    },
+    "validation": {
+      "precision5_pooled": 0.21,
+      "mrr60_pooled": 0.661328,
+      "ndcg5_pooled": 0.568392,
+      "judged5": 0.21
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.1,
+      "catboost": 0.1,
+      "catboost_small": 0.5
+    },
+    "validation": {
+      "precision5_pooled": 0.21,
+      "mrr60_pooled": 0.658947,
+      "ndcg5_pooled": 0.567653,
+      "judged5": 0.21
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.4,
+      "catboost": 0.1,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.688822,
+      "ndcg5_pooled": 0.565664,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.3,
+      "catboost": 0.2,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.21,
+      "mrr60_pooled": 0.655637,
+      "ndcg5_pooled": 0.565408,
+      "judged5": 0.21
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.3,
+      "catboost": 0.1,
+      "catboost_small": 0.5
+    },
+    "validation": {
+      "precision5_pooled": 0.21,
+      "mrr60_pooled": 0.662045,
+      "ndcg5_pooled": 0.564805,
+      "judged5": 0.21
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.1,
+      "catboost": 0.3,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.652755,
+      "ndcg5_pooled": 0.563851,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.4,
+      "catboost": 0.2,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.677039,
+      "ndcg5_pooled": 0.56198,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.5,
+      "catboost": 0.2,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.684025,
+      "ndcg5_pooled": 0.559622,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.1,
+      "catboost": 0.2,
+      "catboost_small": 0.5
+    },
+    "validation": {
+      "precision5_pooled": 0.21,
+      "mrr60_pooled": 0.633531,
+      "ndcg5_pooled": 0.559099,
+      "judged5": 0.21
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.4,
+      "catboost": 0.1,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.694933,
+      "ndcg5_pooled": 0.55676,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.1,
+      "catboost": 0.2,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.655939,
+      "ndcg5_pooled": 0.555671,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.4,
+      "catboost": 0.3,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.676244,
+      "ndcg5_pooled": 0.555454,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.1,
+      "catboost": 0.1,
+      "catboost_small": 0.6
+    },
+    "validation": {
+      "precision5_pooled": 0.21,
+      "mrr60_pooled": 0.629405,
+      "ndcg5_pooled": 0.554566,
+      "judged5": 0.21
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.5,
+      "catboost": 0.3,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.675482,
+      "ndcg5_pooled": 0.55373,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.3,
+      "catboost": 0.3,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.675066,
+      "ndcg5_pooled": 0.55373,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.2,
+      "catboost": 0.1,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.667143,
+      "ndcg5_pooled": 0.553127,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.5,
+      "catboost": 0.1,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.683548,
+      "ndcg5_pooled": 0.550922,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.4,
+      "catboost": 0.4,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.679262,
+      "ndcg5_pooled": 0.550654,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.2,
+      "catboost": 0.4,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.672795,
+      "ndcg5_pooled": 0.547926,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.6,
+      "catboost": 0.2,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.689199,
+      "ndcg5_pooled": 0.547825,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.3,
+      "catboost": 0.4,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.673587,
+      "ndcg5_pooled": 0.547204,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.4,
+      "catboost": 0.2,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.688986,
+      "ndcg5_pooled": 0.547085,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.2,
+      "catboost": 0.1,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.66625,
+      "ndcg5_pooled": 0.546602,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.1,
+      "catboost": 0.3,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.623266,
+      "ndcg5_pooled": 0.545897,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.1,
+      "catboost": 0.1,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.666786,
+      "ndcg5_pooled": 0.545432,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.3,
+      "catboost": 0.2,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.686248,
+      "ndcg5_pooled": 0.545382,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.3,
+      "catboost": 0.1,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.661552,
+      "ndcg5_pooled": 0.544613,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.5,
+      "hybrid": 0.2,
+      "catboost": 0.1,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.660153,
+      "ndcg5_pooled": 0.544613,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.2,
+      "catboost": 0.3,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.673394,
+      "ndcg5_pooled": 0.544476,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.3,
+      "catboost": 0.1,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.663254,
+      "ndcg5_pooled": 0.543873,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.1,
+      "catboost": 0.3,
+      "catboost_small": 0.5
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.63352,
+      "ndcg5_pooled": 0.542985,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.6,
+      "catboost": 0.1,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.688717,
+      "ndcg5_pooled": 0.542758,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.5,
+      "catboost": 0.1,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.691425,
+      "ndcg5_pooled": 0.542018,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.4,
+      "catboost": 0.1,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.665205,
+      "ndcg5_pooled": 0.541249,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.1,
+      "catboost": 0.2,
+      "catboost_small": 0.6
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.622396,
+      "ndcg5_pooled": 0.541145,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.2,
+      "catboost": 0.1,
+      "catboost_small": 0.6
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.631563,
+      "ndcg5_pooled": 0.541065,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.7,
+      "catboost": 0.1,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.685534,
+      "ndcg5_pooled": 0.541033,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.3,
+      "catboost": 0.3,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.650913,
+      "ndcg5_pooled": 0.540929,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.5,
+      "catboost": 0.1,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.664039,
+      "ndcg5_pooled": 0.539524,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.3,
+      "catboost": 0.3,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.675801,
+      "ndcg5_pooled": 0.538504,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.4,
+      "catboost": 0.3,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.673939,
+      "ndcg5_pooled": 0.538504,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.1,
+      "catboost": 0.4,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.61006,
+      "ndcg5_pooled": 0.535803,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.6,
+      "hybrid": 0.2,
+      "catboost": 0.1,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.631812,
+      "ndcg5_pooled": 0.534887,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.1,
+      "catboost": 0.1,
+      "catboost_small": 0.7
+    },
+    "validation": {
+      "precision5_pooled": 0.2,
+      "mrr60_pooled": 0.621667,
+      "ndcg5_pooled": 0.534187,
+      "judged5": 0.2
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.2,
+      "catboost": 0.3,
+      "catboost_small": 0.4
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.629814,
+      "ndcg5_pooled": 0.5341,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.5,
+      "hybrid": 0.1,
+      "catboost": 0.1,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.656462,
+      "ndcg5_pooled": 0.533754,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.2,
+      "catboost": 0.2,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.652172,
+      "ndcg5_pooled": 0.532679,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.5,
+      "catboost": 0.2,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.17,
+      "mrr60_pooled": 0.685212,
+      "ndcg5_pooled": 0.532599,
+      "judged5": 0.17
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.1,
+      "catboost": 0.4,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.623045,
+      "ndcg5_pooled": 0.532375,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.2,
+      "catboost": 0.2,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.654286,
+      "ndcg5_pooled": 0.532195,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.5,
+      "hybrid": 0.1,
+      "catboost": 0.2,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.651756,
+      "ndcg5_pooled": 0.532195,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.1,
+      "catboost": 0.2,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.652791,
+      "ndcg5_pooled": 0.53047,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.1,
+      "catboost": 0.3,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.647177,
+      "ndcg5_pooled": 0.52995,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.3,
+      "catboost": 0.2,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.656925,
+      "ndcg5_pooled": 0.529131,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.4,
+      "catboost": 0.2,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.17,
+      "mrr60_pooled": 0.682024,
+      "ndcg5_pooled": 0.528431,
+      "judged5": 0.17
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.6,
+      "catboost": 0.1,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.661645,
+      "ndcg5_pooled": 0.526507,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.5,
+      "hybrid": 0.3,
+      "catboost": 0.1,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.639069,
+      "ndcg5_pooled": 0.525554,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.6,
+      "hybrid": 0.1,
+      "catboost": 0.1,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.6286,
+      "ndcg5_pooled": 0.524029,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.2,
+      "catboost": 0.4,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.608779,
+      "ndcg5_pooled": 0.522302,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.5,
+      "hybrid": 0.2,
+      "catboost": 0.2,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.64723,
+      "ndcg5_pooled": 0.52177,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.1,
+      "catboost": 0.4,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.602514,
+      "ndcg5_pooled": 0.519574,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.3,
+      "catboost": 0.4,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.625231,
+      "ndcg5_pooled": 0.518874,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.2,
+      "catboost": 0.5,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.19,
+      "mrr60_pooled": 0.599286,
+      "ndcg5_pooled": 0.517149,
+      "judged5": 0.19
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.2,
+      "catboost": 0.4,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.17,
+      "mrr60_pooled": 0.645202,
+      "ndcg5_pooled": 0.514725,
+      "judged5": 0.17
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.3,
+      "hybrid": 0.1,
+      "catboost": 0.5,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.615521,
+      "ndcg5_pooled": 0.511996,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.2,
+      "catboost": 0.5,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.61375,
+      "ndcg5_pooled": 0.511996,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.2,
+      "catboost": 0.3,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.17,
+      "mrr60_pooled": 0.639647,
+      "ndcg5_pooled": 0.511296,
+      "judged5": 0.17
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.6,
+      "hybrid": 0.1,
+      "catboost": 0.2,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.614908,
+      "ndcg5_pooled": 0.510791,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.7,
+      "hybrid": 0.1,
+      "catboost": 0.1,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.628219,
+      "ndcg5_pooled": 0.510489,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.4,
+      "hybrid": 0.1,
+      "catboost": 0.4,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.614499,
+      "ndcg5_pooled": 0.510271,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.5,
+      "hybrid": 0.1,
+      "catboost": 0.3,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.17,
+      "mrr60_pooled": 0.634967,
+      "ndcg5_pooled": 0.509571,
+      "judged5": 0.17
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.1,
+      "catboost": 0.5,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.602083,
+      "ndcg5_pooled": 0.507077,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.3,
+      "catboost": 0.5,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.596726,
+      "ndcg5_pooled": 0.500199,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.1,
+      "catboost": 0.5,
+      "catboost_small": 0.3
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.59256,
+      "ndcg5_pooled": 0.499195,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.2,
+      "catboost": 0.6,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.18,
+      "mrr60_pooled": 0.579226,
+      "ndcg5_pooled": 0.488868,
+      "judged5": 0.18
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.1,
+      "catboost": 0.6,
+      "catboost_small": 0.2
+    },
+    "validation": {
+      "precision5_pooled": 0.17,
+      "mrr60_pooled": 0.584425,
+      "ndcg5_pooled": 0.48052,
+      "judged5": 0.17
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.2,
+      "hybrid": 0.1,
+      "catboost": 0.6,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.17,
+      "mrr60_pooled": 0.584679,
+      "ndcg5_pooled": 0.478795,
+      "judged5": 0.17
+    }
+  },
+  {
+    "weights": {
+      "bm25": 0.1,
+      "hybrid": 0.1,
+      "catboost": 0.7,
+      "catboost_small": 0.1
+    },
+    "validation": {
+      "precision5_pooled": 0.17,
+      "mrr60_pooled": 0.56996,
+      "ndcg5_pooled": 0.463938,
+      "judged5": 0.17
+    }
+  }
+]

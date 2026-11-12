@@ -1,0 +1,30 @@
+{
+  "hashes_verified": 12,
+  "family_overlap": 0,
+  "query_overlap": 0,
+  "document_id_overlap": 0,
+  "document_title_overlap": 0,
+  "split": {
+    "validation": {
+      "queries": 40,
+      "families": 20,
+      "documents": 80,
+      "exact_queries_in_920_prior_train_candidates": 0,
+      "document_titles_matching_292_prior_train_targets": 0,
+      "positive_query_pairs_with_identical_card_text": 40,
+      "queries_exactly_embedded_in_any_document": 0,
+      "documents_containing_oracle_fields": 0
+    },
+    "test": {
+      "queries": 20,
+      "families": 10,
+      "documents": 40,
+      "exact_queries_in_920_prior_train_candidates": 0,
+      "document_titles_matching_292_prior_train_targets": 0,
+      "positive_query_pairs_with_identical_card_text": 20,
+      "queries_exactly_embedded_in_any_document": 0,
+      "documents_containing_oracle_fields": 0
+    }
+  },
+  "limits": "Checks exact normalized text and recorded IDs only; cannot exclude paraphrases, shared concepts, model pretraining overlap, incorrect synthetic judgments, or manual author bias. The two positively labelled cards repeat identical text in different formats."
+}

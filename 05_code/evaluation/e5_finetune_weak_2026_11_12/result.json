@@ -1,0 +1,29 @@
+{
+  "baseline_validation": {
+    "queries": 159,
+    "ndcg_at_5": 0.8998819023483128,
+    "mrr_at_10": 0.8805630428271938,
+    "recall_at_10": 0.9748427672955975
+  },
+  "candidate_validation": {
+    "queries": 159,
+    "ndcg_at_5": 0.9250164037462195,
+    "mrr_at_10": 0.9157931516422083,
+    "recall_at_10": 0.9874213836477987
+  },
+  "selected_candidate": true,
+  "baseline_test": {
+    "queries": 156,
+    "ndcg_at_5": 0.8735265657747772,
+    "mrr_at_10": 0.8604878917378915,
+    "recall_at_10": 0.9487179487179487
+  },
+  "candidate_test": {
+    "queries": 156,
+    "ndcg_at_5": 0.9061362196384477,
+    "mrr_at_10": 0.8907051282051281,
+    "recall_at_10": 0.9615384615384616
+  },
+  "activated": false,
+  "notice": "Weak source-document labels; no human judgments. Previously used by CatBoost; E5 is pretrained on unknown data. Title grouping does not prove semantic independence."
+}

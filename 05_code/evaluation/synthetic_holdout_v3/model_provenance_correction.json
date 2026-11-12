@@ -1,0 +1,17 @@
+{
+  "original_manifest_sha256": "8c6631369f4efaadba79c2ddca6e4b1c9fc41d1323b03847d00ee67fd773ca59",
+  "original_trained_on_field": "provisional_assistant_and_weak_source_preferences",
+  "selected_regime": "synthetic_only",
+  "correct_fitted_source": "weak_pairs_with_provisional_weight_scaling",
+  "selected_training_queries": 800,
+  "selected_training_pair_rows": 5600,
+  "selected_pairwise_preferences": 4800,
+  "reason": "Individual provisional pairs were excluded from the selected pool, but their total pair weight (664) set the common scaling factor 664/800=0.83 on weak pair weights. The historic artifact is unchanged; future metadata was corrected.",
+  "provisional_groups_used_for_global_scaling": {
+    "groups": 120,
+    "pairwise_preferences": 595,
+    "explicit_pair_weight_mass": 664.0
+  },
+  "weak_pair_weight_mass_before_scaling": 800.0,
+  "selected_weak_pair_weight_multiplier": 0.83
+}

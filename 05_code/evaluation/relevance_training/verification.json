@@ -1,0 +1,21 @@
+{
+  "tests_passed": 140,
+  "lint": "passed",
+  "selected_security_checks": "passed",
+  "python_format_files": 78,
+  "compileall": "passed",
+  "javascript_syntax": "passed",
+  "shell_syntax": "passed",
+  "real_http_smoke": "passed",
+  "model_bundle_hashes": "passed",
+  "python": "3.13.5",
+  "architecture": "arm64",
+  "packages": {
+    "catboost": "1.2.8",
+    "sentence-transformers": "5.4.1",
+    "pymorphy3": "2.0.6",
+    "numpy": "2.4.4",
+    "torch": "2.11.0"
+  },
+  "independent_human_validation": false
+}

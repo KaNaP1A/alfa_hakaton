@@ -1,0 +1,25 @@
+{
+  "description": "Дополнительные заранее записанные разработчиком проверки; не независимая экспертная разметка выдачи.",
+  "cases": [
+    {"query":"продажи покупателям, а не сотрудникам", "expected":"contrast"},
+    {"query":"не покупателей, а сотрудников нужно обучить", "expected":"contrast"},
+    {"query":"договор аренды помещения, а не земли", "expected":"contrast"},
+    {"query":"маркетинг в интернете, а не на телевидении", "expected":"contrast"},
+    {"query":"налоги ИП, а не ООО", "expected":"contrast"},
+    {"query":"продажа товаров, но не услуг", "expected":"contrast"},
+    {"query":"как не потерять клиентов", "expected":"unresolved"},
+    {"query":"как не допустить кассовый разрыв", "expected":"unresolved"},
+    {"query":"обучение без отрыва от работы", "expected":"unresolved"},
+    {"query":"курсы по продажам без опыта", "expected":"unresolved"},
+    {"query":"исключая кредитные договоры", "expected":"unresolved"},
+    {"query":"не только маркетинг, а также продажи", "expected":"unresolved"},
+    {"query":"не только клиенты, но и сотрудники", "expected":"unresolved"},
+    {"query":"продажи, а не маркетинг но только онлайн", "expected":"unresolved"},
+    {"query":"не показывать курсы по кадрам", "expected":"unresolved"},
+    {"query":"налоги кроме НДС", "expected":"unresolved"},
+    {"query":"все кроме курса по налогам", "expected":"unresolved"},
+    {"query":"запуск бизнеса с нуля", "expected":"plain"},
+    {"query":"налоговая задолженность ИП", "expected":"plain"},
+    {"query":"обучение сотрудников маркетингу", "expected":"plain"}
+  ]
+}
