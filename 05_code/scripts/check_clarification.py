@@ -14,7 +14,7 @@ for query in [
     "хочу открыть столовую",
     "Как открыть ИП",
 ]:
-    result = engine.search(query)
+    result = engine.search(query, mode="ensemble")
     question = result["clarification"]
     row = {
         "query": query,

@@ -21,7 +21,7 @@ def main():
     engine = SearchEngine("artifacts/catalog", semantic=True, llm_enabled=False)
     rows = []
     for index, case in enumerate(cases):
-        result = engine.search(case["query"], top=50)
+        result = engine.search(case["query"], mode="ensemble", top=50)
         order = [x["entity_key"] for x in result["results"]]
         labels = {row["entity_key"]: row["grade"] for row in case["judgments"]}
         result_metrics = metrics(order, labels)

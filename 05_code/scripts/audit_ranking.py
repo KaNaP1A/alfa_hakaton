@@ -234,7 +234,7 @@ def calibrate(engine, cases, output):
 def check_robustness(engine):
     data = json.loads(Path("evaluation/robustness_cases.json").read_text())
     result = {}
-    for mode in ("bm25", "hybrid", "catboost", "ensemble"):
+    for mode in ("hybrid", "catboost", "ensemble"):
         rows = []
         for case in data["pairs"]:
             first, second = [engine.search(q, mode=mode) for q in case["queries"]]
@@ -318,7 +318,7 @@ def main():
     }
     if args.phase in ("baseline", "full"):
         report["quality"] = {}
-        for mode in ("bm25", "hybrid", "catboost", "ensemble"):
+        for mode in ("hybrid", "catboost", "ensemble"):
             report["quality"][mode] = {
                 split: evaluate(
                     engine, [c for c in cases if c["split"] == split], mode, details=True
@@ -331,7 +331,7 @@ def main():
         probes = json.loads(Path("evaluation/uncertainty_holdout_2026_11_12.json").read_text())[
             "cases"
         ]
-        for mode in ("bm25", "hybrid", "catboost", "ensemble"):
+        for mode in ("hybrid", "catboost", "ensemble"):
             rows = []
             for case in probes:
                 payload = engine.search(case["query"], mode=mode)

@@ -23,7 +23,7 @@ def main():
     ]
     rows = []
     for query in queries:
-        result = engine.search(query, top=5)
+        result = engine.search(query, mode="ensemble", top=5)
         rows.append(
             {
                 "query": query,
@@ -44,25 +44,25 @@ def main():
             item["kind"] != "glossary" for item in result["results"] + result["alternatives"]
         )
         assert len(result["results"]) <= 5
-    original = engine.search(queries[0])
+    original = engine.search(queries[0], mode="ensemble")
     option = next(
         option
         for option in original["clarification"]["options"]
         if option["label"] == "Как открыть ИП"
     )
-    selected = engine.search(queries[0], clarification_token=option["token"])
+    selected = engine.search(queries[0], mode="ensemble", clarification_token=option["token"])
     assert selected["query"] == queries[0]
     assert selected["results"][0]["title"] == "Как открыть ИП"
     assert selected["confidence"]["status"] != "uncertain"
-    assert not engine.search("frontend")["results"]
-    assert not engine.search("хочу изучать квантовую телепортацию")["results"]
+    assert not engine.search("frontend", mode="ensemble")["results"]
+    assert not engine.search("хочу изучать квантовую телепортацию", mode="ensemble")["results"]
     pairs = []
     for first, second in [
         ("хочу открыть кофейню", "открыть кофейню хочу"),
         ("договор аренды", "аренды договор"),
     ]:
-        one = engine.search(first)["results"]
-        two = engine.search(second)["results"]
+        one = engine.search(first, mode="ensemble")["results"]
+        two = engine.search(second, mode="ensemble")["results"]
         assert one and two
         equal = [row["entity_key"] for row in one] == [row["entity_key"] for row in two]
         assert equal

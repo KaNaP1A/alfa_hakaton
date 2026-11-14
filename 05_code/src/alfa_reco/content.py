@@ -33,7 +33,7 @@ def html_text(value):
     return " ".join("".join(parser.parts).split())
 
 
-def enrich_content(catalog, article_blocks, lesson_blocks):
+def enrich_content(catalog, article_blocks, lesson_blocks, document_blocks=()):
     def collect(blocks, key):
         grouped = defaultdict(list)
         for block in blocks:
@@ -50,24 +50,28 @@ def enrich_content(catalog, article_blocks, lesson_blocks):
 
     articles = collect(article_blocks, "ArticleId")
     lessons = collect(lesson_blocks, "LessonId")
-    counts = {"article_bodies": 0, "lesson_bodies": 0, "body_characters": 0}
+    documents = collect(document_blocks, "DocumentId")
+    counts = {"article_bodies": 0, "document_bodies": 0, "lesson_bodies": 0, "body_characters": 0}
     for item in catalog:
         item["body"] = ""
         if (
             item["kind"] == "article"
             and item["access_type"] == "open"
-            and item["content_public_flag"] == "t"
         ):
             item["body"] = articles.get(item["source_id"], "")
             counts["article_bodies"] += bool(item["body"])
+        elif item["kind"] == "document":
+            item["body"] = documents.get(item["source_id"], "")
+            counts["document_bodies"] += bool(item["body"])
         for lesson in item.get("lessons", []):
             # The eligibility of the lesson and all its parents was checked first.
-            lesson["body"] = lessons.get(lesson["lesson_id"], "")
+            lesson["body"] = lessons.get(lesson["lesson_id"], "") if lesson.get("is_trial") is True else ""
             counts["lesson_bodies"] += bool(lesson["body"])
         counts["body_characters"] += len(item["body"])
         counts["body_characters"] += sum(len(row["body"]) for row in item.get("lessons", []))
         # Autocomplete stays metadata-only; unrestricted bodies are not phrase suggestions.
-        item["provenance"]["body"] = "ArticleEmbedItems.HtmlContent" if item["body"] else None
+        sources = {"article": "ArticleEmbedItems.HtmlContent", "document": "DocumentEmbedItems.HtmlContent"}
+        item["provenance"]["body"] = sources.get(item["kind"]) if item["body"] else None
     return counts
 
 

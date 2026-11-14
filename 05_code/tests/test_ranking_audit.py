@@ -6,7 +6,7 @@ import unittest
 from collections import Counter
 from dataclasses import asdict
 
-from test_suggestions import material, write_bundle
+from test_suggestions import enable_test_dense, material, write_bundle
 
 from alfa_reco.cli import atomic_json
 from alfa_reco.eligibility import candidate_support
@@ -115,10 +115,10 @@ class RankingRuntimeTests(unittest.TestCase):
                 path / "ranking_config.json",
                 {"catalog_sha256": engine.manifest["catalog_sha256"], "parameters": asdict(config)},
             )
-            configured = SearchEngine(temp)
+            configured = enable_test_dense(SearchEngine(temp))
             self.assertEqual(configured.ranking_config, config)
             self.assertNotEqual(engine.ranking_config, config)
-            result = configured.search("coffee", mode="bm25")
+            result = configured.search("coffee", mode="hybrid")
             self.assertIsInstance(result["results"][0]["scores"]["final_score"], float)
             atomic_json(path / "ranking_config.json", {"catalog_sha256": "other", "parameters": {}})
             with self.assertRaisesRegex(ValueError, "different catalog"):
@@ -133,9 +133,9 @@ class RankingRuntimeTests(unittest.TestCase):
                     material("article:b", "Бухгалтерия"),
                 ],
             )
-            engine = SearchEngine(temp)
-            first = engine.search("управление персоналом", mode="bm25")
-            second = engine.search("управление сотрудниками", mode="bm25")
+            engine = enable_test_dense(SearchEngine(temp))
+            first = engine.search("управление персоналом", mode="hybrid")
+            second = engine.search("управление сотрудниками", mode="hybrid")
             self.assertEqual(
                 [r["entity_key"] for r in first["results"]],
                 [r["entity_key"] for r in second["results"]],
@@ -166,10 +166,10 @@ class RankingRuntimeTests(unittest.TestCase):
     def test_api_counts_are_integers_and_synonyms_are_scoped(self):
         with tempfile.TemporaryDirectory() as temp:
             write_bundle(temp, [material("article:a", "coffee")])
-            engine = SearchEngine(temp)
+            engine = enable_test_dense(SearchEngine(temp))
             for top in [True, 1.5, "5"]:
                 with self.assertRaises(ValueError):
-                    engine.search("coffee", mode="bm25", top=top)
+                    engine.search("coffee", mode="hybrid", top=top)
         for query in [
             "зарплата персонала",
             "неуправление персоналом",
@@ -183,9 +183,9 @@ class RankingRuntimeTests(unittest.TestCase):
                 temp,
                 [material("article:a", "Договор аренды"), material("article:b", "Договор подряда")],
             )
-            engine = SearchEngine(temp)
-            first = engine.search("договор аренды", mode="bm25")
-            second = engine.search("договор аренды.", mode="bm25")
+            engine = enable_test_dense(SearchEngine(temp))
+            first = engine.search("договор аренды", mode="hybrid")
+            second = engine.search("договор аренды.", mode="hybrid")
             self.assertEqual(first["results"], second["results"])
             self.assertEqual(second["query"], "договор аренды.")
         self.assertEqual(plan_query(".NET.").retrieval_query, ".NET")

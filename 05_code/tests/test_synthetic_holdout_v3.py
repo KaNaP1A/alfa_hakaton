@@ -9,6 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class SyntheticSplitTests(unittest.TestCase):
+    @unittest.skipUnless(
+        (ROOT / "artifacts/relevance_v1/training/synthetic_queries.json").is_file(),
+        "Historical synthetic training artifact is not included in Git",
+    )
     def test_separate_catalogs_and_labels(self):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "holdout"

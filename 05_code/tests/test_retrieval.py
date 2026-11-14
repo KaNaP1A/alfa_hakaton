@@ -33,7 +33,7 @@ class ContentTests(unittest.TestCase):
                 "access_type": "open",
                 "content_public_flag": None,
                 "provenance": {},
-                "lessons": [{"lesson_id": "l"}],
+                "lessons": [{"lesson_id": "l", "is_trial": True}],
             },
         ]
         articles = [

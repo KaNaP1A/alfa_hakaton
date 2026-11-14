@@ -73,11 +73,10 @@ def attach_lessons(catalog, lessons, bindings, clean, as_of=None):
         if lesson.get("IsGroup") != "f":
             counts["group_or_unknown"] += 1
             continue
-        # Trial metadata is allowed only for a known commercial access type.
-        # This does not assert entitlement or construct a direct lesson URL.
-        access = course["access_type"]
+        # Experts: non-trial lesson contents require verified course access (1 or 2).
+        # The anonymous prototype cannot verify that access, even for an open course.
         trial = binding.get("IsTrial") == "t"
-        if access != "open" and not (trial and access in {"paid", "subscription"}):
+        if not trial:
             counts["access_unverified"] += 1
             continue
         title = clean(binding.get("Title")) or clean(lesson.get("Title"))
@@ -92,7 +91,7 @@ def attach_lessons(catalog, lessons, bindings, clean, as_of=None):
                 "description": clean(lesson.get("Description")),
                 "is_trial": trial,
                 "parent_group_id": binding.get("ParentGroupId"),
-                "access_basis": "open_course" if access == "open" else "trial_binding",
+                "access_basis": "trial_binding",
                 "direct_access_verified": False,
             }
         )

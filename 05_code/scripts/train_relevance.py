@@ -366,6 +366,8 @@ def main():
     )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--local-queries", type=Path)
+    parser.add_argument("--fixed-config-from-report", type=Path,
+                        help="Reuse a previously selected model configuration and policy without tuning")
     parser.add_argument("--synthetic-limit", type=int, default=700)
     parser.add_argument(
         "--human-pool", type=Path, default=Path("artifacts/annotation_pool/complex_v3")
@@ -434,7 +436,18 @@ def main():
         ("mixed_1.0", 1.0, False),
         ("synthetic_only", 1.0, True),
     ]
-    for canonical, regime, depth, l2 in itertools.product([True], regimes, [3, 5, 6], [3, 10]):
+    depths, l2_values = [3, 5, 6], [3, 10]
+    fixed = None
+    if args.fixed_config_from_report:
+        fixed = json.loads(args.fixed_config_from_report.read_text())
+        selection = fixed["selected"]
+        regimes = [row for row in regimes if row[0] == selection["regime"]]
+        if (len(regimes) != 1 or selection["depth"] not in depths
+                or selection["l2_leaf_reg"] not in l2_values
+                or selection["iterations"] != 400 or selection["canonical"] is not True):
+            raise ValueError("Unsupported fixed configuration")
+        depths, l2_values = [selection["depth"]], [selection["l2_leaf_reg"]]
+    for canonical, regime, depth, l2 in itertools.product([True], regimes, depths, l2_values):
         regime_name, ratio, synthetic_only = regime
         backend.canonical = canonical
         pool = make_pool(groups, ratio, synthetic_only)
@@ -483,9 +496,11 @@ def main():
     backend.canonical = chosen["canonical"]
     policy_trials = []
     update_job(args.output, stage="gate_calibration", selected_model=chosen["name"])
-    for semantic, strong, lexical in itertools.product(
-        [0.76, 0.80, 0.84], [0.84, 0.88, 0.92], [0.65, 0.85]
-    ):
+    policy_grid = itertools.product([0.76, 0.80, 0.84], [0.84, 0.88, 0.92], [0.65, 0.85])
+    if fixed:
+        p = fixed["policy"]
+        policy_grid = [(p["semantic_min"], p["strong_semantic_min"], p["lexical_min"])]
+    for semantic, strong, lexical in policy_grid:
         backend.policy = {
             "semantic_min": semantic,
             "strong_semantic_min": strong,
@@ -525,6 +540,8 @@ def main():
         "catalog_sha256": engine.manifest["catalog_sha256"],
         "cases_sha256": sha256(cases_path),
         "feature_names": FEATURES,
+        "fixed_configuration_report_sha256": sha256(args.fixed_config_from_report)
+        if args.fixed_config_from_report else None,
         "source_hashes": code_hashes(),
         "human_supervision": human_status,
         "selected": chosen,

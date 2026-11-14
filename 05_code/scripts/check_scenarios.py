@@ -37,7 +37,7 @@ assert any(
 selected = by_query["лояльность сотруд"]["related_topics"][0]
 search = engine.search(
     "лояльность сотрудников",
-    mode="bm25",
+    mode="relevance",
     selection_id=selected["id"],
     selection_generation=engine.generation,
 )

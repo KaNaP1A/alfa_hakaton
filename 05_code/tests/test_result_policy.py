@@ -1,7 +1,7 @@
 import tempfile
 import unittest
 
-from test_suggestions import material, write_bundle
+from test_suggestions import enable_test_dense, material, write_bundle
 
 from alfa_reco.clarifications import ClarificationTokens
 from alfa_reco.eligibility import candidate_support
@@ -21,26 +21,30 @@ class ResultPolicyTests(unittest.TestCase):
             material("glossary:cafe", "Кофейня"),
         ]
         write_bundle(self.temp.name, self.catalog)
-        self.engine = SearchEngine(self.temp.name)
+        self.engine = enable_test_dense(SearchEngine(self.temp.name))
+
+    def test_standalone_bm25_is_no_longer_a_search_mode(self):
+        with self.assertRaisesRegex(ValueError, "Unsupported search mode"):
+            self.engine.search("кофейня", mode="bm25")
 
     def test_unsupported_subject_is_not_filled_with_same_generic_verb(self):
-        result = self.engine.search("хочу открыть столовую", mode="bm25")
+        result = self.engine.search("хочу открыть столовую", mode="hybrid")
         self.assertEqual(result["results"], [])
         self.assertIsNotNone(result["clarification"])
 
     def test_three_word_subject_gets_a_question_when_results_are_insufficient(self):
-        result = self.engine.search("хочу открыть табачный магазин", mode="bm25")
+        result = self.engine.search("хочу открыть табачный магазин", mode="hybrid")
         self.assertIsNotNone(result["clarification"])
-        exact = self.engine.search("Как открыть ИП", mode="bm25")
+        exact = self.engine.search("Как открыть ИП", mode="hybrid")
         self.assertIsNone(exact["clarification"])
 
     def test_material_choice_changes_focus_and_keeps_original_query(self):
         query = "хочу открыть столовую"
-        result = self.engine.search(query, mode="bm25")
+        result = self.engine.search(query, mode="hybrid")
         option = next(
             x for x in result["clarification"]["options"] if x["label"] == "Как открыть ИП"
         )
-        focused = self.engine.search(query, mode="bm25", clarification_token=option["token"])
+        focused = self.engine.search(query, mode="hybrid", clarification_token=option["token"])
         self.assertEqual(focused["query"], query)
         self.assertEqual(focused["focus"]["label"], "Как открыть ИП")
         self.assertEqual(focused["results"][0]["entity_key"], "article:ip")
@@ -48,7 +52,7 @@ class ResultPolicyTests(unittest.TestCase):
         self.assertIsNone(focused["clarification"])
         with self.assertRaises(ValueError):
             self.engine.search(
-                "изменённая задача", mode="bm25", clarification_token=option["token"]
+                "изменённая задача", mode="hybrid", clarification_token=option["token"]
             )
 
     def test_selection_is_not_accepted_after_restart_or_tampering(self):
@@ -63,7 +67,7 @@ class ResultPolicyTests(unittest.TestCase):
             another.resolve("открыть", token)
 
     def test_glossary_is_excluded_from_search_and_suggestions(self):
-        result = self.engine.search("кофейня", mode="bm25", top=5)
+        result = self.engine.search("кофейня", mode="hybrid", top=5)
         self.assertEqual(len(result["results"]), 1)
         self.assertEqual(result["results"][0]["kind"], "article")
         suggestions = self.engine.suggest("кофейня")
@@ -74,7 +78,7 @@ class ResultPolicyTests(unittest.TestCase):
                 ]
                 self.assertNotIn("glossary:cafe", keys)
         with self.assertRaises(ValueError):
-            self.engine.search("кофейня", mode="bm25", kind="glossary")
+            self.engine.search("кофейня", mode="hybrid", kind="glossary")
 
     def test_home_recommendations_exclude_glossary(self):
         catalog = [
@@ -85,14 +89,14 @@ class ResultPolicyTests(unittest.TestCase):
         self.assertEqual([item["entity_key"] for item in result], ["article:2"])
 
     def test_explicit_title_does_not_need_semantic_score(self):
-        result = self.engine.search("Как открыть ИП", mode="bm25")
+        result = self.engine.search("Как открыть ИП", mode="hybrid")
         self.assertEqual(result["results"][0]["entity_key"], "article:ip")
         self.assertEqual(result["confidence"]["status"], "unvalidated")
 
     def test_focus_cannot_silence_original_constraints(self):
         query = "бесплатный курс"
         token = self.engine.clarifications.issue(query, {"kind": "material", "value": "article:ip"})
-        result = self.engine.search(query, mode="bm25", clarification_token=token)
+        result = self.engine.search(query, mode="hybrid", clarification_token=token)
         self.assertEqual(result["confidence"]["reason"], "unverified_constraint")
         self.assertIn("price", result["query_rules"]["unsupported_constraints"])
 

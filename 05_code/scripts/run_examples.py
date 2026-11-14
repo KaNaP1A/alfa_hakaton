@@ -12,7 +12,7 @@ queries = [
     "Безопасная разработка Frontend",
     "Нужен шаблон договора аренды",
 ]
-results = [engine.search(query, top=3) for query in queries]
+results = [engine.search(query, mode="ensemble", top=3) for query in queries]
 for result in results:
     print(result["query"])
     for row in result["results"]:

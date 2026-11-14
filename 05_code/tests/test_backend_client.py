@@ -9,8 +9,13 @@ from examples.backend_client import RecommendationClient
 
 
 class BackendClientTests(unittest.TestCase):
+    def test_default_address_matches_documented_local_service(self):
+        self.assertEqual(RecommendationClient().base_url, "http://127.0.0.1:8000")
+
     def test_search_passes_suggestion_and_keeps_original_query(self):
-        with patch("examples.backend_client.urlopen", return_value=io.BytesIO(b'{"results": []}')) as call:
+        with patch(
+            "examples.backend_client.urlopen", return_value=io.BytesIO(b'{"results": []}')
+        ) as call:
             result = RecommendationClient(timeout=8).search(
                 "как открыть кафе", selection_id="topic:1", selection_generation="g1"
             )
@@ -23,17 +28,39 @@ class BackendClientTests(unittest.TestCase):
         self.assertEqual(result, {"results": []})
 
     def test_recommend_posts_generation_and_viewed(self):
-        with patch("examples.backend_client.urlopen", return_value=io.BytesIO(b'{"results": []}')) as call:
+        with patch(
+            "examples.backend_client.urlopen", return_value=io.BytesIO(b'{"results": []}')
+        ) as call:
             RecommendationClient().recommend("g1", ["business"], ["course:1"])
         request = call.call_args.args[0]
         self.assertEqual(request.get_method(), "POST")
         self.assertEqual(request.get_header("Content-type"), "application/json")
-        self.assertEqual(json.loads(request.data), {
-            "generation": "g1", "categories": ["business"], "viewed": ["course:1"]
-        })
+        self.assertEqual(
+            json.loads(request.data),
+            {"generation": "g1", "categories": ["business"], "viewed": ["course:1"]},
+        )
+
+    def test_development_plan_sends_complete_profile(self):
+        with patch(
+            "examples.backend_client.urlopen", return_value=io.BytesIO(b'{"steps": []}')
+        ) as call:
+            RecommendationClient().development_plan("g1", ["team"], ["article:1"], ["course:1"])
+        request = call.call_args.args[0]
+        self.assertEqual(urlparse(request.full_url).path, "/development-plan")
+        self.assertEqual(
+            json.loads(request.data),
+            {
+                "generation": "g1",
+                "categories": ["team"],
+                "viewed": ["article:1"],
+                "completed": ["course:1"],
+            },
+        )
 
     def test_http_error_is_explicit(self):
-        error = HTTPError("http://localhost", 400, "Bad request", {}, io.BytesIO(b'{"error": "bad"}'))
+        error = HTTPError(
+            "http://localhost", 400, "Bad request", {}, io.BytesIO(b'{"error": "bad"}')
+        )
         with patch("examples.backend_client.urlopen", side_effect=error):
             with self.assertRaisesRegex(RuntimeError, "HTTP 400: bad"):
                 RecommendationClient().search("")

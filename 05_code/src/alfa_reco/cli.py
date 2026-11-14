@@ -194,9 +194,22 @@ def normalize(conn):
         mappings[dimension] = mapping
     catalog = []
     exclusions = Counter()
+    # Calculator publication lives in CalculatorPages, linked by the shared ID.
+    # Ambiguous or deleted page records fail closed.
+    calculator_pages = defaultdict(list)
+    if "Calculators" in KINDS:
+        for page in rows(conn, "CalculatorPages"):
+            calculator_pages[page["Id"]].append(page)
     for table, kind in KINDS.items():
         for r in rows(conn, table):
-            status = statuses.get(r.get("StatusId"), "unknown")
+            if kind == "calculator":
+                pages = calculator_pages.get(r["Id"], [])
+                page = pages[0] if len(pages) == 1 else {}
+                status = statuses.get(page.get("StatusId"), "unknown")
+                if page.get("IsDeleted") != "f":
+                    status = "unknown"
+            else:
+                status = statuses.get(r.get("StatusId"), "unknown")
             if r.get("IsDeleted") == "t":
                 exclusions[f"{kind}:deleted"] += 1
                 continue
@@ -213,7 +226,9 @@ def normalize(conn):
             if not title:
                 exclusions[f"{kind}:empty_title"] += 1
                 continue
-            raw_access = access_types.get(r.get("TypeId") or s.get("TypeId"))
+            # Article payment type is Articles.TypeId, not ContentSettings.TypeId.
+            type_id = r.get("TypeId") if kind == "article" else r.get("TypeId") or s.get("TypeId")
+            raw_access = access_types.get(type_id)
             access = {
                 "Открытый": "open",
                 "Платный": "paid",
@@ -234,6 +249,9 @@ def normalize(conn):
                 "access_type": access,
                 "price_raw": r.get("Cost"),
                 "price_currency": None,
+                "course_cost_available": kind == "course" and "Cost" in r,
+                "article_type_available": kind == "article" and type_id in access_types,
+                "target_audience": clean(r.get("Target")) if kind == "course" else "",
                 "duration_raw": r.get("Duration"),
                 "source_url": r.get("Url"),
                 "canonical_url": safe_url(r.get("Url")),
@@ -294,7 +312,10 @@ def build_locked(args):
             from .content import enrich_content
 
             content_report = enrich_content(
-                catalog, rows(conn, "ArticleEmbedItems"), rows(conn, "LessonEmbedItems")
+                catalog,
+                rows(conn, "ArticleEmbedItems"),
+                rows(conn, "LessonEmbedItems"),
+                rows(conn, "DocumentEmbedItems"),
             )
         atomic_json(stage / "catalog.json", catalog)
         from .suggestions import build_index
@@ -465,8 +486,8 @@ def main():
     s.add_argument("--output", default="artifacts/catalog")
     s.add_argument(
         "--mode",
-        choices=["bm25", "hybrid", "catboost", "ensemble", "relevance"],
-        default="ensemble",
+        choices=["hybrid", "catboost", "ensemble", "relevance"],
+        default="relevance",
     )
     s.add_argument("--top", type=int, default=5)
     s.add_argument("--kind", choices=sorted(KINDS.values()))
@@ -485,6 +506,12 @@ def main():
     v = sub.add_parser("serve")
     v.add_argument("--output", default="artifacts/catalog")
     v.add_argument("--port", type=int, default=8000)
+    v.add_argument(
+        "--host",
+        choices=["127.0.0.1", "0.0.0.0"],  # noqa: S104 - explicit isolated-container option
+        default="127.0.0.1",
+        help="Bind address; 0.0.0.0 is intended for an isolated container",
+    )
     v.add_argument("--hybrid", action="store_true")
     v.add_argument(
         "--relevance",

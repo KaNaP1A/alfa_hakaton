@@ -14,7 +14,7 @@ def main():
     rows = []
     for case in cases:
         start = time.perf_counter()
-        result = engine.search(case["query"])
+        result = engine.search(case["query"], mode="ensemble")
         rows.append(
             {
                 **case,
@@ -52,7 +52,7 @@ def main():
     ]
     held_rows = []
     for case in holdout:
-        result = engine.search(case["query"])
+        result = engine.search(case["query"], mode="ensemble")
         held_rows.append(
             {
                 **case,
@@ -81,7 +81,7 @@ def main():
     negcases = json.loads(Path("evaluation/negative_heldout.json").read_text())["cases"]
     negatives = []
     for case in negcases:
-        result = engine.search(case["query"])
+        result = engine.search(case["query"], mode="ensemble")
         rule = result["query_rules"]
         observed = (
             "contrast"

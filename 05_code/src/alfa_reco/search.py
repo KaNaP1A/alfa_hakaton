@@ -13,6 +13,9 @@ class SearchEngine:
         from .bundle import load_bundle, model, sha256
 
         self.path, self.manifest, self.catalog = load_bundle(output)
+        from .verified_links import apply_verified_links
+
+        apply_verified_links(self.catalog)
         self.generation = self.path.name
         from .clarifications import ClarificationTokens
 
@@ -223,7 +226,7 @@ class SearchEngine:
     def search(
         self,
         query,
-        mode="ensemble",
+        mode="relevance",
         top=5,
         kind=None,
         selection_id=None,
@@ -234,11 +237,12 @@ class SearchEngine:
         ranking_config=None,
     ):
         from .eligibility import USER_KINDS, candidate_support
+        from .pricing import price_fact
 
         validate_query(query)
         if not query.strip():
             raise ValueError("Enter a non-empty query")
-        if mode not in {"bm25", "hybrid", "catboost", "ensemble", "relevance"}:
+        if mode not in {"hybrid", "catboost", "ensemble", "relevance"}:
             raise ValueError("Unsupported search mode")
         if type(top) is not int or not 1 <= top <= 50:
             raise ValueError("top must be between 1 and 50")
@@ -279,24 +283,69 @@ class SearchEngine:
                         "entity_key": chosen["entity_key"],
                         "label": chosen["title"],
                     }
-        from .query_rules import exclusion_multiplier, intent_multiplier, plan_query
+        from .query_rules import (
+            MONEY,
+            PEOPLE_CONTEXT,
+            exclusion_multiplier,
+            intent_multiplier,
+            plan_query,
+        )
+        from .request_understanding import (
+            OPPOSITES,
+            actions,
+            ambiguous_contrast_reference,
+            analyze_request,
+            opposite_title_intent,
+            weak_intent_support,
+        )
 
         original_plan = plan_query(query)
+        understanding = analyze_request(query)
+        selected_material = bool(focus and focus["kind"] == "material")
+        requested_kind = understanding["format"]
+        format_conflict = bool(requested_kind and (
+            (kind and requested_kind != kind)
+            or (selected_material and self.catalog[next(
+                i for i, item in enumerate(self.catalog) if item["entity_key"] == focus["entity_key"]
+            )]["kind"] != requested_kind)
+        ))
+        inferred_kind = requested_kind if not kind and not selected_material else None
+        applied_kind = kind or inferred_kind
+        # Explicitly chosen material changes focus; the original constraints stay visible.
+        base_query = understanding["search_query"] if inferred_kind or (requested_kind and kind == requested_kind) else query
         effective_query = (
             focus["label"]
-            if focus and focus["kind"] == "material"
+            if selected_material
             else " ".join(
-                part for part in [query, focus["label"] if focus else clarification_text] if part
+                part for part in [base_query, focus["label"] if focus else clarification_text] if part
             )
         )
         plan = plan_query(effective_query)
         retrieval_query = plan.retrieval_query
+        unresolved_reference = ambiguous_contrast_reference(plan) or (
+            selected_material and ambiguous_contrast_reference(original_plan)
+        )
+        supported_actions = actions(plan.positive_query)
+        action_kinds = {row["kind"] for row in supported_actions}
+        ambiguous_intent = any(OPPOSITES[name] in action_kinds for name in action_kinds)
+        # Do not infer the scope of complex negations or override a chosen material.
+        active_actions = supported_actions if not (
+            ambiguous_intent or unresolved_reference or plan.unresolved_negation
+            or original_plan.unresolved_negation or selected_material
+        ) else []
+        extra_constraints = set(understanding["unsupported_constraints"])
+        if format_conflict:
+            extra_constraints.add("format")
+        if ambiguous_intent:
+            extra_constraints.add("intent")
 
         allowed = {
             i
             for i, item in enumerate(self.catalog)
-            if item["kind"] in USER_KINDS and (kind is None or item["kind"] == kind)
+            if item["kind"] in USER_KINDS and (applied_kind is None or item["kind"] == applied_kind)
         }
+        if unresolved_reference and not selected_material:
+            allowed.clear()
         focus_index = next(
             (
                 i
@@ -466,19 +515,22 @@ class SearchEngine:
         query_terms = set(tokens(plan.positive_query))
         from .promotions import promotion_for
 
-        admitted_count = alternative_count = 0
+        admitted_count = baseline_admitted_count = alternative_count = rejected_count = conflict_count = 0
         for i in ranked:
             item = self.catalog[i]
+            conflict = (exclusion_multiplier(self.retriever.title_terms[i], plan.excluded_terms) < 1
+                        or intent_multiplier(item["title"], plan) < 1
+                        or opposite_title_intent(active_actions, item["title"]))
+            if ({row["kind"] for row in active_actions} == {"retain_employees"}
+                    and MONEY.search(item["title"]) and not PEOPLE_CONTEXT.search(item["title"])):
+                conflict = True
+            conflict_count += bool(conflict)
             support = (
                 self.relevance_backend().support(
                     relevance,
                     i,
                     selected=i == focus_index,
-                    conflict=exclusion_multiplier(
-                        self.retriever.title_terms[i], plan.excluded_terms
-                    )
-                    < 1
-                    or intent_multiplier(item["title"], plan) < 1,
+                    conflict=conflict,
                 )
                 if relevance is not None
                 else candidate_support(
@@ -487,18 +539,33 @@ class SearchEngine:
                     dense_by_source["card"][i] if dense_by_source else None,
                     dense_by_source["lesson"][i] if dense_by_source else None,
                     selected=i == focus_index,
-                    conflict=exclusion_multiplier(
-                        self.retriever.title_terms[i], plan.excluded_terms
-                    )
-                    < 1
-                    or intent_multiplier(item["title"], plan) < 1,
+                    conflict=conflict,
                 )
             )
+            if relevance is not None:
+                # Keep the model's expanded-query features; expose the user's
+                # unexpanded terms separately for diagnosis and weak matching.
+                original_terms = set(tokens(plan.positive_query))
+                original_overlap = original_terms & self.retriever.context_terms[i]
+                support["unexpanded_card_coverage"] = round(
+                    len(original_overlap) / max(len(original_terms), 1), 4
+                )
+                cosine = relevance["dense"]["card"][i]
+                weak_evidence = (weak_intent_support(active_actions, item, cosine, conflict=conflict)
+                                 if not support["admitted"] and cosine < backend.policy["semantic_min"]
+                                 else None)
+                support["weak_intent_match"] = bool(weak_evidence)
+                support["weak_intent_evidence"] = weak_evidence
+                if weak_evidence:
+                    support.update(admitted=True, alternative=False)
             if not support["admitted"] and not support["alternative"]:
+                rejected_count += 1
                 continue
             if support["admitted"]:
-                if admitted_count >= top:
-                    continue
+                if not support.get("weak_intent_match"):
+                    if baseline_admitted_count >= top:
+                        continue
+                    baseline_admitted_count += 1
                 admitted_count += 1
             else:
                 if alternative_count >= min(top, 3):
@@ -533,6 +600,8 @@ class SearchEngine:
                         ]
                     },
                     "promotion": promotion_for(item),
+                    "price": price_fact(item),
+                    "target_audience": item.get("target_audience", ""),
                     "support": support,
                     "scores": {
                         "bm25": round(lexical[i], 5),
@@ -577,6 +646,15 @@ class SearchEngine:
         from .personalization import clarification
 
         results = [item for item in candidates if item["support"]["admitted"]][:top]
+        if any(item["support"].get("weak_intent_match") for item in candidates):
+            results = [item for item in candidates if item["support"]["admitted"]]
+            # Explicit topic words are evidence, not a learned relevance score.
+            results.sort(key=lambda item: (
+                0 if item["support"].get("exact_title") or item["support"].get("explicit_selection")
+                else 1 if item["support"].get("weak_intent_evidence") == "title"
+                else 2 if not item["support"].get("weak_intent_match") else 3,
+            ))
+            results = results[:top]
         alternatives = [item for item in candidates if item["support"]["alternative"]][
             : min(top, 3)
         ]
@@ -584,12 +662,21 @@ class SearchEngine:
         from .confidence import assess_results
 
         confidence = assess_results(results, (plan, original_plan))
+        if unresolved_reference:
+            confidence.update(status="uncertain", reason="unresolved_negation")
+        all_unsupported = sorted(
+            set(plan.unsupported_constraints) | set(original_plan.unsupported_constraints) | extra_constraints
+        )
+        if all_unsupported and confidence.get("reason") != "unresolved_negation":
+            confidence.update(status="uncertain", reason="unverified_constraint")
+        if any(item["support"].get("weak_intent_match") for item in results) and not confidence.get("reason"):
+            confidence.update(status="uncertain", reason="weak_intent_match")
         if relevance is not None:
             confidence.update(policy="e5_relevance_v1", **backend.policy)
-        choices = [
+        choices = ([*results, *alternatives] if active_actions else [
             {**self.catalog[i], "matched_words": sorted(query_terms & self.retriever.term_sets[i])}
             for i in ranked[:10]
-        ]
+        ])
         question = (
             clarification(
                 plan.positive_query,
@@ -601,6 +688,19 @@ class SearchEngine:
             and not any(item["support"]["exact_title"] for item in results)
             else None
         )
+        if (unresolved_reference or ambiguous_intent or format_conflict or "format" in extra_constraints) and not (
+            focus or selection or clarification_text
+        ):
+            question = {
+                "question": ("Уточните, кого или что вы хотите удержать или изменить."
+                             if unresolved_reference
+                             else "Уточните, какое действие и какой формат материала вам нужны."),
+                "options": [],
+                "allow_text": True,
+            }
+        if not question and not results and not alternatives and not (focus or selection or clarification_text):
+            question = {"question": "Не удалось подобрать материал. Уточните, что именно вам нужно.",
+                        "options": [], "allow_text": True}
         if question:
             question = {
                 **question,
@@ -620,11 +720,7 @@ class SearchEngine:
             or ({"kind": "text", "label": clarification_text} if clarification_text else None),
             "mode": mode + "_experimental"
             if mode in {"ensemble", "catboost", "relevance"}
-            else "hybrid_rrf"
-            if mode == "hybrid"
-            else "bm25_rrf"
-            if selection
-            else "bm25",
+            else "hybrid_rrf",
             "catalog_count": len(self.catalog),
             "model_trained": mode in {"ensemble", "catboost", "relevance"},
             "relevance_profile": {
@@ -637,17 +733,35 @@ class SearchEngine:
             else None,
             "ensemble_weights": weights if mode == "ensemble" else None,
             "query_interpretation": interpretation,
+            "retrieval_diagnostics": {
+                "retrieved_candidates": len(relevance["ranked"]) if relevance is not None else len(ranked),
+                "considered_candidates": len(ranked),
+                "rejected_candidates": rejected_count,
+                "title_conflicts": conflict_count,
+                "shown_results": len(results),
+                "shown_alternatives": len(alternatives),
+            },
+            "request_understanding": {
+                "format": requested_kind,
+                "format_text": understanding["format_text"],
+                "applied_format": applied_kind,
+                "format_conflict": format_conflict,
+                "actions": actions(original_plan.positive_query),
+                "actions_applied": bool(active_actions),
+                "audience_text": understanding["audience_text"],
+                "audience_verified": False,
+                "model_query": effective_query,
+                "method": "narrow_rules_v1",
+            },
             "query_rules": {
                 "contrast_applied": plan.contrast_applied,
                 "excluded_terms": list(plan.excluded_terms),
                 "retention_expansion": plan.retention_expansion,
-                "unresolved_negation": plan.unresolved_negation,
+                "unresolved_negation": plan.unresolved_negation or original_plan.unresolved_negation or unresolved_reference,
                 "debt_expansion": plan.debt_expansion,
                 "debt_unspecified": plan.debt_unspecified,
                 "synonym_rules": list(plan.synonym_rules),
-                "unsupported_constraints": sorted(
-                    set(plan.unsupported_constraints) | set(original_plan.unsupported_constraints)
-                ),
+                "unsupported_constraints": all_unsupported,
             },
             "llm_ranking_applied": llm_applied,
             "selection": {"id": selection_id, "label": selection["label"]} if selection else None,

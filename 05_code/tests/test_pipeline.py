@@ -102,6 +102,26 @@ class PipelineTests(unittest.TestCase):
         self.assertIsNone(catalog[0]["price_raw"])
         self.assertIn("url_unverified", catalog[0]["data_quality_flags"])
 
+    def test_course_null_cost_and_article_type_have_distinct_provenance(self):
+        source = {
+            "Statuses": [{"Id": "pub", "Title": "Опубликовано"}],
+            "CourseTypes": [{"Id": "open", "Title": "Открытый"}],
+            "ContentSettings": [{"Id": "s", "EntityId": "a", "TypeId": "open"}],
+            "Topics": [], "Tags": [], "Industries": [],
+            "ContentSettingsTopics": [], "ContentSettingsTags": [], "ContentSettingsIndustries": [],
+            "Courses": [{"Id": "c", "StatusId": "pub", "Title": "Курс", "Cost": None,
+                         "Target": "Для предпринимателей"}],
+            "Articles": [{"Id": "a", "StatusId": "pub", "Title": "Статья", "TypeId": None}],
+        }
+        with (patch("alfa_reco.cli.KINDS", {"Courses": "course", "Articles": "article"}),
+              patch("alfa_reco.cli.rows", side_effect=lambda c, t: source[t])):
+            catalog, _ = normalize(None)
+        by_kind = {item["kind"]: item for item in catalog}
+        self.assertTrue(by_kind["course"]["course_cost_available"])
+        self.assertIsNone(by_kind["course"]["price_raw"])
+        self.assertEqual(by_kind["course"]["target_audience"], "Для предпринимателей")
+        self.assertEqual(by_kind["article"]["access_type"], "unknown")
+
     def test_closed_and_draft_materials_are_excluded(self):
         source = {
             "Statuses": [

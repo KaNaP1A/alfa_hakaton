@@ -71,6 +71,14 @@ def write_bundle(root, catalog):
     return path
 
 
+def enable_test_dense(engine):
+    """Exercise hybrid integration without loading an embedding model in unit tests."""
+    engine.dense_signals = lambda query: {
+        source: [0.0] * len(engine.catalog) for source in ("card", "body", "lesson")
+    }
+    return engine
+
+
 class LessonTests(unittest.TestCase):
     def attach(self, lessons, bindings, access="open", as_of=None):
         catalog = [material("course:course", "Управление", access_type=access)]
@@ -80,7 +88,7 @@ class LessonTests(unittest.TestCase):
     def test_open_course_lesson_and_group(self):
         result, report = self.attach(
             [lesson("g", IsGroup="t"), lesson("l")],
-            [binding("g"), binding("l", ParentGroupId="g")],
+            [binding("g"), binding("l", ParentGroupId="g", IsTrial="t")],
         )
         self.assertEqual([item["lesson_id"] for item in result], ["l"])
         self.assertFalse(result[0]["direct_access_verified"])
@@ -110,7 +118,7 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(report["ancestor_cycle"], 2)
 
     def test_scheduled_date_is_explicit_and_reproducible(self):
-        b = binding("l", ClosedUntil="2026-01-01 00:00:00+00")
+        b = binding("l", ClosedUntil="2026-01-01 00:00:00+00", IsTrial="t")
         for time in [None, parse_as_of("2025-01-01T00:00:00Z")]:
             self.assertEqual(self.attach([lesson("l")], [b], as_of=time)[0], [])
         self.assertEqual(
@@ -121,10 +129,10 @@ class LessonTests(unittest.TestCase):
             parse_as_of("2026-01-01")
 
     def test_paid_unknown_trial_and_duplicates(self):
-        for access in ["paid", "subscription", "unknown"]:
+        for access in ["open", "paid", "subscription", "unknown"]:
             self.assertEqual(self.attach([lesson("l")], [binding("l")], access)[0], [])
         self.assertEqual(len(self.attach([lesson("l")], [binding("l", IsTrial="t")], "paid")[0]), 1)
-        self.assertEqual(self.attach([lesson("l")], [binding("l", IsTrial="t")], "unknown")[0], [])
+        self.assertEqual(len(self.attach([lesson("l")], [binding("l", IsTrial="t")], "unknown")[0]), 1)
         self.assertEqual(self.attach([lesson("l")], [binding("l"), binding("l")])[0], [])
 
 
@@ -196,23 +204,24 @@ class SuggestionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as root:
             write_bundle(root, self.catalog)
             engine = SearchEngine(root)
+            with self.assertRaises(ValueError):
+                engine.search("кофейню", mode="hybrid")
+            enable_test_dense(engine)
             selection = engine.suggest("коф")["completions"][0]
             result = engine.search(
                 "бизнес",
-                mode="bm25",
+                mode="hybrid",
                 selection_id=selection["id"],
                 selection_generation=engine.generation,
             )
             self.assertEqual(result["query"], "бизнес")
             self.assertTrue(result["results"][0]["selection_match"])
             self.assertEqual(
-                len(engine.search("кофейню", mode="bm25", kind="document")["results"]),
+                len(engine.search("кофейню", mode="hybrid", kind="document")["results"]),
                 0,
             )
             with self.assertRaises(ValueError):
-                engine.search("кофейню", mode="bm25", selection_id="fake")
-            with self.assertRaises(ValueError):
-                engine.search("кофейню", mode="hybrid")
+                engine.search("кофейню", mode="hybrid", selection_id="fake")
 
     def test_corrupt_or_stale_index_rejected(self):
         with tempfile.TemporaryDirectory() as root:

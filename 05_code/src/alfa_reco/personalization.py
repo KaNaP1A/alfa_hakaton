@@ -83,6 +83,15 @@ def recommend(catalog, categories, viewed, limit=5, vectors=None):
     by_id = {item["entity_key"]: item for item in catalog}
     if any(key not in by_id for key in viewed):
         raise ValueError("Viewed item is not in this catalog generation")
+    if categories and not viewed:
+        # Keep the existing list contract while avoiding UUID-ranked category-only results.
+        from .cold_start import recommend_cold_start
+
+        profile = {
+            "categories": categories, "industry": None, "preferred_kinds": [],
+            "business_stage": None, "experience": None, "region": None, "focus_facet": None,
+        }
+        return recommend_cold_start(catalog, profile, limit)[0]
     # Most recent occurrence takes precedence and each item contributes only once.
     recent = list(dict.fromkeys(reversed(viewed)))[:20]
     selected = {name for category in categories for name in CATEGORIES[category][1]}
@@ -142,11 +151,13 @@ def recommend(catalog, categories, viewed, limit=5, vectors=None):
         "canonical_url",
         "data_quality_flags",
     )
+    from .pricing import price_fact
     from .promotions import promotion_for
 
     return [
         {
             "promotion": promotion_for(item),
+            "price": price_fact(item),
             **{key: item.get(key) for key in keys},
             "reason": ". ".join(reasons),
             "method": "content_e5_and_facets" if vectors is not None else "lexical_facets",

@@ -16,7 +16,7 @@ def main():
     engine = SearchEngine("artifacts/catalog", semantic=True)
     rows = []
     for case in cases:
-        result = engine.search(case["query"], top=5)
+        result = engine.search(case["query"], mode="ensemble", top=5)
         rows.append(
             {
                 **case,

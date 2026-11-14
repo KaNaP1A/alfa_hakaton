@@ -21,9 +21,11 @@ ASSETS = {
 }
 
 
-def make_server(engine, port=8000, default_mode=None):
-    if default_mode not in {None, "bm25", "hybrid", "catboost", "ensemble", "relevance"}:
+def make_server(engine, port=8000, default_mode=None, host="127.0.0.1"):
+    if default_mode not in {None, "hybrid", "catboost", "ensemble", "relevance"}:
         raise ValueError("Invalid default search mode")
+    if host not in {"127.0.0.1", "0.0.0.0"}:  # noqa: S104 - explicit container-only option
+        raise ValueError("Unsupported bind address")
 
     class Handler(BaseHTTPRequestHandler):
         def local_request(self):
@@ -149,8 +151,15 @@ def make_server(engine, port=8000, default_mode=None):
                         "generation": engine.generation,
                         "items": [
                             {
-                                k: item[k]
-                                for k in ("entity_key", "title", "description", "kind", "topics")
+                                k: item.get(k)
+                                for k in (
+                                    "entity_key",
+                                    "title",
+                                    "description",
+                                    "kind",
+                                    "topics",
+                                    "canonical_url",
+                                )
                             }
                             for item in engine.catalog
                             if item["kind"] in USER_KINDS
@@ -166,9 +175,11 @@ def make_server(engine, port=8000, default_mode=None):
                     payload = {
                         "status": "ok",
                         "generation": engine.generation,
+                        "profile_compatible_generations": engine.manifest.get(
+                            "profile_compatible_generations", []
+                        ),
                         "hybrid_available": engine.encoder is not None,
-                        "default_search_mode": self.server.default_mode
-                        or ("ensemble" if engine.encoder is not None else "bm25"),
+                        "default_search_mode": self.server.default_mode,
                         "relevance_available": (
                             engine.path / "relevance" / "CURRENT.json"
                         ).exists(),
@@ -193,8 +204,7 @@ def make_server(engine, port=8000, default_mode=None):
                         params.get("q", ""),
                         mode=params.get(
                             "mode",
-                            self.server.default_mode
-                            or ("ensemble" if engine.encoder is not None else "bm25"),
+                            self.server.default_mode,
                         ),
                         top=int(params.get("top", 5)),
                         kind=params.get("kind"),
@@ -223,7 +233,7 @@ def make_server(engine, port=8000, default_mode=None):
             if not self.local_request():
                 self.send_json(403, {"error": "Local Host and Origin required"})
                 return
-            if self.path != "/recommend":
+            if self.path not in {"/recommend", "/development-plan"}:
                 self.send_json(404, {"error": "Unknown endpoint"})
                 return
             try:
@@ -233,15 +243,31 @@ def make_server(engine, port=8000, default_mode=None):
                 if not 0 < length <= 16384:
                     raise ValueError("Invalid body size")
                 data = json.loads(self.rfile.read(length))
-                if not isinstance(data, dict) or set(data) != {
-                    "generation",
-                    "categories",
-                    "viewed",
-                }:
+                expected = {"generation", "categories", "viewed"}
+                if self.path == "/development-plan":
+                    expected.add("completed")
+                if not isinstance(data, dict) or set(data) != expected:
                     raise ValueError("Invalid profile fields")
                 engine = self.server.engine
                 if data["generation"] != engine.generation:
                     raise ValueError("Catalog changed; refresh local profile")
+                if self.path == "/development-plan":
+                    from .development_plan import development_plan
+
+                    payload = {
+                        "generation": engine.generation,
+                        **development_plan(
+                            engine.catalog,
+                            data["categories"],
+                            data["viewed"],
+                            data["completed"],
+                            vectors=engine._relevance.vectors["card"]
+                            if engine._relevance is not None
+                            else None,
+                        ),
+                    }
+                    self.send_json(200, payload)
+                    return
                 from .personalization import recommend
 
                 payload = {
@@ -263,7 +289,7 @@ def make_server(engine, port=8000, default_mode=None):
     if not 0 <= port <= 65535:
         raise ValueError("Port must be between 0 and 65535")
     try:
-        server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+        server = ThreadingHTTPServer((host, port), Handler)
     except OSError as error:
         if error.errno == errno.EADDRINUSE:
             raise ValueError(
@@ -272,13 +298,13 @@ def make_server(engine, port=8000, default_mode=None):
             ) from error
         raise
     server.engine = engine
-    server.default_mode = default_mode
+    server.default_mode = default_mode or "relevance"
     server.latencies = defaultdict(lambda: deque(maxlen=1000))
     server.http_errors = defaultdict(lambda: {"4xx": 0, "5xx": 0})
     server.latency_lock = threading.Lock()
 
     def record_latency(path, seconds):
-        if path in {"/search", "/suggest", "/recommend"}:
+        if path in {"/search", "/suggest", "/recommend", "/development-plan"}:
             with server.latency_lock:
                 server.latencies[path].append(seconds * 1000)
 
@@ -295,7 +321,10 @@ def make_server(engine, port=8000, default_mode=None):
         }
 
     def record_status(path, status):
-        if path in {"/search", "/suggest", "/recommend"} and 400 <= status <= 599:
+        if (
+            path in {"/search", "/suggest", "/recommend", "/development-plan"}
+            and 400 <= status <= 599
+        ):
             with server.latency_lock:
                 server.http_errors[path]["4xx" if status < 500 else "5xx"] += 1
 
@@ -314,8 +343,13 @@ def serve(args):
     from .search import SearchEngine
 
     # Reserve the port before loading a model; close it if initialization fails.
-    relevance = getattr(args, "relevance", False)
-    with make_server(None, args.port, default_mode="relevance" if relevance else None) as server:
+    relevance = getattr(args, "relevance", False) or not getattr(args, "hybrid", False)
+    with make_server(
+        None,
+        args.port,
+        default_mode="relevance" if relevance else "ensemble",
+        host=getattr(args, "host", "127.0.0.1"),
+    ) as server:
         server.engine = SearchEngine(
             args.output,
             semantic=args.hybrid,

@@ -62,7 +62,7 @@ def main():
         rankings_by_method = {}
         candidates = {}
         coverage = None
-        for method in ("bm25", "hybrid", "ensemble"):
+        for method in ("hybrid", "ensemble"):
             result = engine.search(case["query"], mode=method, top=5)
             rankings_by_method[method] = [item["entity_key"] for item in result["results"]]
             if method == "ensemble":

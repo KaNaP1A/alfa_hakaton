@@ -19,8 +19,8 @@ def main():
     engine = SearchEngine("artifacts/catalog", semantic=True, llm_enabled=False)
     rows = []
     for first, second in data["pairs"]:
-        a = engine.search(first, top=5)
-        b = engine.search(second, top=5)
+        a = engine.search(first, mode="ensemble", top=5)
+        b = engine.search(second, mode="ensemble", top=5)
         one = [row["entity_key"] for row in a["results"]]
         two = [row["entity_key"] for row in b["results"]]
         union = set(one) | set(two)
