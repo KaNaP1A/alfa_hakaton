@@ -10,13 +10,13 @@ import httpx
 from fastapi.testclient import TestClient
 from sqlalchemy import select
 
+from alfa_backend.adapters.auth import password_hash, password_matches, token_digest
+from alfa_backend.adapters.catalog import import_catalog
+from alfa_backend.adapters.database import Activity, Grant, Material, SessionToken, User
+from alfa_backend.adapters.recommender import HttpRecommender, UpstreamError
 from alfa_backend.app import create_app
-from alfa_backend.auth import password_hash, password_matches, token_digest
-from alfa_backend.catalog import import_catalog
 from alfa_backend.cli import DEMO
 from alfa_backend.config import Settings
-from alfa_backend.database import Activity, Grant, Material, SessionToken, User
-from alfa_backend.recommender import HttpRecommender, UpstreamError
 from alfa_backend.schemas import CatalogImport
 
 
@@ -85,7 +85,7 @@ class BackendTests(unittest.TestCase):
         self.client.__enter__()
         with self.app.state.sessions() as db:
             # An external test database must be dedicated to these tests.
-            from alfa_backend.database import Base
+            from alfa_backend.adapters.database import Base
 
             Base.metadata.drop_all(self.app.state.engine)
             Base.metadata.create_all(self.app.state.engine)

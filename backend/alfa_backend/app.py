@@ -13,18 +13,18 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import delete, select
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
-from .auth import issue_token, password_hash, password_matches, token_digest
-from .catalog import (
+from .adapters.auth import issue_token, password_hash, password_matches, token_digest
+from .adapters.catalog import (
     CatalogUnavailable,
     card,
-    enrich,
     generation,
     history,
     visible_materials,
 )
+from .adapters.database import Activity, SessionToken, User, connect, initialize
+from .adapters.recommender import DemoRecommender, HttpRecommender, UpstreamError
+from .application.recommendations import select_cards
 from .config import Settings
-from .database import Activity, SessionToken, User, connect, initialize
-from .recommender import DemoRecommender, HttpRecommender, UpstreamError
 from .schemas import ActivityInput, Credentials, GenerationRequest, Kind, Profile
 
 bearer = HTTPBearer(auto_error=False)
@@ -349,10 +349,10 @@ def create_app(settings=None, recommender=None):
         alternatives = payload.get("alternatives", [])
         if not isinstance(alternatives, list) or any(not isinstance(x, dict) for x in alternatives):
             raise UpstreamError(502, "Invalid recommendation alternatives")
-        results = enrich(payload["results"], allowed, top)
+        results = select_cards(payload["results"], allowed, top, card)
         primary_keys = {item["entity_key"] for item in results}
-        alternative_cards = enrich(
-            alternatives, {k: v for k, v in allowed.items() if k not in primary_keys}, top
+        alternative_cards = select_cards(
+            alternatives, {k: v for k, v in allowed.items() if k not in primary_keys}, top, card
         )
         # Never pass arbitrary upstream explanations: they can reference forbidden materials.
         return {
@@ -379,7 +379,7 @@ def create_app(settings=None, recommender=None):
             return {
                 "generation": current,
                 "mode": settings.reco_mode,
-                "results": enrich(payload["results"], allowed, 5),
+                "results": select_cards(payload["results"], allowed, 5, card),
             }
         steps = payload["steps"]
         # Removal can invalidate sequence. Fail closed instead of claiming it is the same plan.

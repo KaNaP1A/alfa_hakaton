@@ -4,9 +4,9 @@ from pathlib import Path
 
 from sqlalchemy import inspect, select
 
-from .catalog import import_catalog
+from .adapters.catalog import import_catalog
+from .adapters.database import Grant, User, connect, initialize
 from .config import Settings
-from .database import Grant, User, connect, initialize
 from .schemas import CatalogImport
 
 DEMO = {
@@ -103,7 +103,7 @@ def main():
                 if user is None:
                     parser.error("User not found; register using the API first")
                 # Restrict CLI grants to existing material IDs to catch operator typos.
-                from .database import Material
+                from .adapters.database import Material
 
                 if db.get(Material, args.entity_key) is None:
                     parser.error("Material not found")

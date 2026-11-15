@@ -65,18 +65,6 @@ def card(material):
     }
 
 
-def enrich(items, allowed, limit):
-    result, seen = [], set()
-    for item in items:
-        key = item.get("entity_key")
-        if key in allowed and key not in seen:
-            result.append(card(allowed[key]))
-            seen.add(key)
-        if len(result) >= limit:
-            break
-    return result
-
-
 def history(db, user_id, current, allowed):
     # Ignore history from old catalog versions; preserve it in storage for auditing.
     rows = db.scalars(

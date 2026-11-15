@@ -14,18 +14,17 @@ FastAPI-приложение между фронтендом, `alfa_reco` и а�
 Из корня репозитория, Python 3.11+:
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -r backend/requirements.lock
-.venv/bin/python -m pip install --no-deps -e backend
-.venv/bin/alfa-backend seed-demo
-.venv/bin/uvicorn alfa_backend.app:create_app --factory --port 8080 --no-access-log --no-proxy-headers
+cd backend
+uv sync --frozen
+uv run alfa-backend seed-demo
+uv run uvicorn alfa_backend.app:create_app --factory --port 8080 --no-access-log --no-proxy-headers
 ```
 
 Открыть **http://127.0.0.1:8080/docs**. Это интерактивный API, отдельный новый сайт не создаётся.
 В другом терминале:
 
 ```bash
-.venv/bin/python backend/examples/smoke.py
+uv run python examples/smoke.py
 ```
 
 Скрипт регистрирует временного пользователя, проверяет поиск и доступ, сохраняет историю,
@@ -65,7 +64,7 @@ Swagger: http://127.0.0.1:8080/docs. Данные сохраняются в `api
 
 ```bash
 export ALFA_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST:5432/alfa_api'
-.venv/bin/alfa-backend init-db
+uv run alfa-backend init-db
 ```
 
 Пароль в URL должен быть percent-encoded при наличии специальных символов. API создаёт только
@@ -80,7 +79,7 @@ export ALFA_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST:5432/alfa_api'
 2. В окружении алгоритма запустить из `05_code`:
 
    ```bash
-   PYTHONPATH=src HF_HUB_OFFLINE=1 .venv/bin/python -m alfa_reco serve --relevance --no-llm --port 8000
+   PYTHONPATH=src HF_HUB_OFFLINE=1 uv run python -m alfa_reco serve --relevance --no-llm --port 8000
    ```
 
 3. Подготовить актуальный доверенный каталог по формату ниже. `generation` должен совпадать
@@ -90,7 +89,7 @@ export ALFA_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST:5432/alfa_api'
    ```bash
    export ALFA_RECO_MODE=http
    export ALFA_RECO_URL=http://127.0.0.1:8000
-   .venv/bin/uvicorn alfa_backend.app:create_app --factory --port 8080 --no-access-log --no-proxy-headers
+   uv run uvicorn alfa_backend.app:create_app --factory --port 8080 --no-access-log --no-proxy-headers
    ```
 
 5. Проверить `/ready`, настоящий поиск, рекомендации и план. Режим `http` не переключается
@@ -111,7 +110,7 @@ Python-процесса нативно на одной машине.
 только вымышленные данные.
 
 ```bash
-.venv/bin/alfa-backend import-catalog /закрытый/путь/catalog.json
+uv run alfa-backend import-catalog /закрытый/путь/catalog.json
 ```
 
 Формат:
@@ -142,8 +141,8 @@ Python-процесса нативно на одной машине.
 Выдать или отозвать доступ можно только доверенной CLI-командой, не клиентским событием:
 
 ```bash
-.venv/bin/alfa-backend grant reviewer course:demo-private
-.venv/bin/alfa-backend revoke reviewer course:demo-private
+uv run alfa-backend grant reviewer course:demo-private
+uv run alfa-backend revoke reviewer course:demo-private
 ```
 
 Доступ проверяется на каждом запросе. Обогащаются только разрешённые карточки; произвольные поля,
@@ -155,7 +154,7 @@ Python-процесса нативно на одной машине.
 
 ```bash
 ALFA_DATABASE_URL='postgresql+psycopg://READONLY_USER:...@HOST/SOURCE_DB' \
-  .venv/bin/alfa-backend inspect-source
+  uv run alfa-backend inspect-source
 ```
 
 После получения схемы надо написать конкретное преобразование источника в этот контракт и
@@ -214,16 +213,16 @@ origin через запятую. По умолчанию cross-origin не ра
 ## Проверки
 
 ```bash
-.venv/bin/ruff check backend
-.venv/bin/ruff format --check backend
-.venv/bin/python -m unittest discover -s backend/tests -v
+uv run ruff check backend
+uv run ruff format --check backend
+uv run python -m unittest discover -s backend/tests -v
 ```
 
 Повторить те же тесты на **отдельной пустой PostgreSQL**:
 
 ```bash
 ALFA_TEST_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST/alfa_backend_test' \
-  .venv/bin/python -m unittest discover -s backend/tests -v
+  uv run python -m unittest discover -s backend/tests -v
 ```
 
 Тесты пересоздают только таблицы API в тестовой БД; имя БД обязательно должно оканчиваться `_test`.
@@ -242,3 +241,7 @@ ALFA_TEST_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST/alfa_backend_tes
   Профили, история, права и сессии хранятся в БД и переживают перезапуск.
 - Текущий `/recommend` отдаёт максимум 5 результатов, план — 3; поиск запрашивает до 50 кандидатов,
   но после проверки прав заполнение списка не гарантируется.
+
+## Структура
+
+`domain/` содержит чистые значения, `application/` — порты и правила выдачи, `adapters/` — SQLAlchemy, HTTP-клиент модели и авторизацию. `app.py` собирает зависимости и описывает входящие HTTP-маршруты. Зависимости фиксируются `uv.lock`; весь новый код и инфраструктура расположены внутри `backend/`.
