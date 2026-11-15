@@ -1,6 +1,5 @@
 """Opt-in end-to-end test using real E5/CatBoost and a disposable trusted test catalog."""
 
-import base64
 import json
 import os
 import tempfile
@@ -40,22 +39,19 @@ class RealModelTests(unittest.TestCase):
             if isinstance(source, dict):
                 source = source["materials"]
             catalog = {item["entity_key"]: item for item in source}
-            keys = {item["entity_key"] for item in raw["results"] + raw["alternatives"]}
+            # The previous sparse fixture let recommend/plan return empty lists and still pass.
+            keys = {key for key, item in catalog.items() if item["kind"] != "glossary"}
             course = next(key for key, item in catalog.items() if item["kind"] == "course")
-            keys.add(course)
-            clarification_query = "хочу начать"
-            ambiguous = (
-                model.get(
-                    "/search", params={"q": clarification_query, "mode": "relevance", "top": 5}
-                )
+            # Use an activity with related material; an arbitrary course can legitimately
+            # have no grounded next steps (insufficient_evidence).
+            history_search = (
+                model.get("/search", params={"q": "налоги для ИП", "mode": "relevance", "top": 5})
                 .raise_for_status()
                 .json()
             )
-            for option in (ambiguous.get("clarification") or {}).get("options", []):
-                data = json.loads(base64.urlsafe_b64decode(option["token"])[32:])
-                if data["kind"] == "material":
-                    keys.add(data["value"])
-
+            self.assertTrue(history_search["results"])
+            activity = history_search["results"][0]["entity_key"]
+            clarification_query = "хочу начать"
             forbidden = raw["results"][0]["entity_key"]
             # Publication/access here are explicit TEST fixtures, never inferred production rights.
             materials = [
@@ -96,6 +92,15 @@ class RealModelTests(unittest.TestCase):
                     self.assertEqual(ready.status_code, 200, ready.text)
                     response = api.get("/api/v1/search", params={"q": query}, headers=headers)
                     self.assertEqual(response.status_code, 200, response.text)
+                    self.assertTrue(response.json()["results"])
+                    self.assertEqual(
+                        [item["entity_key"] for item in response.json()["results"]],
+                        [
+                            item["entity_key"]
+                            for item in raw["results"]
+                            if item["entity_key"] != forbidden
+                        ][:5],
+                    )
                     self.assertNotIn(
                         forbidden,
                         {
@@ -137,6 +142,9 @@ class RealModelTests(unittest.TestCase):
                         headers=headers,
                     )
                     self.assertEqual(selected.status_code, 200, selected.text)
+                    self.assertIn(
+                        course, [item["entity_key"] for item in selected.json()["results"]]
+                    )
                     clarified = (
                         api.get(
                             "/api/v1/search", params={"q": clarification_query}, headers=headers
@@ -155,20 +163,95 @@ class RealModelTests(unittest.TestCase):
                     api.put(
                         "/api/v1/me/profile", json={"categories": ["business"]}, headers=headers
                     ).raise_for_status()
+                    cold_public = (
+                        api.post(
+                            "/api/v1/recommend", json={"generation": generation}, headers=headers
+                        )
+                        .raise_for_status()
+                        .json()
+                    )
+                    self.assertTrue(cold_public["results"])
+                    empty_plan = (
+                        api.post(
+                            "/api/v1/development-plan",
+                            json={"generation": generation},
+                            headers=headers,
+                        )
+                        .raise_for_status()
+                        .json()
+                    )
+                    self.assertEqual(empty_plan["status"], "needs_activity")
+                    self.assertEqual(empty_plan["steps"], [])
                     event = api.post(
                         "/api/v1/me/events",
                         json={
                             "generation": generation,
                             "event_id": "real-view",
-                            "entity_key": course,
+                            "entity_key": activity,
                             "action": "viewed",
                         },
                         headers=headers,
                     )
                     self.assertEqual(event.status_code, 201, event.text)
+                    cold = (
+                        model.post(
+                            "/recommend",
+                            json={
+                                "generation": generation,
+                                "categories": ["business"],
+                                "viewed": [],
+                            },
+                        )
+                        .raise_for_status()
+                        .json()
+                    )
+                    self.assertTrue(cold["results"])
+                    self.assertEqual(
+                        [item["entity_key"] for item in cold_public["results"]],
+                        [
+                            item["entity_key"]
+                            for item in cold["results"]
+                            if item["entity_key"] != forbidden
+                        ],
+                    )
                     for endpoint in ("recommend", "development-plan"):
                         response = api.post(
                             "/api/v1/" + endpoint, json={"generation": generation}, headers=headers
                         )
                         self.assertEqual(response.status_code, 200, response.text)
                         self.assertEqual(response.json()["generation"], generation)
+                        body = {
+                            "generation": generation,
+                            "categories": ["business"],
+                            "viewed": [activity],
+                        }
+                        if endpoint == "development-plan":
+                            body["completed"] = []
+                        direct = model.post("/" + endpoint, json=body).raise_for_status().json()
+                        field = "results" if endpoint == "recommend" else "steps"
+                        self.assertTrue(direct[field], f"Real {endpoint} must exercise content")
+                        if endpoint == "recommend":
+                            expected = [
+                                item["entity_key"]
+                                for item in direct[field]
+                                if item["entity_key"] != forbidden
+                            ]
+                            actual = [item["entity_key"] for item in response.json()[field]]
+                        else:
+                            expected = [item["material"]["entity_key"] for item in direct[field]]
+                            if forbidden in expected:
+                                expected = []
+                            actual = [
+                                item["material"]["entity_key"] for item in response.json()[field]
+                            ]
+                        self.assertEqual(actual, expected)
+                        self.assertTrue(actual, f"Public {endpoint} must not silently lose content")
+                    unrelated = api.get(
+                        "/api/v1/search", params={"q": "квантовая телепортация"}, headers=headers
+                    )
+                    self.assertEqual(unrelated.status_code, 200, unrelated.text)
+                    self.assertEqual(unrelated.json()["results"], [])
+                    stale = api.post(
+                        "/api/v1/recommend", json={"generation": "stale"}, headers=headers
+                    )
+                    self.assertEqual(stale.status_code, 409)

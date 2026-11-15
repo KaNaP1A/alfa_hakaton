@@ -98,6 +98,7 @@ def make_server(engine, port=8000, default_mode=None, host="127.0.0.1"):
                 return
             if parsed.path not in {
                 "/health",
+                "/interests",
                 "/suggest",
                 "/search",
                 "/catalog",
@@ -171,6 +172,10 @@ def make_server(engine, port=8000, default_mode=None, host="127.0.0.1"):
                     from .lab import lab_data
 
                     payload = lab_data(parsed.path, params)
+                elif parsed.path == "/interests":
+                    from .interests import interest_directory
+
+                    payload = interest_directory(engine.catalog, engine.generation)
                 elif parsed.path == "/health":
                     payload = {
                         "status": "ok",
@@ -233,7 +238,7 @@ def make_server(engine, port=8000, default_mode=None, host="127.0.0.1"):
             if not self.local_request():
                 self.send_json(403, {"error": "Local Host and Origin required"})
                 return
-            if self.path not in {"/recommend", "/development-plan"}:
+            if self.path not in {"/recommend", "/development-plan", "/recommend-by-interests"}:
                 self.send_json(404, {"error": "Unknown endpoint"})
                 return
             try:
@@ -244,6 +249,8 @@ def make_server(engine, port=8000, default_mode=None, host="127.0.0.1"):
                     raise ValueError("Invalid body size")
                 data = json.loads(self.rfile.read(length))
                 expected = {"generation", "categories", "viewed"}
+                if self.path == "/recommend-by-interests":
+                    expected.add("selected_facets")
                 if self.path == "/development-plan":
                     expected.add("completed")
                 if not isinstance(data, dict) or set(data) != expected:
@@ -251,6 +258,18 @@ def make_server(engine, port=8000, default_mode=None, host="127.0.0.1"):
                 engine = self.server.engine
                 if data["generation"] != engine.generation:
                     raise ValueError("Catalog changed; refresh local profile")
+                if self.path == "/recommend-by-interests":
+                    from .interests import recommend_by_interests
+
+                    payload = recommend_by_interests(
+                        engine.catalog, engine.generation, data["categories"],
+                        data["selected_facets"], data["viewed"],
+                        current_generation=engine.generation,
+                        vectors=engine._relevance.vectors["card"]
+                        if engine._relevance is not None else None,
+                    )
+                    self.send_json(200, payload)
+                    return
                 if self.path == "/development-plan":
                     from .development_plan import development_plan
 

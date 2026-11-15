@@ -1,0 +1,1602 @@
+[
+  {
+    "entity_key": "webinar:aeb44fa7ff5deaad0e3f633c",
+    "source_id": "aeb44fa7ff5deaad0e3f633c",
+    "kind": "webinar",
+    "title": "Настройка принтера в офисе",
+    "description": "Учебный материал на другую задачу: настройка принтера в офисе.",
+    "topics": [
+      "Цифровая безопасность"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Настройка принтера в офисе Учебный материал на другую задачу: настройка принтера в офисе.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:3aad07c37c857151ab8436cc",
+    "source_id": "3aad07c37c857151ab8436cc",
+    "kind": "course",
+    "title": "Доступность учебных материалов",
+    "description": "Адаптация текстов и видео для людей с разными особенностями восприятия.",
+    "topics": [
+      "Образование"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Доступность учебных материалов Адаптация текстов и видео для людей с разными особенностями восприятия.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:a299a1365d71421e80ae25ee",
+    "source_id": "a299a1365d71421e80ae25ee",
+    "kind": "webinar",
+    "title": "Выбор офисного освещения",
+    "description": "Учебный материал на другую задачу: выбор офисного освещения.",
+    "topics": [
+      "Экология"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Выбор офисного освещения Учебный материал на другую задачу: выбор офисного освещения.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:6d9d95ce7ef54c67e8c03115",
+    "source_id": "6d9d95ce7ef54c67e8c03115",
+    "kind": "course",
+    "title": "Контроль холодовой цепи",
+    "description": "Поддержание и регистрация температуры скоропортящейся продукции при перевозке.",
+    "topics": [
+      "Логистика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Контроль холодовой цепи Поддержание и регистрация температуры скоропортящейся продукции при перевозке.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:3e0db6cdc26350894e96e9f8",
+    "source_id": "3e0db6cdc26350894e96e9f8",
+    "kind": "article",
+    "title": "Снижение риска фишинга",
+    "description": "Признаки мошеннических писем, проверка отправителя и обучение сотрудников безопасным действиям.",
+    "topics": [
+      "Цифровая безопасность"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Снижение риска фишинга Признаки мошеннических писем, проверка отправителя и обучение сотрудников безопасным действиям.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:39d45e212b4c5ee81b5c7bbb",
+    "source_id": "39d45e212b4c5ee81b5c7bbb",
+    "kind": "document",
+    "title": "Прекращение договора аренды",
+    "description": "Учебный материал на другую задачу: прекращение договора аренды.",
+    "topics": [
+      "Документы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Прекращение договора аренды Учебный материал на другую задачу: прекращение договора аренды.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:23f34c5d35890d5984312a21",
+    "source_id": "23f34c5d35890d5984312a21",
+    "kind": "article",
+    "title": "Подписание договора аренды помещения",
+    "description": "Какие пункты проверить арендатору перед заключением соглашения об аренде коммерческого помещения.",
+    "topics": [
+      "Документы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подписание договора аренды помещения Какие пункты проверить арендатору перед заключением соглашения об аренде коммерческого помещения.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:5401d6c3e7544d88ab7842ad",
+    "source_id": "5401d6c3e7544d88ab7842ad",
+    "kind": "webinar",
+    "title": "Продажа оборудования закрытого салона",
+    "description": "Учебный материал на другую задачу: продажа оборудования закрытого салона.",
+    "topics": [
+      "Услуги"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Продажа оборудования закрытого салона Учебный материал на другую задачу: продажа оборудования закрытого салона.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:7858ae8c405a4500e554928b",
+    "source_id": "7858ae8c405a4500e554928b",
+    "kind": "article",
+    "title": "Обработка возврата покупки",
+    "description": "Как продавцу принять возвращённый товар и оформить возврат денежных средств покупателю.",
+    "topics": [
+      "Продажи"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Обработка возврата покупки Как продавцу принять возвращённый товар и оформить возврат денежных средств покупателю.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:3e0afe212c6ba062460244eb",
+    "source_id": "3e0afe212c6ba062460244eb",
+    "kind": "article",
+    "title": "Планирование поступлений и платежей",
+    "description": "Создание календаря будущих денежных поступлений и обязательных выплат предприятия.",
+    "topics": [
+      "Финансы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Планирование поступлений и платежей Создание календаря будущих денежных поступлений и обязательных выплат предприятия.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:0facd2146fbc7c736778ff9b",
+    "source_id": "0facd2146fbc7c736778ff9b",
+    "kind": "webinar",
+    "title": "Повышение заработной платы действующим сотрудникам",
+    "description": "Учебный материал на другую задачу: повышение заработной платы действующим сотрудникам.",
+    "topics": [
+      "Команда"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Повышение заработной платы действующим сотрудникам Учебный материал на другую задачу: повышение заработной платы действующим сотрудникам.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:0335599686f781abb9ddb8b0",
+    "source_id": "0335599686f781abb9ddb8b0",
+    "kind": "course",
+    "title": "Планирование маршрутов доставки",
+    "description": "Составление последовательности адресов и оценка времени развоза заказов.",
+    "topics": [
+      "Логистика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Планирование маршрутов доставки Составление последовательности адресов и оценка времени развоза заказов.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:6647c991c6a998188d41a751",
+    "source_id": "6647c991c6a998188d41a751",
+    "kind": "document",
+    "title": "Выбор офисного освещения",
+    "description": "Учебный материал на другую задачу: выбор офисного освещения.",
+    "topics": [
+      "Экология"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Выбор офисного освещения Учебный материал на другую задачу: выбор офисного освещения.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:e06d79f087774334e9c60f03",
+    "source_id": "e06d79f087774334e9c60f03",
+    "kind": "article",
+    "title": "Восстановление данных после сбоя",
+    "description": "Проверка резервных копий и порядок возвращения файлов после потери данных.",
+    "topics": [
+      "Технологии"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Восстановление данных после сбоя Проверка резервных копий и порядок возвращения файлов после потери данных.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:8094c7d69ab1f654ff078fe4",
+    "source_id": "8094c7d69ab1f654ff078fe4",
+    "kind": "webinar",
+    "title": "Продажа действующего бизнеса",
+    "description": "Учебный материал на другую задачу: продажа действующего бизнеса.",
+    "topics": [
+      "Инновации"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Продажа действующего бизнеса Учебный материал на другую задачу: продажа действующего бизнеса.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:9a3b573f4dde2f20a7ed1343",
+    "source_id": "9a3b573f4dde2f20a7ed1343",
+    "kind": "document",
+    "title": "Отправка нового заказа покупателю",
+    "description": "Учебный материал на другую задачу: отправка нового заказа покупателю.",
+    "topics": [
+      "Продажи"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Отправка нового заказа покупателю Учебный материал на другую задачу: отправка нового заказа покупателю.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:50e342694ccf8c40bc3e84de",
+    "source_id": "50e342694ccf8c40bc3e84de",
+    "kind": "course",
+    "title": "Восстановление данных после сбоя",
+    "description": "Проверка резервных копий и порядок возвращения файлов после потери данных.",
+    "topics": [
+      "Технологии"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Восстановление данных после сбоя Проверка резервных копий и порядок возвращения файлов после потери данных.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:0ec7361adfa884adc467d362",
+    "source_id": "0ec7361adfa884adc467d362",
+    "kind": "course",
+    "title": "Проверка идеи до запуска продукта",
+    "description": "Быстрые интервью и прототипы для выяснения спроса до разработки полноценного решения.",
+    "topics": [
+      "Инновации"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Проверка идеи до запуска продукта Быстрые интервью и прототипы для выяснения спроса до разработки полноценного решения.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:19b649b640ddd43555a3c32a",
+    "source_id": "19b649b640ddd43555a3c32a",
+    "kind": "course",
+    "title": "Оценка освоения материала",
+    "description": "Методы проверки знаний после учебного курса и составление критериев оценки.",
+    "topics": [
+      "Обучение"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оценка освоения материала Методы проверки знаний после учебного курса и составление критериев оценки.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:63f5a4446dcee7543ac33625",
+    "source_id": "63f5a4446dcee7543ac33625",
+    "kind": "webinar",
+    "title": "Отправка нового заказа покупателю",
+    "description": "Учебный материал на другую задачу: отправка нового заказа покупателю.",
+    "topics": [
+      "Продажи"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Отправка нового заказа покупателю Учебный материал на другую задачу: отправка нового заказа покупателю.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:eed08f84626c85454f3d68ee",
+    "source_id": "eed08f84626c85454f3d68ee",
+    "kind": "document",
+    "title": "Покупка мебели для учебного класса",
+    "description": "Учебный материал на другую задачу: покупка мебели для учебного класса.",
+    "topics": [
+      "Обучение"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Покупка мебели для учебного класса Учебный материал на другую задачу: покупка мебели для учебного класса.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:57564fd123f4acfb20a6a759",
+    "source_id": "57564fd123f4acfb20a6a759",
+    "kind": "article",
+    "title": "Контроль холодовой цепи",
+    "description": "Поддержание и регистрация температуры скоропортящейся продукции при перевозке.",
+    "topics": [
+      "Логистика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Контроль холодовой цепи Поддержание и регистрация температуры скоропортящейся продукции при перевозке.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:63d3becd993ced77e0019a0f",
+    "source_id": "63d3becd993ced77e0019a0f",
+    "kind": "webinar",
+    "title": "Закупка офисных кресел",
+    "description": "Учебный материал на другую задачу: закупка офисных кресел.",
+    "topics": [
+      "Производство"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Закупка офисных кресел Учебный материал на другую задачу: закупка офисных кресел.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:f51b480638bb7b131405d0ab",
+    "source_id": "f51b480638bb7b131405d0ab",
+    "kind": "course",
+    "title": "Контроль качества продукции",
+    "description": "Организация проверки готовых изделий и учёт производственного брака.",
+    "topics": [
+      "Производство"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Контроль качества продукции Организация проверки готовых изделий и учёт производственного брака.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:bf3b3ecb6b0cd2c378b3230d",
+    "source_id": "bf3b3ecb6b0cd2c378b3230d",
+    "kind": "document",
+    "title": "Оформление отпуска сотрудника магазина",
+    "description": "Учебный материал на другую задачу: оформление отпуска сотрудника магазина.",
+    "topics": [
+      "Маркетплейсы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оформление отпуска сотрудника магазина Учебный материал на другую задачу: оформление отпуска сотрудника магазина.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:f3e3c9340eac8deb09b95a82",
+    "source_id": "f3e3c9340eac8deb09b95a82",
+    "kind": "course",
+    "title": "Оценка надёжности поставщиков",
+    "description": "Проверка сроков, качества и устойчивости потенциального поставщика перед выбором.",
+    "topics": [
+      "Закупки"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оценка надёжности поставщиков Проверка сроков, качества и устойчивости потенциального поставщика перед выбором.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:9cccad868fb11efc6de3bbc4",
+    "source_id": "9cccad868fb11efc6de3bbc4",
+    "kind": "article",
+    "title": "Проверка идеи до запуска продукта",
+    "description": "Быстрые интервью и прототипы для выяснения спроса до разработки полноценного решения.",
+    "topics": [
+      "Инновации"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Проверка идеи до запуска продукта Быстрые интервью и прототипы для выяснения спроса до разработки полноценного решения.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:5998236bf6a96c984844d790",
+    "source_id": "5998236bf6a96c984844d790",
+    "kind": "course",
+    "title": "Подписание договора аренды помещения",
+    "description": "Какие пункты проверить арендатору перед заключением соглашения об аренде коммерческого помещения.",
+    "topics": [
+      "Документы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подписание договора аренды помещения Какие пункты проверить арендатору перед заключением соглашения об аренде коммерческого помещения.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:5c599416c30813410e12707e",
+    "source_id": "5c599416c30813410e12707e",
+    "kind": "webinar",
+    "title": "Оформление банковской карты",
+    "description": "Учебный материал на другую задачу: оформление банковской карты.",
+    "topics": [
+      "Финансы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оформление банковской карты Учебный материал на другую задачу: оформление банковской карты.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:e84f18402ea31c48cd4d3dc7",
+    "source_id": "e84f18402ea31c48cd4d3dc7",
+    "kind": "course",
+    "title": "Расчёт прибыли от продаж на площадке",
+    "description": "Учёт комиссии, доставки и себестоимости товара при определении результата продавца.",
+    "topics": [
+      "Маркетплейсы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Расчёт прибыли от продаж на площадке Учёт комиссии, доставки и себестоимости товара при определении результата продавца.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:44af555050a57aa58e26fce9",
+    "source_id": "44af555050a57aa58e26fce9",
+    "kind": "webinar",
+    "title": "Покупка мебели для учебного класса",
+    "description": "Учебный материал на другую задачу: покупка мебели для учебного класса.",
+    "topics": [
+      "Обучение"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Покупка мебели для учебного класса Учебный материал на другую задачу: покупка мебели для учебного класса.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:bfcea3b9ada10236f6c902fa",
+    "source_id": "bfcea3b9ada10236f6c902fa",
+    "kind": "document",
+    "title": "Оформление банковской карты",
+    "description": "Учебный материал на другую задачу: оформление банковской карты.",
+    "topics": [
+      "Финансы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оформление банковской карты Учебный материал на другую задачу: оформление банковской карты.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:0ec7988176e6d9a1a5452f5a",
+    "source_id": "0ec7988176e6d9a1a5452f5a",
+    "kind": "document",
+    "title": "Настройка принтера в офисе",
+    "description": "Учебный материал на другую задачу: настройка принтера в офисе.",
+    "topics": [
+      "Цифровая безопасность"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Настройка принтера в офисе Учебный материал на другую задачу: настройка принтера в офисе.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:55dc2e070e93784428876e6f",
+    "source_id": "55dc2e070e93784428876e6f",
+    "kind": "course",
+    "title": "Подготовка к собеседованию кандидата",
+    "description": "Определение критериев отбора и вопросов для встречи с соискателем.",
+    "topics": [
+      "Команда"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подготовка к собеседованию кандидата Определение критериев отбора и вопросов для встречи с соискателем.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:0c57a51f813aeb1b71ef25c5",
+    "source_id": "0c57a51f813aeb1b71ef25c5",
+    "kind": "webinar",
+    "title": "Как расторгнуть договор поставки",
+    "description": "Учебный материал на другую задачу: как расторгнуть договор поставки.",
+    "topics": [
+      "Закупки"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Как расторгнуть договор поставки Учебный материал на другую задачу: как расторгнуть договор поставки.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:8fe50648e3c59726d94a9201",
+    "source_id": "8fe50648e3c59726d94a9201",
+    "kind": "course",
+    "title": "Снижение риска фишинга",
+    "description": "Признаки мошеннических писем, проверка отправителя и обучение сотрудников безопасным действиям.",
+    "topics": [
+      "Цифровая безопасность"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Снижение риска фишинга Признаки мошеннических писем, проверка отправителя и обучение сотрудников безопасным действиям.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:ee0323ab50e2922c1fae8152",
+    "source_id": "ee0323ab50e2922c1fae8152",
+    "kind": "document",
+    "title": "Закупка продуктов для производства",
+    "description": "Учебный материал на другую задачу: закупка продуктов для производства.",
+    "topics": [
+      "Логистика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Закупка продуктов для производства Учебный материал на другую задачу: закупка продуктов для производства.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:15cb40604aca552856a8316f",
+    "source_id": "15cb40604aca552856a8316f",
+    "kind": "course",
+    "title": "Анализ причин отказа клиентов",
+    "description": "Сбор причин отмены покупок и классификация проблем на пути оформления заказа.",
+    "topics": [
+      "Аналитика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Анализ причин отказа клиентов Сбор причин отмены покупок и классификация проблем на пути оформления заказа.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:9188629bc293e43fceb5bfde",
+    "source_id": "9188629bc293e43fceb5bfde",
+    "kind": "course",
+    "title": "Обработка возврата покупки",
+    "description": "Как продавцу принять возвращённый товар и оформить возврат денежных средств покупателю.",
+    "topics": [
+      "Продажи"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Обработка возврата покупки Как продавцу принять возвращённый товар и оформить возврат денежных средств покупателю.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:b9416320966852c64615ae1d",
+    "source_id": "b9416320966852c64615ae1d",
+    "kind": "document",
+    "title": "Создание рекламного баннера",
+    "description": "Учебный материал на другую задачу: создание рекламного баннера.",
+    "topics": [
+      "Данные"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Создание рекламного баннера Учебный материал на другую задачу: создание рекламного баннера.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:63aee2f6fb8198c9525719bf",
+    "source_id": "63aee2f6fb8198c9525719bf",
+    "kind": "webinar",
+    "title": "Создание рекламного баннера",
+    "description": "Учебный материал на другую задачу: создание рекламного баннера.",
+    "topics": [
+      "Данные"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Создание рекламного баннера Учебный материал на другую задачу: создание рекламного баннера.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:870a34e30ff4e30449d8fd56",
+    "source_id": "870a34e30ff4e30449d8fd56",
+    "kind": "article",
+    "title": "Оценка надёжности поставщиков",
+    "description": "Проверка сроков, качества и устойчивости потенциального поставщика перед выбором.",
+    "topics": [
+      "Закупки"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оценка надёжности поставщиков Проверка сроков, качества и устойчивости потенциального поставщика перед выбором.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:18bf6cfab44150407bedf2b1",
+    "source_id": "18bf6cfab44150407bedf2b1",
+    "kind": "course",
+    "title": "Планирование поступлений и платежей",
+    "description": "Создание календаря будущих денежных поступлений и обязательных выплат предприятия.",
+    "topics": [
+      "Финансы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Планирование поступлений и платежей Создание календаря будущих денежных поступлений и обязательных выплат предприятия.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:c1eea40bf0d86d601367c0e6",
+    "source_id": "c1eea40bf0d86d601367c0e6",
+    "kind": "article",
+    "title": "Доступность учебных материалов",
+    "description": "Адаптация текстов и видео для людей с разными особенностями восприятия.",
+    "topics": [
+      "Образование"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Доступность учебных материалов Адаптация текстов и видео для людей с разными особенностями восприятия.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:59d1af36f3a8a7e72b950988",
+    "source_id": "59d1af36f3a8a7e72b950988",
+    "kind": "document",
+    "title": "Продажа оборудования закрытого салона",
+    "description": "Учебный материал на другую задачу: продажа оборудования закрытого салона.",
+    "topics": [
+      "Услуги"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Продажа оборудования закрытого салона Учебный материал на другую задачу: продажа оборудования закрытого салона.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:c205907b773b347aa647db32",
+    "source_id": "c205907b773b347aa647db32",
+    "kind": "article",
+    "title": "Планирование маршрутов доставки",
+    "description": "Составление последовательности адресов и оценка времени развоза заказов.",
+    "topics": [
+      "Логистика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Планирование маршрутов доставки Составление последовательности адресов и оценка времени развоза заказов.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:c70314f4b54114bd34b5d6d0",
+    "source_id": "c70314f4b54114bd34b5d6d0",
+    "kind": "webinar",
+    "title": "Подбор кредитного продукта",
+    "description": "Учебный материал на другую задачу: подбор кредитного продукта.",
+    "topics": [
+      "Образование"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подбор кредитного продукта Учебный материал на другую задачу: подбор кредитного продукта.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:5a685d70263a5d1ef58f83d3",
+    "source_id": "5a685d70263a5d1ef58f83d3",
+    "kind": "webinar",
+    "title": "Прекращение договора аренды",
+    "description": "Учебный материал на другую задачу: прекращение договора аренды.",
+    "topics": [
+      "Документы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Прекращение договора аренды Учебный материал на другую задачу: прекращение договора аренды.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:d82d6c5469df06bde55fe4bf",
+    "source_id": "d82d6c5469df06bde55fe4bf",
+    "kind": "article",
+    "title": "Оценка освоения материала",
+    "description": "Методы проверки знаний после учебного курса и составление критериев оценки.",
+    "topics": [
+      "Обучение"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оценка освоения материала Методы проверки знаний после учебного курса и составление критериев оценки.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:6e063e21a87ecf98f524bea4",
+    "source_id": "6e063e21a87ecf98f524bea4",
+    "kind": "document",
+    "title": "Как расторгнуть договор поставки",
+    "description": "Учебный материал на другую задачу: как расторгнуть договор поставки.",
+    "topics": [
+      "Закупки"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Как расторгнуть договор поставки Учебный материал на другую задачу: как расторгнуть договор поставки.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:2253391aea24dad68ab9b957",
+    "source_id": "2253391aea24dad68ab9b957",
+    "kind": "article",
+    "title": "Анализ причин отказа клиентов",
+    "description": "Сбор причин отмены покупок и классификация проблем на пути оформления заказа.",
+    "topics": [
+      "Аналитика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Анализ причин отказа клиентов Сбор причин отмены покупок и классификация проблем на пути оформления заказа.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:da71f838e952a9349980f897",
+    "source_id": "da71f838e952a9349980f897",
+    "kind": "course",
+    "title": "План выкладки товаров на полке",
+    "description": "Размещение продукции на витрине с учётом ассортимента и доступности для посетителей.",
+    "topics": [
+      "Розница"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "План выкладки товаров на полке Размещение продукции на витрине с учётом ассортимента и доступности для посетителей.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:3e1287a2ff9b9cd17da9edf0",
+    "source_id": "3e1287a2ff9b9cd17da9edf0",
+    "kind": "document",
+    "title": "Удаление старых резервных копий",
+    "description": "Учебный материал на другую задачу: удаление старых резервных копий.",
+    "topics": [
+      "Технологии"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Удаление старых резервных копий Учебный материал на другую задачу: удаление старых резервных копий.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:bbdaab28f696bf9686026b6e",
+    "source_id": "bbdaab28f696bf9686026b6e",
+    "kind": "article",
+    "title": "Расчёт прибыли от продаж на площадке",
+    "description": "Учёт комиссии, доставки и себестоимости товара при определении результата продавца.",
+    "topics": [
+      "Маркетплейсы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Расчёт прибыли от продаж на площадке Учёт комиссии, доставки и себестоимости товара при определении результата продавца.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:b774512b065646d50a76e7af",
+    "source_id": "b774512b065646d50a76e7af",
+    "kind": "article",
+    "title": "Выбор местоположения парикмахерской",
+    "description": "Сравнение локаций салона по потоку людей, доступности и условиям аренды.",
+    "topics": [
+      "Услуги"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Выбор местоположения парикмахерской Сравнение локаций салона по потоку людей, доступности и условиям аренды.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:fdafc259922893fdca71e6f0",
+    "source_id": "fdafc259922893fdca71e6f0",
+    "kind": "webinar",
+    "title": "Удаление старых резервных копий",
+    "description": "Учебный материал на другую задачу: удаление старых резервных копий.",
+    "topics": [
+      "Технологии"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Удаление старых резервных копий Учебный материал на другую задачу: удаление старых резервных копий.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:891a1132809841347c503b3d",
+    "source_id": "891a1132809841347c503b3d",
+    "kind": "webinar",
+    "title": "Закупка продуктов для производства",
+    "description": "Учебный материал на другую задачу: закупка продуктов для производства.",
+    "topics": [
+      "Логистика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Закупка продуктов для производства Учебный материал на другую задачу: закупка продуктов для производства.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:028fff7dcdb671e0a97fb596",
+    "source_id": "028fff7dcdb671e0a97fb596",
+    "kind": "webinar",
+    "title": "Оформление отпуска сотрудника магазина",
+    "description": "Учебный материал на другую задачу: оформление отпуска сотрудника магазина.",
+    "topics": [
+      "Маркетплейсы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оформление отпуска сотрудника магазина Учебный материал на другую задачу: оформление отпуска сотрудника магазина.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:6e719b79a8190bfbcff285fb",
+    "source_id": "6e719b79a8190bfbcff285fb",
+    "kind": "webinar",
+    "title": "Обслуживание кассового оборудования",
+    "description": "Учебный материал на другую задачу: обслуживание кассового оборудования.",
+    "topics": [
+      "Розница"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Обслуживание кассового оборудования Учебный материал на другую задачу: обслуживание кассового оборудования.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:95e37d116ac4ac820635b38d",
+    "source_id": "95e37d116ac4ac820635b38d",
+    "kind": "article",
+    "title": "Повышение заполняемости отеля",
+    "description": "Приёмы привлечения гостей в низкий сезон и работа с каналами бронирования.",
+    "topics": [
+      "Гостиницы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Повышение заполняемости отеля Приёмы привлечения гостей в низкий сезон и работа с каналами бронирования.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:4cf5f156d41d3cce75d0d1e8",
+    "source_id": "4cf5f156d41d3cce75d0d1e8",
+    "kind": "article",
+    "title": "Подготовка к собеседованию кандидата",
+    "description": "Определение критериев отбора и вопросов для встречи с соискателем.",
+    "topics": [
+      "Команда"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подготовка к собеседованию кандидата Определение критериев отбора и вопросов для встречи с соискателем.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:c352a13bb1b372555767b276",
+    "source_id": "c352a13bb1b372555767b276",
+    "kind": "article",
+    "title": "Контроль качества продукции",
+    "description": "Организация проверки готовых изделий и учёт производственного брака.",
+    "topics": [
+      "Производство"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Контроль качества продукции Организация проверки готовых изделий и учёт производственного брака.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:08069f03f7c34b1fc73b9b5b",
+    "source_id": "08069f03f7c34b1fc73b9b5b",
+    "kind": "document",
+    "title": "Продажа действующего бизнеса",
+    "description": "Учебный материал на другую задачу: продажа действующего бизнеса.",
+    "topics": [
+      "Инновации"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Продажа действующего бизнеса Учебный материал на другую задачу: продажа действующего бизнеса.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:71b29ba6a8d51bd51e4b85e5",
+    "source_id": "71b29ba6a8d51bd51e4b85e5",
+    "kind": "document",
+    "title": "Закупка офисных кресел",
+    "description": "Учебный материал на другую задачу: закупка офисных кресел.",
+    "topics": [
+      "Производство"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Закупка офисных кресел Учебный материал на другую задачу: закупка офисных кресел.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:f160f6bb3644a1ff739080fa",
+    "source_id": "f160f6bb3644a1ff739080fa",
+    "kind": "document",
+    "title": "Подбор кредитного продукта",
+    "description": "Учебный материал на другую задачу: подбор кредитного продукта.",
+    "topics": [
+      "Образование"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подбор кредитного продукта Учебный материал на другую задачу: подбор кредитного продукта.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:40cde5c63718ec7fdea1cb5a",
+    "source_id": "40cde5c63718ec7fdea1cb5a",
+    "kind": "document",
+    "title": "Выбор дизайна транспортной упаковки",
+    "description": "Учебный материал на другую задачу: выбор дизайна транспортной упаковки.",
+    "topics": [
+      "Логистика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Выбор дизайна транспортной упаковки Учебный материал на другую задачу: выбор дизайна транспортной упаковки.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:f2c578867ae4b795c6ef1483",
+    "source_id": "f2c578867ae4b795c6ef1483",
+    "kind": "document",
+    "title": "Ремонт гостиничных номеров",
+    "description": "Учебный материал на другую задачу: ремонт гостиничных номеров.",
+    "topics": [
+      "Гостиницы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Ремонт гостиничных номеров Учебный материал на другую задачу: ремонт гостиничных номеров.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:d05e632cde396a6d646a56d4",
+    "source_id": "d05e632cde396a6d646a56d4",
+    "kind": "course",
+    "title": "Раздельный сбор отходов в офисе",
+    "description": "Организация контейнеров и маршрутов передачи бумаги, пластика и иных отходов.",
+    "topics": [
+      "Экология"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Раздельный сбор отходов в офисе Организация контейнеров и маршрутов передачи бумаги, пластика и иных отходов.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:e2b8c9ef64ceed6156d9396a",
+    "source_id": "e2b8c9ef64ceed6156d9396a",
+    "kind": "document",
+    "title": "Подбор персонала в отдел продаж",
+    "description": "Учебный материал на другую задачу: подбор персонала в отдел продаж.",
+    "topics": [
+      "Аналитика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подбор персонала в отдел продаж Учебный материал на другую задачу: подбор персонала в отдел продаж.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:99ad7c0e2c17b6cdbe011d76",
+    "source_id": "99ad7c0e2c17b6cdbe011d76",
+    "kind": "document",
+    "title": "Обслуживание кассового оборудования",
+    "description": "Учебный материал на другую задачу: обслуживание кассового оборудования.",
+    "topics": [
+      "Розница"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Обслуживание кассового оборудования Учебный материал на другую задачу: обслуживание кассового оборудования.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:e1912b30cfd2815429a18241",
+    "source_id": "e1912b30cfd2815429a18241",
+    "kind": "webinar",
+    "title": "Выбор дизайна транспортной упаковки",
+    "description": "Учебный материал на другую задачу: выбор дизайна транспортной упаковки.",
+    "topics": [
+      "Логистика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Выбор дизайна транспортной упаковки Учебный материал на другую задачу: выбор дизайна транспортной упаковки.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:80baf503d1c11cfd6b8fbd25",
+    "source_id": "80baf503d1c11cfd6b8fbd25",
+    "kind": "course",
+    "title": "Повышение заполняемости отеля",
+    "description": "Приёмы привлечения гостей в низкий сезон и работа с каналами бронирования.",
+    "topics": [
+      "Гостиницы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Повышение заполняемости отеля Приёмы привлечения гостей в низкий сезон и работа с каналами бронирования.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:92d9e4fe8fa0434eda865238",
+    "source_id": "92d9e4fe8fa0434eda865238",
+    "kind": "article",
+    "title": "Раздельный сбор отходов в офисе",
+    "description": "Организация контейнеров и маршрутов передачи бумаги, пластика и иных отходов.",
+    "topics": [
+      "Экология"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Раздельный сбор отходов в офисе Организация контейнеров и маршрутов передачи бумаги, пластика и иных отходов.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:5259fe433caadc8b449ac55f",
+    "source_id": "5259fe433caadc8b449ac55f",
+    "kind": "webinar",
+    "title": "Подбор персонала в отдел продаж",
+    "description": "Учебный материал на другую задачу: подбор персонала в отдел продаж.",
+    "topics": [
+      "Аналитика"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подбор персонала в отдел продаж Учебный материал на другую задачу: подбор персонала в отдел продаж.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:23bb5a52c86558a0b2325a9d",
+    "source_id": "23bb5a52c86558a0b2325a9d",
+    "kind": "article",
+    "title": "Поиск пропусков в таблице",
+    "description": "Методы обнаружить пустые ячейки и проверить полноту набора данных.",
+    "topics": [
+      "Данные"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Поиск пропусков в таблице Методы обнаружить пустые ячейки и проверить полноту набора данных.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:912e8f832816565d11ff0605",
+    "source_id": "912e8f832816565d11ff0605",
+    "kind": "course",
+    "title": "Поиск пропусков в таблице",
+    "description": "Методы обнаружить пустые ячейки и проверить полноту набора данных.",
+    "topics": [
+      "Данные"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Поиск пропусков в таблице Методы обнаружить пустые ячейки и проверить полноту набора данных.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:e3791175205eb62723952773",
+    "source_id": "e3791175205eb62723952773",
+    "kind": "webinar",
+    "title": "Ремонт гостиничных номеров",
+    "description": "Учебный материал на другую задачу: ремонт гостиничных номеров.",
+    "topics": [
+      "Гостиницы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Ремонт гостиничных номеров Учебный материал на другую задачу: ремонт гостиничных номеров.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:cae37e9a65da2256b3b95d27",
+    "source_id": "cae37e9a65da2256b3b95d27",
+    "kind": "course",
+    "title": "Выбор местоположения парикмахерской",
+    "description": "Сравнение локаций салона по потоку людей, доступности и условиям аренды.",
+    "topics": [
+      "Услуги"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Выбор местоположения парикмахерской Сравнение локаций салона по потоку людей, доступности и условиям аренды.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:8f1e2aa29ec09a692b4d73f9",
+    "source_id": "8f1e2aa29ec09a692b4d73f9",
+    "kind": "document",
+    "title": "Повышение заработной платы действующим сотрудникам",
+    "description": "Учебный материал на другую задачу: повышение заработной платы действующим сотрудникам.",
+    "topics": [
+      "Команда"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Повышение заработной платы действующим сотрудникам Учебный материал на другую задачу: повышение заработной платы действующим сотрудникам.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:4a2aeffa7d5afa648bf98f1f",
+    "source_id": "4a2aeffa7d5afa648bf98f1f",
+    "kind": "article",
+    "title": "План выкладки товаров на полке",
+    "description": "Размещение продукции на витрине с учётом ассортимента и доступности для посетителей.",
+    "topics": [
+      "Розница"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "План выкладки товаров на полке Размещение продукции на витрине с учётом ассортимента и доступности для посетителей.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  }
+]

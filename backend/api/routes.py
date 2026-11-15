@@ -1,7 +1,17 @@
 from fastapi import APIRouter, Depends, Query, Response
 from fastapi.security import HTTPAuthorizationCredentials
 
-from api.dependencies import bearer, current_user, get_service
+from api.dependencies import (
+    bearer,
+    current_user,
+    get_activity,
+    get_auth,
+    get_catalog,
+    get_health,
+    get_profile,
+    get_recommendations,
+    get_search,
+)
 from api.errors import ErrorEnvelope
 from domain.entities import User
 from domain.responses import (
@@ -17,7 +27,13 @@ from domain.responses import (
     UserResponse,
 )
 from schemas.requests import ActivityInput, Credentials, GenerationRequest, Kind, Profile
-from services.backend import BackendService
+from services.activity import ActivityService
+from services.auth import AuthService
+from services.catalog import CatalogService
+from services.health import HealthService
+from services.profile import ProfileService
+from services.recommendations import RecommendationService
+from services.search import SearchService
 
 router = APIRouter(
     responses={
@@ -28,22 +44,22 @@ router = APIRouter(
 
 
 @router.get("/health")
-def health(service: BackendService = Depends(get_service)) -> HealthResponse:
+def health(service: HealthService = Depends(get_health)) -> HealthResponse:
     return service.health()
 
 
 @router.get("/ready")
-def ready(service: BackendService = Depends(get_service)) -> HealthResponse:
+def ready(service: HealthService = Depends(get_health)) -> HealthResponse:
     return service.ready()
 
 
 @router.post("/api/v1/auth/register", status_code=201)
-def register(data: Credentials, service: BackendService = Depends(get_service)) -> TokenResponse:
+def register(data: Credentials, service: AuthService = Depends(get_auth)) -> TokenResponse:
     return service.register(data)
 
 
 @router.post("/api/v1/auth/login")
-def login(data: Credentials, service: BackendService = Depends(get_service)) -> TokenResponse:
+def login(data: Credentials, service: AuthService = Depends(get_auth)) -> TokenResponse:
     return service.login(data)
 
 
@@ -51,7 +67,7 @@ def login(data: Credentials, service: BackendService = Depends(get_service)) -> 
 def logout(
     credentials: HTTPAuthorizationCredentials | None = Depends(bearer),
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: AuthService = Depends(get_auth),
 ) -> Response:
     service.logout(credentials.credentials if credentials else "")
     return Response(status_code=204)
@@ -59,7 +75,7 @@ def logout(
 
 @router.get("/api/v1/me")
 def me(
-    user: User = Depends(current_user), service: BackendService = Depends(get_service)
+    user: User = Depends(current_user), service: ProfileService = Depends(get_profile)
 ) -> UserResponse:
     return service.me(user)
 
@@ -68,7 +84,7 @@ def me(
 def update_profile(
     data: Profile,
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: ProfileService = Depends(get_profile),
 ) -> Profile:
     return service.update_profile(data, user)
 
@@ -77,7 +93,7 @@ def update_profile(
 def event(
     data: ActivityInput,
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: ActivityService = Depends(get_activity),
 ) -> EventResponse:
     return service.event(data, user)
 
@@ -86,7 +102,7 @@ def event(
 def events(
     limit: int = Query(50, ge=1, le=100),
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: ActivityService = Depends(get_activity),
 ) -> HistoryResponse:
     return service.events(limit, user)
 
@@ -98,7 +114,7 @@ def catalog(
     limit: int = Query(20, ge=1, le=50),
     offset: int = Query(0, ge=0, le=100000),
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: CatalogService = Depends(get_catalog),
 ) -> CatalogResponse:
     return service.catalog(q, kind, limit, offset, user)
 
@@ -108,7 +124,7 @@ def suggest(
     q: str = Query("", max_length=300),
     limit: int = Query(6, ge=1, le=10),
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: SearchService = Depends(get_search),
 ) -> SuggestResponse:
     return service.suggest(q, limit, user)
 
@@ -123,7 +139,7 @@ def search(
     selection_generation: str | None = Query(None, min_length=1, max_length=150),
     clarification_token: str | None = Query(None, min_length=1, max_length=2048),
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: SearchService = Depends(get_search),
 ) -> SearchResponse:
     return service.search(
         q,
@@ -141,7 +157,7 @@ def search(
 def recommend(
     data: GenerationRequest,
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: RecommendationService = Depends(get_recommendations),
 ) -> RecommendationResponse:
     return service.recommend(data, user)
 
@@ -150,6 +166,6 @@ def recommend(
 def plan(
     data: GenerationRequest,
     user: User = Depends(current_user),
-    service: BackendService = Depends(get_service),
+    service: RecommendationService = Depends(get_recommendations),
 ) -> PlanResponse:
     return service.plan(data, user)

@@ -1,0 +1,802 @@
+[
+  {
+    "entity_key": "article:744a43210a942c8a47822bbc",
+    "source_id": "744a43210a942c8a47822bbc",
+    "kind": "article",
+    "title": "Определение безубыточного объёма продаж",
+    "description": "Соотношение постоянных затрат, цены и переменных расходов для нахождения порога окупаемости.",
+    "topics": [
+      "Финансы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Определение безубыточного объёма продаж Соотношение постоянных затрат, цены и переменных расходов для нахождения порога окупаемости.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:d82dc1946cd6256797811755",
+    "source_id": "d82dc1946cd6256797811755",
+    "kind": "article",
+    "title": "Урегулирование жалоб покупателей",
+    "description": "Порядок ответа на претензию клиента и поиск решения возникшей проблемы.",
+    "topics": [
+      "Коммуникации"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Урегулирование жалоб покупателей Порядок ответа на претензию клиента и поиск решения возникшей проблемы.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:20f3a7ad578ef2a6484f2ea1",
+    "source_id": "20f3a7ad578ef2a6484f2ea1",
+    "kind": "webinar",
+    "title": "Создание логотипа магазина",
+    "description": "Учебный материал на другую задачу: создание логотипа магазина.",
+    "topics": [
+      "Маркетинг"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Создание логотипа магазина Учебный материал на другую задачу: создание логотипа магазина.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:03215b7790b19d754e11f7f4",
+    "source_id": "03215b7790b19d754e11f7f4",
+    "kind": "webinar",
+    "title": "Порядок увольнения сотрудника",
+    "description": "Учебный материал на другую задачу: порядок увольнения сотрудника.",
+    "topics": [
+      "Кадры"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Порядок увольнения сотрудника Учебный материал на другую задачу: порядок увольнения сотрудника.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:7cfad59ce6e327ce5d1ff078",
+    "source_id": "7cfad59ce6e327ce5d1ff078",
+    "kind": "document",
+    "title": "Расчёт отпускных выплат",
+    "description": "Учебный материал на другую задачу: расчёт отпускных выплат.",
+    "topics": [
+      "Команда"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Расчёт отпускных выплат Учебный материал на другую задачу: расчёт отпускных выплат.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:faa5439e4771c35665bc3d49",
+    "source_id": "faa5439e4771c35665bc3d49",
+    "kind": "webinar",
+    "title": "Регистрация товарного знака",
+    "description": "Учебный материал на другую задачу: регистрация товарного знака.",
+    "topics": [
+      "Финансы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Регистрация товарного знака Учебный материал на другую задачу: регистрация товарного знака.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:862392324f8d4fe8b76dc7a9",
+    "source_id": "862392324f8d4fe8b76dc7a9",
+    "kind": "course",
+    "title": "Определение безубыточного объёма продаж",
+    "description": "Соотношение постоянных затрат, цены и переменных расходов для нахождения порога окупаемости.",
+    "topics": [
+      "Финансы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Определение безубыточного объёма продаж Соотношение постоянных затрат, цены и переменных расходов для нахождения порога окупаемости.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:17a1d3fdd7fc6d9eb3ba3687",
+    "source_id": "17a1d3fdd7fc6d9eb3ba3687",
+    "kind": "document",
+    "title": "Порядок увольнения сотрудника",
+    "description": "Учебный материал на другую задачу: порядок увольнения сотрудника.",
+    "topics": [
+      "Кадры"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Порядок увольнения сотрудника Учебный материал на другую задачу: порядок увольнения сотрудника.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:ff7afe70f0790f0ed2769b9a",
+    "source_id": "ff7afe70f0790f0ed2769b9a",
+    "kind": "article",
+    "title": "Планирование смен в магазине",
+    "description": "Способы распределить рабочие смены между продавцами с учётом нагрузки и доступности.",
+    "topics": [
+      "Команда"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Планирование смен в магазине Способы распределить рабочие смены между продавцами с учётом нагрузки и доступности.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:d73ce28ee4c202f81ca7023f",
+    "source_id": "d73ce28ee4c202f81ca7023f",
+    "kind": "article",
+    "title": "Предупреждение поломок оборудования",
+    "description": "Регламент профилактических осмотров станков и учёт технического состояния.",
+    "topics": [
+      "Производство"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Предупреждение поломок оборудования Регламент профилактических осмотров станков и учёт технического состояния.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:bff3d675d96329a0dd89d529",
+    "source_id": "bff3d675d96329a0dd89d529",
+    "kind": "webinar",
+    "title": "Расчёт отпускных выплат",
+    "description": "Учебный материал на другую задачу: расчёт отпускных выплат.",
+    "topics": [
+      "Команда"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Расчёт отпускных выплат Учебный материал на другую задачу: расчёт отпускных выплат.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:8ea7995d26a23f1e9ac87f5a",
+    "source_id": "8ea7995d26a23f1e9ac87f5a",
+    "kind": "course",
+    "title": "Учёт входящих договоров",
+    "description": "Регистрация поступивших соглашений и ведение их реестра в компании.",
+    "topics": [
+      "Документы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Учёт входящих договоров Регистрация поступивших соглашений и ведение их реестра в компании.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:a495b7f7ac7e30f0676709a1",
+    "source_id": "a495b7f7ac7e30f0676709a1",
+    "kind": "course",
+    "title": "Планирование смен в магазине",
+    "description": "Способы распределить рабочие смены между продавцами с учётом нагрузки и доступности.",
+    "topics": [
+      "Команда"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Планирование смен в магазине Способы распределить рабочие смены между продавцами с учётом нагрузки и доступности.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:b6a264e25c5641708f25015d",
+    "source_id": "b6a264e25c5641708f25015d",
+    "kind": "course",
+    "title": "Портрет целевого покупателя",
+    "description": "Способы выделить потребности и характеристики потенциальных покупателей перед запуском предложения.",
+    "topics": [
+      "Маркетинг"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Портрет целевого покупателя Способы выделить потребности и характеристики потенциальных покупателей перед запуском предложения.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:38aa47bb7985139d238c6af9",
+    "source_id": "38aa47bb7985139d238c6af9",
+    "kind": "document",
+    "title": "Продажа устаревших станков",
+    "description": "Учебный материал на другую задачу: продажа устаревших станков.",
+    "topics": [
+      "Производство"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Продажа устаревших станков Учебный материал на другую задачу: продажа устаревших станков.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:f125298234770a46dceacdf6",
+    "source_id": "f125298234770a46dceacdf6",
+    "kind": "course",
+    "title": "Введение нового сотрудника в работу",
+    "description": "Последовательность знакомства новичка с задачами, коллегами и рабочими правилами.",
+    "topics": [
+      "Кадры"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Введение нового сотрудника в работу Последовательность знакомства новичка с задачами, коллегами и рабочими правилами.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:74234b131734ec459e558e41",
+    "source_id": "74234b131734ec459e558e41",
+    "kind": "article",
+    "title": "Планирование записи посетителей",
+    "description": "Распределение времени приёма между специалистами и управление очередью записей.",
+    "topics": [
+      "Сервис"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Планирование записи посетителей Распределение времени приёма между специалистами и управление очередью записей.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:92fc1d3022808c0f04f27dd9",
+    "source_id": "92fc1d3022808c0f04f27dd9",
+    "kind": "course",
+    "title": "Планирование записи посетителей",
+    "description": "Распределение времени приёма между специалистами и управление очередью записей.",
+    "topics": [
+      "Сервис"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Планирование записи посетителей Распределение времени приёма между специалистами и управление очередью записей.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:fbe06034bedeac64e45bff8a",
+    "source_id": "fbe06034bedeac64e45bff8a",
+    "kind": "webinar",
+    "title": "Продажа устаревших станков",
+    "description": "Учебный материал на другую задачу: продажа устаревших станков.",
+    "topics": [
+      "Производство"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Продажа устаревших станков Учебный материал на другую задачу: продажа устаревших станков.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:7c37bd4399c874b88faab22c",
+    "source_id": "7c37bd4399c874b88faab22c",
+    "kind": "webinar",
+    "title": "Подбор помещений для склада",
+    "description": "Учебный материал на другую задачу: подбор помещений для склада.",
+    "topics": [
+      "Сервис"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подбор помещений для склада Учебный материал на другую задачу: подбор помещений для склада.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:ef93a4956dcd40368fe3a35d",
+    "source_id": "ef93a4956dcd40368fe3a35d",
+    "kind": "article",
+    "title": "Введение нового сотрудника в работу",
+    "description": "Последовательность знакомства новичка с задачами, коллегами и рабочими правилами.",
+    "topics": [
+      "Кадры"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Введение нового сотрудника в работу Последовательность знакомства новичка с задачами, коллегами и рабочими правилами.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:1ff4a800a4c5345d56a4f252",
+    "source_id": "1ff4a800a4c5345d56a4f252",
+    "kind": "document",
+    "title": "Упаковка отправлений для курьера",
+    "description": "Учебный материал на другую задачу: упаковка отправлений для курьера.",
+    "topics": [
+      "Склад"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Упаковка отправлений для курьера Учебный материал на другую задачу: упаковка отправлений для курьера.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:60803ccd959e3aacb3b859e2",
+    "source_id": "60803ccd959e3aacb3b859e2",
+    "kind": "document",
+    "title": "Создание логотипа магазина",
+    "description": "Учебный материал на другую задачу: создание логотипа магазина.",
+    "topics": [
+      "Маркетинг"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Создание логотипа магазина Учебный материал на другую задачу: создание логотипа магазина.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:63708ade29d53504f2f498fc",
+    "source_id": "63708ade29d53504f2f498fc",
+    "kind": "document",
+    "title": "Расчёт зарплаты сотрудников",
+    "description": "Учебный материал на другую задачу: расчёт зарплаты сотрудников.",
+    "topics": [
+      "Документы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Расчёт зарплаты сотрудников Учебный материал на другую задачу: расчёт зарплаты сотрудников.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:2d99b04cdd766e8a2319fee2",
+    "source_id": "2d99b04cdd766e8a2319fee2",
+    "kind": "course",
+    "title": "Инвентаризация складских остатков",
+    "description": "Порядок пересчёта товара, сверка с системой и разбор обнаруженных расхождений.",
+    "topics": [
+      "Склад"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Инвентаризация складских остатков Порядок пересчёта товара, сверка с системой и разбор обнаруженных расхождений.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:2be68b0a98c885767999573f",
+    "source_id": "2be68b0a98c885767999573f",
+    "kind": "course",
+    "title": "Оценка отдачи рекламных расходов",
+    "description": "Сравнение затрат на рекламные кампании с результатом и порядок вычисления окупаемости.",
+    "topics": [
+      "Маркетинг"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оценка отдачи рекламных расходов Сравнение затрат на рекламные кампании с результатом и порядок вычисления окупаемости.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:b15db73798b1f70106176dc1",
+    "source_id": "b15db73798b1f70106176dc1",
+    "kind": "webinar",
+    "title": "Обучение работе на кассе",
+    "description": "Учебный материал на другую задачу: обучение работе на кассе.",
+    "topics": [
+      "Коммуникации"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Обучение работе на кассе Учебный материал на другую задачу: обучение работе на кассе.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:5414ca8039618ec865d70d64",
+    "source_id": "5414ca8039618ec865d70d64",
+    "kind": "course",
+    "title": "Предупреждение поломок оборудования",
+    "description": "Регламент профилактических осмотров станков и учёт технического состояния.",
+    "topics": [
+      "Производство"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Предупреждение поломок оборудования Регламент профилактических осмотров станков и учёт технического состояния.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:297ca53531328a4ab6b4c849",
+    "source_id": "297ca53531328a4ab6b4c849",
+    "kind": "article",
+    "title": "Портрет целевого покупателя",
+    "description": "Способы выделить потребности и характеристики потенциальных покупателей перед запуском предложения.",
+    "topics": [
+      "Маркетинг"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Портрет целевого покупателя Способы выделить потребности и характеристики потенциальных покупателей перед запуском предложения.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:65dd955eed0ffa900f41d63b",
+    "source_id": "65dd955eed0ffa900f41d63b",
+    "kind": "document",
+    "title": "Подбор помещений для склада",
+    "description": "Учебный материал на другую задачу: подбор помещений для склада.",
+    "topics": [
+      "Сервис"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Подбор помещений для склада Учебный материал на другую задачу: подбор помещений для склада.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:77c3177315224a5cbd8a2e71",
+    "source_id": "77c3177315224a5cbd8a2e71",
+    "kind": "article",
+    "title": "Оценка отдачи рекламных расходов",
+    "description": "Сравнение затрат на рекламные кампании с результатом и порядок вычисления окупаемости.",
+    "topics": [
+      "Маркетинг"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Оценка отдачи рекламных расходов Сравнение затрат на рекламные кампании с результатом и порядок вычисления окупаемости.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:946aa9add58f01ea2fc4e35c",
+    "source_id": "946aa9add58f01ea2fc4e35c",
+    "kind": "document",
+    "title": "Мотивация работников торгового зала",
+    "description": "Учебный материал на другую задачу: мотивация работников торгового зала.",
+    "topics": [
+      "Маркетинг"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Мотивация работников торгового зала Учебный материал на другую задачу: мотивация работников торгового зала.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:3093d016d266d5a7c8f5ad6c",
+    "source_id": "3093d016d266d5a7c8f5ad6c",
+    "kind": "document",
+    "title": "Регистрация товарного знака",
+    "description": "Учебный материал на другую задачу: регистрация товарного знака.",
+    "topics": [
+      "Финансы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Регистрация товарного знака Учебный материал на другую задачу: регистрация товарного знака.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:ce06e203a3020dc58b2e8040",
+    "source_id": "ce06e203a3020dc58b2e8040",
+    "kind": "webinar",
+    "title": "Упаковка отправлений для курьера",
+    "description": "Учебный материал на другую задачу: упаковка отправлений для курьера.",
+    "topics": [
+      "Склад"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Упаковка отправлений для курьера Учебный материал на другую задачу: упаковка отправлений для курьера.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:e8c960f49029a61dc76e8ed6",
+    "source_id": "e8c960f49029a61dc76e8ed6",
+    "kind": "webinar",
+    "title": "Расчёт зарплаты сотрудников",
+    "description": "Учебный материал на другую задачу: расчёт зарплаты сотрудников.",
+    "topics": [
+      "Документы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Расчёт зарплаты сотрудников Учебный материал на другую задачу: расчёт зарплаты сотрудников.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "document:06488b930306a5533266d642",
+    "source_id": "06488b930306a5533266d642",
+    "kind": "document",
+    "title": "Обучение работе на кассе",
+    "description": "Учебный материал на другую задачу: обучение работе на кассе.",
+    "topics": [
+      "Коммуникации"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Обучение работе на кассе Учебный материал на другую задачу: обучение работе на кассе.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "webinar:80cc0cf660ae7c5a02984383",
+    "source_id": "80cc0cf660ae7c5a02984383",
+    "kind": "webinar",
+    "title": "Мотивация работников торгового зала",
+    "description": "Учебный материал на другую задачу: мотивация работников торгового зала.",
+    "topics": [
+      "Маркетинг"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Мотивация работников торгового зала Учебный материал на другую задачу: мотивация работников торгового зала.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:24ca662bec8c6d7d472bc6f7",
+    "source_id": "24ca662bec8c6d7d472bc6f7",
+    "kind": "article",
+    "title": "Инвентаризация складских остатков",
+    "description": "Порядок пересчёта товара, сверка с системой и разбор обнаруженных расхождений.",
+    "topics": [
+      "Склад"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Инвентаризация складских остатков Порядок пересчёта товара, сверка с системой и разбор обнаруженных расхождений.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "course:799c9d23bfd6dbc5a3de0eca",
+    "source_id": "799c9d23bfd6dbc5a3de0eca",
+    "kind": "course",
+    "title": "Урегулирование жалоб покупателей",
+    "description": "Порядок ответа на претензию клиента и поиск решения возникшей проблемы.",
+    "topics": [
+      "Коммуникации"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Урегулирование жалоб покупателей Порядок ответа на претензию клиента и поиск решения возникшей проблемы.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  },
+  {
+    "entity_key": "article:46bc38c6e8e32173e25e8334",
+    "source_id": "46bc38c6e8e32173e25e8334",
+    "kind": "article",
+    "title": "Учёт входящих договоров",
+    "description": "Регистрация поступивших соглашений и ведение их реестра в компании.",
+    "topics": [
+      "Документы"
+    ],
+    "tags": [],
+    "industries": [],
+    "search_text": "Учёт входящих договоров Регистрация поступивших соглашений и ведение их реестра в компании.",
+    "access_type": "open",
+    "source_url": null,
+    "canonical_url": null,
+    "data_quality_flags": [
+      "fictional_benchmark"
+    ],
+    "body": ""
+  }
+]

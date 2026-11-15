@@ -66,7 +66,8 @@ def title_subjects(title):
     }
 
 
-def recommend(catalog, categories, viewed, limit=5, vectors=None):
+def recommend(catalog, categories, viewed, limit=5, vectors=None, *,
+              candidate_keys=None, selected_facets=None):
     if not isinstance(categories, list) or not isinstance(viewed, list):
         raise ValueError("categories and viewed must be lists")
     if (
@@ -91,10 +92,13 @@ def recommend(catalog, categories, viewed, limit=5, vectors=None):
             "categories": categories, "industry": None, "preferred_kinds": [],
             "business_stage": None, "experience": None, "region": None, "focus_facet": None,
         }
-        return recommend_cold_start(catalog, profile, limit)[0]
+        return recommend_cold_start(
+            catalog, profile, limit, selected_facets=selected_facets, candidate_keys=candidate_keys
+        )[0]
     # Most recent occurrence takes precedence and each item contributes only once.
     recent = list(dict.fromkeys(reversed(viewed)))[:20]
-    selected = {name for category in categories for name in CATEGORIES[category][1]}
+    selected = ({name for category in categories for name in CATEGORIES[category][1]}
+                if selected_facets is None else selected_facets)
     viewed_set = set(viewed)
     indices = {item["entity_key"]: i for i, item in enumerate(catalog)}
     semantic = {}
@@ -105,7 +109,8 @@ def recommend(catalog, categories, viewed, limit=5, vectors=None):
     frequency = Counter(term for terms in subjects.values() for term in terms)
     result = []
     for item in catalog:
-        if item["kind"] == "glossary" or item["entity_key"] in viewed_set:
+        if (item["kind"] == "glossary" or item["entity_key"] in viewed_set
+                or candidate_keys is not None and item["entity_key"] not in candidate_keys):
             continue
         item_facets = facets(item)
         preference_matches = item_facets & selected
@@ -113,10 +118,13 @@ def recommend(catalog, categories, viewed, limit=5, vectors=None):
         score = 0.0
         if preference_matches:
             score += 1.0
-            category = next(
-                category for category in categories if item_facets & CATEGORIES[category][1]
-            )
-            reasons.append(f"В выбранном направлении «{CATEGORIES[category][0]}»")
+            if selected_facets is not None:
+                reasons.append("Материал отмечен выбранной темой: " + ", ".join(sorted(preference_matches)))
+            else:
+                category = next(
+                    category for category in categories if item_facets & CATEGORIES[category][1]
+                )
+                reasons.append(f"В выбранном направлении «{CATEGORIES[category][0]}»")
         for rank, key in enumerate(recent):
             source = by_id[key]
             shared = item_facets & facets(source)

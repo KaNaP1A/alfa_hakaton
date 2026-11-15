@@ -2,6 +2,7 @@
 
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from functools import partial
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,37 +11,68 @@ from api.errors import install_error_handlers
 from api.middleware import install_middleware
 from api.routes import router
 from config.settings import Settings
+from domain.ports import DemoFactory, PasswordPort, RecommendationPort, UnitOfWorkFactory
 from infrastructure.auth import PasswordHasher
 from infrastructure.database import connect, initialize
+from infrastructure.python_recommender import PythonRecommender
 from infrastructure.recommender import DemoRecommender, HttpRecommender
-from services.ports import RecommendationPort
+from infrastructure.uow import SqlAlchemyUnitOfWork
+from services.dependencies import ServiceDependencies
 
 
 def create_app(
-    settings: Settings | None = None, recommender: RecommendationPort | None = None
+    settings: Settings | None = None,
+    recommender: RecommendationPort | None = None,
+    uow_factory: UnitOfWorkFactory | None = None,
+    passwords: PasswordPort | None = None,
+    demo_factory: DemoFactory | None = None,
 ) -> FastAPI:
     settings = settings or Settings.from_env()
-    engine, sessions = connect(settings.database_url)
-    upstream = recommender or (HttpRecommender(settings) if settings.reco_mode == "http" else None)
+    storage = connect(settings.database_url) if uow_factory is None else None
+    engine, sessions = storage if storage is not None else (None, None)
+    if uow_factory is None:
+        assert sessions is not None
+        uow_factory = partial(
+            SqlAlchemyUnitOfWork,
+            sessions,
+            catalog_source=settings.catalog_source,
+            generation=settings.catalog_generation,
+        )
+    upstream = recommender
+    if upstream is None:
+        if settings.reco_mode == "http":
+            upstream = HttpRecommender(settings)
+        elif settings.reco_mode == "python":
+            upstream = PythonRecommender(settings)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         try:
-            initialize(engine)
+            if engine is not None and settings.auto_create_tables:
+                initialize(engine)
             yield
         finally:
             if upstream:
                 upstream.close()
-            engine.dispose()
+            if engine is not None:
+                engine.dispose()
 
     app = FastAPI(title="Alfa hackathon backend", version="0.2.0", lifespan=lifespan)
     app.state.engine = engine
     app.state.sessions = sessions
+    app.state.uow_factory = uow_factory
     app.state.settings = settings
     app.state.upstream = upstream
-    app.state.passwords = PasswordHasher()
-    app.state.dummy_hash = app.state.passwords.hash("unregistered-account")
-    app.state.demo_factory = DemoRecommender
+    password_service = passwords if passwords is not None else PasswordHasher()
+    app.state.services = ServiceDependencies(
+        uow_factory=uow_factory,
+        passwords=password_service,
+        recommender=upstream,
+        demo_factory=demo_factory if demo_factory is not None else DemoRecommender,
+        mode=settings.reco_mode,
+        token_ttl=settings.token_ttl,
+        dummy_hash=password_service.hash("unregistered-account"),
+    )
     if settings.cors_origins:
         app.add_middleware(
             CORSMiddleware,

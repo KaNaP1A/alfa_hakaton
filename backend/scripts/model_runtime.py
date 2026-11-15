@@ -30,17 +30,25 @@ def main() -> None:
     args = parser.parse_args()
     source = args.bundle.resolve()
     runtime = args.runtime.resolve()
-    python = str(args.python.resolve())
+    # Resolving a venv's python symlink selects the base interpreter and loses its packages.
+    python = str(args.python.absolute())
     code = Path(__file__).resolve().parents[2] / "05_code"
     prepare = str(code / "scripts" / "prepare_backend_bundle.py")
+    env = {
+        **os.environ,
+        "HF_HUB_OFFLINE": "1",
+        "PYTHONPATH": os.pathsep.join(
+            filter(None, [str(code / "src"), os.environ.get("PYTHONPATH", "")])
+        ),
+    }
     if runtime == source or runtime.is_relative_to(source):
         parser.error("runtime must be outside the source bundle")
     if not 1 <= args.port <= 65535:
         parser.error("port must be between 1 and 65535")
-    subprocess.run([python, prepare, "--verify", str(source)], check=True)
+    subprocess.run([python, prepare, "--verify", str(source)], check=True, env=env)
     # Refuse to reuse or overwrite another runtime; the source remains unchanged.
     shutil.copytree(source, runtime)
-    subprocess.run([python, prepare, "--relocate", str(runtime)], check=True)
+    subprocess.run([python, prepare, "--relocate", str(runtime)], check=True, env=env)
     subprocess.run(
         [
             python,
@@ -55,7 +63,7 @@ def main() -> None:
             str(args.port),
         ],
         check=True,
-        env={**os.environ, "HF_HUB_OFFLINE": "1"},
+        env=env,
         cwd=code,
     )
 

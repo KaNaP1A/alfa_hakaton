@@ -62,6 +62,16 @@ class ApiTests(unittest.TestCase):
         with make_server(self.engine, 0) as server:
             self.assertEqual(server.default_mode, "relevance")
 
+    def test_interests_endpoint_uses_snapshot_and_rejects_parameters(self):
+        status, result = self.request("/interests")
+        self.assertEqual(status, 200)
+        self.assertEqual(result["generation"], self.engine.generation)
+        self.assertEqual(result["categories"][0]["id"], "business")
+        self.assertEqual(result["categories"][0]["topics"][0]["value"], "Старт бизнеса")
+        self.assertEqual(result["categories"][0]["material_count"], 1)
+        self.assertEqual(self.request("/interests", {"unexpected": "1"})[0], 400)
+        self.assertEqual(self.request("/interests", headers={"Host": "external.example"})[0], 403)
+
     def post(self, path, body, headers=None):
         connection = http.client.HTTPConnection("127.0.0.1", self.server.server_port, timeout=5)
         try:
@@ -85,6 +95,24 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(self.post("/recommend", {**payload, "generation": "stale"})[0], 400)
         self.assertEqual(self.post("/recommend", {**payload, "viewed": ["bad"]})[0], 400)
         self.assertEqual(self.post("/recommend", payload, {"Origin": "https://evil.test"})[0], 403)
+
+    def test_recommend_by_interests_http_contract(self):
+        payload = {"generation": self.engine.generation, "categories": ["business"],
+                   "selected_facets": ["Старт бизнеса"], "viewed": []}
+        status, result = self.post("/recommend-by-interests", payload)
+        self.assertEqual(status, 200)
+        self.assertEqual(result["results"][0]["entity_key"], "article:1")
+        self.assertEqual(result["status"], "insufficient_evidence")
+        self.assertEqual(result["applied_filters"]["facet_mode"], "any")
+        self.assertEqual(self.post("/recommend-by-interests", {**payload, "viewed": ["article:1"]})[1]["results"], [])
+        for bad in [
+            {**payload, "generation": "stale"}, {**payload, "unknown": 1},
+            {**payload, "selected_facets": ["Финансы"]}, {**payload, "selected_facets": ["Старт бизнеса"] * 2},
+            {**payload, "categories": None}, {**payload, "viewed": 1},
+        ]:
+            with self.subTest(bad=bad):
+                self.assertEqual(self.post("/recommend-by-interests", bad)[0], 400)
+        self.assertEqual(self.post("/recommend-by-interests", payload, {"Origin": "https://evil.test"})[0], 403)
 
     def test_development_plan_validates_profile_and_separates_views(self):
         payload = {"generation": self.engine.generation, "categories": [], "viewed": [], "completed": []}

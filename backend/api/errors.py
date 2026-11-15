@@ -4,7 +4,6 @@ from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from sqlalchemy.exc import SQLAlchemyError
 from starlette.exceptions import HTTPException
 
 from domain.errors import AppError
@@ -63,11 +62,6 @@ def install_error_handlers(app: FastAPI) -> None:
             str(error.detail),
             headers=dict(error.headers) if error.headers else None,
         )
-
-    @app.exception_handler(SQLAlchemyError)
-    async def database_error(request: Request, error: SQLAlchemyError) -> JSONResponse:
-        logger.error("Database operation failed: %s", type(error).__name__)
-        return error_response(503, "unavailable", "Database unavailable")
 
     @app.exception_handler(Exception)
     async def unexpected_error(request: Request, error: Exception) -> JSONResponse:
