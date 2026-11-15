@@ -30,3 +30,12 @@ class AppError(Exception):
 class RepositoryConflict(AppError):
     def __init__(self, message: str) -> None:
         super().__init__(409, message)
+
+
+class UpstreamError(AppError):
+    """A recommendation provider rejected or failed an operation."""
+
+
+class StorageUnavailable(AppError):
+    def __init__(self) -> None:
+        super().__init__(503, "Database unavailable", code="unavailable")

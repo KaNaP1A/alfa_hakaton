@@ -12,6 +12,33 @@ FastAPI-приложение между фронтендом, `alfa_reco` и а�
                PostgreSQL / SQLite для демо
 ```
 
+## ML напрямую из Python
+
+`ALFA_RECO_MODE=python` подключает `alfa_reco` как библиотеку в процессе API.
+Singleton `infrastructure/python_recommender.py` загружает каталог, E5 и CatBoost
+один раз при создании приложения. Инициализация и обращения к модели защищены
+блокировками. Каждый worker имеет свою модель; для одной копии используйте
+`--workers 1`. Смена каталога требует перезапуска процесса.
+Ошибка загрузки останавливает запуск приложения.
+
+Из `backend` установите ML-библиотеку и зависимости в то же окружение:
+
+```bash
+uv sync --frozen
+uv pip install ../05_code -r ../05_code/requirements-relevance.txt
+export ALFA_RECO_MODE=python
+export ALFA_RECO_CATALOG=/absolute/path/to/prepared-runtime/catalog
+uv run --no-sync uvicorn app:create_app --factory --port 8080 --workers 1
+```
+
+`ALFA_RECO_CATALOG` указывает на подготовленный каталог с `CURRENT.json`.
+Пути encoder в артефактах должны соответствовать этой машине (подготовка runtime
+описана ниже). Исходники `05_code` менять не требуется.
+В БД API импортируйте доверенный каталог той же generation, как и для HTTP-режима.
+Поиск, подсказки, рекомендации и план вызываются напрямую; отдельный ML-сервер
+не требуется. Текущий Docker-образ содержит только зависимости API; команды выше
+предназначены для нативного запуска. Режимы `demo` и `http` также доступны.
+
 ## Проверить за несколько минут без модели и дампа
 
 Из корня репозитория, Python 3.11+:
@@ -280,3 +307,53 @@ rollback и закрытием. Репозитории выполняют тол
 commit после завершения операции; при выходе из UoW незакоммиченные изменения
 откатываются, включая исключения. Регистрация и выпуск токена атомарны.
 CLI импорта и управления правами использует тот же UoW.
+
+## Границы слоёв и подмена хранилища
+
+HTTP-маршруты вызывают отдельные сервисы: `AuthService`, `ProfileService`,
+`CatalogService`, `ActivityService`, `SearchService`, `RecommendationService`
+и `HealthService`. Общий `RecommendationContext` собирает доступный пользователю
+каталог и ML-порт; проверки generation вынесены в `services/validation.py`.
+
+Контракты в `domain/ports.py` описаны через `typing.Protocol`:
+
+- `UserRepository` — пользователи, токены и профиль;
+- `CatalogRepository` — generation, импорт и видимые материалы;
+- `ActivityRepository` — события и история обучения;
+- `TransactionPort` — фиксация операции;
+- `UnitOfWorkPort` — репозитории `users`, `catalog`, `activity`, commit/rollback
+  и жизненный цикл транзакции;
+- `UnitOfWorkFactory` — создание Unit of Work для запроса;
+- `RecommendationPort` и `PasswordPort` — ML и хеширование паролей.
+
+Сервисы получают узкие контракты через конструкторы и не импортируют SQLAlchemy,
+конкретные репозитории или FastAPI. SQL-адаптер реализует три контракта хранилища
+на одной сессии, сохраняя атомарность регистрации пользователя и выдачи токена.
+FastAPI переиспользует один Unit of Work в пределах запроса, включая авторизацию.
+При выходе он откатывает незавершённые изменения и закрывает сессию.
+
+Для другого хранилища реализуйте `UnitOfWorkPort` и передайте фабрику:
+
+```python
+app = create_app(settings, uow_factory=MyUnitOfWork)
+```
+
+При переданной фабрике приложение не создаёт SQLAlchemy engine и не инициализирует
+SQL-таблицы. Реализация должна возвращать доменные сущности, обеспечивать атомарный
+commit и rollback при выходе. Пример подмены через публичный API без SQL находится
+в `tests/test_service_contracts.py`.
+
+Инверсия зависимостей: `domain/ports.py` принадлежит внутреннему слою.
+Сервисы и адаптеры импортируют эти контракты; домен не импортирует реализации.
+Входные DTO находятся в `domain/commands.py`, `schemas/requests.py` сохраняет
+совместимые экспорты. `services/dependencies.py` содержит типизированный набор
+зависимостей, который собирается в `app.py`. В `create_app` можно передать
+`uow_factory`, `recommender`, `passwords` и `demo_factory`. API не зависит от
+SQLAlchemy: Unit of Work преобразует ошибки драйвера в доменную ошибку.
+Направление импортов проверяется в `tests/test_architecture.py`.
+
+Singleton ML — `infrastructure/python_recommender.py`, класс `PythonRecommender`.
+`__new__` под `_load_lock` создаёт и публикует `_instance` после успешной загрузки
+`SearchEngine` и `relevance_backend()`. Повторный вызов возвращает тот же экземпляр;
+модель загружается один раз на процесс. Выбирается через `ALFA_RECO_MODE=python`
+в точке сборки `app.py`; сервисы работают через `RecommendationPort`.
