@@ -6,9 +6,9 @@ from collections.abc import Mapping
 from sqlalchemy import Select, delete, or_, select
 from sqlalchemy.orm import Session
 
+from domain.commands import CatalogImport
 from domain.errors import AppError
 from infrastructure.database import Activity, CatalogState, Grant, Material
-from schemas.requests import CatalogImport
 
 
 class CatalogUnavailable(AppError):

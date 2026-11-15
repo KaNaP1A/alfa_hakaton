@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 class Settings:
     database_url: str = "sqlite:///./backend.sqlite3"
     reco_mode: str = "demo"
+    reco_catalog: str = "../models/recommender/catalog"
     reco_url: str = "http://127.0.0.1:8000"
     reco_host_header: str | None = None
     request_timeout: float = 30
@@ -17,8 +18,8 @@ class Settings:
     cors_origins: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
-        if self.reco_mode not in {"demo", "http"}:
-            raise ValueError("ALFA_RECO_MODE must be demo or http")
+        if self.reco_mode not in {"demo", "http", "python"}:
+            raise ValueError("ALFA_RECO_MODE must be demo, http or python")
         if not self.database_url.startswith(("sqlite:", "postgresql+psycopg:")):
             raise ValueError("Use sqlite or postgresql+psycopg database URL")
         parsed = urlsplit(self.reco_url)
@@ -47,6 +48,7 @@ class Settings:
         return cls(
             database_url=os.getenv("ALFA_DATABASE_URL", "sqlite:///./backend.sqlite3"),
             reco_mode=os.getenv("ALFA_RECO_MODE", "demo"),
+            reco_catalog=os.getenv("ALFA_RECO_CATALOG", "../models/recommender/catalog"),
             reco_url=os.getenv("ALFA_RECO_URL", "http://127.0.0.1:8000"),
             reco_host_header=os.getenv("ALFA_RECO_HOST_HEADER") or None,
             request_timeout=float(os.getenv("ALFA_RECO_TIMEOUT", "30")),

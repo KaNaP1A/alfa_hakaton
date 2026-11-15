@@ -1,12 +1,14 @@
 """One SQLAlchemy session and transaction for an application operation."""
 
+import logging
 from types import TracebackType
 from typing import Self
 
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
-from domain.errors import RepositoryConflict
+from domain.errors import RepositoryConflict, StorageUnavailable
+from domain.ports import ActivityRepository, CatalogRepository, UserRepository
 from repositories.backend import SqlAlchemyRepository
 
 
@@ -17,9 +19,24 @@ class SqlAlchemyUnitOfWork:
         self.repository: SqlAlchemyRepository
 
     def __enter__(self) -> Self:
-        self.session = self._sessions()
+        try:
+            self.session = self._sessions()
+        except SQLAlchemyError as error:
+            raise StorageUnavailable() from error
         self.repository = SqlAlchemyRepository(self.session)
         return self
+
+    @property
+    def users(self) -> UserRepository:
+        return self.repository
+
+    @property
+    def catalog(self) -> CatalogRepository:
+        return self.repository
+
+    @property
+    def activity(self) -> ActivityRepository:
+        return self.repository
 
     def __exit__(
         self,
@@ -28,9 +45,15 @@ class SqlAlchemyUnitOfWork:
         traceback: TracebackType | None,
     ) -> None:
         try:
-            self.rollback()
-        finally:
-            self.session.close()
+            try:
+                self.rollback()
+            finally:
+                self.session.close()
+        except SQLAlchemyError as error:
+            raise StorageUnavailable() from error
+        if isinstance(exc, SQLAlchemyError):
+            logging.getLogger(__name__).error("Database operation failed: %s", type(exc).__name__)
+            raise StorageUnavailable() from exc
 
     def commit(self) -> None:
         try:
