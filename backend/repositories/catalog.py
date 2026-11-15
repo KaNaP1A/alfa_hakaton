@@ -1,23 +1,29 @@
+from __future__ import annotations
+
 import time
+from collections.abc import Mapping
 
-from sqlalchemy import delete, or_, select
+from sqlalchemy import Select, delete, or_, select
+from sqlalchemy.orm import Session
 
-from .database import Activity, CatalogState, Grant, Material
+from domain.errors import AppError
+from infrastructure.database import Activity, CatalogState, Grant, Material
+from schemas.requests import CatalogImport
 
 
-class CatalogUnavailable(Exception):
-    pass
+class CatalogUnavailable(AppError):
+    def __init__(self, message: str) -> None:
+        super().__init__(503, message)
 
 
-def generation(db):
+def generation(db: Session) -> str:
     state = db.get(CatalogState, 1)
     if state is None:
         raise CatalogUnavailable("Import the trusted catalog before using recommendations")
     return state.generation
 
 
-def import_catalog(db, data):
-    # A full replacement is atomic. Missing materials become unavailable immediately.
+def import_catalog(db: Session, data: CatalogImport) -> None:
     db.execute(delete(Material))
     for item in data.materials:
         db.add(Material(generation=data.generation, **item.model_dump()))
@@ -26,13 +32,12 @@ def import_catalog(db, data):
         db.add(CatalogState(id=1, generation=data.generation))
     else:
         state.generation = data.generation
-    db.commit()
+    db.flush()
 
 
-def visible_query(user_id, current):
+def visible_query(user_id: str, current: str) -> Select[tuple[Material]]:
     grants = select(Grant.entity_key).where(
-        Grant.user_id == user_id,
-        or_(Grant.expires_at.is_(None), Grant.expires_at > time.time()),
+        Grant.user_id == user_id, or_(Grant.expires_at.is_(None), Grant.expires_at > time.time())
     )
     return select(Material).where(
         Material.generation == current,
@@ -41,39 +46,20 @@ def visible_query(user_id, current):
     )
 
 
-def visible_materials(db, user_id, current):
+def visible_materials(db: Session, user_id: str, current: str) -> dict[str, Material]:
     return {item.entity_key: item for item in db.scalars(visible_query(user_id, current))}
 
 
-def card(material):
-    # Only trusted database fields are public. Never copy arbitrary upstream dictionaries.
-    return {
-        "entity_key": material.entity_key,
-        "generation": material.generation,
-        "kind": material.kind,
-        "title": material.title,
-        "description": material.description,
-        "topics": material.topics,
-        "canonical_url": material.canonical_url,
-        "access_type": material.access,
-        "access_verified": True,
-        "price": {
-            "status": "known" if material.price_amount is not None else "unknown",
-            "amount": material.price_amount,
-            "currency": material.price_currency,
-        },
-    }
-
-
-def history(db, user_id, current, allowed):
-    # Ignore history from old catalog versions; preserve it in storage for auditing.
+def history(
+    db: Session, user_id: str, current: str, allowed: Mapping[str, object]
+) -> tuple[list[str], list[str]]:
     rows = db.scalars(
         select(Activity)
         .where(Activity.user_id == user_id, Activity.generation == current)
         .order_by(Activity.id.desc())
         .limit(1000)
     )
-    viewed, completed, seen = [], [], set()
+    viewed, completed, seen = ([], [], set())
     for row in rows:
         if row.entity_key not in allowed or row.entity_key in seen:
             continue
@@ -82,7 +68,6 @@ def history(db, user_id, current, allowed):
             viewed.append(row.entity_key)
         if len(seen) == 50:
             break
-    # Completion remains meaningful after a more recent view event.
     if seen:
         completed = list(
             db.scalars(
@@ -96,4 +81,4 @@ def history(db, user_id, current, allowed):
                 .distinct()
             )
         )
-    return list(reversed(viewed)), completed
+    return (list(reversed(viewed)), completed)

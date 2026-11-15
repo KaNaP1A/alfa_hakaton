@@ -1,18 +1,17 @@
+from __future__ import annotations
+
 import hashlib
 import hmac
 import secrets
-import time
-
-from .database import SessionToken
 
 
-def password_hash(password):
+def password_hash(password: str) -> str:
     salt = secrets.token_bytes(16)
     digest = hashlib.scrypt(password.encode(), salt=salt, n=16384, r=8, p=1)
     return f"scrypt${salt.hex()}${digest.hex()}"
 
 
-def password_matches(password, encoded):
+def password_matches(password: str, encoded: str) -> bool:
     try:
         algorithm, salt, expected = encoded.split("$")
         if algorithm != "scrypt":
@@ -23,12 +22,13 @@ def password_matches(password, encoded):
         return False
 
 
-def token_digest(token):
+def token_digest(token: str) -> str:
     return hashlib.sha256(token.encode()).hexdigest()
 
 
-def issue_token(db, user_id, ttl):
-    token = secrets.token_urlsafe(32)
-    db.add(SessionToken(digest=token_digest(token), user_id=user_id, expires_at=time.time() + ttl))
-    db.commit()
-    return {"access_token": token, "token_type": "bearer", "expires_in": ttl}
+class PasswordHasher:
+    def hash(self, password: str) -> str:
+        return password_hash(password)
+
+    def matches(self, password: str, encoded: str) -> bool:
+        return password_matches(password, encoded)

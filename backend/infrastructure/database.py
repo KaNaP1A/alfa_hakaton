@@ -1,4 +1,5 @@
 import time
+from sqlite3 import Connection
 
 from sqlalchemy import (
     JSON,
@@ -11,8 +12,11 @@ from sqlalchemy import (
     create_engine,
     event,
 )
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
+from sqlalchemy.engine import Engine
+from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, sessionmaker
 from sqlalchemy.pool import StaticPool
+
+from domain.types import JsonObject
 
 
 class Base(DeclarativeBase):
@@ -24,7 +28,7 @@ class User(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True)
     username: Mapped[str] = mapped_column(String(64), unique=True)
     password_hash: Mapped[str] = mapped_column(String(256))
-    profile: Mapped[dict] = mapped_column(JSON, default=dict)
+    profile: Mapped[JsonObject] = mapped_column(JSON, default=dict)
 
 
 class SessionToken(Base):
@@ -47,7 +51,7 @@ class Material(Base):
     kind: Mapped[str] = mapped_column(String(20))
     title: Mapped[str] = mapped_column(String(500))
     description: Mapped[str] = mapped_column(String, default="")
-    topics: Mapped[list] = mapped_column(JSON, default=list)
+    topics: Mapped[list[str]] = mapped_column(JSON, default=list)
     published: Mapped[bool] = mapped_column(Boolean, default=False)
     access: Mapped[str] = mapped_column(String(20), default="restricted")
     canonical_url: Mapped[str | None] = mapped_column(String(2000), nullable=True)
@@ -79,22 +83,21 @@ class Activity(Base):
     created_at: Mapped[float] = mapped_column(Float, default=time.time)
 
 
-def connect(url):
-    options = {"pool_pre_ping": True}
+def connect(url: str) -> tuple[Engine, sessionmaker[Session]]:
     if url.startswith("sqlite:"):
-        options["connect_args"] = {"check_same_thread": False}
-        if ":memory:" in url:
-            options["poolclass"] = StaticPool
-    engine = create_engine(url, **options)
-    if url.startswith("sqlite:"):
+        engine = create_engine(
+            url,
+            connect_args={"check_same_thread": False},
+            **({"poolclass": StaticPool} if ":memory:" in url else {}),
+        )
 
         @event.listens_for(engine, "connect")
-        def sqlite_foreign_keys(connection, _):
+        def sqlite_foreign_keys(connection: Connection, record: object) -> None:
             connection.execute("PRAGMA foreign_keys=ON")
-
+    else:
+        engine = create_engine(url, pool_pre_ping=True)
     return engine, sessionmaker(engine, expire_on_commit=False)
 
 
-def initialize(engine):
-    # Initial hackathon schema, isolated from the source dump's tables.
+def initialize(engine: Engine) -> None:
     Base.metadata.create_all(engine)

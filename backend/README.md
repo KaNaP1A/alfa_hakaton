@@ -17,7 +17,7 @@ FastAPI-приложение между фронтендом, `alfa_reco` и а�
 cd backend
 uv sync --frozen
 uv run alfa-backend seed-demo
-uv run uvicorn alfa_backend.app:create_app --factory --port 8080 --no-access-log --no-proxy-headers
+uv run uvicorn app:create_app --factory --port 8080 --no-access-log --no-proxy-headers
 ```
 
 Открыть **http://127.0.0.1:8080/docs**. Это интерактивный API, отдельный новый сайт не создаётся.
@@ -74,12 +74,14 @@ uv run alfa-backend init-db
 
 ## Подключить настоящий алгоритм
 
+Расположение весов и запуск комплекта: [models/README.md](../models/README.md).
+
 1. Получить у владельца совместимый комплект каталога, E5, CatBoost и векторов. В Git его нет.
    Проверить комплект по [BACKEND_HANDOFF.md](../05_code/docs/BACKEND_HANDOFF.md).
 2. В окружении алгоритма запустить из `05_code`:
 
    ```bash
-   PYTHONPATH=src HF_HUB_OFFLINE=1 uv run python -m alfa_reco serve --relevance --no-llm --port 8000
+   PYTHONPATH=src HF_HUB_OFFLINE=1 uv run python -m alfa_reco serve --output ../models/recommender/catalog --relevance --no-llm --port 8000
    ```
 
 3. Подготовить актуальный доверенный каталог по формату ниже. `generation` должен совпадать
@@ -89,7 +91,7 @@ uv run alfa-backend init-db
    ```bash
    export ALFA_RECO_MODE=http
    export ALFA_RECO_URL=http://127.0.0.1:8000
-   uv run uvicorn alfa_backend.app:create_app --factory --port 8080 --no-access-log --no-proxy-headers
+   uv run uvicorn app:create_app --factory --port 8080 --no-access-log --no-proxy-headers
    ```
 
 5. Проверить `/ready`, настоящий поиск, рекомендации и план. Режим `http` не переключается
@@ -175,8 +177,8 @@ ALFA_DATABASE_URL='postgresql+psycopg://READONLY_USER:...@HOST/SOURCE_DB' \
 | `POST /me/events` | Событие с `event_id`, `generation`, `entity_key`, `action`, необязательным `position` |
 | `GET /me/events` | Последние доступные события текущего пользователя и поколения |
 | `GET /catalog` | `q`, `kind`, `limit`, `offset`; только опубликованные доступные карточки |
-| `GET /suggest` | `q`, `limit`; названия из доступного каталога |
-| `GET /search` | `q`, `kind`, `top`, необязательный `clarification_text` |
+| `GET /suggest` | `q`, `limit`; проверенные подсказки модели (http) или названия каталога (demo) |
+| `GET /search` | `q`, `kind`, `top`; selection_id + selection_generation либо clarification_token либо clarification_text |
 | `POST /recommend` | `{"generation":"..."}`; профиль и история берутся сервером из БД |
 | `POST /development-plan` | `{"generation":"..."}`; до трёх тематических шагов |
 
@@ -184,12 +186,13 @@ ALFA_DATABASE_URL='postgresql+psycopg://READONLY_USER:...@HOST/SOURCE_DB' \
 версию и доступность внутреннего API. Успешная readiness-проверка не заменяет настоящий поиск.
 
 Публичный контракт отличается от внутреннего API алгоритма. Фронтенду не надо отправлять
-`viewed`/`completed` и обращаться напрямую к :8000. Подсказку следует использовать как новый текст
-поиска `q=label`; внутренние `selection_id` наружу не выдаются. Уточнение передаётся вместе с
-исходным `q` в `clarification_text`. Произвольные диагностические данные алгоритма не раскрываются.
+`viewed`/`completed` и обращаться напрямую к :8000. В http-режиме для подсказки передаются
+исходный `q`, `selection_id` и `selection_generation`; в demo используется новый `q=label`.
+Уточнение передаётся с исходным `q` через `clarification_token` либо `clarification_text`.
+Произвольные диагностические данные алгоритма не раскрываются.
 
 Порядок карточек сохраняется после проверки доступа, дублей нет. Список может быть коротким или
-пустым. Подсказки строятся отдельно по доступным названиям и не обещают семантический autocomplete.
+пустым. В http-режиме подсказки берутся из модели и проверяются по доступу; demo использует доступные названия.
 
 Поля профиля `goal`, `industry`, `business_stage`, `experience`, `preferred_kinds`, `region`
 сохраняются, но существующий внутренний HTTP `/recommend` их не принимает. В рекомендации
@@ -213,20 +216,19 @@ origin через запятую. По умолчанию cross-origin не ра
 ## Проверки
 
 ```bash
-uv run ruff check backend
-uv run ruff format --check backend
-uv run python -m unittest discover -s backend/tests -v
+cd backend
+./ci.sh
 ```
 
 Повторить те же тесты на **отдельной пустой PostgreSQL**:
 
 ```bash
 ALFA_TEST_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST/alfa_backend_test' \
-  uv run python -m unittest discover -s backend/tests -v
+  uv run python -m unittest discover -s tests -v
 ```
 
 Тесты пересоздают только таблицы API в тестовой БД; имя БД обязательно должно оканчиваться `_test`.
-Не указывать рабочую базу! CI запускает тесты на SQLite и PostgreSQL 17.
+Не указывать рабочую базу! По умолчанию ci.sh использует SQLite; PostgreSQL проверяется с ALFA_TEST_DATABASE_URL.
 
 ## Границы версии для хакатона
 
@@ -244,4 +246,34 @@ ALFA_TEST_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST/alfa_backend_tes
 
 ## Структура
 
-`domain/` содержит чистые значения, `application/` — порты и правила выдачи, `adapters/` — SQLAlchemy, HTTP-клиент модели и авторизацию. `app.py` собирает зависимости и описывает входящие HTTP-маршруты. Зависимости фиксируются `uv.lock`; весь новый код и инфраструктура расположены внутри `backend/`.
+Код лежит непосредственно в `backend/`:
+
+- `api/`: тонкие HTTP-обработчики, зависимости, middleware и обработчики ошибок.
+- `services/`: сценарии приложения и Protocol-контракты репозитория, алгоритма и паролей.
+- `domain/`: сущности, контракты ответов и собственный `AppError`.
+- `repositories/`: SQL-запросы и транзакции, преобразование ORM в независимые сущности.
+- `infrastructure/`: SQLAlchemy-модели, UoW, подключение к БД, HTTP-клиент алгоритма и scrypt.
+- `app.py`: сборка зависимостей и управление ресурсами.
+- `config/settings.py`: настройки приложения и чтение окружения.
+- `schemas/requests.py`: проверяемые DTO входных данных.
+
+Сервисы не импортируют FastAPI, SQLAlchemy, инфраструктуру или реализацию репозитория.
+API получает сервис через Depends; сервис получает реализации Protocol в composition root.
+Объекты ORM не выходят из репозитория. Проверка `mypy --strict` включена в `ci.sh`.
+
+Единый контракт ошибок (вместо прежнего `detail`):
+
+```json
+{"error": {"code": "unauthorized", "message": "Authentication required", "details": null}}
+```
+
+Валидация возвращает тот же конверт с безопасными `loc`, `msg`, `type` в `details`,
+без исходных значений пароля. Клиентам нужно читать `error.message` и `error.code`.
+
+## Транзакции через Unit of Work
+
+`UnitOfWorkPort` задаёт контракт, `SqlAlchemyUnitOfWork` управляет сессией, commit,
+rollback и закрытием. Репозитории выполняют только flush. Сервис явно вызывает
+commit после завершения операции; при выходе из UoW незакоммиченные изменения
+откатываются, включая исключения. Регистрация и выпуск токена атомарны.
+CLI импорта и управления правами использует тот же UoW.

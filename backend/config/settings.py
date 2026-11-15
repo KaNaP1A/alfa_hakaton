@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 from dataclasses import dataclass
 from urllib.parse import urlsplit
@@ -14,7 +16,7 @@ class Settings:
     requests_per_minute: int = 120
     cors_origins: tuple[str, ...] = ()
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if self.reco_mode not in {"demo", "http"}:
             raise ValueError("ALFA_RECO_MODE must be demo or http")
         if not self.database_url.startswith(("sqlite:", "postgresql+psycopg:")):
@@ -24,7 +26,7 @@ class Settings:
             raise ValueError("Invalid ALFA_RECO_URL")
         if parsed.query or parsed.fragment or parsed.path not in {"", "/"}:
             raise ValueError("ALFA_RECO_URL must be an origin without path/query/fragment")
-        if self.reco_host_header and any(c in self.reco_host_header for c in "\r\n"):
+        if self.reco_host_header and any((c in self.reco_host_header for c in "\r\n")):
             raise ValueError("Invalid ALFA_RECO_HOST_HEADER")
         for origin in self.cors_origins:
             url = urlsplit(origin)
@@ -41,7 +43,7 @@ class Settings:
             raise ValueError("Timeout, token TTL and rate limit must be positive")
 
     @classmethod
-    def from_env(cls):
+    def from_env(cls) -> Settings:
         return cls(
             database_url=os.getenv("ALFA_DATABASE_URL", "sqlite:///./backend.sqlite3"),
             reco_mode=os.getenv("ALFA_RECO_MODE", "demo"),
@@ -51,6 +53,6 @@ class Settings:
             token_ttl=int(os.getenv("ALFA_TOKEN_TTL", "86400")),
             requests_per_minute=int(os.getenv("ALFA_RATE_LIMIT", "120")),
             cors_origins=tuple(
-                x.strip() for x in os.getenv("ALFA_CORS_ORIGINS", "").split(",") if x.strip()
+                (x.strip() for x in os.getenv("ALFA_CORS_ORIGINS", "").split(",") if x.strip())
             ),
         )

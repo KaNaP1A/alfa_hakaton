@@ -1,13 +1,15 @@
+from __future__ import annotations
+
 import argparse
 import json
 from pathlib import Path
 
 from sqlalchemy import inspect, select
 
-from .adapters.catalog import import_catalog
-from .adapters.database import Grant, User, connect, initialize
-from .config import Settings
-from .schemas import CatalogImport
+from config.settings import Settings
+from infrastructure.database import Grant, User, connect, initialize
+from infrastructure.uow import SqlAlchemyUnitOfWork
+from schemas.requests import CatalogImport
 
 DEMO = {
     "generation": "demo-v1",
@@ -52,7 +54,7 @@ DEMO = {
 }
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Alfa API database management")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("init-db")
@@ -89,21 +91,22 @@ def main():
             )
             return
         initialize(engine)
-        with sessions() as db:
+        with SqlAlchemyUnitOfWork(sessions) as uow:
+            db = uow.session
             if args.command in {"seed-demo", "import-catalog"}:
                 if args.command == "seed-demo" and settings.reco_mode != "demo":
                     parser.error("seed-demo is only allowed in ALFA_RECO_MODE=demo")
                 data = CatalogImport.model_validate(
                     DEMO if args.command == "seed-demo" else json.loads(args.path.read_text())
                 )
-                import_catalog(db, data)
+                uow.repository.import_catalog(data)
+                uow.commit()
                 print(f"Imported {len(data.materials)} materials, generation={data.generation}")
             elif args.command in {"grant", "revoke"}:
                 user = db.scalar(select(User).where(User.username == args.username.casefold()))
                 if user is None:
                     parser.error("User not found; register using the API first")
-                # Restrict CLI grants to existing material IDs to catch operator typos.
-                from .adapters.database import Material
+                from infrastructure.database import Material
 
                 if db.get(Material, args.entity_key) is None:
                     parser.error("Material not found")
@@ -116,7 +119,7 @@ def main():
                     db.add(Grant(user_id=user.id, entity_key=args.entity_key))
                 elif args.command == "revoke" and existing is not None:
                     db.delete(existing)
-                db.commit()
+                uow.commit()
                 print(f"Access updated for user {user.id}")
             else:
                 print("Database initialized")

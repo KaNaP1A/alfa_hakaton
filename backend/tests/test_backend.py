@@ -10,14 +10,14 @@ import httpx
 from fastapi.testclient import TestClient
 from sqlalchemy import select
 
-from alfa_backend.adapters.auth import password_hash, password_matches, token_digest
-from alfa_backend.adapters.catalog import import_catalog
-from alfa_backend.adapters.database import Activity, Grant, Material, SessionToken, User
-from alfa_backend.adapters.recommender import HttpRecommender, UpstreamError
-from alfa_backend.app import create_app
-from alfa_backend.cli import DEMO
-from alfa_backend.config import Settings
-from alfa_backend.schemas import CatalogImport
+from app import create_app
+from cli import DEMO
+from config.settings import Settings
+from infrastructure.auth import password_hash, password_matches, token_digest
+from infrastructure.database import Activity, Grant, Material, SessionToken, User
+from infrastructure.recommender import HttpRecommender, UpstreamError
+from repositories.catalog import import_catalog
+from schemas.requests import CatalogImport
 
 
 class FakeRecommender:
@@ -45,7 +45,10 @@ class FakeRecommender:
     def health(self):
         return {"status": "ok", "generation": self.generation, "relevance_available": True}
 
-    def search(self, *args):
+    def suggest(self, q, limit):
+        return {"generation": self.generation, "completions": [], "related_topics": []}
+
+    def search(self, *args, **kwargs):
         if self.error:
             raise self.error
         return {
@@ -84,12 +87,12 @@ class BackendTests(unittest.TestCase):
         self.client = TestClient(self.app)
         self.client.__enter__()
         with self.app.state.sessions() as db:
-            # An external test database must be dedicated to these tests.
-            from alfa_backend.adapters.database import Base
+            from infrastructure.database import Base
 
             Base.metadata.drop_all(self.app.state.engine)
             Base.metadata.create_all(self.app.state.engine)
             import_catalog(db, CatalogImport.model_validate(DEMO))
+            db.commit()
         self.auth = self.register("alice")
         self.other_auth = self.register("bob")
 
@@ -120,13 +123,34 @@ class BackendTests(unittest.TestCase):
     ):
         return self.post(
             "/api/v1/me/events",
-            {
-                "event_id": eid,
-                "entity_key": key,
-                "action": action,
-                "generation": generation,
-            },
+            {"event_id": eid, "entity_key": key, "action": action, "generation": generation},
             auth,
+        )
+
+    def test_error_envelope_is_shared_by_failure_paths(self):
+        responses = [
+            self.client.get("/api/v1/me"),
+            self.client.get("/missing"),
+            self.client.delete("/api/v1/me"),
+            self.post("/api/v1/auth/login", {"username": "xy", "password": "secret"}),
+            self.client.post("/api/v1/auth/login", content=b"x" * 32769),
+            self.event(key="course:missing"),
+            self.post("/api/v1/recommend", {"generation": "old"}),
+        ]
+        for response in responses:
+            with self.subTest(status=response.status_code):
+                self.assertGreaterEqual(response.status_code, 400)
+                self.assertEqual(set(response.json()), {"error"})
+                self.assertEqual(set(response.json()["error"]), {"code", "message", "details"})
+                self.assertNotIn("secret", response.text)
+                self.assertIn("X-Request-ID", response.headers)
+
+    def test_openapi_documents_error_contract(self):
+        schema = self.client.get("/openapi.json").json()
+        response = schema["paths"]["/api/v1/auth/login"]["post"]["responses"]["422"]
+        self.assertEqual(
+            response["content"]["application/json"]["schema"]["$ref"],
+            "#/components/schemas/ErrorEnvelope",
         )
 
     def test_requires_authentication(self):
@@ -302,6 +326,7 @@ class BackendTests(unittest.TestCase):
         data = dict(DEMO, generation="demo-v2")
         with self.app.state.sessions() as db:
             import_catalog(db, CatalogImport.model_validate(data))
+            db.commit()
             self.assertEqual(len(list(db.scalars(select(Activity)))), 1)
         self.upstream.generation = "demo-v2"
         response = self.post("/api/v1/recommend", {"generation": "demo-v2"})
@@ -363,6 +388,77 @@ class BackendTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             CatalogImport.model_validate(dict(DEMO, materials=DEMO["materials"] * 2))
         self.assertEqual(self.get("/api/v1/catalog").json()["total"], 3)
+
+    def test_model_suggestions_are_authorized_and_selectable(self):
+        payload = {
+            "generation": "demo-v1",
+            "completions": [
+                {
+                    "id": "safe-id",
+                    "kind": "title",
+                    "label": "FORGED",
+                    "evidence_entity_keys": ["course:demo-coffee"],
+                    "support_count": 1,
+                },
+                {
+                    "id": "secret-id",
+                    "kind": "title",
+                    "label": "LEAK",
+                    "evidence_entity_keys": ["course:demo-private"],
+                    "support_count": 1,
+                },
+                {
+                    "id": "partial-id",
+                    "kind": "title",
+                    "label": "LEAK",
+                    "evidence_entity_keys": ["course:demo-coffee"],
+                    "support_count": 99,
+                },
+            ],
+            "related_topics": [],
+        }
+        with patch.object(self.upstream, "suggest", return_value=payload):
+            response = self.get("/api/v1/suggest?q=кофе")
+            self.assertEqual(response.status_code, 200, response.text)
+            self.assertEqual([item["id"] for item in response.json()["completions"]], ["safe-id"])
+            self.assertNotIn("FORGED", response.text)
+            self.assertNotIn("LEAK", response.text)
+            response = self.get(
+                "/api/v1/search?q=кофе&selection_id=safe-id&selection_generation=demo-v1"
+            )
+            self.assertEqual(response.status_code, 200, response.text)
+            self.assertEqual(
+                self.get(
+                    "/api/v1/search?q=кофе&selection_id=secret-id&selection_generation=demo-v1"
+                ).status_code,
+                404,
+            )
+            self.assertEqual(
+                self.get(
+                    "/api/v1/search?q=кофе&selection_id=safe-id&selection_generation=old"
+                ).status_code,
+                409,
+            )
+
+    def test_search_rejects_incompatible_choices(self):
+        for params in (
+            {"selection_id": "x"},
+            {"clarification_token": "x", "clarification_text": "y"},
+            {"selection_id": "x", "selection_generation": "demo-v1", "clarification_text": "y"},
+        ):
+            response = self.client.get(
+                "/api/v1/search", params={"q": "кофе", **params}, headers=self.auth
+            )
+            self.assertEqual(response.status_code, 422, response.text)
+
+    def test_confidence_is_not_forwarded_as_arbitrary_model_data(self):
+        original = self.upstream.search("кофе")
+        original["confidence"] = {"status": "unvalidated", "reason": "LEAK", "secret": "LEAK"}
+        with patch.object(self.upstream, "search", return_value=original):
+            response = self.get("/api/v1/search?q=кофе")
+            self.assertEqual(response.status_code, 200, response.text)
+            self.assertEqual(response.json()["confidence"], {"status": "unvalidated"})
+            self.assertNotIn("LEAK", response.text)
 
 
 class AdapterTests(unittest.TestCase):

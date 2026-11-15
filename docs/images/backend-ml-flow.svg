@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1020" viewBox="0 0 1400 1020" role="img" aria-labelledby="title description">
+  <title id="title">C4 — уровень C2: контейнеры системы Alfa</title>
+  <desc id="description">Пользователь работает с веб-интерфейсом. В границе системы Alfa расположены фронтенд, Backend API, ML-сервис, база данных и файловое хранилище моделей. Фронтенд вызывает Backend API по HTTP и JSON. Backend API вызывает ML-сервис по HTTP и JSON и обращается к базе данных через SQLAlchemy. ML-сервис читает веса, векторы и снимок каталога из файлового хранилища при запуске. Бэкенд проверяет доступ к результатам перед ответом клиенту.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <style>
+      text { font-family: Arial, 'DejaVu Sans', sans-serif; }
+      .title { fill: #0f172a; font-size: 28px; font-weight: 700; }
+      .subtitle { fill: #475569; font-size: 16px; }
+      .name { fill: #fff; font-size: 23px; font-weight: 700; }
+      .type { fill: #dbeafe; font-size: 14px; }
+      .body { fill: #fff; font-size: 16px; }
+      .path { fill: #dbeafe; font-size: 14px; font-family: 'DejaVu Sans Mono', monospace; }
+      .relation { fill: #334155; font-size: 14px; }
+      .protocol { fill: #64748b; font-size: 13px; }
+      .line { fill: none; stroke: #475569; stroke-width: 2; marker-end: url(#arrow); }
+      .container { fill: #2374b9; stroke: #175387; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1400" height="1020" fill="#fff"/>
+  <text x="40" y="48" class="title">Alfa · C4 Container Diagram (C2)</text>
+  <text x="40" y="78" class="subtitle">Контейнеры, зоны ответственности и взаимодействие · режим ALFA_RECO_MODE=http</text>
+
+  <rect x="80" y="115" width="330" height="110" rx="8" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+  <text x="245" y="151" text-anchor="middle" class="name">Пользователь</text>
+  <text x="245" y="175" text-anchor="middle" class="type">[Person]</text>
+  <text x="245" y="204" text-anchor="middle" class="body">Поиск и персональные рекомендации</text>
+
+  <rect x="30" y="290" width="1340" height="620" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="9 6"/>
+  <text x="55" y="882" class="subtitle" style="font-weight:700">Alfa [Software System]</text>
+
+  <rect x="80" y="340" width="330" height="155" rx="6" class="container"/>
+  <text x="245" y="374" text-anchor="middle" class="name">Веб-интерфейс</text>
+  <text x="245" y="399" text-anchor="middle" class="type">[Container: HTML, JavaScript]</text>
+  <text x="245" y="431" text-anchor="middle" class="body">Отображает поиск, рекомендации</text>
+  <text x="245" y="455" text-anchor="middle" class="body">и учебный план пользователя</text>
+  <text x="245" y="480" text-anchor="middle" class="path">frontend_handoff/</text>
+
+  <rect x="535" y="340" width="330" height="155" rx="6" class="container"/>
+  <text x="700" y="374" text-anchor="middle" class="name">Backend API</text>
+  <text x="700" y="399" text-anchor="middle" class="type">[Container: Python, FastAPI · :8080]</text>
+  <text x="700" y="431" text-anchor="middle" class="body">Авторизация, профиль и история</text>
+  <text x="700" y="455" text-anchor="middle" class="body">Проверка доступа и сборка карточек</text>
+  <text x="700" y="480" text-anchor="middle" class="path">backend/</text>
+
+  <rect x="990" y="340" width="330" height="155" rx="6" class="container"/>
+  <text x="1155" y="374" text-anchor="middle" class="name">ML-сервис</text>
+  <text x="1155" y="399" text-anchor="middle" class="type">[Container: Python, alfa_reco · :8000]</text>
+  <text x="1155" y="431" text-anchor="middle" class="body">Поиск, ранжирование и рекомендации</text>
+  <text x="1155" y="455" text-anchor="middle" class="body">BM25 + E5-small + CatBoost</text>
+  <text x="1155" y="480" text-anchor="middle" class="path">05_code/</text>
+
+  <path d="M 535 709 C 535 676 865 676 865 709 L 865 817 C 865 850 535 850 535 817 Z" class="container"/>
+  <ellipse cx="700" cy="709" rx="165" ry="24" fill="#3285c9" stroke="#175387" stroke-width="2"/>
+  <text x="700" y="752" text-anchor="middle" class="name">База данных приложения</text>
+  <text x="700" y="778" text-anchor="middle" class="type">[Container: PostgreSQL / SQLite]</text>
+  <text x="700" y="806" text-anchor="middle" class="body">Пользователи, сессии, профиль, история</text>
+  <text x="700" y="830" text-anchor="middle" class="body">Доверенный каталог и права доступа</text>
+
+  <path d="M 990 709 C 990 676 1320 676 1320 709 L 1320 817 C 1320 850 990 850 990 817 Z" class="container"/>
+  <ellipse cx="1155" cy="709" rx="165" ry="24" fill="#3285c9" stroke="#175387" stroke-width="2"/>
+  <text x="1155" y="752" text-anchor="middle" class="name">Хранилище ML-артефактов</text>
+  <text x="1155" y="778" text-anchor="middle" class="type">[Container: File system]</text>
+  <text x="1155" y="806" text-anchor="middle" class="body">Веса, векторы и снимок каталога</text>
+  <text x="1155" y="830" text-anchor="middle" class="path">models/recommender/</text>
+
+  <path d="M 245 225 V 340" class="line"/>
+  <text x="265" y="260" class="relation">Работает с интерфейсом</text>
+  <text x="265" y="281" class="protocol">[Браузер]</text>
+
+  <path d="M 410 431 H 535" class="line"/>
+  <text x="472" y="386" text-anchor="middle" class="relation">Вызывает API</text>
+  <text x="472" y="408" text-anchor="middle" class="protocol">[HTTP / JSON]</text>
+
+  <path d="M 865 431 H 990" class="line"/>
+  <text x="927" y="366" text-anchor="middle" class="relation">Запрашивает</text>
+  <text x="927" y="386" text-anchor="middle" class="relation">поиск и подбор</text>
+  <text x="927" y="408" text-anchor="middle" class="protocol">[HTTP / JSON]</text>
+
+  <path d="M 700 495 V 684" class="line"/>
+  <text x="720" y="565" class="relation">Читает и сохраняет</text>
+  <text x="720" y="586" class="relation">данные пользователя</text>
+  <text x="720" y="607" class="relation">и каталог</text>
+  <text x="720" y="633" class="protocol">[SQL / SQLAlchemy, UoW]</text>
+
+  <path d="M 1155 495 V 684" class="line"/>
+  <text x="1175" y="565" class="relation">Читает при старте</text>
+  <text x="1175" y="586" class="relation">совместимый комплект</text>
+  <text x="1175" y="612" class="protocol">[File I/O]</text>
+
+  <rect x="40" y="947" width="18" height="18" fill="#334155"/>
+  <text x="68" y="962" class="relation">Человек</text>
+  <rect x="190" y="947" width="18" height="18" fill="#2374b9"/>
+  <text x="218" y="962" class="relation">Контейнер приложения или хранилище</text>
+  <path d="M 600 956 H 650" class="line"/>
+  <text x="665" y="962" class="relation">Вызов / обращение к данным; ответ возвращается по тому же каналу</text>
+  <text x="40" y="1000" class="subtitle">Каталог ML и каталог API связаны через generation. Актуальные права, цены и ссылки проверяет Backend API.</text>
+</svg>

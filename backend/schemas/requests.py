@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import re
 from decimal import Decimal, InvalidOperation
 from typing import Literal
@@ -16,13 +18,12 @@ class StrictModel(BaseModel):
 
 class Credentials(StrictModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=False)
-
-    username: str = Field(min_length=3, max_length=64, pattern=r"^[a-zA-Z0-9_.-]+$")
+    username: str = Field(min_length=3, max_length=64, pattern="^[a-zA-Z0-9_.-]+$")
     password: str = Field(min_length=10, max_length=128)
 
     @field_validator("username")
     @classmethod
-    def normalize_username(cls, value):
+    def normalize_username(cls, value: str) -> str:
         return value.casefold()
 
 
@@ -60,7 +61,7 @@ class CatalogMaterial(StrictModel):
     price_currency: str | None = None
 
     @model_validator(mode="after")
-    def validate_material(self):
+    def validate_material(self) -> CatalogMaterial:
         if not self.entity_key.startswith(self.kind + ":"):
             raise ValueError("entity_key must start with kind:")
         if self.canonical_url:
@@ -76,9 +77,10 @@ class CatalogMaterial(StrictModel):
                 raise ValueError("Invalid price") from error
             if not value.is_finite() or value < 0 or value > Decimal("999999999999.99"):
                 raise ValueError("Invalid price")
-            if value.as_tuple().exponent < -2:
+            exponent = value.as_tuple().exponent
+            if isinstance(exponent, int) and exponent < -2:
                 raise ValueError("Price supports at most two decimal places")
-            if not re.fullmatch(r"[A-Z]{3}", self.price_currency):
+            if not re.fullmatch("[A-Z]{3}", self.price_currency or ""):
                 raise ValueError("Use a three-letter uppercase currency code")
         return self
 
@@ -87,7 +89,7 @@ class CatalogImport(GenerationRequest):
     materials: list[CatalogMaterial] = Field(max_length=100000)
 
     @model_validator(mode="after")
-    def unique_keys(self):
+    def unique_keys(self) -> CatalogImport:
         keys = [item.entity_key for item in self.materials]
         if len(keys) != len(set(keys)):
             raise ValueError("Duplicate entity_key")
