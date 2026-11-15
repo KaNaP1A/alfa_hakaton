@@ -2149,6 +2149,20 @@ h3 {
 .catalog-source-switch {
   margin-bottom: 20px;
 }
+.demo-notice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+.demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.demo-disclaimer {
+  color: #6b4540;
+  font-size: 13px;
+}
 .demo-controls {
   display: flex;
   flex-wrap: wrap;

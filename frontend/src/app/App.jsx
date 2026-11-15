@@ -19,7 +19,7 @@ export default function App() {
   const [generation, setGeneration] = useState(null),
     [healthError, setHealthError] = useState(""),
     [tab, setTab] = useState("search");
-  const [catalogSource, setCatalogSource] = useState("demo");
+  const [catalogSource, setCatalogSource] = useState("model");
   const [modal, setModal] = useState(null),
     [modalBusy, setModalBusy] = useState(false),
     [modalError, setModalError] = useState("");

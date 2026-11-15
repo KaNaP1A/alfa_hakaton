@@ -139,3 +139,8 @@ test("technical provider errors keep their code and expose a readable Russian me
       /Попробуйте позже/.test(error.userMessage),
   );
 });
+
+test("server connection errors explain how to restart the project", () => {
+  const error = new ApiError("Не удалось связаться с сервером.", 0, "network");
+  assert.match(error.userMessage, /sh \.\/run\.sh/);
+});

@@ -268,7 +268,10 @@ export function Workspace({
                 onOpen={openMaterial}
               />
             ) : catalogSource === "demo" ? (
-              <DemoCatalog />
+              <DemoCatalog
+                onUseModel={() => setCatalogSource("model")}
+                onOpenRecommendations={() => navigate("recommend")}
+              />
             ) : (
               <Catalog
                 state={catalog}

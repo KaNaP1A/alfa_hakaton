@@ -7,7 +7,7 @@ import { State } from "../../shared/ui/ResultStates.jsx";
 
 const SIZE = 12;
 
-export function DemoCatalog() {
+export function DemoCatalog({ onUseModel, onOpenRecommendations }) {
   const [items, setItems] = useState([]);
   const [loadError, setLoadError] = useState(false);
   const [retry, setRetry] = useState(0);
@@ -118,11 +118,25 @@ export function DemoCatalog() {
 
   return (
     <section aria-label="Демонстрационный каталог">
-      <p className="notice">
-        Демонстрация: материалы из открытого снимка и вымышленные примеры. Цены
-        синтетических курсов условные. Доступ и цены материалов Альфы не
-        подтверждены. Поиск и рекомендации модели используют отдельный каталог.
-      </p>
+      <div className="notice demo-notice">
+        <p>
+          Демо-каталог показывает открытый снимок и вымышленные примеры; эти
+          карточки не передаются модели. Для ранжирования PostgreSQL-материалов
+          выберите каталог алгоритма, поиск или персональную подборку.
+        </p>
+        <div className="demo-actions">
+          <button className="text-btn" onClick={onUseModel}>
+            Открыть каталог алгоритма
+          </button>
+          <button className="text-btn" onClick={onOpenRecommendations}>
+            Показать подборку модели
+          </button>
+        </div>
+        <p className="demo-disclaimer">
+          Цены синтетических курсов условные. Доступ и цены материалов Альфы не
+          подтверждены.
+        </p>
+      </div>
       {next && (
         <section className="demo-next">
           <h3>Возможный следующий шаг</h3>
