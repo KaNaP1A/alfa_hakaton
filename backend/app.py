@@ -32,7 +32,12 @@ def create_app(
     engine, sessions = storage if storage is not None else (None, None)
     if uow_factory is None:
         assert sessions is not None
-        uow_factory = partial(SqlAlchemyUnitOfWork, sessions)
+        uow_factory = partial(
+            SqlAlchemyUnitOfWork,
+            sessions,
+            catalog_source=settings.catalog_source,
+            generation=settings.catalog_generation,
+        )
     upstream = recommender
     if upstream is None:
         if settings.reco_mode == "http":
@@ -43,7 +48,7 @@ def create_app(
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         try:
-            if engine is not None:
+            if engine is not None and settings.auto_create_tables:
                 initialize(engine)
             yield
         finally:

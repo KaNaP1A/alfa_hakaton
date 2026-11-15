@@ -92,3 +92,7 @@ Thumbs.db
 # Frontend dependencies and local lockfile.
 /frontend/node_modules/
 /frontend/package-lock.json
+
+# Reviewed schema migrations and a credential-free env template.
+!/backend/migrations/*.sql
+!/backend/.env.snapshot.example

@@ -8,6 +8,9 @@ from urllib.parse import urlsplit
 @dataclass(frozen=True)
 class Settings:
     database_url: str = "sqlite:///./backend.sqlite3"
+    catalog_source: str = "imported"
+    catalog_generation: str = "production-snapshot"
+    auto_create_tables: bool = True
     reco_mode: str = "demo"
     reco_catalog: str = "../models/recommender/catalog"
     reco_url: str = "http://127.0.0.1:8000"
@@ -18,6 +21,15 @@ class Settings:
     cors_origins: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
+        if self.catalog_source not in {"imported", "postgres"}:
+            raise ValueError("ALFA_CATALOG_SOURCE must be imported or postgres")
+        if self.catalog_source == "postgres":
+            if not self.database_url.startswith("postgresql+psycopg:"):
+                raise ValueError("Production catalog requires PostgreSQL")
+            if self.auto_create_tables:
+                raise ValueError("Production snapshot requires ALFA_AUTO_CREATE_TABLES=false")
+        if not self.catalog_generation or len(self.catalog_generation) > 150:
+            raise ValueError("Invalid ALFA_CATALOG_GENERATION")
         if self.reco_mode not in {"demo", "http", "python"}:
             raise ValueError("ALFA_RECO_MODE must be demo, http or python")
         if not self.database_url.startswith(("sqlite:", "postgresql+psycopg:")):
@@ -47,6 +59,9 @@ class Settings:
     def from_env(cls) -> Settings:
         return cls(
             database_url=os.getenv("ALFA_DATABASE_URL", "sqlite:///./backend.sqlite3"),
+            catalog_source=os.getenv("ALFA_CATALOG_SOURCE", "imported"),
+            catalog_generation=os.getenv("ALFA_CATALOG_GENERATION", "production-snapshot"),
+            auto_create_tables=os.getenv("ALFA_AUTO_CREATE_TABLES", "true").lower() == "true",
             reco_mode=os.getenv("ALFA_RECO_MODE", "demo"),
             reco_catalog=os.getenv("ALFA_RECO_CATALOG", "../models/recommender/catalog"),
             reco_url=os.getenv("ALFA_RECO_URL", "http://127.0.0.1:8000"),
