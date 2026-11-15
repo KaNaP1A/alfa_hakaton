@@ -1,3 +1,4 @@
+import signal
 import tempfile
 import unittest
 from pathlib import Path
@@ -22,6 +23,7 @@ class LauncherTests(unittest.TestCase):
             patch.object(Path, "is_file", return_value=True),
             patch.object(launcher, "run"),
             patch.object(launcher, "compose", side_effect=["", "f"]) as compose,
+            patch.object(launcher, "stop_port_occupants"),
             patch.object(launcher, "check_port"),
             patch.object(launcher, "prepare_python") as dependencies,
             patch.object(launcher, "serve") as serve,
@@ -72,3 +74,11 @@ class LauncherTests(unittest.TestCase):
             self.assertEqual(
                 launcher.load_env(path), {"KEY": "$(echo not-executed)", "EMPTY": ""}
             )
+
+    def test_port_listener_is_stopped_before_startup(self):
+        with (
+            patch.object(launcher, "listening_pids", side_effect=[[5173], [], []]),
+            patch.object(launcher.os, "kill") as kill,
+        ):
+            launcher.stop_port_occupants(5173)
+        kill.assert_called_once_with(5173, signal.SIGTERM)
