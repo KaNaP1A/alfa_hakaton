@@ -1,6 +1,7 @@
 # Alfa — поиск образовательных материалов
 
 Реализация и воспроизводимый запуск: [05_code/README.md](05_code/README.md).
+Карта рабочих папок и локальных данных: [docs/WORKSPACE_LAYOUT.md](docs/WORKSPACE_LAYOUT.md).
 
 Для локального смешанного каталога: `python3 demo_catalog/server.py --catalog data/demo_catalog.json --port 8767`, затем открыть http://127.0.0.1:8767. Подробности: [демо](demo_catalog/README.md), [данные](data/README.md). Для модели после клонирования нужны `git lfs install` и `git lfs pull`; инструкции — в [models/README.md](models/README.md).
 

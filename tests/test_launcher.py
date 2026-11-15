@@ -18,6 +18,8 @@ class LauncherTests(unittest.TestCase):
             tempfile.TemporaryDirectory() as temporary,
             patch.object(launcher, "STATE", Path(temporary)),
             patch.object(launcher, "load_env", return_value=self.settings()),
+            patch.object(launcher.shutil, "which", return_value="/mock/tool"),
+            patch.object(Path, "is_file", return_value=True),
             patch.object(launcher, "run"),
             patch.object(launcher, "compose", side_effect=["", "f"]) as compose,
             patch.object(launcher, "check_port"),
@@ -45,6 +47,8 @@ class LauncherTests(unittest.TestCase):
                 },
             ),
             patch.object(launcher, "run"),
+            patch.object(launcher.shutil, "which", return_value="/mock/tool"),
+            patch.object(Path, "is_file", return_value=True),
             patch.object(launcher, "compose") as compose,
             patch("sys.argv", ["run_project.py", "--migrate"]),
         ):
