@@ -1,0 +1,2 @@
+# RFC 9309 robots.txt parsing for the optional public-catalog collector.
+protego==0.7.0

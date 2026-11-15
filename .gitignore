@@ -1,12 +1,15 @@
-# Private catalog snapshots, model bundles, indexes and evaluation data.
-/05_code/artifacts/
-/05_code/evaluation/
-/docs/review_evidence_2026-11-12/
-/docs/EXPERT_REVIEW_2026-11-12.md
-/.push-algorithm/
-/frontend_handoff.zip
-/frontend/node_modules
-# Raw data, exports, annotation sheets and database backups.
+# Credentials and local configuration must never be committed.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.secrets/
+.credentials/
+
+# User databases, backups and local derived artifacts.
 *.sqlite
 *.sqlite3
 *.db
@@ -15,15 +18,24 @@
 *.dump
 *.backup
 *.bak
+/05_code/artifacts/
+/05_code/evaluation/
+/models/runtime/
+/models/sandbox/
+/.push-algorithm/
+/frontend_handoff.zip
+/docs/review_evidence_2026-11-12/
+/docs/EXPERT_REVIEW_2026-11-12.md
+
+# Arbitrary exports and trained artifacts are private by default. The explicitly
+# prepared data/ and models/recommender/ are the only publishable exceptions.
 *.csv
 *.tsv
 *.xlsx
 *.xls
 *.xlsm
 *.jsonl
-frontend/package-lock.json
-
-# Model weights, serialized objects and numerical arrays.
+!data/**/*.jsonl
 *.cbm
 *.safetensors
 *.onnx
@@ -36,17 +48,9 @@ frontend/package-lock.json
 *.joblib
 *.npy
 *.npz
-
-# Secrets and local configuration. Template files can be shared explicitly.
-.env
-.env.*
-!.env.example
-*.pem
-*.key
-*.p12
-*.pfx
-.secrets/
-.credentials/
+!models/recommender/**/*.cbm
+!models/recommender/**/*.safetensors
+!models/recommender/**/*.npz
 
 # Python environments, build output and caches.
 .venv/
@@ -63,7 +67,7 @@ htmlcov/
 build/
 dist/
 
-# Local demo/site and deployment files: publication is algorithm-only.
+# Legacy local-only UI and deployment artifacts, not the tracked demo_catalog/.
 /05_code/src/alfa_reco/web/
 /05_code/src/alfa_reco/lab.py
 /05_code/Dockerfile
@@ -85,6 +89,14 @@ Thumbs.db
 *.log
 *.tmp
 
-# Private handoff model and derived catalog.
-/models/recommender/
-/models/runtime/
+# Frontend dependencies and local lockfile.
+/frontend/node_modules/
+/frontend/package-lock.json
+
+# Reviewed schema migrations and a credential-free env template.
+!/backend/migrations/*.sql
+!/backend/.env.snapshot.example
+
+# Local launcher state and logs.
+/.run/
+/models/.runtime-*/

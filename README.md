@@ -1,6 +1,46 @@
 # Alfa — поиск образовательных материалов
 
 Реализация и воспроизводимый запуск: [05_code/README.md](05_code/README.md).
+Карта рабочих папок и локальных данных: [docs/WORKSPACE_LAYOUT.md](docs/WORKSPACE_LAYOUT.md).
+
+Для локального смешанного каталога: `python3 demo_catalog/server.py --catalog data/demo_catalog.json --port 8767`, затем открыть http://127.0.0.1:8767. Подробности: [демо](demo_catalog/README.md), [данные](data/README.md). Для модели после клонирования нужны `git lfs install` и `git lfs pull`; инструкции — в [models/README.md](models/README.md).
+
+## Запуск всего проекта одной командой
+
+Для macOS/Linux нужны Docker Desktop, `uv`, Python 3, Node.js/npm и бэкап
+`alfa_course_hackathon.backup` в корне. Если веса ещё не скачаны, нужен Git LFS.
+Запускайте из корня репозитория:
+
+```bash
+# Первый полный запуск: явно разрешить SQL-миграцию новых таблиц API.
+./run.sh --migrate
+
+# Последующие запуски:
+./run.sh
+```
+
+Скрипт восстанавливает PostgreSQL при первом старте, создаёт приватный env,
+подготавливает Python 3.12 и зависимости, копирует модель в `models/runtime`,
+запускает FastAPI с Python ML singleton и React/Vite. Исходники `05_code` не меняются.
+Повторные запуски используют готовые зависимости и модель.
+
+Открыть **http://127.0.0.1:5173**, API — **http://127.0.0.1:8080/docs**.
+Логи: `.run/backend.log` и `.run/frontend.log`. Терминал остаётся занят;
+Ctrl+C завершает API и Vite вместе с дочерними процессами. PostgreSQL остаётся работать.
+
+Без `--migrate` SQL автоматически не выполняется. Если таблиц API пока нет,
+скрипт остановится с подсказкой. Чтобы только установить зависимости и подготовить
+модель, сохранив БД без новых таблиц:
+
+```bash
+./run.sh --prepare-only
+```
+
+Пароль и URL БД берутся из `backend/.env.snapshot`; существующий файл сохраняется.
+ML-режим и generation скрипт выставляет автоматически из runtime модели.
+Не запускайте одновременно контейнерный API на порту 8080: этот скрипт использует
+Docker для PostgreSQL, а API с ML и Vite запускает нативно.
+Подробности о снимке и SQL — [backend/SNAPSHOT.md](backend/SNAPSHOT.md).
 
 Для локального смешанного каталога: `python3 demo_catalog/server.py --catalog data/demo_catalog.json --port 8767`, затем открыть http://127.0.0.1:8767. Подробности: [демо](demo_catalog/README.md), [данные](data/README.md). Для модели после клонирования нужны `git lfs install` и `git lfs pull`; инструкции — в [models/README.md](models/README.md).
 

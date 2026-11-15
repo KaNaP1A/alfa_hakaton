@@ -11,30 +11,43 @@ export function useSearch(generation, onGenerationChanged) {
   const [suggestions,setSuggestions] = useState([]);
   const [suggestOpen,setSuggestOpen] = useState(false);
   const [relatedTopics,setRelatedTopics] = useState([]);
+  const [selectionMode,setSelectionMode] = useState('replace_query_with_label');
+  const lastRequest = useRef(null);
   const active = useRef();
   const suggestionController = useRef();
   useEffect(() => {
     suggestionController.current?.abort();
-    if (!query.trim() || query.length>300) {setSuggestions([]);setRelatedTopics([]);return;}
+    if (!query.trim() || query.length>300) {setSuggestions([]);setRelatedTopics([]);setSelectionMode('replace_query_with_label');return;}
     const controller = new AbortController(); suggestionController.current=controller;
     const timer = setTimeout(async()=>{
-      try {const data=await api.suggest(query,controller.signal);if (!controller.signal.aborted && (!generation || data.generation===generation)) {setSuggestions(data.completions || []);setRelatedTopics(data.related_topics || []);}}
+      try {const data=await api.suggest(query,controller.signal);if (!controller.signal.aborted && (!generation || data.generation===generation)) {setSuggestions(data.completions || []);setRelatedTopics(data.related_topics || []);setSelectionMode(data.selection_mode || 'replace_query_with_label');}}
       catch(e){if(!controller.signal.aborted){setSuggestions([]);setRelatedTopics([]);}}
     },220);
     return ()=>{clearTimeout(timer);controller.abort()};
   },[query,generation]);
   useEffect(()=>()=>{active.current?.abort(); suggestionController.current?.abort()},[]);
   function cancel(){active.current?.abort();setLoading(false);}
-  function reset(){cancel();setSubmitted('');setResult(null);setError('');setKind('');}
+  function reset(){cancel();lastRequest.current=null;setSubmitted('');setResult(null);setError('');setKind('');setQuery('');setSuggestOpen(false);}
   async function search(q=query,k=kind,options={}){
     if (!q.trim())return;
     active.current?.abort();const controller=new AbortController();active.current=controller;
-    setSubmitted(q);setQuery(q);setKind(k);setSuggestOpen(false);setLoading(true);setError('');setResult(null);
-    try {const data=await api.search({q,kind:k,...options,signal:controller.signal});if(controller.signal.aborted)return;
+    const {displayQuery=q,...requestOptions}=options;
+    lastRequest.current={q,displayQuery,selection:requestOptions.selection};
+    setSubmitted(displayQuery);setQuery(displayQuery);setKind(k);setSuggestOpen(false);setLoading(true);setError('');setResult(null);
+    try {const data=await api.search({q,kind:k,...requestOptions,signal:controller.signal});if(controller.signal.aborted)return;
       if(generation && data.generation!==generation){onGenerationChanged(data.generation);setError('Каталог обновился. Повторите поиск.');return;}
       setResult(data);
     } catch(e){if(!aborted(e)&&!controller.signal.aborted)setError(e.message)}
     finally{if(!controller.signal.aborted)setLoading(false)}
   }
-  return {query,setQuery,kind,setKind,submitted,result,loading,error,suggestions,relatedTopics,suggestOpen,setSuggestOpen,search,cancel,reset};
+  function repeatSearch(nextKind=kind) {
+    const last=lastRequest.current;
+    if(!last)return search(query,nextKind);
+    return search(last.q,nextKind,{displayQuery:last.displayQuery,...(last.selection?{selection:last.selection}:{})});
+  }
+  function clarify(clarification) {
+    const last=lastRequest.current;
+    return search(last?.q || query,kind,{displayQuery:last?.displayQuery || query,clarification});
+  }
+  return {query,setQuery,kind,setKind,submitted,result,loading,error,suggestions,relatedTopics,selectionMode,suggestOpen,setSuggestOpen,search,repeatSearch,clarify,cancel,reset};
 }

@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react';
 import { CATEGORIES } from '../profile/storage.js';
 const EXAMPLES = ['Хочу научиться управлять командой', 'Хочу разобраться с финансами бизнеса', 'Хочу продвигать свой продукт'];
 export function Onboarding({ initial, onFinish, onClose }) {
   const [step, setStep] = useState(0);
+  const closeRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+  useEffect(() => {
+    const previous = document.activeElement;
+    closeRef.current?.focus();
+    const onKey = e => { if (e.key === 'Escape') onCloseRef.current(); };
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); previous?.focus?.(); };
+  }, []);
   const [submitError,setSubmitError] = useState("");
   const [categories, setCategories] = useState(initial.categories);
   const [goal, setGoal] = useState(initial.goal || "");
@@ -11,7 +21,7 @@ export function Onboarding({ initial, onFinish, onClose }) {
   function finish(e) { e.preventDefault(); Promise.resolve(onFinish({ categories, goal: goal.trim() })).catch(error => setSubmitError(error.message)); }
   return <div className="modal-backdrop onboarding-overlay" onClick={onClose}>
     <section className="onboarding-dialog" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" onClick={e=>e.stopPropagation()}>
-      <div className="onboarding-top"><span className="section-kicker">ПЕРСОНАЛЬНЫЙ ПОДБОР · {step+1} ИЗ 2</span><button className="close-modal" type="button" onClick={onClose} aria-label="Закрыть опрос"><X/></button></div>
+      <div className="onboarding-top"><span className="onboarding-step">Шаг {step+1} из 2</span><button className="close-modal" ref={closeRef} type="button" onClick={onClose} aria-label="Закрыть опрос"><X/></button></div>
       <div className="onboarding-progress"><span style={{width: step===0 ? '50%' : '100%'}}/></div>
       <form onSubmit={finish}>{submitError&&<p className="notice" role="alert">{submitError}</p>}
         {step===0 ? <><h2 id="onboarding-title">Какие темы вам интересны?</h2><p>Выберите одну или несколько. По этим направлениям мы запросим первоначальные рекомендации.</p>

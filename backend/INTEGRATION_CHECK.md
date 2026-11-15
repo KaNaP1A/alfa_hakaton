@@ -98,7 +98,11 @@ ALFA_RECO_MODE=http ALFA_RECO_URL=http://127.0.0.1:18000 ALFA_RECO_TIMEOUT=120 \
 ```
 
 Swagger: <http://127.0.0.1:8080/docs>. Регистрация и Authorize описаны в README.
+<<<<<<< HEAD
 Для этой рабочей копии окружение алгоритма находится по пути `../05_code/.venv/bin/python`
+=======
+Для этой рабочей копии окружение алгоритма находится по пути `05_code/.venv/bin/python`
+>>>>>>> origin/main
 от корня `integrated`; runtime и тестовая база уже подготовлены.
 
 Третий терминал, из `backend`:
