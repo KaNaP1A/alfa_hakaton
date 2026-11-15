@@ -96,3 +96,7 @@ Thumbs.db
 # Reviewed schema migrations and a credential-free env template.
 !/backend/migrations/*.sql
 !/backend/.env.snapshot.example
+
+# Local launcher state and logs.
+/.run/
+/models/.runtime-*/
