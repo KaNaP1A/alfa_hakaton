@@ -96,6 +96,24 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(self.post("/recommend", {**payload, "viewed": ["bad"]})[0], 400)
         self.assertEqual(self.post("/recommend", payload, {"Origin": "https://evil.test"})[0], 403)
 
+    def test_recommend_by_interests_http_contract(self):
+        payload = {"generation": self.engine.generation, "categories": ["business"],
+                   "selected_facets": ["Старт бизнеса"], "viewed": []}
+        status, result = self.post("/recommend-by-interests", payload)
+        self.assertEqual(status, 200)
+        self.assertEqual(result["results"][0]["entity_key"], "article:1")
+        self.assertEqual(result["status"], "insufficient_evidence")
+        self.assertEqual(result["applied_filters"]["facet_mode"], "any")
+        self.assertEqual(self.post("/recommend-by-interests", {**payload, "viewed": ["article:1"]})[1]["results"], [])
+        for bad in [
+            {**payload, "generation": "stale"}, {**payload, "unknown": 1},
+            {**payload, "selected_facets": ["Финансы"]}, {**payload, "selected_facets": ["Старт бизнеса"] * 2},
+            {**payload, "categories": None}, {**payload, "viewed": 1},
+        ]:
+            with self.subTest(bad=bad):
+                self.assertEqual(self.post("/recommend-by-interests", bad)[0], 400)
+        self.assertEqual(self.post("/recommend-by-interests", payload, {"Origin": "https://evil.test"})[0], 403)
+
     def test_development_plan_validates_profile_and_separates_views(self):
         payload = {"generation": self.engine.generation, "categories": [], "viewed": [], "completed": []}
         status, result = self.post("/development-plan", payload)

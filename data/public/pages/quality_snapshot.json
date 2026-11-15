@@ -1,0 +1,72 @@
+{
+  "records": 1487,
+  "by_kind": {
+    "article": {
+      "records": 707,
+      "missing_id": 0,
+      "missing_description": 0,
+      "missing_title": 0,
+      "noindex_true": 0,
+      "missing_publication_date": 1,
+      "status_or_price_unknown": 707,
+      "id_found_in_old_snapshot": 662
+    },
+    "calculator": {
+      "records": 7,
+      "missing_id": 0,
+      "missing_description": 1,
+      "missing_title": 0,
+      "noindex_true": 0,
+      "missing_publication_date": 0,
+      "status_or_price_unknown": 7,
+      "id_found_in_old_snapshot": 7
+    },
+    "course": {
+      "records": 107,
+      "missing_id": 107,
+      "missing_description": 0,
+      "missing_title": 0,
+      "noindex_true": 0,
+      "missing_publication_date": 107,
+      "status_or_price_unknown": 107,
+      "unverified_single_slug_candidate": 24,
+      "ambiguous_slug_candidate": 0
+    },
+    "document": {
+      "records": 219,
+      "missing_id": 0,
+      "missing_description": 0,
+      "missing_title": 0,
+      "noindex_true": 0,
+      "missing_publication_date": 0,
+      "status_or_price_unknown": 219,
+      "id_found_in_old_snapshot": 219
+    },
+    "glossary": {
+      "records": 388,
+      "missing_id": 0,
+      "missing_description": 75,
+      "missing_title": 0,
+      "noindex_true": 60,
+      "missing_publication_date": 1,
+      "status_or_price_unknown": 388,
+      "id_found_in_old_snapshot": 351
+    },
+    "podcast": {
+      "records": 59,
+      "missing_id": 0,
+      "missing_description": 0,
+      "missing_title": 0,
+      "noindex_true": 0,
+      "missing_publication_date": 0,
+      "status_or_price_unknown": 59,
+      "id_found_in_old_snapshot": 8
+    }
+  },
+  "repeated_entity_keys": 0,
+  "conflicting_entity_keys": 0,
+  "repeated_source_urls": 0,
+  "coverage_verified": false,
+  "limitations": "Exact IDs only, not fuzzy identity; counts depend on fetched pages. No confirmation of current rights, prices, inventory coverage or inferred missing entities.",
+  "historical_catalog_sha256": "2c54d178a129af25de6b178bb73d17bbdec38545b092df6264effca1299a607d"
+}

@@ -1,0 +1,17 @@
+{
+  "source_page": "https://kurs.alfabank.ru/vocabulary/",
+  "embedded_endpoint": "/api/public/courses/glossary/list",
+  "observed_at": "2026-11-15T12:51:36.115207+00:00",
+  "item_count": 388,
+  "reported_count": 388,
+  "list_matches_reported_count": true,
+  "missing_descriptions": 75,
+  "missing_publication_dates": 1,
+  "noindex_counts": {
+    "False": 328,
+    "True": 60
+  },
+  "coverage_verified": false,
+  "limitations": "Public embedded list; not verified current publication, rights, price, canonical URL, or full platform coverage.",
+  "html_sha256": "5b38e84c8a0246440de570008068092c8f5a3184da7e87d5a1aa65e8adf28803"
+}

@@ -1,0 +1,25 @@
+{
+  "frontier": {
+    "done": 1092,
+    "skipped_http_301": 2,
+    "skipped_http_404": 2,
+    "skipped_timeout": 3,
+    "skipped_too_large": 1
+  },
+  "extracted": 1092,
+  "by_kind": {
+    "course": 107,
+    "article": 707,
+    "document": 219,
+    "podcast": 59
+  },
+  "with_source_id": 985,
+  "without_description": 0,
+  "access_and_price": "unknown; requires backend verification",
+  "coverage_verified": false,
+  "last_failure": {
+    "error": "HTTPError: HTTP Error 301: Item redirect not followed",
+    "observed_at": "2026-11-15T17:24:09.447842+00:00"
+  },
+  "limitations": "Only public sitemap item pages and allowlisted metadata; no lesson contents, file downloads or user records. Sitemap coverage is not complete."
+}

@@ -77,9 +77,11 @@ def _text_coverage(matched, text):
     return max(coverages, default=0.0)
 
 
-def recommend_cold_start(catalog, profile, limit):
+def recommend_cold_start(catalog, profile, limit, *, selected_facets=None, candidate_keys=None):
     """Rank candidates grounded in selected catalog facets; profile was validated upstream."""
     selected = {name for category in profile["categories"] for name in category_facets(category)}
+    if selected_facets is not None:
+        selected = selected_facets
     if profile["focus_facet"]:
         selected &= {profile["focus_facet"]}
     options = starter_options(catalog, profile["categories"])
@@ -87,7 +89,8 @@ def recommend_cold_start(catalog, profile, limit):
         return [], options
     candidates = []
     for item in catalog:
-        if item.get("kind") not in USER_KINDS:
+        if (item.get("kind") not in USER_KINDS
+                or candidate_keys is not None and item["entity_key"] not in candidate_keys):
             continue
         matched = sorted(facets(item) & selected)
         if not matched:

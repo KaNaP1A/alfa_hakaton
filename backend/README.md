@@ -106,13 +106,9 @@ uv run alfa-backend init-db
 
 Расположение весов и запуск комплекта: [models/README.md](../models/README.md).
 
-1. Получить у владельца совместимый комплект каталога, E5, CatBoost и векторов. В Git его нет.
-   Проверить комплект по [BACKEND_HANDOFF.md](../05_code/docs/BACKEND_HANDOFF.md).
-2. В окружении алгоритма запустить из `05_code`:
-
-   ```bash
-   PYTHONPATH=src HF_HUB_OFFLINE=1 uv run python -m alfa_reco serve --output ../models/recommender/catalog --relevance --no-llm --port 8000
-   ```
+1. Скачать комплект `models/recommender` вместе с Git LFS (`git lfs pull`).
+2. Создать runtime-копию и запустить модель по [models/README.md](../models/README.md).
+   Runtime-скрипт проверяет хеши и переносит пути; исходный комплект не изменяется.
 
 3. Подготовить актуальный доверенный каталог по формату ниже. `generation` должен совпадать
    с `/health` алгоритма; импортировать его через CLI.
@@ -262,7 +258,7 @@ ALFA_TEST_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST/alfa_backend_tes
 
 ## Границы версии для хакатона
 
-- Демо полностью автономно; реальный E5/CatBoost требует закрытых артефактов.
+- Демо полностью автономно; E5/CatBoost использует комплект модели, загруженный через Git LFS.
 - Проверка доступа и цены опираются на последний доверенный импорт; автоматической синхронизации
   с неизвестной схемой исходного дампа нет.
 - Нет платёжной системы, A/B-эксперимента, подтверждённых покупок и полного учебного графа.
