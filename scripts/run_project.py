@@ -186,12 +186,84 @@ def prepare_frontend() -> None:
 
 def check_port(port: int) -> None:
     with socket.socket() as probe:
+        # A stopped dev server can leave accepted connections in TIME_WAIT.
+        # Allow rebinding those; an active listener still makes bind fail.
+        probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         try:
             probe.bind(("127.0.0.1", port))
         except OSError as error:
             raise RuntimeError(
                 f"Порт {port} занят. Остановите предыдущий API/фронтенд."
             ) from error
+
+
+def listening_pids(port: int) -> list[int]:
+    lsof = shutil.which("lsof")
+    if lsof is None:
+        raise RuntimeError("Для автоматического освобождения портов требуется lsof")
+    result = subprocess.run(
+        [lsof, "-t", "-nP", f"-iTCP:{port}", "-sTCP:LISTEN"],
+        text=True,
+        capture_output=True,
+    )
+    if result.returncode not in (0, 1):
+        detail = result.stderr.strip()
+        raise RuntimeError(f"Не удалось проверить порт {port} через lsof: {detail}")
+    try:
+        return sorted({int(value) for value in result.stdout.split()})
+    except ValueError as error:
+        raise RuntimeError(f"lsof вернул некорректный PID для порта {port}") from error
+
+
+def stop_port_occupants(port: int) -> None:
+    """Stop existing TCP listeners on an application port before startup."""
+    for _ in range(3):
+        pids = listening_pids(port)
+        if not pids:
+            return
+        announce(
+            f"Порт {port} занят (PID {', '.join(map(str, pids))}); останавливаю…"
+        )
+        for pid in pids:
+            try:
+                os.kill(pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+            except PermissionError as error:
+                raise RuntimeError(
+                    f"Нет прав остановить PID {pid} на порту {port}"
+                ) from error
+
+        deadline = time.monotonic() + 4
+        while time.monotonic() < deadline:
+            remaining = set(listening_pids(port)) & set(pids)
+            if not remaining:
+                break
+            time.sleep(0.1)
+
+        remaining = set(listening_pids(port))
+        if not remaining:
+            return
+        for pid in remaining:
+            announce(f"PID {pid} не завершился; останавливаю принудительно…")
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            except PermissionError as error:
+                raise RuntimeError(
+                    f"Нет прав остановить PID {pid} на порту {port}"
+                ) from error
+        if remaining:
+            deadline = time.monotonic() + 2
+            while time.monotonic() < deadline and listening_pids(port):
+                time.sleep(0.1)
+
+    remaining = listening_pids(port)
+    if remaining:
+        raise RuntimeError(
+            f"Не удалось освободить порт {port} (PID {', '.join(map(str, remaining))})"
+        )
 
 
 def wait_ready(url: str, process: subprocess.Popen[str], timeout: float) -> None:
@@ -332,6 +404,7 @@ def main() -> None:
     compose("up", "-d", "--build", "--wait", "db")
     if not args.prepare_only:
         for port in (8080, 5173):
+            stop_port_occupants(port)
             check_port(port)
         if args.migrate:
             announce("Применяю SQL-миграцию служебных таблиц API (--migrate)…")

@@ -100,3 +100,6 @@ Thumbs.db
 # Local launcher state and logs.
 /.run/
 /models/.runtime-*/
+
+# Local design checks and dedicated headless Chrome profiles.
+/frontend/.taste-skill/
