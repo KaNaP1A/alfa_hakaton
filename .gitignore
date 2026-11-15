@@ -4,6 +4,7 @@
 /docs/review_evidence_2026-11-12/
 /docs/EXPERT_REVIEW_2026-11-12.md
 /.push-algorithm/
+/frontend_handoff.zip
 
 # Raw data, exports, annotation sheets and database backups.
 *.sqlite

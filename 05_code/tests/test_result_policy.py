@@ -122,3 +122,15 @@ class ResultPolicyTests(unittest.TestCase):
         changed = {**item, "description": "Новое содержание"}
         self.assertNotEqual(content_fingerprint(item), content_fingerprint(changed))
         self.assertEqual(promotion_for(changed)["source"], "title_template")
+
+    def test_course_promotion_invites_to_explore_without_inventing_price(self):
+        item = material("course:test", "Как управлять командой")
+        copy = promotion_for(item)
+        self.assertIn("управлять командой", copy["text"])
+        self.assertIn("программу курса", copy["text"])
+        self.assertEqual(copy["source"], "title_template")
+        for invented in ("бесплатно", "скидка", "гарантирован"):
+            self.assertNotIn(invented, copy["text"].casefold())
+        generic = promotion_for(material("course:other", "Финансы бизнеса"))
+        self.assertIn("Финансы бизнеса", generic["text"])
+        self.assertIn("посмотрите программу", generic["text"])

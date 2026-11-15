@@ -26,14 +26,16 @@ def promotion_for(item):
             "source_fields": ["title", "description"],
         }
     title = item["title"].rstrip(" .!?")
-    if title.startswith("Можно ли "):
+    if item["kind"] == "course" and title.startswith("Как "):
+        text = f"Разберитесь, как {title[4:5].lower() + title[5:]}. Откройте программу курса и выберите следующий шаг."
+    elif item["kind"] == "course":
+        text = f"Курс «{title}»: посмотрите программу и выберите подходящий следующий шаг для вашей задачи."
+    elif title.startswith("Можно ли "):
         text = f"Разберитесь, можно ли {title[9:10].lower() + title[10:]}. Изучите вопрос до того, как принимать решение."
     elif title.startswith("Как "):
         text = f"Разберитесь, как {title[4:5].lower() + title[5:]}. Откройте материал и начните с понятного вам шага."
     elif item["kind"] == "document":
         text = "Нужен документ для рабочей задачи? Ознакомьтесь с этим образцом и проверьте, подходит ли он для вашей ситуации."
-    elif item["kind"] == "course":
-        text = "Выберите время для обучения и переходите к разбору темы. Откройте программу курса, чтобы выбрать первый шаг."
     else:
         text = f"Погрузитесь в тему «{title}». Откройте материал, чтобы перейти от общего интереса к подробностям."
     return {"text": text, "source": "title_template", "source_fields": ["title"]}
