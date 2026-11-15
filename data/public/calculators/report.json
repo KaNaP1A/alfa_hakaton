@@ -1,0 +1,16 @@
+{
+  "source_page": "https://kurs.alfabank.ru/calculators/",
+  "embedded_endpoint": "/api/public/courses/calculatorpage/list",
+  "observed_at": "2026-11-15T12:51:37.609592+00:00",
+  "item_count": 7,
+  "reported_count": 7,
+  "list_matches_reported_count": true,
+  "missing_descriptions": 1,
+  "missing_publication_dates": 0,
+  "noindex_counts": {
+    "False": 7
+  },
+  "coverage_verified": false,
+  "limitations": "Public embedded list; not verified current publication, rights, price, canonical URL, or full platform coverage.",
+  "html_sha256": "5a4b03c6a096d18c0d5d5eca7116fcfa98ef4491184ad408599319b5002e9f8c"
+}

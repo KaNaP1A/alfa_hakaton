@@ -7,12 +7,8 @@ from pydantic import TypeAdapter, ValidationError
 
 from config.settings import Settings
 from domain.entities import Material
-from domain.errors import AppError
+from domain.errors import UpstreamError as UpstreamError
 from domain.types import JsonObject
-
-
-class UpstreamError(AppError):
-    pass
 
 
 class HttpRecommender:

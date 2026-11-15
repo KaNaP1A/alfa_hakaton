@@ -1,21 +1,54 @@
 services:
   db:
-    image: postgres:17.6-bookworm
+    image: alfa-snapshot-postgres:17.6
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.postgres
     environment:
-      POSTGRES_DB: alfa_api
+      POSTGRES_DB: alfa_snapshot
       POSTGRES_USER: alfa
+      PGPASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in backend/.env}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in backend/.env}
     volumes:
-      - api_pgdata:/var/lib/postgresql/data
+      - snapshot_pgdata:/var/lib/postgresql/data
+      - type: bind
+        source: ../alfa_course_hackathon.backup
+        target: /backup/source.backup
+        read_only: true
+        bind:
+          create_host_path: false
+    ports:
+      - 127.0.0.1:${POSTGRES_PORT:-55432}:5432
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U alfa -d alfa_api"]
-      interval: 3s
-      timeout: 3s
-      retries: 20
+      test:
+        - CMD-SHELL
+        - >-
+          pg_isready -h 127.0.0.1 -U alfa -d alfa_snapshot &&
+          test "$$(psql -h 127.0.0.1 -U alfa -d alfa_snapshot -Atc
+          "SELECT count(*) FROM pg_class WHERE oid = to_regclass('public.\"Articles\"')")" = 1
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 30s
+  migrate:
+    image: postgres:17.6-bookworm
+    profiles: [tools]
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in backend/.env}
+    volumes:
+      - ./migrations:/migrations:ro
+    entrypoint: [psql, -h, db, -U, alfa, -d, alfa_snapshot, -v, ON_ERROR_STOP=1, -f, /migrations/001_api_state.sql]
+    depends_on:
+      db:
+        condition: service_healthy
   api:
+    profiles: [app]
     build: .
     environment:
-      ALFA_DATABASE_URL: postgresql+psycopg://alfa:${POSTGRES_PASSWORD}@db:5432/alfa_api
+      ALFA_DATABASE_URL: postgresql+psycopg://alfa:${POSTGRES_PASSWORD}@db:5432/alfa_snapshot
+      ALFA_CATALOG_SOURCE: postgres
+      ALFA_CATALOG_GENERATION: ${ALFA_CATALOG_GENERATION:-production-snapshot}
+      ALFA_AUTO_CREATE_TABLES: "false"
       ALFA_CORS_ORIGINS: ${ALFA_CORS_ORIGINS:-}
       ALFA_RECO_MODE: ${ALFA_RECO_MODE:-demo}
       ALFA_RECO_URL: ${ALFA_RECO_URL:-http://host.docker.internal:8000}
@@ -31,4 +64,4 @@ services:
       db:
         condition: service_healthy
 volumes:
-  api_pgdata:
+  snapshot_pgdata:

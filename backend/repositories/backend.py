@@ -5,11 +5,11 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from domain import entities
+from domain.commands import ActivityInput, CatalogImport
 from domain.errors import RepositoryConflict
 from domain.types import JsonObject
 from infrastructure.database import Activity, SessionToken, User
 from repositories.catalog import generation, history, import_catalog, visible_materials
-from schemas.requests import ActivityInput, CatalogImport
 
 
 class SqlAlchemyRepository:

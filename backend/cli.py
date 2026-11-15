@@ -90,6 +90,8 @@ def main() -> None:
                 )
             )
             return
+        if settings.catalog_source == "postgres":
+            parser.error("Snapshot mode uses source tables; apply SQL migrations explicitly")
         initialize(engine)
         with SqlAlchemyUnitOfWork(sessions) as uow:
             db = uow.session

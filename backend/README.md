@@ -1,13 +1,49 @@
 # Бэкенд для хакатона Alfa
 
+Полный запуск PostgreSQL + ML + API + React: [`./run.sh` из корня проекта](../README.md#запуск-всего-проекта-одной-командой).
+
+**Текущий источник карточек: восстановленный продовый PostgreSQL.**
+[Восстановление бэкапа, запуск Compose и отложенные SQL-миграции](SNAPSHOT.md).
+По умолчанию Compose запускает только БД; миграции не применяются.
+
 FastAPI-приложение между фронтендом, `alfa_reco` и актуальным каталогом. Авторизация, профиль,
 история, доступ, ссылки и цены находятся на стороне API. Исходный ML-код не изменён.
+
+Связка с настоящими E5/CatBoost проверена локально 15 ноября 2026:
+[результаты, запуск тестовой базы и повторные проверки](INTEGRATION_CHECK.md).
 
 ```text
 Фронтенд / Swagger → FastAPI :8080 → alfa_reco :8000 (режим http)
                          ↓
                PostgreSQL / SQLite для демо
 ```
+
+## ML напрямую из Python
+
+`ALFA_RECO_MODE=python` подключает `alfa_reco` как библиотеку в процессе API.
+Singleton `infrastructure/python_recommender.py` загружает каталог, E5 и CatBoost
+один раз при создании приложения. Инициализация и обращения к модели защищены
+блокировками. Каждый worker имеет свою модель; для одной копии используйте
+`--workers 1`. Смена каталога требует перезапуска процесса.
+Ошибка загрузки останавливает запуск приложения.
+
+Из `backend` установите ML-библиотеку и зависимости в то же окружение:
+
+```bash
+uv sync --frozen
+uv pip install ../05_code -r ../05_code/requirements-relevance.txt
+export ALFA_RECO_MODE=python
+export ALFA_RECO_CATALOG=/absolute/path/to/prepared-runtime/catalog
+uv run --no-sync uvicorn app:create_app --factory --port 8080 --workers 1
+```
+
+`ALFA_RECO_CATALOG` указывает на подготовленный каталог с `CURRENT.json`.
+Пути encoder в артефактах должны соответствовать этой машине (подготовка runtime
+описана ниже). Исходники `05_code` менять не требуется.
+В БД API импортируйте доверенный каталог той же generation, как и для HTTP-режима.
+Поиск, подсказки, рекомендации и план вызываются напрямую; отдельный ML-сервер
+не требуется. Текущий Docker-образ содержит только зависимости API; команды выше
+предназначены для нативного запуска. Режимы `demo` и `http` также доступны.
 
 ## Проверить за несколько минут без модели и дампа
 
@@ -49,40 +85,18 @@ SQLite-файл создаётся в текущей директории и и�
 
 ## PostgreSQL и Docker Compose
 
-```bash
-cd backend
-cp .env.example .env
-# Установить свой POSTGRES_PASSWORD в .env (URL-безопасные символы).
-docker compose up --build -d
-docker compose exec api alfa-backend seed-demo
-```
-
-Swagger: http://127.0.0.1:8080/docs. Данные сохраняются в `api_pgdata`; `docker compose down`
-оставляет их. Порт PostgreSQL наружу не публикуется. Не использовать `down -v`, если нужны данные.
-
-Для нативного API с имеющимся PostgreSQL:
-
-```bash
-export ALFA_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST:5432/alfa_api'
-uv run alfa-backend init-db
-```
-
-Пароль в URL должен быть percent-encoded при наличии специальных символов. API создаёт только
-таблицы с префиксом `alfa_api_`. Для исходного дампа и служебного API лучше разные базы.
-Начальная схема создаётся через SQLAlchemy `create_all`; изменения схемы в следующих версиях
-потребуют миграций, текущая версия не изменяет существующие колонки автоматически.
+Используйте [SNAPSHOT.md](SNAPSHOT.md): новый том восстанавливается из бэкапа
+в корне репозитория. Служебные таблицы создаются только отдельной SQL-миграцией,
+автоматический `create_all` отключён. Для тестовых сценариев с вымышленным каталогом
+и SQLite доступны команды выше; это отдельный режим `ALFA_CATALOG_SOURCE=imported`.
 
 ## Подключить настоящий алгоритм
 
 Расположение весов и запуск комплекта: [models/README.md](../models/README.md).
 
-1. Получить у владельца совместимый комплект каталога, E5, CatBoost и векторов. В Git его нет.
-   Проверить комплект по [BACKEND_HANDOFF.md](../05_code/docs/BACKEND_HANDOFF.md).
-2. В окружении алгоритма запустить из `05_code`:
-
-   ```bash
-   PYTHONPATH=src HF_HUB_OFFLINE=1 uv run python -m alfa_reco serve --output ../models/recommender/catalog --relevance --no-llm --port 8000
-   ```
+1. Скачать комплект `models/recommender` вместе с Git LFS (`git lfs pull`).
+2. Создать runtime-копию и запустить модель по [models/README.md](../models/README.md).
+   Runtime-скрипт проверяет хеши и переносит пути; исходный комплект не изменяется.
 
 3. Подготовить актуальный доверенный каталог по формату ниже. `generation` должен совпадать
    с `/health` алгоритма; импортировать его через CLI.
@@ -232,7 +246,7 @@ ALFA_TEST_DATABASE_URL='postgresql+psycopg://USER:PASSWORD@HOST/alfa_backend_tes
 
 ## Границы версии для хакатона
 
-- Демо полностью автономно; реальный E5/CatBoost требует закрытых артефактов.
+- Демо полностью автономно; E5/CatBoost использует комплект модели, загруженный через Git LFS.
 - Проверка доступа и цены опираются на последний доверенный импорт; автоматической синхронизации
   с неизвестной схемой исходного дампа нет.
 - Нет платёжной системы, A/B-эксперимента, подтверждённых покупок и полного учебного графа.
@@ -277,3 +291,53 @@ rollback и закрытием. Репозитории выполняют тол
 commit после завершения операции; при выходе из UoW незакоммиченные изменения
 откатываются, включая исключения. Регистрация и выпуск токена атомарны.
 CLI импорта и управления правами использует тот же UoW.
+
+## Границы слоёв и подмена хранилища
+
+HTTP-маршруты вызывают отдельные сервисы: `AuthService`, `ProfileService`,
+`CatalogService`, `ActivityService`, `SearchService`, `RecommendationService`
+и `HealthService`. Общий `RecommendationContext` собирает доступный пользователю
+каталог и ML-порт; проверки generation вынесены в `services/validation.py`.
+
+Контракты в `domain/ports.py` описаны через `typing.Protocol`:
+
+- `UserRepository` — пользователи, токены и профиль;
+- `CatalogRepository` — generation, импорт и видимые материалы;
+- `ActivityRepository` — события и история обучения;
+- `TransactionPort` — фиксация операции;
+- `UnitOfWorkPort` — репозитории `users`, `catalog`, `activity`, commit/rollback
+  и жизненный цикл транзакции;
+- `UnitOfWorkFactory` — создание Unit of Work для запроса;
+- `RecommendationPort` и `PasswordPort` — ML и хеширование паролей.
+
+Сервисы получают узкие контракты через конструкторы и не импортируют SQLAlchemy,
+конкретные репозитории или FastAPI. SQL-адаптер реализует три контракта хранилища
+на одной сессии, сохраняя атомарность регистрации пользователя и выдачи токена.
+FastAPI переиспользует один Unit of Work в пределах запроса, включая авторизацию.
+При выходе он откатывает незавершённые изменения и закрывает сессию.
+
+Для другого хранилища реализуйте `UnitOfWorkPort` и передайте фабрику:
+
+```python
+app = create_app(settings, uow_factory=MyUnitOfWork)
+```
+
+При переданной фабрике приложение не создаёт SQLAlchemy engine и не инициализирует
+SQL-таблицы. Реализация должна возвращать доменные сущности, обеспечивать атомарный
+commit и rollback при выходе. Пример подмены через публичный API без SQL находится
+в `tests/test_service_contracts.py`.
+
+Инверсия зависимостей: `domain/ports.py` принадлежит внутреннему слою.
+Сервисы и адаптеры импортируют эти контракты; домен не импортирует реализации.
+Входные DTO находятся в `domain/commands.py`, `schemas/requests.py` сохраняет
+совместимые экспорты. `services/dependencies.py` содержит типизированный набор
+зависимостей, который собирается в `app.py`. В `create_app` можно передать
+`uow_factory`, `recommender`, `passwords` и `demo_factory`. API не зависит от
+SQLAlchemy: Unit of Work преобразует ошибки драйвера в доменную ошибку.
+Направление импортов проверяется в `tests/test_architecture.py`.
+
+Singleton ML — `infrastructure/python_recommender.py`, класс `PythonRecommender`.
+`__new__` под `_load_lock` создаёт и публикует `_instance` после успешной загрузки
+`SearchEngine` и `relevance_backend()`. Повторный вызов возвращает тот же экземпляр;
+модель загружается один раз на процесс. Выбирается через `ALFA_RECO_MODE=python`
+в точке сборки `app.py`; сервисы работают через `RecommendationPort`.
