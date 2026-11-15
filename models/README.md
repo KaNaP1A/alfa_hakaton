@@ -58,7 +58,7 @@ python3 backend/scripts/model_runtime.py \
 Для последующих запусков готовой runtime-копии:
 
 ```bash
-HF_HUB_OFFLINE=1 05_code/.venv/bin/python -m alfa_reco serve \
+PYTHONPATH=05_code/src HF_HUB_OFFLINE=1 05_code/.venv/bin/python -m alfa_reco serve \
   --output models/runtime/catalog --relevance --no-llm --port 8000
 ```
 
@@ -77,3 +77,7 @@ uv run python -m unittest discover -s tests -p test_real_model.py -v
 После переноса комплекта на другую машину или в другую папку используйте
 `05_code/scripts/prepare_backend_bundle.py --relocate ПУТЬ`, а затем `--verify ПУТЬ`.
 Манифесты вручную не редактируются.
+
+Для локальной проверки FastAPI с настоящей моделью без актуального каталога сайта есть
+[отдельная тестовая база и сквозной сценарий](../backend/INTEGRATION_CHECK.md).
+Права доступа в этой базе искусственные; цены и ссылки неизвестны.

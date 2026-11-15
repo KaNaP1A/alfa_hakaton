@@ -98,6 +98,7 @@ def make_server(engine, port=8000, default_mode=None, host="127.0.0.1"):
                 return
             if parsed.path not in {
                 "/health",
+                "/interests",
                 "/suggest",
                 "/search",
                 "/catalog",
@@ -171,6 +172,10 @@ def make_server(engine, port=8000, default_mode=None, host="127.0.0.1"):
                     from .lab import lab_data
 
                     payload = lab_data(parsed.path, params)
+                elif parsed.path == "/interests":
+                    from .interests import interest_directory
+
+                    payload = interest_directory(engine.catalog, engine.generation)
                 elif parsed.path == "/health":
                     payload = {
                         "status": "ok",
