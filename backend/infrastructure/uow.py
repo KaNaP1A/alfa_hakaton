@@ -10,11 +10,21 @@ from sqlalchemy.orm import Session, sessionmaker
 from domain.errors import RepositoryConflict, StorageUnavailable
 from domain.ports import ActivityRepository, CatalogRepository, UserRepository
 from repositories.backend import SqlAlchemyRepository
+from repositories.production_catalog import ProductionCatalogRepository
 
 
 class SqlAlchemyUnitOfWork:
-    def __init__(self, sessions: sessionmaker[Session]) -> None:
+    def __init__(
+        self,
+        sessions: sessionmaker[Session],
+        *,
+        catalog_source: str = "imported",
+        generation: str = "production-snapshot",
+    ) -> None:
         self._sessions = sessions
+        self._catalog_source = catalog_source
+        self._generation = generation
+        self._catalog: CatalogRepository
         self.session: Session
         self.repository: SqlAlchemyRepository
 
@@ -24,6 +34,11 @@ class SqlAlchemyUnitOfWork:
         except SQLAlchemyError as error:
             raise StorageUnavailable() from error
         self.repository = SqlAlchemyRepository(self.session)
+        self._catalog = (
+            ProductionCatalogRepository(self.session, self._generation)
+            if self._catalog_source == "postgres"
+            else self.repository
+        )
         return self
 
     @property
@@ -32,7 +47,7 @@ class SqlAlchemyUnitOfWork:
 
     @property
     def catalog(self) -> CatalogRepository:
-        return self.repository
+        return self._catalog
 
     @property
     def activity(self) -> ActivityRepository:

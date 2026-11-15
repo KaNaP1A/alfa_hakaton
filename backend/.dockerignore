@@ -4,3 +4,6 @@ __pycache__
 *.sqlite3
 *.db
 tests
+
+.env.*
+!.env.example
