@@ -1,0 +1,52 @@
+{
+  "generation": "demo-v1",
+  "materials": [
+    {
+      "entity_key": "course:demo-coffee",
+      "kind": "course",
+      "title": "Открываем кофейню",
+      "description": "Бизнес: идея кофейни, бюджет и первые клиенты.",
+      "topics": [
+        "Бизнес",
+        "Финансы"
+      ],
+      "published": true,
+      "access": "public"
+    },
+    {
+      "entity_key": "article:demo-budget",
+      "kind": "article",
+      "title": "Бюджет кофейни",
+      "description": "Финансы: считаем расходы бизнеса.",
+      "topics": [
+        "Бизнес",
+        "Финансы"
+      ],
+      "published": true,
+      "access": "public"
+    },
+    {
+      "entity_key": "course:demo-team",
+      "kind": "course",
+      "title": "Команда кофейни",
+      "description": "Команда: найм и управление сотрудниками.",
+      "topics": [
+        "Бизнес",
+        "Команда"
+      ],
+      "published": true,
+      "access": "public"
+    },
+    {
+      "entity_key": "course:demo-private",
+      "kind": "course",
+      "title": "Закрытый курс",
+      "description": "Не должен отображаться без отдельного доступа.",
+      "topics": [
+        "Бизнес"
+      ],
+      "published": true,
+      "access": "restricted"
+    }
+  ]
+}

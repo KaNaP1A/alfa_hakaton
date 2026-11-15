@@ -83,3 +83,7 @@ Thumbs.db
 .vscode/
 *.log
 *.tmp
+
+# Private handoff model and derived catalog.
+/models/recommender/
+/models/runtime/
