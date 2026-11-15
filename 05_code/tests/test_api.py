@@ -62,6 +62,16 @@ class ApiTests(unittest.TestCase):
         with make_server(self.engine, 0) as server:
             self.assertEqual(server.default_mode, "relevance")
 
+    def test_interests_endpoint_uses_snapshot_and_rejects_parameters(self):
+        status, result = self.request("/interests")
+        self.assertEqual(status, 200)
+        self.assertEqual(result["generation"], self.engine.generation)
+        self.assertEqual(result["categories"][0]["id"], "business")
+        self.assertEqual(result["categories"][0]["topics"][0]["value"], "Старт бизнеса")
+        self.assertEqual(result["categories"][0]["material_count"], 1)
+        self.assertEqual(self.request("/interests", {"unexpected": "1"})[0], 400)
+        self.assertEqual(self.request("/interests", headers={"Host": "external.example"})[0], 403)
+
     def post(self, path, body, headers=None):
         connection = http.client.HTTPConnection("127.0.0.1", self.server.server_port, timeout=5)
         try:
