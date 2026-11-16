@@ -338,25 +338,34 @@ test("recommendation controls receive the active interests from the workspace", 
   assert.deepEqual(chosen, ["business", "finance"]);
 });
 
-test("demo catalog heading does not use the algorithm catalog count", async () => {
+test("workspace shows one API catalog with filters, pagination and material cards", async () => {
   const { Workspace } = await import("../src/app/Workspace.jsx");
+  const loads = [];
+  let opened;
   await act(async () => root.render(
     <Workspace
       auth={{ username: "reviewer" }}
       tab="search"
-      catalogSource="demo"
-      setCatalogSource={() => {}}
       mobileMenu={false}
       setMobileMenu={() => {}}
       navigate={() => {}}
       search={{ query: "", submitted: "", suggestions: [], relatedTopics: [], setSuggestOpen: () => {} }}
-      catalog={{ loaded: true, items: [], total: 3 }}
+      catalog={{ loaded: true, items: [item], total: 3, kind: "", load: (...args) => loads.push(args) }}
       profileState={{ profile: { categories: [] }, viewed: [], completed: [] }}
-      profileReady={false}
+      profileReady
+      generation="generation-1"
+      openMaterial={(value) => { opened = value; }}
       setOnboarding={() => {}}
       runSearch={() => {}}
       logout={() => {}}
     />,
   ));
-  assert.equal(container.querySelector('.result-total'), null);
+  assert.equal(container.querySelector('.result-total').textContent, '3');
+  assert.doesNotMatch(container.textContent, /Демо: все карточки|Каталог алгоритма/);
+  assert.equal(container.querySelector('[aria-label="Источник каталога"]'), null);
+  await click([...container.querySelectorAll('button')].find((button) => button.textContent === 'Курсы'));
+  await click([...container.querySelectorAll('button')].find((button) => button.textContent === 'Показать ещё'));
+  assert.deepEqual(loads, [['generation-1', 'course'], ['generation-1', '', true]]);
+  await click(container.querySelector('.card-open'));
+  assert.equal(opened, item);
 });

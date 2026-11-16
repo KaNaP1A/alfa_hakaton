@@ -1,16 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {filterDemoItems,orderDemoItems} from '../src/features/catalog/demoCatalog.js';
 const {items}=JSON.parse(readFileSync(new URL('../../data/demo_catalog.json',import.meta.url),'utf8'));
 test('public and fictional cards retain distinct identifiers',()=>{
  assert.equal(items.filter(x=>x.origin==='public_snapshot').length,1099); assert.equal(items.filter(x=>x.origin==='synthetic').length,48);
  assert.equal(items.filter(x=>x.origin==='historical_backup').length,10);
- assert.equal(new Set(items.map(x=>x.id)).size,items.length);const ordered=orderDemoItems(items);assert.equal(ordered.length,items.length);assert.equal(ordered[0].origin,'synthetic');assert.equal(ordered[1].origin,'historical_backup');assert.equal(ordered[2].origin,'public_snapshot');
+ assert.equal(new Set(items.map(x=>x.id)).size,items.length);
 });
-test('catalog filters source, type and query',()=>{
- const courses=filterDemoItems(items,{kind:'course',origin:'synthetic'});assert.equal(courses.length,24);assert.ok(courses.every(x=>x.price.status==='fictional'));
- const found=filterDemoItems(items,{origin:'public_snapshot',query:'маркетинг'});assert.ok(found.length>0);assert.ok(found.every(x=>x.origin==='public_snapshot'));
+test('synthetic course fixtures have explicitly fictional prices',()=>{
+ const courses=items.filter(x=>x.kind==='course'&&x.origin==='synthetic');assert.equal(courses.length,24);assert.ok(courses.every(x=>x.price.status==='fictional'));
 });
 
 test('every free demo article has a paid example in the same topic', () => {
@@ -36,21 +34,6 @@ test('fictional prices and source identities remain distinguishable', () => {
    assert.match(item.source_url,/^https:\/\/kurs\.alfabank\.ru\//);
   }
  }
-});
-
-test('ordering preserves all recognized cards and does not mutate the input', () => {
- const original=items.map(item=>item.id);
- const ordered=orderDemoItems(items);
- assert.deepEqual(items.map(item=>item.id),original);
- assert.deepEqual(new Set(ordered.map(item=>item.id)),new Set(original));
-});
-
-test('text search ignores case and surrounding whitespace', () => {
- const normal=filterDemoItems(items,{origin:'public_snapshot',query:'маркетинг'}).map(item=>item.id);
- const changed=filterDemoItems(items,{origin:'public_snapshot',query:'  МАРКЕТИНГ  '}).map(item=>item.id);
- assert.ok(normal.length>0);
- assert.deepEqual(changed,normal);
- assert.deepEqual(filterDemoItems(items,{query:'zzzz-nonexistent-3948'}),[]);
 });
 
 test('priced examples are labeled and do not change unverified public prices', () => {

@@ -23,8 +23,6 @@ const profile = {
 const shared = {
   auth: { username: "Эксперт", status: "guest" },
   tab: "search",
-  catalogSource: "model",
-  setCatalogSource: noop,
   navigate: noop,
   mobileMenu: false,
   setMobileMenu: noop,

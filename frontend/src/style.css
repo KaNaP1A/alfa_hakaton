@@ -2039,19 +2039,13 @@ textarea:focus-visible {
   }
 }
 
-/* Controls retained for interest selection and the fictional commercial demo. */
+/* Controls for interest selection and long descriptions. */
 .interest-status { margin: 8px 0 20px; font-size: 13px; line-height: 1.5; color: #666; }
 .collapsible-text { min-width: 0; max-width: 100%; }
 .collapsible-text p { white-space: pre-wrap; overflow-wrap: anywhere; }
 .collapsible-text .description-clamped { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
 .collapsible-text .description-full { display: block; max-height: 45vh; overflow-y: auto; }
 .description-toggle { border: 0; padding: 6px 0; background: transparent; color: #d72b20; cursor: pointer; font: inherit; }
-.demo-commercial { margin: 22px 0; padding: 22px; border: 1px solid #ece4e1; border-radius: 16px; background: #fff9f7; }
-.demo-commercial h3 { margin: 0 0 8px; }
-.demo-commercial > p, .demo-explanation, .demo-reason { font-size: 13px; color: #555; line-height: 1.5; }
-.demo-commercial .demo-controls { align-items: end; margin: 15px 0; }
-.demo-commercial .demo-controls .demo-checkbox { flex-direction: row; align-items: center; min-height: 42px; }
-.demo-commercial .demo-checkbox input { min-width: 0; width: auto; }
 @media (prefers-reduced-motion: reduce) {
   [data-enter],
   .modal-backdrop,
@@ -2159,96 +2153,6 @@ h3 {
 .suggest-list button > span {
   min-width: 0;
   overflow-wrap: anywhere;
-}
-.catalog-source-switch {
-  margin-bottom: 20px;
-}
-.demo-notice {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-items: start;
-}
-.demo-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-}
-.demo-disclaimer {
-  color: #6b4540;
-  font-size: 13px;
-}
-.demo-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin: 20px 0;
-}
-.demo-controls label {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  color: var(--muted);
-  font-size: 13px;
-}
-.demo-controls input,
-.demo-controls select {
-  min-width: min(240px, 80vw);
-  min-height: 44px;
-  padding: 10px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
-  background: white;
-  color: var(--ink);
-}
-.demo-next {
-  margin-bottom: 24px;
-  padding: 20px;
-  border-radius: 16px;
-  background: #fff3f1;
-}
-.demo-next h3 {
-  font-size: 18px;
-}
-.demo-next > p {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 13px;
-}
-.demo-next .demo-card {
-  margin-top: 16px;
-}
-.demo-card {
-  min-height: 190px;
-}
-.demo-card .item-copy {
-  width: 100%;
-  padding: 22px;
-}
-.demo-card .meta {
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-.demo-card .topic {
-  border-radius: 20px;
-  padding: 4px 8px;
-  background: var(--surface);
-  font-size: 12px;
-}
-.demo-card .item-footer {
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding-top: 16px;
-}
-.demo-price {
-  color: var(--muted);
-  font-size: 13px;
-}
-.demo-card .text-btn {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--action);
-  font-size: 13px;
 }
 @media (max-width: 640px) {
   .auth-form input,

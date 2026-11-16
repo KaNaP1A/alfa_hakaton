@@ -14,7 +14,6 @@ import {
 import { Brand } from "../shared/ui/Brand.jsx";
 import { SearchBar } from "../features/search/SearchBar.jsx";
 import { Catalog } from "../features/catalog/Catalog.jsx";
-import { DemoCatalog } from "../features/catalog/DemoCatalog.jsx";
 import { SearchResults } from "../features/search/SearchResults.jsx";
 import { Recommendations } from "../features/recommendations/Recommendations.jsx";
 import { LearningPlan } from "../features/learning-plan/LearningPlan.jsx";
@@ -34,8 +33,6 @@ const NAV = [
 export function Workspace({
   auth,
   tab,
-  catalogSource,
-  setCatalogSource,
   navigate,
   mobileMenu,
   setMobileMenu,
@@ -207,7 +204,7 @@ export function Workspace({
             <div>
               <h2 id="workspace-title">
                 {titles[tab]}
-                {isSearch && !search.submitted && catalogSource === "model" && catalog.loaded && (
+                {isSearch && !search.submitted && catalog.loaded && (
                   <span className="result-total">
                     {new Intl.NumberFormat("ru-RU").format(catalog.total)}
                   </span>
@@ -242,24 +239,6 @@ export function Workspace({
               </button>
             </div>
           )}
-          {isSearch && !search.submitted && (
-            <div className="catalog-source-switch filterbar" role="group" aria-label="Источник каталога">
-              <button
-                className={catalogSource === "demo" ? "selected" : ""}
-                aria-pressed={catalogSource === "demo"}
-                onClick={() => setCatalogSource("demo")}
-              >
-                Демо: все карточки
-              </button>
-              <button
-                className={catalogSource === "model" ? "selected" : ""}
-                aria-pressed={catalogSource === "model"}
-                onClick={() => setCatalogSource("model")}
-              >
-                Каталог алгоритма
-              </button>
-            </div>
-          )}
           {!profileReady ? (
             <State loading />
           ) : isSearch ? (
@@ -268,11 +247,6 @@ export function Workspace({
                 state={search}
                 profile={profileState}
                 onOpen={openMaterial}
-              />
-            ) : catalogSource === "demo" ? (
-              <DemoCatalog
-                onUseModel={() => setCatalogSource("model")}
-                onOpenRecommendations={() => navigate("recommend")}
               />
             ) : (
               <Catalog

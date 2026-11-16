@@ -20,7 +20,6 @@ export default function App() {
   const [generation, setGeneration] = useState(null),
     [healthError, setHealthError] = useState(""),
     [tab, setTab] = useState("search");
-  const [catalogSource, setCatalogSource] = useState("model");
   const [modal, setModal] = useState(null),
     [modalBusy, setModalBusy] = useState(false),
     [modalError, setModalError] = useState("");
@@ -167,8 +166,6 @@ export default function App() {
         {...{
           auth,
           tab,
-          catalogSource,
-          setCatalogSource,
           navigate,
           mobileMenu,
           setMobileMenu,
