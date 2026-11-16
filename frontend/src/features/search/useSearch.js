@@ -37,7 +37,7 @@ export function useSearch(generation, onGenerationChanged) {
     try {const data=await api.search({q,kind:k,...requestOptions,signal:controller.signal});if(controller.signal.aborted)return;
       if(generation && data.generation!==generation){onGenerationChanged(data.generation);setError('Каталог обновился. Повторите поиск.');return;}
       setResult(data);
-    } catch(e){if(!aborted(e)&&!controller.signal.aborted)setError(e.message)}
+    } catch(e){if(!aborted(e)&&!controller.signal.aborted)setError(e.userMessage || e.message)}
     finally{if(!controller.signal.aborted)setLoading(false)}
   }
   function repeatSearch(nextKind=kind) {

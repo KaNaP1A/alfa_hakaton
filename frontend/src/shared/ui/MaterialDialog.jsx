@@ -1,57 +1,137 @@
-import React, { useEffect, useRef } from 'react';
-import { ArrowUpRight, Check, X } from 'lucide-react';
-import { kindLabels } from './MaterialCard.jsx';
-import { CollapsibleText } from './CollapsibleText.jsx';
-
-export function MaterialDialog({ item, completed, onClose, onComplete, onStarted, busy, error }) {
-  const closeRef = useRef(null);
-  const onCloseRef = useRef(onClose);
-  onCloseRef.current = onClose;
-  useEffect(() => {
-    const previous = document.activeElement;
-    closeRef.current?.focus();
-    const onKey = event => { if (event.key === 'Escape') onCloseRef.current(); };
-    document.addEventListener('keydown', onKey);
-    return () => { document.removeEventListener('keydown', onKey); previous?.focus?.(); };
-  }, []);
+import React from "react";
+import { ArrowUpRight, Check, X, BookOpen } from "lucide-react";
+import { kindLabels } from "./MaterialCard.jsx";
+import { CollapsibleText } from "./CollapsibleText.jsx";
+import { useDialog } from "./useDialog.js";
+export function MaterialDialog({
+  item,
+  completed,
+  onClose,
+  onComplete,
+  onStarted,
+  busy,
+  error,
+}) {
+  const ref = useDialog(onClose);
   if (!item) return null;
   const verified = item.access_verified === true;
-  const source = item.source_url?.startsWith('https://kurs.alfabank.ru/');
-
+  const source = item.source_url?.startsWith("https://kurs.alfabank.ru/");
   return (
     <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal" role="dialog" aria-modal="true" aria-label="Информация о материале" onClick={event => event.stopPropagation()}>
-        <button className="close-modal" ref={closeRef} type="button" onClick={onClose} aria-label="Закрыть"><X /></button>
-        <span className="section-kicker">{kindLabels[item.kind] || 'Материал'}</span>
-        <h2>{item.title}</h2>
-        <CollapsibleText key={item.entity_key} text={item.description} limit={550} lines={6} className="dialog-description" />
-        <p className="modal-note">
-          {verified ? 'По данным подключённого каталога материал доступен.' : 'Условия доступа не подтверждены.'}
-        </p>
-        {item.price?.status === 'known' && <p><b>Цена:</b> {item.price.amount} {item.price.currency}</p>}
-        {item.price?.status === 'conditional' && <p><b>Условная цена:</b> {Number(item.price.amount).toLocaleString('ru-RU')} ₽</p>}
-        {item.price?.status === 'unknown' && <p className="hint">Стоимость не указана</p>}
-        {error && <p className="notice" role="alert">{error}</p>}
+      <div
+        ref={ref}
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="material-title"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="dialog-top">
+          <span className="dialog-type">
+            <BookOpen size={17} />
+            {kindLabels[item.kind] || "Материал"}
+          </span>
+          <button
+            className="icon-button"
+            type="button"
+            onClick={onClose}
+            aria-label="Закрыть материал"
+          >
+            <X />
+          </button>
+        </div>
+        <h2 id="material-title">{item.title}</h2>
+        {item.topics?.length > 0 && (
+          <div className="material-topics">
+            {item.topics.map((topic) => (
+              <span key={topic}>{topic}</span>
+            ))}
+          </div>
+        )}
+        <CollapsibleText
+          key={item.entity_key}
+          text={item.description || "Подробное описание этого материала пока не добавлено."}
+          limit={550}
+          lines={6}
+          className="material-description"
+        />
+        <div className="material-availability">
+          <span>
+            {verified ? (
+              <>
+                <Check size={16} />
+                Материал доступен
+              </>
+            ) : (
+              "Условия доступа уточняются"
+            )}
+          </span>
+          {item.price?.status === "known" && (
+            <strong>
+              {item.price.amount} {item.price.currency || ""}
+            </strong>
+          )}
+          {item.price?.status === "conditional" && (
+            <strong>Условная цена: {Number(item.price.amount).toLocaleString("ru-RU")} ₽</strong>
+          )}
+        </div>
+        {error && (
+          <p className="notice" role="alert">
+            {error}
+          </p>
+        )}
         <div className="modal-actions">
-          {verified && item.canonical_url?.startsWith('https://') && (
-            <a className="primary" href={item.canonical_url} target="_blank" rel="noopener noreferrer" onClick={() => onStarted(item, 'clicked')}>
-              Открыть материал <ArrowUpRight size={16} />
+          {verified && item.canonical_url?.startsWith("https://") && (
+            <a
+              className="primary btn btn--primary"
+              href={item.canonical_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onStarted(item, "clicked")}
+            >
+              Перейти к материалу
+              <ArrowUpRight size={17} />
             </a>
           )}
           {!verified && source && (
-            <a className="outline" href={item.source_url} target="_blank" rel="noopener noreferrer" onClick={() => onStarted(item, 'clicked')}>
-              Открыть страницу источника <ArrowUpRight size={16} />
+            <a
+              className="outline btn btn--secondary"
+              href={item.source_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onStarted(item, "clicked")}
+            >
+              Открыть страницу источника <ArrowUpRight size={17} />
             </a>
           )}
-          {verified && item.kind === 'course' && !completed && (
-            <button className="primary" disabled={busy} onClick={() => onComplete(item)}>
-              Отметить завершённым <Check size={16} />
+          {verified && item.kind === "course" && !completed && (
+            <button
+              className="outline btn btn--secondary"
+              disabled={busy}
+              onClick={() => onComplete(item)}
+            >
+              {busy ? "Сохраняем" : "Отметить изученным"}
+              <Check size={17} />
             </button>
           )}
-          {completed && <span className="done"><Check size={16} /> Отмечено как завершённое</span>}
-          <button className="outline" onClick={onClose}>Закрыть</button>
+          {completed && (
+            <span className="done">
+              <Check size={17} />
+              Вы отметили этот курс изученным
+            </span>
+          )}
         </div>
-        <p className="modal-note">Отметка завершения — самоотчёт, а не подтверждённый сертификат.</p>
+        {!item.canonical_url && (
+          <p className="modal-note">
+            Ссылка на материал пока не указана в каталоге.
+          </p>
+        )}
+        {item.kind === "course" && (
+          <p className="modal-note">
+            Отметка сохраняется в вашей истории обучения и не заменяет
+            сертификат.
+          </p>
+        )}
       </div>
     </div>
   );
