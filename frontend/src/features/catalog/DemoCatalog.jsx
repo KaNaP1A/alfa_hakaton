@@ -7,7 +7,7 @@ import {kindLabels} from '../../shared/ui/MaterialCard.jsx';
 import {TYPES} from '../search/SearchResults.jsx';
 
 const ITEMS=orderDemoItems(data.items),SIZE=12;
-const DEMO_TYPES=[...TYPES,['lesson','Уроки']];
+const DEMO_TYPES=TYPES;
 const ORIGINS={synthetic:'Вымышленный пример',public_snapshot:'Публичный снимок Альфы',historical_backup:'Снимок бэкапа'};
 const money=value=>`${value.toLocaleString('ru-RU')} ₽`;
 

@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowUpRight, Check, X } from 'lucide-react';
 import { kindLabels } from './MaterialCard.jsx';
+import { CollapsibleText } from './CollapsibleText.jsx';
 
 export function MaterialDialog({ item, completed, onClose, onComplete, onStarted, busy, error }) {
+  const closeRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+  useEffect(() => {
+    const previous = document.activeElement;
+    closeRef.current?.focus();
+    const onKey = event => { if (event.key === 'Escape') onCloseRef.current(); };
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); previous?.focus?.(); };
+  }, []);
   if (!item) return null;
   const verified = item.access_verified === true;
   const source = item.source_url?.startsWith('https://kurs.alfabank.ru/');
@@ -10,10 +21,10 @@ export function MaterialDialog({ item, completed, onClose, onComplete, onStarted
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal" role="dialog" aria-modal="true" aria-label="Информация о материале" onClick={event => event.stopPropagation()}>
-        <button className="close-modal" type="button" onClick={onClose} aria-label="Закрыть"><X /></button>
+        <button className="close-modal" ref={closeRef} type="button" onClick={onClose} aria-label="Закрыть"><X /></button>
         <span className="section-kicker">{kindLabels[item.kind] || 'Материал'}</span>
         <h2>{item.title}</h2>
-        <p>{item.description || 'Описание отсутствует.'}</p>
+        <CollapsibleText key={item.entity_key} text={item.description} limit={550} lines={6} className="dialog-description" />
         <p className="modal-note">
           {verified ? 'По данным подключённого каталога материал доступен.' : 'Условия доступа не подтверждены.'}
         </p>

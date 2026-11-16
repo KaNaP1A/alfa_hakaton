@@ -92,6 +92,7 @@ Thumbs.db
 
 # Frontend dependencies. The lockfile is tracked for reproducible installs.
 /frontend/node_modules/
+/frontend/.vite/
 
 # Reviewed schema migrations and a credential-free env template.
 !/backend/migrations/*.sql

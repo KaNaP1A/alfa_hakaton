@@ -9,6 +9,6 @@ export function AuthScreen({auth}){
     {(error||auth.error)&&<p className="notice" role="alert">{error||auth.error}</p>}
     <button className="primary" type="submit" disabled={auth.status==='loading'}>{auth.status==='loading'?'Подключаемся...':mode==='login'?'Войти':'Зарегистрироваться'}</button></form>
     <button className="auth-switch" onClick={()=>{setError('');setMode(mode==='login'?'register':'login')}}>{mode==='login'?'Нет аккаунта? Зарегистрироваться':'Уже есть аккаунт? Войти'}</button>
-    <p className="auth-note">Это отдельная учётная запись сервиса.</p>
+    <p className="auth-note">Это отдельная учётная запись сервиса. Используйте уникальный пароль; сессия сохраняется до закрытия вкладки.</p>
   </section></main>;
 }

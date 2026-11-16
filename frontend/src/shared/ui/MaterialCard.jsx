@@ -3,6 +3,7 @@ import {
   ArrowUpRight, BookOpen, FileText, GraduationCap, Headphones,
   SlidersHorizontal, Sparkles, Video,
 } from 'lucide-react';
+import { CollapsibleText } from './CollapsibleText.jsx';
 
 export const kindLabels = {
   course: 'Курс',
@@ -47,7 +48,7 @@ export function MaterialCard({ item, onView, viewed }) {
           {item.topics?.[0] && <span className="topic">{item.topics[0]}</span>}
         </div>
         <h3>{item.title}</h3>
-        <p>{item.description || 'Описание не предоставлено.'}</p>
+        <CollapsibleText text={item.description} limit={280} lines={3} />
         {reason && <div className="why"><Sparkles size={15} /><span>{reason}</span></div>}
         <div className="item-footer">
           <button type="button" className="text-btn" onClick={() => onView(item)}>

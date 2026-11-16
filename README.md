@@ -45,6 +45,8 @@ ML-режим и generation скрипт выставляет автоматич
 Docker для PostgreSQL, а API с ML и Vite запускает нативно.
 Подробности о снимке и SQL — [backend/SNAPSHOT.md](backend/SNAPSHOT.md).
 
+Для локального смешанного каталога: `python3 demo_catalog/server.py --catalog data/demo_catalog.json --port 8767`, затем открыть http://127.0.0.1:8767. Подробности: [демо](demo_catalog/README.md), [данные](data/README.md). Для модели после клонирования нужны `git lfs install` и `git lfs pull`; инструкции — в [models/README.md](models/README.md).
+
 ## Архитектура: C4 Container (C2)
 
 ![C4 C2: контейнеры системы Alfa и протоколы взаимодействия](docs/images/backend-ml-flow.svg)
