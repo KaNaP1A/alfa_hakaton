@@ -1,0 +1,80 @@
+name: alfa-hack-demo
+
+services:
+  db:
+    build:
+      context: ./backend/docker
+      dockerfile: Dockerfile.postgres
+    environment:
+      POSTGRES_DB: alfa_snapshot
+      POSTGRES_USER: alfa
+      POSTGRES_PASSWORD: ${ALFA_DEMO_DB_PASSWORD:-local-demo-only}
+      PGPASSWORD: ${ALFA_DEMO_DB_PASSWORD:-local-demo-only}
+    volumes:
+      - demo_db:/var/lib/postgresql/data
+      - type: bind
+        source: ./data/alfa_demo_catalog.backup
+        target: /backup/source.backup
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          pg_isready -h 127.0.0.1 -U alfa -d alfa_snapshot &&
+          test "$$(psql -h 127.0.0.1 -U alfa -d alfa_snapshot -Atc
+          "SELECT count(*) FROM pg_class WHERE oid = to_regclass('public.\"Articles\"')")" = 1
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 20s
+
+  migrate:
+    image: postgres:17.6-bookworm@sha256:f3bd19c606e442c3d7bdfa8002e03fe260a1023351e0ea4598032022b68dd6e3
+    environment:
+      PGPASSWORD: ${ALFA_DEMO_DB_PASSWORD:-local-demo-only}
+    volumes:
+      - ./backend/migrations:/migrations:ro
+    entrypoint: [psql, -h, db, -U, alfa, -d, alfa_snapshot, -v, ON_ERROR_STOP=1, -f, /migrations/001_api_state.sql]
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    environment:
+      ALFA_DATABASE_URL: postgresql+psycopg://alfa:${ALFA_DEMO_DB_PASSWORD:-local-demo-only}@db:5432/alfa_snapshot
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+    volumes:
+      - model_cache:/data
+    ports:
+      - 127.0.0.1:${ALFA_API_PORT:-8080}:8080
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, /app/.venv/bin/python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 5m
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - 127.0.0.1:${ALFA_FRONTEND_PORT:-5173}:80
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  demo_db:
+  model_cache:

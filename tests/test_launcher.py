@@ -124,3 +124,11 @@ class LauncherTests(unittest.TestCase):
             self.assertEqual(
                 launcher.load_env(path), {"KEY": "$(echo not-executed)", "EMPTY": ""}
             )
+
+    def test_cache_fingerprint_accepts_files_outside_checkout(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "model.json"
+            path.write_text("first")
+            first = launcher.fingerprint([path])
+            path.write_text("second")
+            self.assertNotEqual(first, launcher.fingerprint([path]))

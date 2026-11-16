@@ -110,20 +110,15 @@ def api_environment(
 def fingerprint(paths: list[Path]) -> str:
     digest = hashlib.sha256()
     for path in paths:
-        digest.update(str(path.relative_to(ROOT)).encode())
+        # Container caches live in a Docker volume outside the project directory.
+        label = path.relative_to(ROOT) if path.is_relative_to(ROOT) else path
+        digest.update(str(label).encode())
         digest.update(path.read_bytes())
     return digest.hexdigest()
 
 
 def prepare_python(env: dict[str, str]) -> None:
-    paths = [BACKEND / "pyproject.toml"] + [
-        ROOT / "05_code" / name
-        for name in (
-            "requirements-relevance.txt",
-            "requirements-semantic.txt",
-            "requirements-rank.txt",
-        )
-    ]
+    paths = [ROOT / "docker" / "pyproject.toml", ROOT / "docker" / "uv.lock"]
     stamp = STATE / "python-dependencies"
     version = fingerprint(paths)
     if not PYTHON.exists():
@@ -133,19 +128,11 @@ def prepare_python(env: dict[str, str]) -> None:
         announce(
             "Устанавливаю зависимости API и ML (первый запуск может занять несколько минут)…"
         )
+        locked_env = dict(env)
+        locked_env["UV_PROJECT_ENVIRONMENT"] = str(PYTHON.parent.parent)
         run(
-            [
-                "uv",
-                "pip",
-                "install",
-                "--python",
-                str(PYTHON),
-                "-e",
-                str(BACKEND),
-                "-r",
-                str(ROOT / "05_code" / "requirements-relevance.txt"),
-            ],
-            env=env,
+            ["uv", "sync", "--frozen", "--no-dev", "--project", str(ROOT / "docker")],
+            env=locked_env,
         )
         stamp.write_text(version)
 
@@ -182,8 +169,9 @@ def prepare_model(env: dict[str, str]) -> str:
     if not RUNTIME.exists() or bundle_identity(source) != bundle_identity(RUNTIME):
         announce("Проверяю модель и обновляю отдельную runtime-копию…")
         run([str(PYTHON), str(script), "--verify", str(source)], env=env)
+        RUNTIME.parent.mkdir(parents=True, exist_ok=True)
         with tempfile.TemporaryDirectory(
-            prefix=".runtime-", dir=source.parent
+            prefix=".runtime-", dir=RUNTIME.parent
         ) as directory:
             prepared = Path(directory) / "bundle"
             shutil.copytree(source, prepared)
