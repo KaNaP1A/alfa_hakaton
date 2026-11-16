@@ -9,7 +9,7 @@ from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-Kind = Literal["article", "course", "document", "podcast", "webinar", "calculator"]
+Kind = Literal["article", "course", "lesson", "document", "podcast", "webinar", "calculator"]
 Category = Literal["business", "finance", "team", "marketing", "technology"]
 Action = Literal["impression", "clicked", "viewed", "interested", "started", "completed"]
 
@@ -35,8 +35,32 @@ class Profile(StrictModel):
     industry: str | None = Field(default=None, min_length=1, max_length=150)
     business_stage: str | None = Field(default=None, max_length=50)
     experience: str | None = Field(default=None, max_length=50)
-    preferred_kinds: list[Kind] = Field(default_factory=list, max_length=6)
+    preferred_kinds: list[Kind] = Field(default_factory=list, max_length=7)
     region: str | None = Field(default=None, max_length=150)
+    selected_facets: list[str] = Field(default_factory=list, max_length=20)
+
+    @field_validator("categories", "preferred_kinds")
+    @classmethod
+    def unique_choices(cls, values: list[str]) -> list[str]:
+        if len(values) != len(set(values)):
+            raise ValueError("Duplicate profile choice")
+        return values
+
+    @field_validator("selected_facets")
+    @classmethod
+    def validate_facets(cls, values: list[str]) -> list[str]:
+        result = [" ".join(value.split()) for value in values]
+        if any(not value or len(value) > 150 for value in result):
+            raise ValueError("Invalid interest topic")
+        if len({value.casefold() for value in result}) != len(result):
+            raise ValueError("Duplicate interest topic")
+        return result
+
+    @model_validator(mode="after")
+    def validate_categories_for_facets(self) -> Profile:
+        if self.selected_facets and not self.categories:
+            raise ValueError("Select a category before choosing topics")
+        return self
 
 
 class GenerationRequest(StrictModel):

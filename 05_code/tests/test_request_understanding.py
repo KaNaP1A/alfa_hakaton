@@ -3,9 +3,11 @@ import unittest
 
 from test_suggestions import enable_test_dense, material, write_bundle
 
+from alfa_reco.query_rules import plan_query
 from alfa_reco.request_understanding import (
     actions,
     analyze_request,
+    needs_negation_clarification,
     opposite_title_intent,
     weak_intent_support,
 )
@@ -42,6 +44,14 @@ class RequestUnderstandingTests(unittest.TestCase):
         collection = actions("как взыскать долг")
         self.assertTrue(opposite_title_intent(collection, "Как погасить задолженность"))
         self.assertFalse(opposite_title_intent(collection, "Как взыскать долг"))
+
+    def test_rephrasing_does_not_block_known_price_or_experience_phrases(self):
+        for query in ("курс по маркетингу без опыта", "статья без оплаты", "не только продажи, но и маркетинг"):
+            with self.subTest(query=query):
+                self.assertFalse(needs_negation_clarification(plan_query(query)))
+        for query in ("как не увольнять сотрудника", "обучение без отрыва от работы", "не только продажи, но не финансы"):
+            with self.subTest(query=query):
+                self.assertTrue(needs_negation_clarification(plan_query(query)))
 
     def test_weak_retention_evidence_needs_specific_support(self):
         for query in ("как удержать сотрудников", "уменьшить текучесть кадров"):
@@ -131,6 +141,31 @@ class SearchUnderstandingTests(unittest.TestCase):
         self.assertFalse(result["results"])
         self.assertTrue(result["query_rules"]["unresolved_negation"])
         self.assertTrue(result["clarification"]["allow_text"])
+
+    def test_unresolved_negation_asks_for_a_new_goal_instead_of_the_opposite(self):
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        write_bundle(temp.name, [
+            material("article:dismiss", "Как уволить сотрудника"),
+            material("article:retain", "Как удержать сотрудников"),
+        ])
+        engine = enable_test_dense(SearchEngine(temp.name))
+        engine.dense_signals = lambda query: {
+            source: [0.95, 0.95] for source in ("card", "body", "lesson")
+        }
+        query = "как не увольнять сотрудника"
+        result = engine.search(query, mode="hybrid")
+        self.assertEqual(result["results"], [])
+        self.assertEqual(result["alternatives"], [])
+        self.assertEqual(result["confidence"]["reason"], "unresolved_negation")
+        self.assertTrue(result["clarification"]["allow_text"])
+        partial = engine.search(query, mode="hybrid", clarification_text="сотрудника")
+        self.assertEqual(partial["results"], [])
+        self.assertTrue(partial["clarification"]["allow_text"])
+        clarified = engine.search(query, mode="hybrid", clarification_text="как удержать сотрудников")
+        self.assertIn("article:retain", [item["entity_key"] for item in clarified["results"]])
+        self.assertNotIn("article:dismiss", [item["entity_key"] for item in clarified["results"]])
+        self.assertEqual(clarified["query"], query)
 
     def test_weaker_semantic_candidate_is_labeled_and_specific_title_wins(self):
         temp = tempfile.TemporaryDirectory()

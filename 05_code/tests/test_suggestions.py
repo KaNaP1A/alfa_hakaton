@@ -223,6 +223,18 @@ class SuggestionTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 engine.search("кофейню", mode="hybrid", selection_id="fake")
 
+    def test_allowed_candidates_are_filtered_before_top_k_and_clarifications(self):
+        catalog = [material(f"article:{i:03d}", "Финансы", ["Финансы"]) for i in range(70)]
+        with tempfile.TemporaryDirectory() as root:
+            write_bundle(root, catalog)
+            engine = enable_test_dense(SearchEngine(root))
+            result = engine.search(
+                "Финансы", mode="hybrid", top=5, candidate_keys={"article:069"}
+            )
+            self.assertEqual([row["entity_key"] for row in result["results"]], ["article:069"])
+            self.assertEqual(result["alternatives"], [])
+            self.assertEqual(engine.search("Финансы", mode="hybrid", candidate_keys=set())["results"], [])
+
     def test_corrupt_or_stale_index_rejected(self):
         with tempfile.TemporaryDirectory() as root:
             path = write_bundle(root, self.catalog)

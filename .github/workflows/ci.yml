@@ -1,0 +1,53 @@
+name: Проверка проекта
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backend-and-algorithm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Установить uv
+        run: python -m pip install uv==0.13.8
+      - name: Проверить бэкенд и границы слоёв
+        working-directory: backend
+        run: ./ci.sh
+      - name: Проверить алгоритм без закрытых данных и весов
+        working-directory: 05_code
+        env:
+          PYTHONPATH: src:scripts:tests
+        run: |
+          ../backend/.venv/bin/ruff check src/alfa_reco
+          ../backend/.venv/bin/python -m unittest -v \
+            test_interests test_interest_recommendations test_cold_start \
+            test_development_plan test_profile test_query_rules
+      - name: Проверить запуск проекта
+        run: |
+          backend/.venv/bin/ruff check scripts/run_project.py scripts/export_visible_catalog_keys.py tests/test_launcher.py
+          backend/.venv/bin/ruff format --check scripts/run_project.py scripts/export_visible_catalog_keys.py tests/test_launcher.py
+          backend/.venv/bin/python -m unittest discover -s tests -v
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run build

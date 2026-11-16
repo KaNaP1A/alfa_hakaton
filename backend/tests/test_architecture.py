@@ -11,9 +11,11 @@ class ArchitectureTests(unittest.TestCase):
             "domain": adapters | {"services", "schemas", "config"},
             "services": adapters | {"schemas", "config"},
             "api": {"sqlalchemy", "repositories", "infrastructure"},
+            "repositories": {"api", "services", "schemas", "fastapi"},
+            "infrastructure": {"api", "services", "schemas", "fastapi"},
         }
         for layer, forbidden in boundaries.items():
-            for path in (root / layer).glob("*.py"):
+            for path in (root / layer).rglob("*.py"):
                 for node in ast.walk(ast.parse(path.read_text())):
                     modules = []
                     if isinstance(node, ast.ImportFrom) and node.module:

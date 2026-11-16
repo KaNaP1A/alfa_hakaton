@@ -21,6 +21,7 @@
 /05_code/artifacts/
 /05_code/evaluation/
 /models/runtime/
+/models/unified/
 /models/sandbox/
 /.push-algorithm/
 /frontend_handoff.zip
@@ -89,9 +90,8 @@ Thumbs.db
 *.log
 *.tmp
 
-# Frontend dependencies and local lockfile.
+# Frontend dependencies. The lockfile is tracked for reproducible installs.
 /frontend/node_modules/
-/frontend/package-lock.json
 
 # Reviewed schema migrations and a credential-free env template.
 !/backend/migrations/*.sql

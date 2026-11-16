@@ -24,6 +24,10 @@ class Material:
     canonical_url: str | None
     price_amount: str | None
     price_currency: str | None
+    access_verified: bool = True
+    source_url: str | None = None
+    conditional_price_rub: int | None = None
+    conditional_cost_rub: int | None = None
 
 
 @dataclass

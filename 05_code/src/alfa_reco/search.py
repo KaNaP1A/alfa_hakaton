@@ -235,6 +235,7 @@ class SearchEngine:
         clarification_text=None,
         *,
         ranking_config=None,
+        candidate_keys=None,
     ):
         from .eligibility import USER_KINDS, candidate_support
         from .pricing import price_fact
@@ -246,6 +247,11 @@ class SearchEngine:
             raise ValueError("Unsupported search mode")
         if type(top) is not int or not 1 <= top <= 50:
             raise ValueError("top must be between 1 and 50")
+        if candidate_keys is not None and (
+            not isinstance(candidate_keys, (set, frozenset))
+            or any(not isinstance(key, str) for key in candidate_keys)
+        ):
+            raise ValueError("candidate_keys must be a set of material IDs")
         if kind is not None and (kind not in USER_KINDS):
             raise ValueError("Unsupported material kind")
         if bool(selection_id) != bool(selection_generation):
@@ -295,6 +301,7 @@ class SearchEngine:
             actions,
             ambiguous_contrast_reference,
             analyze_request,
+            needs_negation_clarification,
             opposite_title_intent,
             weak_intent_support,
         )
@@ -313,15 +320,32 @@ class SearchEngine:
         applied_kind = kind or inferred_kind
         # Explicitly chosen material changes focus; the original constraints stay visible.
         base_query = understanding["search_query"] if inferred_kind or (requested_kind and kind == requested_kind) else query
-        effective_query = (
-            focus["label"]
-            if selected_material
-            else " ".join(
+        replaces_negated_goal = bool(
+            clarification_text and needs_negation_clarification(original_plan)
+        )
+        if selected_material:
+            effective_query = focus["label"]
+        elif replaces_negated_goal:
+            # The clarification is a complete replacement for an ambiguous negated goal.
+            effective_query = clarification_text
+        else:
+            effective_query = " ".join(
                 part for part in [base_query, focus["label"] if focus else clarification_text] if part
             )
-        )
         plan = plan_query(effective_query)
         retrieval_query = plan.retrieval_query
+        from .evidence import subject_terms
+
+        # A single-word follow-up only adds context; it cannot safely replace a negated goal.
+        incomplete_replacement = bool(
+            replaces_negated_goal
+            and not selected_material
+            and not actions(effective_query)
+            and len(subject_terms(effective_query)) < 3
+        )
+        needs_rephrasing = (
+            needs_negation_clarification(plan) or incomplete_replacement
+        ) and not selected_material
         unresolved_reference = ambiguous_contrast_reference(plan) or (
             selected_material and ambiguous_contrast_reference(original_plan)
         )
@@ -331,7 +355,7 @@ class SearchEngine:
         # Do not infer the scope of complex negations or override a chosen material.
         active_actions = supported_actions if not (
             ambiguous_intent or unresolved_reference or plan.unresolved_negation
-            or original_plan.unresolved_negation or selected_material
+            or (original_plan.unresolved_negation and not replaces_negated_goal) or selected_material
         ) else []
         extra_constraints = set(understanding["unsupported_constraints"])
         if format_conflict:
@@ -343,8 +367,9 @@ class SearchEngine:
             i
             for i, item in enumerate(self.catalog)
             if item["kind"] in USER_KINDS and (applied_kind is None or item["kind"] == applied_kind)
+            and (candidate_keys is None or item["entity_key"] in candidate_keys)
         }
-        if unresolved_reference and not selected_material:
+        if (unresolved_reference or needs_rephrasing) and not selected_material:
             allowed.clear()
         focus_index = next(
             (
@@ -688,7 +713,13 @@ class SearchEngine:
             and not any(item["support"]["exact_title"] for item in results)
             else None
         )
-        if (unresolved_reference or ambiguous_intent or format_conflict or "format" in extra_constraints) and not (
+        if needs_rephrasing:
+            question = {
+                "question": "Уточните задачу целиком: что именно вы хотите сделать?",
+                "options": [],
+                "allow_text": True,
+            }
+        elif (unresolved_reference or ambiguous_intent or format_conflict or "format" in extra_constraints) and not (
             focus or selection or clarification_text
         ):
             question = {

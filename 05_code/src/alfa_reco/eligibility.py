@@ -3,7 +3,7 @@
 from .evidence import subject_terms
 from .text import tokens
 
-USER_KINDS = frozenset({"article", "course", "document", "podcast", "webinar", "calculator"})
+USER_KINDS = frozenset({"article", "course", "lesson", "document", "podcast", "webinar", "calculator"})
 SEMANTIC_MIN = 0.62
 ALTERNATIVE_MIN = 0.48
 LEXICAL_MIN = 0.85

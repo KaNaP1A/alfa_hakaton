@@ -74,6 +74,24 @@ class HttpRecommender:
     def suggest(self, q: str, limit: int) -> JsonObject:
         return self._request("/suggest", params={"q": q, "limit": limit})
 
+    def interests(self) -> JsonObject:
+        return self._request("/interests")
+
+    def recommend_by_interests(
+        self, generation: str, categories: list[str], facets: list[str], viewed: list[str]
+    ) -> JsonObject:
+        return self._request(
+            "/recommend-by-interests",
+            body=TypeAdapter(JsonObject).validate_python(
+                {
+                    "generation": generation,
+                    "categories": categories,
+                    "selected_facets": facets,
+                    "viewed": viewed,
+                }
+            ),
+        )
+
     def recommend(
         self,
         generation: str,
@@ -139,6 +157,78 @@ class DemoRecommender:
 
     def suggest(self, q: str, limit: int) -> JsonObject:
         return {"generation": self.generation, "completions": [], "related_topics": []}
+
+    def interests(self) -> JsonObject:
+        facets = {
+            "business": ("Бизнес", {"Бизнес", "Развитие бизнеса", "Старт бизнеса"}),
+            "finance": ("Финансы", {"Финансы", "Финансы и учет", "Налоги и законы"}),
+            "team": ("Команда", {"Команда", "Управление командой", "Поиск сотрудников"}),
+            "marketing": ("Маркетинг", {"Маркетинг", "Продажи", "Продвижение продукта"}),
+            "technology": ("Технологии", {"Технологии", "Анализ данных", "Работа с данными"}),
+        }
+        categories = []
+        for identifier, (label, names) in facets.items():
+            topics = []
+            relevant: set[str] = set()
+            for name in sorted(names):
+                keys = {m.entity_key for m in self.materials if name in m.topics}
+                if keys:
+                    relevant.update(keys)
+                    topics.append(
+                        {
+                            "value": name,
+                            "label": name,
+                            "sources": ["topics"],
+                            "material_count": len(keys),
+                        }
+                    )
+            if topics:
+                categories.append(
+                    {
+                        "id": identifier,
+                        "label": label,
+                        "material_count": len(relevant),
+                        "topics": topics,
+                    }
+                )
+        return TypeAdapter(JsonObject).validate_python(
+            {"generation": self.generation, "categories": categories}
+        )
+
+    def recommend_by_interests(
+        self, generation: str, categories: list[str], facets: list[str], viewed: list[str]
+    ) -> JsonObject:
+        if generation != self.generation:
+            raise UpstreamError(400, "Catalog changed; refresh and try again")
+        directory = self.interests()
+        allowed: set[str] = set()
+        groups = directory.get("categories")
+        if isinstance(groups, list):
+            for group in groups:
+                if not isinstance(group, dict) or group.get("id") not in categories:
+                    continue
+                topics = group.get("topics")
+                if isinstance(topics, list):
+                    for topic in topics:
+                        if isinstance(topic, dict):
+                            value = topic.get("value")
+                            if isinstance(value, str):
+                                allowed.add(value)
+        if any(facet not in allowed for facet in facets):
+            raise UpstreamError(400, "Selected topic is not available")
+        chosen = set(facets) if facets else allowed
+        items = [
+            {"entity_key": m.entity_key}
+            for m in self.materials
+            if m.entity_key not in viewed and chosen.intersection(m.topics)
+        ]
+        return TypeAdapter(JsonObject).validate_python(
+            {
+                "generation": generation,
+                "results": items[:5],
+                "status": "ok" if len(items) >= 5 else "insufficient_evidence",
+            }
+        )
 
     def recommend(
         self,

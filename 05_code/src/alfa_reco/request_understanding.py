@@ -64,6 +64,16 @@ def _match(regex, text):
     return match.group(0) if match else None
 
 
+def needs_negation_clarification(plan):
+    """Do not assume an unresolved exclusion means the opposite action was requested."""
+    if not plan.unresolved_negation:
+        return False
+    text = re.sub(r"\bне\s+только\b", " ", plan.positive_query, flags=re.I)
+    text = EXPERIENCE.sub(" ", text)
+    text = PRICE.sub(" ", text)
+    return bool(ANY_NEGATION.search(text))
+
+
 def actions(text):
     """Recognize only the supported action/object pairs and retain source spans."""
     found = []

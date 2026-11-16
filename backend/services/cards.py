@@ -1,11 +1,26 @@
 from __future__ import annotations
 
 from domain.entities import Material
-from domain.responses import MaterialCard
+from domain.responses import MaterialCard, Price
 from domain.types import JsonObject
 
 
 def card(material: Material) -> MaterialCard:
+    price: Price
+    if material.price_amount is not None and material.price_currency is not None:
+        price = {
+            "status": "known",
+            "amount": material.price_amount,
+            "currency": material.price_currency,
+        }
+    elif material.conditional_price_rub is not None:
+        price = {
+            "status": "conditional",
+            "amount": str(material.conditional_price_rub),
+            "currency": "RUB",
+        }
+    else:
+        price = {"status": "unknown", "amount": None, "currency": None}
     return {
         "entity_key": material.entity_key,
         "generation": material.generation,
@@ -15,12 +30,9 @@ def card(material: Material) -> MaterialCard:
         "topics": material.topics,
         "canonical_url": material.canonical_url,
         "access_type": material.access,
-        "access_verified": True,
-        "price": {
-            "status": "known" if material.price_amount is not None else "unknown",
-            "amount": material.price_amount,
-            "currency": material.price_currency,
-        },
+        "access_verified": material.access_verified,
+        "price": price,
+        "source_url": material.source_url,
     }
 
 

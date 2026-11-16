@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { State,Cards } from '../../shared/ui/ResultStates.jsx';
-export const TYPES=[['','Все материалы'],['course','Курсы'],['article','Статьи'],['document','Документы'],['webinar','Вебинары'],['podcast','Подкасты'],['calculator','Калькуляторы']];
+export const TYPES=[['','Все материалы'],['course','Курсы'],['lesson','Уроки'],['article','Статьи'],['document','Документы'],['webinar','Вебинары'],['podcast','Подкасты'],['calculator','Калькуляторы']];
 export function SearchResults({state,profile,onOpen}){
  const [clarificationText,setClarificationText]=useState('');
  return <><div className="filterbar">{TYPES.map(([value,label])=><button key={value} className={state.kind===value?'selected':''} onClick={()=>{state.setKind(value);if(state.submitted)state.search(state.submitted,value)}}>{label}</button>)}</div>

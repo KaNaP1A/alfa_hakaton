@@ -1,16 +1,17 @@
 'use strict';
 const $ = id => document.getElementById(id);
 let items = [], kind = 'all', shown = 12, timer;
-const labels = {course:'Курс', article:'Статья', document:'Документ', podcast:'Подкаст', webinar:'Вебинар', calculator:'Калькулятор'};
+const labels = {course:'Курс', lesson:'Урок', article:'Статья', document:'Документ', podcast:'Подкаст', webinar:'Вебинар', calculator:'Калькулятор'};
+const origins={synthetic:'Вымышленный пример',public_snapshot:'Публичный снимок Альфы',historical_backup:'Снимок бэкапа'};
 let last = null;
 try { last = JSON.parse(localStorage.getItem('demo-last-topic') || 'null'); } catch (_) { last = null; }
 function el(tag, className, text) { const e = document.createElement(tag); if (className) e.className = className; if (text !== undefined) e.textContent = text; return e; }
 function card(item) {
   const article = el('article','card'); const top=el('div','card-top');
-  top.append(el('span','type',labels[item.kind] || 'Материал'),el('span',`origin${item.origin === 'public_snapshot' ? ' real' : ''}`,item.origin === 'synthetic' ? 'Вымышленный пример' : 'Снимок сайта Альфы'));
+  top.append(el('span','type',labels[item.kind] || 'Материал'),el('span',`origin${item.origin === 'public_snapshot' ? ' real' : ''}`,origins[item.origin] || 'Демо'));
   const bottom=el('div','bottom');
   let price='Цена и доступ не проверены';
-  if (item.price.status === 'fictional') price=`${item.price.amount.toLocaleString('ru-RU')} ₽ · условная цена`;
+  if (item.demo_offer) price=`${item.demo_offer.price_rub.toLocaleString('ru-RU')} ₽ · условная цена; себестоимость ${item.demo_offer.cost_rub.toLocaleString('ru-RU')} ₽ (условно)`;
   if (item.price.status === 'fictional_free') price='Бесплатно · условный пример';
   bottom.append(el('b','',price));
   if(item.origin === 'synthetic' && item.kind === 'article') {
@@ -34,4 +35,4 @@ function render(){
 document.querySelectorAll('.chip').forEach(button=>button.addEventListener('click',()=>{kind=button.dataset.kind;shown=12;document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active',b===button));render();}));
 $('search').addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(()=>{shown=12;render();},150);});
 $('origin').addEventListener('change',()=>{shown=12;render();}); $('more').addEventListener('click',()=>{shown+=12;render();});
-fetch('/api/catalog').then(r=>{if(!r.ok)throw Error('Ошибка загрузки');return r.json();}).then(data=>{const synthetic=data.items.filter(x=>x.origin==='synthetic').sort((a,b)=>a.title.localeCompare(b.title,'ru')); const publicItems=data.items.filter(x=>x.origin==='public_snapshot').sort((a,b)=>a.title.localeCompare(b.title,'ru')); items=[]; while(synthetic.length || publicItems.length){ if(synthetic.length) items.push(synthetic.shift()); items.push(...publicItems.splice(0,2)); } renderNext();render();}).catch(()=>{$('status').textContent='Не удалось загрузить каталог. Проверьте, что локальный сервер запущен.';});
+fetch('/api/catalog').then(r=>{if(!r.ok)throw Error('Ошибка загрузки');return r.json();}).then(data=>{const synthetic=data.items.filter(x=>x.origin==='synthetic').sort((a,b)=>a.title.localeCompare(b.title,'ru')); const publicItems=data.items.filter(x=>x.origin==='public_snapshot').sort((a,b)=>a.title.localeCompare(b.title,'ru')); const historical=data.items.filter(x=>x.origin==='historical_backup').sort((a,b)=>a.title.localeCompare(b.title,'ru')); items=[]; while(synthetic.length || publicItems.length || historical.length){ if(synthetic.length) items.push(synthetic.shift()); if(historical.length) items.push(historical.shift()); items.push(...publicItems.splice(0,2)); } renderNext();render();}).catch(()=>{$('status').textContent='Не удалось загрузить каталог. Проверьте, что локальный сервер запущен.';});

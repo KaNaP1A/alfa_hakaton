@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -64,6 +65,57 @@ class LauncherTests(unittest.TestCase):
         self.assertEqual(env["ALFA_AUTO_CREATE_TABLES"], "false")
         self.assertEqual(env["ALFA_CATALOG_SOURCE"], "postgres")
         self.assertEqual(env["ALFA_CATALOG_GENERATION"], "index-v1")
+
+    def test_api_and_model_use_the_same_unified_catalog(self):
+        catalog = Path("/tmp/unified-catalog")
+        env = launcher.api_environment(
+            {"ALFA_UNIFIED_CATALOG": "/stale"}, "index-v2", catalog
+        )
+        self.assertEqual(env["ALFA_RECO_CATALOG"], str(catalog))
+        self.assertEqual(env["ALFA_UNIFIED_CATALOG"], str(catalog))
+        self.assertEqual(env["ALFA_CATALOG_GENERATION"], "index-v2")
+
+    def test_changed_model_is_rolled_back_if_relocation_fails(self):
+        def make_bundle(root, ranker, encoder_path):
+            model = root / "catalog" / "generation-one" / "relevance" / "model-one"
+            model.mkdir(parents=True)
+            (root / "catalog" / "CURRENT.json").write_text(
+                '{"generation":"generation-one"}'
+            )
+            (model.parent / "CURRENT.json").write_text('{"generation":"model-one"}')
+            (model.parent.parent / "manifest.json").write_text(
+                '{"catalog_sha256":"same"}'
+            )
+            (model / "manifest.json").write_text(
+                json.dumps({"ranker_sha256": ranker, "encoder_path": encoder_path})
+            )
+            (root / "encoder").mkdir()
+            (root / "encoder" / "model.safetensors").write_bytes(b"x" * 1024)
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source, runtime = (
+                root / "models" / "recommender",
+                root / "models" / "runtime",
+            )
+            make_bundle(source, "new", "/source")
+            make_bundle(runtime, "old", "/runtime")
+
+            def execute(args, **kwargs):
+                if "--relocate" in args:
+                    raise RuntimeError("relocation failed")
+                return ""
+
+            with (
+                patch.object(launcher, "ROOT", root),
+                patch.object(launcher, "RUNTIME", runtime),
+                patch.object(launcher, "run", side_effect=execute),
+            ):
+                with self.assertRaisesRegex(RuntimeError, "relocation failed"):
+                    launcher.prepare_model({})
+            self.assertEqual(
+                launcher.bundle_identity(runtime)[2]["ranker_sha256"], "old"
+            )
 
     def test_env_is_read_as_data_without_shell_execution(self):
         with tempfile.TemporaryDirectory() as temporary:

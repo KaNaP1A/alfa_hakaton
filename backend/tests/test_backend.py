@@ -347,7 +347,8 @@ class BackendTests(unittest.TestCase):
             response = self.client.get("/api/v1/search", params={"q": query}, headers=self.auth)
             self.assertEqual(response.status_code, 422)
         self.assertEqual(self.get("/api/v1/search?q=x&top=51").status_code, 422)
-        self.assertEqual(self.get("/api/v1/catalog?kind=lesson").status_code, 422)
+        self.assertEqual(self.get("/api/v1/catalog?kind=lesson").status_code, 200)
+        self.assertEqual(self.get("/api/v1/catalog?kind=invalid").status_code, 422)
 
     def test_public_health_headers_and_documentation(self):
         response = self.client.get("/health")

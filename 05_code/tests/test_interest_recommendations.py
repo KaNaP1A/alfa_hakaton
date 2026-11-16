@@ -34,6 +34,15 @@ class InterestRecommendationsTests(unittest.TestCase):
             current_generation="g1", config_path=self.config,
         )
 
+    def test_history_recommendations_never_return_internal_material_kinds(self):
+        self.catalog.append(item("quiz:internal", "Старт бизнеса", ["Старт бизнеса"], kind="quiz"))
+        results = recommend(
+            self.catalog, ["business"], ["article:b00"], limit=20,
+            candidate_keys={"quiz:internal", "article:b01"},
+        )
+        self.assertTrue(results)
+        self.assertNotIn("quiz:internal", [row["entity_key"] for row in results])
+
     def test_selection_filters_before_limit_and_preserves_material_type(self):
         result = self.call(facets=["развитие бизнеса"])
         self.assertEqual(result["status"], "insufficient_evidence")

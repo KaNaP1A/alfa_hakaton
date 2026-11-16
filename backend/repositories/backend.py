@@ -13,8 +13,9 @@ from repositories.catalog import generation, history, import_catalog, visible_ma
 
 
 class SqlAlchemyRepository:
-    def __init__(self, db: Session) -> None:
+    def __init__(self, db: Session, *, compatible_generations: tuple[str, ...] = ()) -> None:
         self.db = db
+        self.compatible_generations = compatible_generations
 
     def user(self, user_id: str) -> entities.User | None:
         row = self.db.get(User, user_id)
@@ -55,7 +56,17 @@ class SqlAlchemyRepository:
     def visible_materials(self, user_id: str, current: str) -> dict[str, entities.Material]:
         return {
             key: entities.Material(
-                **{f.name: getattr(row, f.name) for f in fields(entities.Material)}
+                entity_key=row.entity_key,
+                generation=row.generation,
+                kind=row.kind,
+                title=row.title,
+                description=row.description,
+                topics=row.topics,
+                published=row.published,
+                access=row.access,
+                canonical_url=row.canonical_url,
+                price_amount=row.price_amount,
+                price_currency=row.price_currency,
             )
             for key, row in visible_materials(self.db, user_id, current).items()
         }
@@ -63,7 +74,7 @@ class SqlAlchemyRepository:
     def history(
         self, user_id: str, current: str, allowed: dict[str, entities.Material]
     ) -> tuple[list[str], list[str]]:
-        return history(self.db, user_id, current, allowed)
+        return history(self.db, user_id, current, allowed, self.compatible_generations)
 
     def find_event(self, user_id: str, event_id: str) -> entities.Activity | None:
         row = self.db.scalar(
@@ -84,7 +95,7 @@ class SqlAlchemyRepository:
             select(Activity)
             .where(
                 Activity.user_id == user_id,
-                Activity.generation == current,
+                Activity.generation.in_((current, *self.compatible_generations)),
                 Activity.entity_key.in_(allowed),
             )
             .order_by(Activity.id.desc())

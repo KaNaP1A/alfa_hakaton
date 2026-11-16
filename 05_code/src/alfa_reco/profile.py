@@ -155,8 +155,10 @@ def _profile_usage(profile, catalog):
     }
 
 
-def _goal_search(engine, profile):
+def _goal_search(engine, profile, *, candidate_keys=None):
     kwargs = {}
+    if candidate_keys is not None:
+        kwargs["candidate_keys"] = candidate_keys
     if profile["clarification_token"] is not None:
         kwargs["clarification_token"] = profile["clarification_token"]
     if profile["clarification_text"] is not None:
@@ -208,17 +210,44 @@ def _uncertain(search):
     return not isinstance(confidence, dict) or confidence.get("status") in {None, "uncertain"}
 
 
-def recommend_for_profile(engine, profile, *, limit=5, vectors=None):
+def recommend_for_profile(engine, profile, *, limit=5, vectors=None, candidate_keys=None, selected_facets=None):
     """Use the goal as the candidate boundary; enrich existing candidates only."""
     if type(limit) is not int or not 1 <= limit <= 20:
         raise ValueError("Limit must be an integer between 1 and 20")
     profile = validate_profile(engine, profile)
     catalog = {item["entity_key"]: item for item in engine.catalog}
+    if candidate_keys is not None and (
+        not isinstance(candidate_keys, (set, frozenset))
+        or any(not isinstance(key, str) for key in candidate_keys)
+    ):
+        raise ValueError("candidate_keys must be a set of material IDs")
+    if selected_facets is not None and (
+        not isinstance(selected_facets, (set, frozenset))
+        or any(not isinstance(facet, str) for facet in selected_facets)
+    ):
+        raise ValueError("selected_facets must be a set of topics")
+    scope = None if candidate_keys is None else set(candidate_keys)
+    if selected_facets is not None or profile["focus_facet"]:
+        facet_keys = {
+            key for key, item in catalog.items()
+            if (selected_facets is None or bool(facets(item) & selected_facets))
+            and (not profile["focus_facet"] or profile["focus_facet"] in facets(item))
+        }
+        scope = facet_keys if scope is None else scope & facet_keys
+    active = {
+        event["entity_key"] for event in profile["events"]
+        if event["action"] in {"started", "completed"}
+    }
+    if active and not profile["allow_revisit"]:
+        scope = set(catalog) - active if scope is None else scope - active
     usage = _profile_usage(profile, engine.catalog)
     if not profile["goal"] and not profile["events"]:
         from .cold_start import recommend_cold_start
 
-        results, onboarding = recommend_cold_start(engine.catalog, profile, limit)
+        results, onboarding = recommend_cold_start(
+            engine.catalog, profile, limit, candidate_keys=scope,
+            selected_facets=selected_facets,
+        )
         return {
             "generation": engine.generation,
             "method": "cold_start_facets_v1",
@@ -231,7 +260,10 @@ def recommend_for_profile(engine, profile, *, limit=5, vectors=None):
         }
     history = {}
     for position, event in enumerate(profile["events"][:20]):
-        matches = recommend(engine.catalog, [], [event["entity_key"]], limit=20, vectors=vectors)
+        matches = recommend(
+            engine.catalog, [], [event["entity_key"]], limit=20, vectors=vectors,
+            candidate_keys=scope, selected_facets=selected_facets,
+        )
         for rank, item in enumerate(matches, 1):
             key = item["entity_key"]
             affinity = SIGNAL_WEIGHT[event["action"]] / 3 / (1 + position * 0.15) / (1 + (rank - 1) * 0.1)
@@ -240,7 +272,7 @@ def recommend_for_profile(engine, profile, *, limit=5, vectors=None):
     candidates = {}
     search = None
     if profile["goal"]:
-        search = _goal_search(engine, profile)
+        search = _goal_search(engine, profile, candidate_keys=scope)
         for rank, item in enumerate(search["results"], 1):
             key = item.get("entity_key")
             candidates[key] = {"item": item, "base": 1 / (10 + rank), "rank": rank}
@@ -249,15 +281,20 @@ def recommend_for_profile(engine, profile, *, limit=5, vectors=None):
             # Reuse the existing content recommendation, not a new ungrounded catalog source.
             candidates[key] = {"item": signal["item"], "base": signal["strength"] / 10, "rank": None}
         if profile["categories"]:
-            for rank, item in enumerate(recommend(engine.catalog, profile["categories"], [], limit=20, vectors=vectors), 1):
+            category_results = recommend(
+                engine.catalog, profile["categories"], [], limit=20, vectors=vectors,
+                candidate_keys=scope, selected_facets=selected_facets,
+            )
+            for rank, item in enumerate(category_results, 1):
                 key = item["entity_key"]
                 prior = candidates.setdefault(key, {"item": item, "base": 0.0, "rank": None})
                 prior["base"] = max(prior["base"], 0.5 / (10 + rank))
                 prior["item"] = prior["item"] or item
-    active = {event["entity_key"] for event in profile["events"] if event["action"] in {"started", "completed"}}
     def excluded(key):
-        return not profile["allow_revisit"] and key in active
-    selected_facets = {name for category in profile["categories"] for name in CATEGORIES[category][1]}
+        return (not profile["allow_revisit"] and key in active) or (
+            scope is not None and key not in scope
+        )
+    category_facets = {name for category in profile["categories"] for name in CATEGORIES[category][1]}
     ranked = []
     for key, candidate in candidates.items():
         if excluded(key):
@@ -269,7 +306,7 @@ def recommend_for_profile(engine, profile, *, limit=5, vectors=None):
         industry_match = industry_matches(profile["industry"], item)
         experience_match = experience_evidence(profile["experience"], item)
         stage_match = stage_evidence(profile["business_stage"], item)
-        category_match = bool(facets(item) & selected_facets)
+        category_match = bool(facets(item) & category_facets)
         signal = history.get(key)
         score = candidate["base"] * (1.1 if kind_match else 1) * (1.1 if industry_match else 1)
         score *= 1.1 if category_match else 1

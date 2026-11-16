@@ -1,7 +1,7 @@
 """Inner-layer contracts implemented by infrastructure adapters."""
 
 from types import TracebackType
-from typing import Protocol, Self
+from typing import Protocol, Self, runtime_checkable
 
 from domain import entities
 from domain.commands import ActivityInput, CatalogImport
@@ -62,6 +62,32 @@ class RecommendationPort(Protocol):
         completed: list[str] | None = None,
     ) -> JsonObject: ...
     def close(self) -> None: ...
+
+
+@runtime_checkable
+class InterestRecommendationPort(Protocol):
+    """Optional adapter capability for catalog-backed multi-topic selection."""
+
+    def interests(self) -> JsonObject: ...
+    def recommend_by_interests(
+        self, generation: str, categories: list[str], facets: list[str], viewed: list[str]
+    ) -> JsonObject: ...
+
+
+@runtime_checkable
+class ProfileRecommendationPort(Protocol):
+    """Optional adapter capability for goal, profile and activity-aware ranking."""
+
+    def recommend_profile(
+        self,
+        generation: str,
+        profile: JsonObject,
+        viewed: list[str],
+        completed: list[str],
+        *,
+        plan: bool = False,
+        allowed_keys: set[str] | None = None,
+    ) -> JsonObject: ...
 
 
 class PasswordPort(Protocol):

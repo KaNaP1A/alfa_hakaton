@@ -1,0 +1,904 @@
+{
+  "schema_version": 1,
+  "catalog_sha256": "583149b9284e63d81cacb9910ee8802efa664128a34f0539bb72dc69a486f53b",
+  "source_queries_sha256": "52401bd10ab527895193d4b0c6e6c5606fbb4c9ba335151b168d03d3dd637293",
+  "queries": [
+    {
+      "id": "n01-0",
+      "family": "first_hire",
+      "original_split": "train",
+      "query": "Открыла маленькую кофейню и собираюсь взять первого работника. Какие шаги нужно сделать работодателю?",
+      "known_targets": [
+        "article:386cdfd3-a335-4446-a415-b251f52f0f57"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n01-1",
+      "family": "first_hire",
+      "original_split": "train",
+      "query": "Впервые нанимаю человека в кофейню. Что продумать до начала работы?",
+      "known_targets": [
+        "article:386cdfd3-a335-4446-a415-b251f52f0f57"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n01-2",
+      "family": "first_hire",
+      "original_split": "train",
+      "query": "У меня маленькое кафе, нужен помощник. Как подготовиться к найму?",
+      "known_targets": [
+        "article:386cdfd3-a335-4446-a415-b251f52f0f57"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n01-3",
+      "family": "first_hire",
+      "original_split": "train",
+      "query": "Собираемся взять в команду первого человека: какие обязанности заранее определить?",
+      "known_targets": [
+        "article:386cdfd3-a335-4446-a415-b251f52f0f57"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n02-0",
+      "family": "online_sales",
+      "original_split": "train",
+      "query": "Только начинаю продавать на маркетплейсах. Как оформить товар так, чтобы покупатели обращали внимание?",
+      "known_targets": [
+        "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n02-1",
+      "family": "online_sales",
+      "original_split": "train",
+      "query": "Как с нейросетью сделать привлекательную товарную карточку для маркетплейса?",
+      "known_targets": [
+        "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n02-2",
+      "family": "online_sales",
+      "original_split": "train",
+      "query": "Продаю на площадке, хочу использовать ИИ для оформления товаров. С чего начать?",
+      "known_targets": [
+        "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n02-3",
+      "family": "online_sales",
+      "original_split": "train",
+      "query": "Подскажите инструменты искусственного интеллекта, чтобы оформить страницы товаров на торговой площадке.",
+      "known_targets": [
+        "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n03-0",
+      "family": "customer_retention",
+      "original_split": "train",
+      "query": "У меня салон, клиенты приходят один раз и пропадают. Чем их мотивировать возвращаться чаще?",
+      "known_targets": [
+        "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+        "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+        "article:bfc159df-4a6a-4ec1-9343-9920f1654c92"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n03-1",
+      "family": "customer_retention",
+      "original_split": "train",
+      "query": "Посетители салона не записываются повторно. Как их заинтересовать вернуться?",
+      "known_targets": [
+        "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+        "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+        "article:bfc159df-4a6a-4ec1-9343-9920f1654c92"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n03-2",
+      "family": "customer_retention",
+      "original_split": "train",
+      "query": "Какие бонусы помогут салону удерживать постоянных посетителей?",
+      "known_targets": [
+        "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+        "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+        "article:bfc159df-4a6a-4ec1-9343-9920f1654c92"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n03-3",
+      "family": "customer_retention",
+      "original_split": "train",
+      "query": "Как владельцу студии красоты увеличить число повторных записей?",
+      "known_targets": [
+        "article:ef04f756-44bf-478a-b022-51fae04ecee5",
+        "article:33eae91e-6594-43b9-862a-8869c0e25f81",
+        "article:bfc159df-4a6a-4ec1-9343-9920f1654c92"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n04-0",
+      "family": "cashflow",
+      "original_split": "train",
+      "query": "Студент открыл мастерскую, заказы есть, а к концу месяца всё равно не хватает денег на обязательные платежи. Как разобраться?",
+      "known_targets": [
+        "podcast:296e7be7-e4ff-4ed9-9302-7f3dacad8d8b"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n04-1",
+      "family": "cashflow",
+      "original_split": "train",
+      "query": "Заказы есть, но деньги заканчиваются раньше срока оплаты аренды. Что делать?",
+      "known_targets": [
+        "podcast:296e7be7-e4ff-4ed9-9302-7f3dacad8d8b"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n04-2",
+      "family": "cashflow",
+      "original_split": "train",
+      "query": "В мастерской прибыль на бумаге, а на счёте пусто перед платежами. Как управлять деньгами?",
+      "known_targets": [
+        "podcast:296e7be7-e4ff-4ed9-9302-7f3dacad8d8b"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n04-3",
+      "family": "cashflow",
+      "original_split": "train",
+      "query": "Почему у малого бизнеса не хватает денег вовремя заплатить по счетам, хотя продажи идут?",
+      "known_targets": [
+        "podcast:296e7be7-e4ff-4ed9-9302-7f3dacad8d8b"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n05-0",
+      "family": "social_ads",
+      "original_split": "train",
+      "query": "Хочу через блогеров рассказать про магазин. Как выбрать автора и понять, окупилась ли реклама?",
+      "known_targets": [
+        "article:902ff81d-ab85-454a-977e-a7dd219c80cd"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n05-1",
+      "family": "social_ads",
+      "original_split": "train",
+      "query": "Как малому магазину выбрать блогера для рекламы и оценить отдачу?",
+      "known_targets": [
+        "article:902ff81d-ab85-454a-977e-a7dd219c80cd"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n05-2",
+      "family": "social_ads",
+      "original_split": "train",
+      "query": "Хотим рекламироваться у авторов в соцсетях: как подобрать партнёра и измерить результат?",
+      "known_targets": [
+        "article:902ff81d-ab85-454a-977e-a7dd219c80cd"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n05-3",
+      "family": "social_ads",
+      "original_split": "train",
+      "query": "Есть бюджет на продвижение через инфлюенсеров. Как не потратить его зря?",
+      "known_targets": [
+        "article:902ff81d-ab85-454a-977e-a7dd219c80cd"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n06-0",
+      "family": "business_plan",
+      "original_split": "train",
+      "query": "Мы с подругой хотим открыть пекарню, но не понимаем, как заранее посчитать расходы и доходы.",
+      "known_targets": [
+        "article:13ec2ab7-f9f4-4680-a2fd-7e01c01e25ba"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n06-1",
+      "family": "business_plan",
+      "original_split": "train",
+      "query": "Планируем пекарню. Какие вложения и оборудование понадобятся?",
+      "known_targets": [
+        "article:13ec2ab7-f9f4-4680-a2fd-7e01c01e25ba"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n06-2",
+      "family": "business_plan",
+      "original_split": "train",
+      "query": "Сколько понадобится денег, чтобы начать выпекать и продавать хлеб в своей точке?",
+      "known_targets": [
+        "article:13ec2ab7-f9f4-4680-a2fd-7e01c01e25ba"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n06-3",
+      "family": "business_plan",
+      "original_split": "train",
+      "query": "Хочу запустить свою пекарню и заранее понять затраты на открытие.",
+      "known_targets": [
+        "article:13ec2ab7-f9f4-4680-a2fd-7e01c01e25ba"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n07-0",
+      "family": "website_security",
+      "original_split": "train",
+      "query": "Разрабатываю серверную часть приложения. Как заранее снизить риск утечки данных и типичных атак?",
+      "known_targets": [
+        "course:offline-b5b7356da03278b8859d6147"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n07-1",
+      "family": "website_security",
+      "original_split": "train",
+      "query": "Пишу backend для сервиса. Как защитить серверное приложение от уязвимостей?",
+      "known_targets": [
+        "course:offline-b5b7356da03278b8859d6147"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n07-2",
+      "family": "website_security",
+      "original_split": "train",
+      "query": "Какие практики помогут разработчику обезопасить сервер и пользовательские данные?",
+      "known_targets": [
+        "course:offline-b5b7356da03278b8859d6147"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n07-3",
+      "family": "website_security",
+      "original_split": "train",
+      "query": "Изучаю серверную разработку и хочу разобраться с безопасностью приложений.",
+      "known_targets": [
+        "course:offline-b5b7356da03278b8859d6147"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n08-0",
+      "family": "contracts",
+      "original_split": "train",
+      "query": "Я самозанятая, заказчик обещает оплатить работу позже. Как письменно зафиксировать условия сотрудничества?",
+      "known_targets": [
+        "article:da12cc51-3081-4cb9-99e6-c95a6b20fe04",
+        "document:9f085cde-5a26-4600-b705-c57e44ae89b5"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n08-1",
+      "family": "contracts",
+      "original_split": "train",
+      "query": "Я работаю на себя. Как документально оформить договорённости с заказчиком?",
+      "known_targets": [
+        "article:da12cc51-3081-4cb9-99e6-c95a6b20fe04",
+        "document:9f085cde-5a26-4600-b705-c57e44ae89b5"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n08-2",
+      "family": "contracts",
+      "original_split": "train",
+      "query": "Заказчик и самозанятый исполнитель хотят зафиксировать условия работы на бумаге.",
+      "known_targets": [
+        "article:da12cc51-3081-4cb9-99e6-c95a6b20fe04",
+        "document:9f085cde-5a26-4600-b705-c57e44ae89b5"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n08-3",
+      "family": "contracts",
+      "original_split": "train",
+      "query": "Нужен понятный материал о договоре между компанией и плательщиком НПД.",
+      "known_targets": [
+        "article:da12cc51-3081-4cb9-99e6-c95a6b20fe04",
+        "document:9f085cde-5a26-4600-b705-c57e44ae89b5"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n09-0",
+      "family": "small_business_ai",
+      "original_split": "train",
+      "query": "Я владелец небольшого бизнеса, хочу автоматизировать ответы клиентам с помощью нейросети. С чего начать?",
+      "known_targets": [
+        "article:3a4f989b-7f1e-4cba-961a-70b9c9361afe"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n09-1",
+      "family": "small_business_ai",
+      "original_split": "train",
+      "query": "Как сделать помощника на ИИ, чтобы отвечать покупателям?",
+      "known_targets": [
+        "article:3a4f989b-7f1e-4cba-961a-70b9c9361afe"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n09-2",
+      "family": "small_business_ai",
+      "original_split": "train",
+      "query": "Нужен чат-бот с нейросетью для обращений клиентов небольшого бизнеса.",
+      "known_targets": [
+        "article:3a4f989b-7f1e-4cba-961a-70b9c9361afe"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n09-3",
+      "family": "small_business_ai",
+      "original_split": "train",
+      "query": "Хочу внедрить умного помощника для клиентских вопросов. Какие платформы использовать?",
+      "known_targets": [
+        "article:3a4f989b-7f1e-4cba-961a-70b9c9361afe"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n10-0",
+      "family": "warehouse_count",
+      "original_split": "train",
+      "query": "На складе обнаружилась недостача. Как руководителю оформить результаты пересчёта имущества?",
+      "known_targets": [
+        "document:bb98311c-8ce7-43d9-9988-c46964679c45"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n10-1",
+      "family": "warehouse_count",
+      "original_split": "train",
+      "query": "Нужно утвердить итоги проверки остатков на складе. Какой приказ издать?",
+      "known_targets": [
+        "document:bb98311c-8ce7-43d9-9988-c46964679c45"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n10-2",
+      "family": "warehouse_count",
+      "original_split": "train",
+      "query": "После пересчёта имущества выявили недостачу. Как руководителю закрепить итоги?",
+      "known_targets": [
+        "document:bb98311c-8ce7-43d9-9988-c46964679c45"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n10-3",
+      "family": "warehouse_count",
+      "original_split": "train",
+      "query": "Каким распорядительным документом оформить результаты инвентаризации?",
+      "known_targets": [
+        "document:bb98311c-8ce7-43d9-9988-c46964679c45"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n11-0",
+      "family": "hiring_search",
+      "original_split": "validation",
+      "query": "Нужны люди в небольшую команду, но по знакомым никого не нашёл. Где опубликовать объявление о работе?",
+      "known_targets": [
+        "article:694edd8f-2b39-44c7-bcb6-599f41911a84"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n11-1",
+      "family": "hiring_search",
+      "original_split": "validation",
+      "query": "На каких сайтах компании разместить вакансию, чтобы найти сотрудника?",
+      "known_targets": [
+        "article:694edd8f-2b39-44c7-bcb6-599f41911a84"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n11-2",
+      "family": "hiring_search",
+      "original_split": "validation",
+      "query": "Где малому бизнесу публиковать объявления для поиска работников?",
+      "known_targets": [
+        "article:694edd8f-2b39-44c7-bcb6-599f41911a84"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n11-3",
+      "family": "hiring_search",
+      "original_split": "validation",
+      "query": "Ищу сотрудников и выбираю площадки для размещения вакансий.",
+      "known_targets": [
+        "article:694edd8f-2b39-44c7-bcb6-599f41911a84"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n12-0",
+      "family": "franchise_cost",
+      "original_split": "validation",
+      "query": "Думаю работать под чужим брендом. Какие платежи и стартовые вложения придётся учесть?",
+      "known_targets": [
+        "article:62c9b798-2a15-49af-aba2-9c85fc0858dc"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n12-1",
+      "family": "franchise_cost",
+      "original_split": "validation",
+      "query": "Сколько денег потребуется для покупки бизнеса по франшизе?",
+      "known_targets": [
+        "article:62c9b798-2a15-49af-aba2-9c85fc0858dc"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n12-2",
+      "family": "franchise_cost",
+      "original_split": "validation",
+      "query": "Хочу купить франшизу. Какие первоначальные платежи и вложения предстоят?",
+      "known_targets": [
+        "article:62c9b798-2a15-49af-aba2-9c85fc0858dc"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n12-3",
+      "family": "franchise_cost",
+      "original_split": "validation",
+      "query": "Оцениваю стоимость входа во франчайзинговый бизнес. Из чего она складывается?",
+      "known_targets": [
+        "article:62c9b798-2a15-49af-aba2-9c85fc0858dc"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n13-0",
+      "family": "business_regime",
+      "original_split": "validation",
+      "query": "Работаю на себя, хочу расширяться и оформить ИП. Что мне делать с нынешним статусом?",
+      "known_targets": [
+        "course:2155a4c8-2293-4b16-b928-cf72f2de72b5"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n13-1",
+      "family": "business_regime",
+      "original_split": "validation",
+      "query": "Я самозанятый, собираюсь зарегистрировать ИП. Как перейти?",
+      "known_targets": [
+        "course:2155a4c8-2293-4b16-b928-cf72f2de72b5"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n13-2",
+      "family": "business_regime",
+      "original_split": "validation",
+      "query": "Что делать плательщику НПД, если он хочет стать индивидуальным предпринимателем?",
+      "known_targets": [
+        "course:2155a4c8-2293-4b16-b928-cf72f2de72b5"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n13-3",
+      "family": "business_regime",
+      "original_split": "validation",
+      "query": "Работаю как самозанятая и хочу оформить ИП. Каков порядок действий?",
+      "known_targets": [
+        "course:2155a4c8-2293-4b16-b928-cf72f2de72b5"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n14-0",
+      "family": "debt_collect",
+      "original_split": "validation",
+      "query": "Заказчик принял услугу, но деньги не перевёл. Как компании добиться оплаты задолженности?",
+      "known_targets": [
+        "article:a4d9713c-9e28-4492-bd8b-267982847265"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n14-1",
+      "family": "debt_collect",
+      "original_split": "validation",
+      "query": "Контрагент не платит по договору. Как взыскать задолженность?",
+      "known_targets": [
+        "article:a4d9713c-9e28-4492-bd8b-267982847265"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n14-2",
+      "family": "debt_collect",
+      "original_split": "validation",
+      "query": "Компания выполнила работу, заказчик не перевёл деньги. Как вернуть долг?",
+      "known_targets": [
+        "article:a4d9713c-9e28-4492-bd8b-267982847265"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n14-3",
+      "family": "debt_collect",
+      "original_split": "validation",
+      "query": "Что предпринять бизнесу, если юридическое лицо задолжало оплату услуг?",
+      "known_targets": [
+        "article:a4d9713c-9e28-4492-bd8b-267982847265"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n15-0",
+      "family": "market_research",
+      "original_split": "validation",
+      "query": "Перед запуском нового товара хочу понять, что важно покупателям и почему они выбирают конкурентов.",
+      "known_targets": [
+        "article:4edc4abf-1f3c-41db-be25-25dfae8486b0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n15-1",
+      "family": "market_research",
+      "original_split": "validation",
+      "query": "Как изучить потребности клиентов перед запуском нового продукта?",
+      "known_targets": [
+        "article:4edc4abf-1f3c-41db-be25-25dfae8486b0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n15-2",
+      "family": "market_research",
+      "original_split": "validation",
+      "query": "Хочу выяснить, что влияет на решение покупателей при выборе товара.",
+      "known_targets": [
+        "article:4edc4abf-1f3c-41db-be25-25dfae8486b0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n15-3",
+      "family": "market_research",
+      "original_split": "validation",
+      "query": "Планируем продукт: как исследовать покупателей и использовать результаты?",
+      "known_targets": [
+        "article:4edc4abf-1f3c-41db-be25-25dfae8486b0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n16-0",
+      "family": "brand_rights",
+      "original_split": "test",
+      "query": "Придумали имя и знак для своей компании. Как сделать так, чтобы другие не использовали их без разрешения?",
+      "known_targets": [
+        "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n16-1",
+      "family": "brand_rights",
+      "original_split": "test",
+      "query": "Как защитить название и логотип бизнеса от копирования конкурентами?",
+      "known_targets": [
+        "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n16-2",
+      "family": "brand_rights",
+      "original_split": "test",
+      "query": "Создали бренд компании. Зачем и как оформить права на его знак?",
+      "known_targets": [
+        "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n16-3",
+      "family": "brand_rights",
+      "original_split": "test",
+      "query": "Как предпринимателю юридически защитить собственный товарный знак?",
+      "known_targets": [
+        "article:035c49ae-7d41-4aa6-85d6-79e94dfbc00a"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n17-0",
+      "family": "remote_hiring",
+      "original_split": "test",
+      "query": "Человек будет работать из другого города. Как правильно оформить с ним трудовые отношения?",
+      "known_targets": [
+        "article:0268c695-212e-4e94-b15b-3ce4abaa046a"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n17-1",
+      "family": "remote_hiring",
+      "original_split": "test",
+      "query": "Нанимаем человека из другого города. Как оформить удалённую работу?",
+      "known_targets": [
+        "article:0268c695-212e-4e94-b15b-3ce4abaa046a"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n17-2",
+      "family": "remote_hiring",
+      "original_split": "test",
+      "query": "Как заключить трудовой договор с работником, который будет работать дистанционно?",
+      "known_targets": [
+        "article:0268c695-212e-4e94-b15b-3ce4abaa046a"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n17-3",
+      "family": "remote_hiring",
+      "original_split": "test",
+      "query": "Берём удалённого сотрудника: какие документы оформить работодателю?",
+      "known_targets": [
+        "article:0268c695-212e-4e94-b15b-3ce4abaa046a"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n18-0",
+      "family": "pricing",
+      "original_split": "test",
+      "query": "Открыла небольшую студию услуг. Как установить стоимость, чтобы покрывать затраты и зарабатывать?",
+      "known_targets": [
+        "article:f04980cc-84a2-4259-ae94-10a95bf0c1f2"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n18-1",
+      "family": "pricing",
+      "original_split": "test",
+      "query": "Как малому бизнесу выбрать цену услуги, учитывая расходы и прибыль?",
+      "known_targets": [
+        "article:f04980cc-84a2-4259-ae94-10a95bf0c1f2"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n18-2",
+      "family": "pricing",
+      "original_split": "test",
+      "query": "Открываю студию услуг. Какие методы ценообразования помогут не работать в убыток?",
+      "known_targets": [
+        "article:f04980cc-84a2-4259-ae94-10a95bf0c1f2"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n18-3",
+      "family": "pricing",
+      "original_split": "test",
+      "query": "По какой стратегии устанавливать стоимость своих услуг для клиентов?",
+      "known_targets": [
+        "article:f04980cc-84a2-4259-ae94-10a95bf0c1f2"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n19-0",
+      "family": "supplier_search",
+      "original_split": "test",
+      "query": "Хочу начать продавать товары в интернете, но не знаю, где найти надёжного поставщика.",
+      "known_targets": [
+        "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+        "article:a8c9930d-31a3-4223-a8bf-eca1553f5772"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n19-1",
+      "family": "supplier_search",
+      "original_split": "test",
+      "query": "Где селлеру искать поставщиков товаров для продажи онлайн?",
+      "known_targets": [
+        "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+        "article:a8c9930d-31a3-4223-a8bf-eca1553f5772"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n19-2",
+      "family": "supplier_search",
+      "original_split": "test",
+      "query": "Как выбрать надёжного оптовика для интернет-магазина?",
+      "known_targets": [
+        "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+        "article:a8c9930d-31a3-4223-a8bf-eca1553f5772"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n19-3",
+      "family": "supplier_search",
+      "original_split": "test",
+      "query": "Ищу поставщика для маркетплейса. На какие критерии смотреть?",
+      "known_targets": [
+        "article:7a5c544f-106b-42f3-a8e9-6d13b215cc4c",
+        "article:a8c9930d-31a3-4223-a8bf-eca1553f5772"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n20-0",
+      "family": "ai_content",
+      "original_split": "test",
+      "query": "Мне за пятьдесят, хочу с помощью искусственного интеллекта делать тексты и картинки для каталога товаров. Какие инструменты подойдут?",
+      "known_targets": [
+        "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n20-1",
+      "family": "ai_content",
+      "original_split": "test",
+      "query": "Как нейросети помогут создавать картинки и тексты для товарных карточек?",
+      "known_targets": [
+        "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n20-2",
+      "family": "ai_content",
+      "original_split": "test",
+      "query": "Какие ИИ-сервисы использовать для оформления товаров на маркетплейсе?",
+      "known_targets": [
+        "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    },
+    {
+      "id": "n20-3",
+      "family": "ai_content",
+      "original_split": "test",
+      "query": "Хочу сгенерировать изображения и описания товаров с помощью искусственного интеллекта.",
+      "known_targets": [
+        "article:fdf984ae-00b6-4aa1-a9ff-d42011b703a0"
+      ],
+      "source": "assistant_authored_provisional",
+      "human_verified": false
+    }
+  ],
+  "limitations": "Assistant-authored paraphrases and expected links, no independent ratings; known targets form only a partial list of relevant material. Original families and some targets were used previously."
+}

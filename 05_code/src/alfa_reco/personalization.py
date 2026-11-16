@@ -6,6 +6,7 @@ This is a cold-start heuristic, not a learned estimate of engagement or revenue.
 import math
 from collections import Counter
 
+from .eligibility import USER_KINDS
 from .text import tokens, words
 
 CATEGORIES = {
@@ -109,7 +110,7 @@ def recommend(catalog, categories, viewed, limit=5, vectors=None, *,
     frequency = Counter(term for terms in subjects.values() for term in terms)
     result = []
     for item in catalog:
-        if (item["kind"] == "glossary" or item["entity_key"] in viewed_set
+        if (item["kind"] not in USER_KINDS or item["entity_key"] in viewed_set
                 or candidate_keys is not None and item["entity_key"] not in candidate_keys):
             continue
         item_facets = facets(item)

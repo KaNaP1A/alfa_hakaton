@@ -26,6 +26,7 @@ from domain.responses import (
     TokenResponse,
     UserResponse,
 )
+from domain.types import JsonObject
 from schemas.requests import ActivityInput, Credentials, GenerationRequest, Kind, Profile
 from services.activity import ActivityService
 from services.auth import AuthService
@@ -117,6 +118,14 @@ def catalog(
     service: CatalogService = Depends(get_catalog),
 ) -> CatalogResponse:
     return service.catalog(q, kind, limit, offset, user)
+
+
+@router.get("/api/v1/interests")
+def interests(
+    user: User = Depends(current_user),
+    service: RecommendationService = Depends(get_recommendations),
+) -> JsonObject:
+    return service.interests(user)
 
 
 @router.get("/api/v1/suggest")

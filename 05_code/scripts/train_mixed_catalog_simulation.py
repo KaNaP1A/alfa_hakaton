@@ -1,6 +1,6 @@
 """Train simulated engagement/purchase models using the existing catalog and E5 vectors.
 
-The source catalog is an old local snapshot, not a crawl of the current website.
+The source catalog is an offline snapshot and does not prove current offers or rights.
 Every user action, offer type, amount and label is synthetic.
 """
 import argparse
@@ -17,7 +17,7 @@ from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 
 from alfa_reco.bundle import load_bundle, sha256
 
-KINDS = ('article', 'calculator', 'course', 'document', 'glossary', 'podcast', 'webinar')
+KINDS = ('article', 'calculator', 'course', 'document', 'lesson', 'podcast', 'webinar')
 FEATURES = ('cosine', 'base_rank_percentile', *(f'kind_{k}' for k in KINDS),
             'offer_paid', 'offer_subscription', 'log_price', 'budget_known', 'log_budget', 'price_to_budget')
 
@@ -45,7 +45,7 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-np.clip(x, -20, 20)))
 
 
-def sample_sessions(catalog, vectors, indexes, count, seed, stress=False):
+def sample_sessions(catalog, vectors, indexes, count, seed, stress=False, price_pool=None):
     rng = np.random.default_rng(seed)
     if len(indexes) < 12:
         raise ValueError('Need at least 12 materials in each split')
@@ -73,7 +73,8 @@ def sample_sessions(catalog, vectors, indexes, count, seed, stress=False):
             source = catalog[source_index]
             # Counterfactual offer state/price are assigned at random, regardless of actual access.
             offer_state = str(rng.choice(['free', 'paid', 'subscription'], p=[0.45, 0.4, 0.15]))
-            price = 0 if offer_state == 'free' else int(rng.choice([990, 1990, 3990, 9990, 14990, 29990, 54900]))
+            prices = price_pool if price_pool is not None else [990, 1990, 3990, 9990, 14990, 29990, 54900]
+            price = 0 if offer_state == 'free' else int(rng.choice(prices))
             sim = float(cosines[candidate])
             price_ratio = price / budget
             engagement_p = float(sigmoid(-0.9 + 4.5 * (sim - 0.65) - sensitivity * max(0, price_ratio - 0.4)))
@@ -126,6 +127,12 @@ def main():
     parser.add_argument('--output', type=Path, default=Path('artifacts/mixed_catalog_simulation_v1'))
     parser.add_argument('--train-sessions', type=int, default=5000)
     parser.add_argument('--test-sessions', type=int, default=1500)
+    parser.add_argument('--observed-prices', type=Path,
+                        help='Historical observations supply extra simulated price points, never verified offers')
+    parser.add_argument('--exclude-origin', action='append', default=[],
+                        help='Exclude an experiment_origin from simulation (may be repeated)')
+    parser.add_argument('--allowed-keys', type=Path,
+                        help='JSON list of independently checked material keys to include')
     args = parser.parse_args()
     if args.train_sessions < 50 or args.test_sessions < 50:
         parser.error('Require at least 50 sessions')
@@ -152,11 +159,33 @@ def main():
         vectors = archive['card'].copy()
     if vectors.shape != (len(catalog), 384) or not np.isfinite(vectors).all():
         raise ValueError('Invalid vectors')
+    prices = [990, 1990, 3990, 9990, 14990, 29990, 54900]
+    if args.observed_prices:
+        observations = json.loads(args.observed_prices.read_text())
+        for observation in observations:
+            amount = observation['observed_price_rub']
+            if isinstance(amount, bool) or not isinstance(amount, int) or not 0 < amount <= 10000000:
+                raise ValueError('Invalid historical price observation')
+            prices.append(amount)
+    prices = sorted(set(prices))
+    permitted = None
+    if args.allowed_keys:
+        values = json.loads(args.allowed_keys.read_text())
+        if not isinstance(values, list) or any(not isinstance(key, str) for key in values):
+            raise ValueError('Allowed material keys must be a JSON string list')
+        permitted = set(values)
+        if len(permitted) != len(values) or not permitted <= {item['entity_key'] for item in catalog}:
+            raise ValueError('Allowed material keys must be unique and present in the catalog')
     splits = split_catalog(catalog)
-    train = sample_sessions(catalog, vectors, splits['train'], args.train_sessions, 31001)
-    val = sample_sessions(catalog, vectors, splits['validation'], max(300, args.train_sessions // 5), 31002)
-    test = sample_sessions(catalog, vectors, splits['test'], args.test_sessions, 31003)
-    stress = sample_sessions(catalog, vectors, splits['test'], args.test_sessions, 31004, stress=True)
+    splits = {name: [i for i in indices if catalog[i].get('experiment_origin') not in args.exclude_origin]
+              for name, indices in splits.items()}
+    if permitted is not None:
+        splits = {name: [i for i in indices if catalog[i]['entity_key'] in permitted]
+                  for name, indices in splits.items()}
+    train = sample_sessions(catalog, vectors, splits['train'], args.train_sessions, 31001, price_pool=prices)
+    val = sample_sessions(catalog, vectors, splits['validation'], max(300, args.train_sessions // 5), 31002, price_pool=prices)
+    test = sample_sessions(catalog, vectors, splits['test'], args.test_sessions, 31003, price_pool=prices)
+    stress = sample_sessions(catalog, vectors, splits['test'], args.test_sessions, 31004, stress=True, price_pool=prices)
     args.output.mkdir(parents=True, exist_ok=True)
     reports = {}
     for label in ('engaged', 'purchased'):
@@ -173,14 +202,22 @@ def main():
     with (args.output / 'synthetic_train.jsonl').open('w', encoding='utf-8') as f:
         for row in train:
             f.write(json.dumps(row, ensure_ascii=False) + '\n')
-    report = {'synthetic_only': True, 'source': 'existing local historical catalog; not current website crawl',
+    included = {i for indices in splits.values() for i in indices}
+    origins = Counter(catalog[i].get('experiment_origin', 'historical_backup') for i in included)
+    report = {'synthetic_only': True, 'source': 'offline catalog snapshot; not a verified current offer catalog',
+              'catalog_origins': dict(origins),
+              'excluded_origins': args.exclude_origin,
+              'allowed_keys_sha256': sha256(args.allowed_keys) if args.allowed_keys else None,
+              'simulated_catalog_items': len(included),
+              'simulated_price_pool_rub': prices,
+              'observed_prices_sha256': sha256(args.observed_prices) if args.observed_prices else None,
               'catalog_generation': catalog_path.name, 'catalog_sha256': manifest['catalog_sha256'],
               'catalog_items': len(catalog), 'kinds': dict(Counter(i['kind'] for i in catalog)),
               'split_counts': {k: len(v) for k, v in splits.items()},
               'synthetic_sessions': {'train': args.train_sessions, 'validation': max(300, args.train_sessions // 5),
                                      'test': args.test_sessions, 'stress': args.test_sessions},
               'training_rows': len(train), 'observed_training_rows': sum(r['examined'] for r in train),
-              'source_snapshot_access': dict(Counter(str(i.get('access_type')) for i in catalog)),
+              'source_snapshot_access': dict(Counter(str(catalog[i].get('access_type')) for i in included)),
               'model_features': FEATURES, 'catboost_version': catboost.__version__, 'models': reports,
               'limits': 'All prices, offers, user actions and relevance targets are simulated. E5 cosine uses '
                         'two material vectors, not real queries; distinct title groups across splits, but '

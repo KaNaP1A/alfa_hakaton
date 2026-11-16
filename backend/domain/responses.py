@@ -8,7 +8,7 @@ from domain.types import JsonObject
 
 
 class Price(TypedDict):
-    status: Literal["known", "unknown"]
+    status: Literal["known", "unknown", "conditional"]
     amount: str | None
     currency: str | None
 
@@ -24,6 +24,8 @@ class MaterialCard(TypedDict):
     access_type: str
     access_verified: bool
     price: Price
+    source_url: NotRequired[str | None]
+    reason: NotRequired[str]
 
 
 class TokenResponse(TypedDict):

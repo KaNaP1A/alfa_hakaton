@@ -87,4 +87,9 @@
 .catalog-more{display:flex;justify-content:center;margin-top:28px}
 .catalog-more .outline{padding:13px 25px}
 
+.material-price{font-size:10px;color:#777}.item-footer{flex-wrap:wrap;gap:8px}
 .demo-controls{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px}.demo-controls label{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#555}.demo-controls input,.demo-controls select{min-width:220px;border:1px solid #ddd;border-radius:9px;padding:11px;background:#fff;font:inherit}.demo-next{margin-top:24px;padding:20px;background:#fff5f3;border-radius:14px}.demo-next h3{margin:0}.demo-next p{font-size:12px;color:#777}.demo-card{min-height:170px}.demo-price{font-size:11px;color:#777}.demo-card .item-footer{flex-wrap:wrap}.demo-card .text-btn{text-align:right}
+.demo-commercial{margin:22px 0;padding:22px;border:1px solid #ece4e1;border-radius:16px;background:#fff9f7}
+.demo-commercial h3{margin:0 0 8px}.demo-commercial>p,.demo-explanation,.demo-reason{font-size:13px;color:#555;line-height:1.5}
+.demo-commercial .demo-controls{align-items:end;margin:15px 0}.demo-commercial .demo-controls .demo-checkbox{flex-direction:row;align-items:center;min-height:42px}
+.demo-commercial .demo-checkbox input{min-width:0;width:auto}.demo-commercial .primary{min-height:42px}

@@ -27,6 +27,7 @@ STATE = ROOT / ".run"
 ENV_FILE = BACKEND / ".env.snapshot"
 PYTHON = ROOT / ".venv" / "bin" / "python"
 RUNTIME = ROOT / "models" / "runtime"
+UNIFIED = ROOT / "models" / "unified"
 
 
 def announce(message: str) -> None:
@@ -78,7 +79,9 @@ def load_env(path: Path) -> dict[str, str]:
     return values
 
 
-def api_environment(values: dict[str, str], generation: str) -> dict[str, str]:
+def api_environment(
+    values: dict[str, str], generation: str, catalog: Path | None = None
+) -> dict[str, str]:
     env = dict(os.environ)
     env.update(values)
     env.update(
@@ -86,7 +89,9 @@ def api_environment(values: dict[str, str], generation: str) -> dict[str, str]:
             "ALFA_CATALOG_SOURCE": "postgres",
             "ALFA_AUTO_CREATE_TABLES": "false",
             "ALFA_RECO_MODE": "python",
-            "ALFA_RECO_CATALOG": str(RUNTIME / "catalog"),
+            "ALFA_RECO_CATALOG": str(
+                catalog if catalog is not None else RUNTIME / "catalog"
+            ),
             "ALFA_CATALOG_GENERATION": generation,
             "HF_HUB_OFFLINE": "1",
             "PYTHONDONTWRITEBYTECODE": "1",
@@ -95,6 +100,10 @@ def api_environment(values: dict[str, str], generation: str) -> dict[str, str]:
             ),
         }
     )
+    if catalog is not None:
+        env["ALFA_UNIFIED_CATALOG"] = str(catalog)
+    else:
+        env.pop("ALFA_UNIFIED_CATALOG", None)
     return env
 
 
@@ -141,6 +150,27 @@ def prepare_python(env: dict[str, str]) -> None:
         stamp.write_text(version)
 
 
+def bundle_identity(root: Path) -> tuple[str, dict[str, object], dict[str, object]]:
+    """Compare bundled model versions independently of machine-specific encoder paths."""
+    catalog_root = root / "catalog"
+    generation = json.loads((catalog_root / "CURRENT.json").read_text())["generation"]
+    if not isinstance(generation, str) or Path(generation).name != generation:
+        raise RuntimeError("Некорректная версия комплекта модели")
+    catalog = catalog_root / generation
+    relevance_root = catalog / "relevance"
+    model_version = json.loads((relevance_root / "CURRENT.json").read_text())[
+        "generation"
+    ]
+    if not isinstance(model_version, str) or Path(model_version).name != model_version:
+        raise RuntimeError("Некорректная версия ранжировщика")
+    catalog_manifest = json.loads((catalog / "manifest.json").read_text())
+    model_manifest = json.loads(
+        (relevance_root / model_version / "manifest.json").read_text()
+    )
+    model_manifest.pop("encoder_path", None)
+    return generation, catalog_manifest, model_manifest
+
+
 def prepare_model(env: dict[str, str]) -> str:
     source = ROOT / "models" / "recommender"
     weights = source / "encoder" / "model.safetensors"
@@ -148,21 +178,137 @@ def prepare_model(env: dict[str, str]) -> str:
         announce("Загружаю веса через Git LFS…")
         run(["git", "lfs", "pull"])
     script = ROOT / "05_code" / "scripts" / "prepare_backend_bundle.py"
-    if not RUNTIME.exists():
-        announce("Проверяю модель и создаю отдельную runtime-копию…")
+    relocated = False
+    if not RUNTIME.exists() or bundle_identity(source) != bundle_identity(RUNTIME):
+        announce("Проверяю модель и обновляю отдельную runtime-копию…")
         run([str(PYTHON), str(script), "--verify", str(source)], env=env)
         with tempfile.TemporaryDirectory(
             prefix=".runtime-", dir=source.parent
         ) as directory:
             prepared = Path(directory) / "bundle"
             shutil.copytree(source, prepared)
-            # Publish the complete copy, then relocate paths to its final location.
-            prepared.rename(RUNTIME)
+            previous = Path(directory) / "previous"
+            had_previous = RUNTIME.exists()
+            if had_previous:
+                RUNTIME.rename(previous)
+            try:
+                prepared.rename(RUNTIME)
+                run([str(PYTHON), str(script), "--relocate", str(RUNTIME)], env=env)
+                relocated = True
+            except Exception:
+                if RUNTIME.exists():
+                    RUNTIME.rename(prepared)
+                if had_previous:
+                    previous.rename(RUNTIME)
+                raise
     # Verification is read-only; relocation only changes this local runtime copy.
-    run([str(PYTHON), str(script), "--relocate", str(RUNTIME)], env=env)
+    if not relocated:
+        run([str(PYTHON), str(script), "--relocate", str(RUNTIME)], env=env)
     return str(
         json.loads((RUNTIME / "catalog" / "CURRENT.json").read_text())["generation"]
     )
+
+
+def prepare_unified(env: dict[str, str]) -> tuple[str, Path]:
+    """Build one immutable catalogue/index for the API and the recommendation model."""
+    base_root = RUNTIME / "catalog"
+    base_generation = json.loads((base_root / "CURRENT.json").read_text())["generation"]
+    if (
+        not isinstance(base_generation, str)
+        or Path(base_generation).name != base_generation
+    ):
+        raise RuntimeError("Некорректная версия исходного каталога")
+    base_catalog = base_root / base_generation / "catalog.json"
+    relevance_root = base_root / base_generation / "relevance"
+    relevance_current = relevance_root / "CURRENT.json"
+    relevance_generation = json.loads(relevance_current.read_text())["generation"]
+    if (
+        not isinstance(relevance_generation, str)
+        or Path(relevance_generation).name != relevance_generation
+    ):
+        raise RuntimeError("Некорректная версия исходной модели")
+    relevance = relevance_root / relevance_generation
+    listing = ROOT / "data" / "demo_catalog.json"
+    builder = ROOT / "05_code" / "scripts" / "build_unified_catalog.py"
+    dependencies = [
+        base_catalog,
+        relevance_current,
+        relevance / "manifest.json",
+        relevance / "ranker.cbm",
+        listing,
+        builder,
+        ROOT / "05_code" / "scripts" / "build_offline_mixed_index.py",
+        ROOT / "05_code" / "scripts" / "prepare_persona_corpus.py",
+        ROOT / "05_code" / "src" / "alfa_reco" / "eligibility.py",
+    ]
+    version = fingerprint(dependencies)[:20]
+    catalog = UNIFIED / f"catalog-{version}"
+    UNIFIED.mkdir(parents=True, exist_ok=True)
+    previous = UNIFIED / "ACTIVE.json"
+    if not catalog.exists():
+        announce(
+            "Собираю единый каталог и поисковый индекс; это может занять несколько минут…"
+        )
+        with tempfile.TemporaryDirectory(prefix=".building-", dir=UNIFIED) as temporary:
+            built = Path(temporary) / "catalog"
+            run(
+                [
+                    str(PYTHON),
+                    str(builder),
+                    "--baseline",
+                    str(base_root),
+                    "--source",
+                    str(listing),
+                    "--encoder",
+                    str(ROOT / "models" / "recommender" / "encoder"),
+                    "--output",
+                    str(built),
+                ],
+                cwd=ROOT / "05_code",
+                env=env,
+            )
+            generation = json.loads((built / "CURRENT.json").read_text())["generation"]
+            manifest_path = built / generation / "manifest.json"
+            manifest = json.loads(manifest_path.read_text())
+            compatible = list(manifest.get("profile_compatible_generations", []))
+            if previous.exists():
+                state = json.loads(previous.read_text())
+                old_name = state.get("catalog")
+                if isinstance(old_name, str) and Path(old_name).name == old_name:
+                    old_root = UNIFIED / old_name
+                    old_generation = state.get("generation")
+                    if (
+                        isinstance(old_generation, str)
+                        and Path(old_generation).name == old_generation
+                    ):
+                        old_manifest = old_root / old_generation / "manifest.json"
+                        if old_manifest.exists():
+                            compatible.extend(
+                                [
+                                    old_generation,
+                                    *json.loads(old_manifest.read_text()).get(
+                                        "profile_compatible_generations", []
+                                    ),
+                                ]
+                            )
+            manifest["profile_compatible_generations"] = list(dict.fromkeys(compatible))
+            manifest_path.write_text(
+                json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
+            )
+            built.rename(catalog)
+    generation = json.loads((catalog / "CURRENT.json").read_text())["generation"]
+    if not isinstance(generation, str) or Path(generation).name != generation:
+        raise RuntimeError("Некорректная версия единого каталога")
+    manifest = json.loads((catalog / generation / "manifest.json").read_text())
+    if (
+        manifest.get("source_listing_sha256")
+        != hashlib.sha256(listing.read_bytes()).hexdigest()
+    ):
+        raise RuntimeError("Единый каталог не соответствует исходным карточкам")
+    previous.write_text(
+        json.dumps({"catalog": catalog.name, "generation": generation}) + "\n"
+    )
+    return generation, catalog
 
 
 def prepare_frontend() -> None:
@@ -355,14 +501,15 @@ def main() -> None:
             )
     env = api_environment(values, "preparing")
     prepare_python(env)
-    generation = prepare_model(env)
+    prepare_model(env)
+    generation, catalog = prepare_unified(env)
     prepare_frontend()
     if args.prepare_only:
         announce(
             "Окружение и модель готовы. Миграции не применялись. Запуск: ./run.sh --migrate"
         )
         return
-    serve(api_environment(values, generation))
+    serve(api_environment(values, generation, catalog))
 
 
 if __name__ == "__main__":

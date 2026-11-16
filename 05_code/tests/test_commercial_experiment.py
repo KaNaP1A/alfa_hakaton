@@ -57,6 +57,45 @@ class CommercialExperimentTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             rerank_synthetic_only([offer(0)], Model([math.nan]), now=NOW)
 
+    def test_unverified_offers_never_reach_the_model(self):
+        class ForbiddenModel:
+            def predict_proba(self, rows):
+                raise AssertionError('Model should not receive unverified offers')
+
+        result = rerank_synthetic_only([offer(0, verified=False), offer(1, owned=True)],
+                                       ForbiddenModel(), now=NOW)
+        self.assertEqual(result['status'], 'no_verified_offers')
+        self.assertEqual(result['results'], [])
+
+    def test_price_equal_to_user_limit_is_allowed(self):
+        result = rerank_synthetic_only([offer(0), offer(1)], Model([0.5]), now=NOW,
+                                       max_price_minor=100000)
+        self.assertEqual([row['offer_id'] for row in result['results']], ['offer:0'])
+
+    def test_offer_expires_at_its_deadline_and_must_use_timezone(self):
+        self.assertFalse(eligible(offer(0, valid_until='2026-11-15T00:00:00Z'), NOW))
+        self.assertTrue(eligible(offer(0, valid_until='2026-11-15T00:00:01Z'), NOW))
+        self.assertFalse(eligible(offer(0), NOW.replace(tzinfo=None)))
+
+    def test_equal_offers_keep_original_order_and_do_not_mutate_input(self):
+        offers = [offer(0), offer(1, price_minor=100000)]
+        original = [dict(row) for row in offers]
+        result = rerank_synthetic_only(offers, Model([0.5, 0.5]), now=NOW)
+        self.assertEqual([row['offer_id'] for row in result['results']], ['offer:0', 'offer:1'])
+        self.assertEqual(offers, original)
+
+    def test_invalid_budgets_limits_and_prediction_counts_are_rejected(self):
+        for value in (0, -1, True, 1.5):
+            with self.subTest(budget=value), self.assertRaises(ValueError):
+                rerank_synthetic_only([offer(0)], Model([0.5]), now=NOW, budget_minor=value)
+            with self.subTest(max_price=value), self.assertRaises(ValueError):
+                rerank_synthetic_only([offer(0)], Model([0.5]), now=NOW, max_price_minor=value)
+        for value in (-0.01, 1.01):
+            with self.subTest(min_gap=value), self.assertRaises(ValueError):
+                rerank_synthetic_only([offer(0)], Model([0.5]), now=NOW, min_gap=value)
+        with self.assertRaises(ValueError):
+            rerank_synthetic_only([offer(0), offer(1)], Model([0.5]), now=NOW)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -13,6 +13,7 @@ class Settings:
     auto_create_tables: bool = True
     reco_mode: str = "demo"
     reco_catalog: str = "../models/recommender/catalog"
+    unified_catalog: str | None = None
     reco_url: str = "http://127.0.0.1:8000"
     reco_host_header: str | None = None
     request_timeout: float = 30
@@ -64,6 +65,7 @@ class Settings:
             auto_create_tables=os.getenv("ALFA_AUTO_CREATE_TABLES", "true").lower() == "true",
             reco_mode=os.getenv("ALFA_RECO_MODE", "demo"),
             reco_catalog=os.getenv("ALFA_RECO_CATALOG", "../models/recommender/catalog"),
+            unified_catalog=os.getenv("ALFA_UNIFIED_CATALOG") or None,
             reco_url=os.getenv("ALFA_RECO_URL", "http://127.0.0.1:8000"),
             reco_host_header=os.getenv("ALFA_RECO_HOST_HEADER") or None,
             request_timeout=float(os.getenv("ALFA_RECO_TIMEOUT", "30")),

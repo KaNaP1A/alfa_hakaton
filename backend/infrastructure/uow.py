@@ -11,6 +11,7 @@ from domain.errors import RepositoryConflict, StorageUnavailable
 from domain.ports import ActivityRepository, CatalogRepository, UserRepository
 from repositories.backend import SqlAlchemyRepository
 from repositories.production_catalog import ProductionCatalogRepository
+from repositories.unified_catalog import UnifiedCatalog, UnifiedCatalogRepository
 
 
 class SqlAlchemyUnitOfWork:
@@ -20,10 +21,12 @@ class SqlAlchemyUnitOfWork:
         *,
         catalog_source: str = "imported",
         generation: str = "production-snapshot",
+        unified_catalog: UnifiedCatalog | None = None,
     ) -> None:
         self._sessions = sessions
         self._catalog_source = catalog_source
         self._generation = generation
+        self._unified_catalog = unified_catalog
         self._catalog: CatalogRepository
         self.session: Session
         self.repository: SqlAlchemyRepository
@@ -33,12 +36,19 @@ class SqlAlchemyUnitOfWork:
             self.session = self._sessions()
         except SQLAlchemyError as error:
             raise StorageUnavailable() from error
-        self.repository = SqlAlchemyRepository(self.session)
+        self.repository = SqlAlchemyRepository(
+            self.session,
+            compatible_generations=self._unified_catalog.compatible_generations
+            if self._unified_catalog
+            else (),
+        )
         self._catalog = (
             ProductionCatalogRepository(self.session, self._generation)
             if self._catalog_source == "postgres"
             else self.repository
         )
+        if self._unified_catalog is not None:
+            self._catalog = UnifiedCatalogRepository(self._catalog, self._unified_catalog)
         return self
 
     @property

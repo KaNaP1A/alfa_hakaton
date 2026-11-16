@@ -51,11 +51,17 @@ def visible_materials(db: Session, user_id: str, current: str) -> dict[str, Mate
 
 
 def history(
-    db: Session, user_id: str, current: str, allowed: Mapping[str, object]
+    db: Session,
+    user_id: str,
+    current: str,
+    allowed: Mapping[str, object],
+    compatible_generations: tuple[str, ...] = (),
 ) -> tuple[list[str], list[str]]:
     rows = db.scalars(
         select(Activity)
-        .where(Activity.user_id == user_id, Activity.generation == current)
+        .where(
+            Activity.user_id == user_id, Activity.generation.in_((current, *compatible_generations))
+        )
         .order_by(Activity.id.desc())
         .limit(1000)
     )
@@ -74,7 +80,7 @@ def history(
                 select(Activity.entity_key)
                 .where(
                     Activity.user_id == user_id,
-                    Activity.generation == current,
+                    Activity.generation.in_((current, *compatible_generations)),
                     Activity.entity_key.in_(seen),
                     Activity.action == "completed",
                 )

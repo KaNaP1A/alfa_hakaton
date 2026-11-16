@@ -51,8 +51,10 @@ def update_job(output, **values):
     atomic_json(path, {**previous, **values, "updated_unix": time.time(), "pid": os.getpid()})
 
 
-def weak_queries(catalog, cases, local_path, limit=700, seed=42):
-    eligible = eligible_sources(catalog, cases, seed)
+def weak_queries(catalog, cases, local_path, limit=700, seed=42, exclude_ids=()):
+    excluded = set(exclude_ids)
+    eligible = [item for item in eligible_sources(catalog, cases, seed)
+                if item['entity_key'] not in excluded]
     ids = {i["entity_key"] for i in eligible}
     rows = []
     if local_path and local_path.exists():
@@ -175,15 +177,16 @@ def make_pool(groups, weak_scale=0.0, synthetic_only=False):
     )
 
 
-def prepare_training(backend, cases, synthetic, output, seed=42):
+def prepare_training(backend, cases, synthetic, output, seed=42, weak_exclude_ids=(),
+                     provisional_exclude_ids=()):
     index = {row["entity_key"]: i for i, row in enumerate(backend.engine.catalog)}
-    protected = {j["entity_key"] for row in cases for j in row["judgments"]}
+    protected = {j["entity_key"] for row in cases for j in row["judgments"]} | set(weak_exclude_ids)
     train = [c for c in cases if c["split"] == "train"]
     family_sizes = Counter(c["family"] for c in train)
     groups = []
     for case in train:
         prepared = backend.prepare(case["query"])
-        judged = case["judgments"]
+        judged = [j for j in case["judgments"] if j["entity_key"] not in provisional_exclude_ids]
         columns = [index[j["entity_key"]] for j in judged]
         pairs, weights = [], []
         for a, b in itertools.permutations(range(len(judged)), 2):
@@ -366,9 +369,15 @@ def main():
     )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--local-queries", type=Path)
+    parser.add_argument("--assistant-train", type=Path,
+                        help="Additional explicitly provisional assistant-reviewed training cases")
     parser.add_argument("--fixed-config-from-report", type=Path,
                         help="Reuse a previously selected model configuration and policy without tuning")
     parser.add_argument("--synthetic-limit", type=int, default=700)
+    parser.add_argument("--weak-exclude-ids", type=Path,
+                        help="JSON list of held-out IDs to exclude from weak negative sampling")
+    parser.add_argument("--provisional-exclude-ids", type=Path,
+                        help="JSON list of held-out IDs to exclude from provisional training pairs")
     parser.add_argument(
         "--human-pool", type=Path, default=Path("artifacts/annotation_pool/complex_v3")
     )
@@ -379,13 +388,31 @@ def main():
     update_job(args.output, status="running", stage="loading", started_unix=time.time())
     cases_path = Path("evaluation/ensemble_cases_v2.json")
     cases = json.loads(cases_path.read_text())["queries"]
+    excluded_ids = json.loads(args.weak_exclude_ids.read_text()) if args.weak_exclude_ids else []
+    if not isinstance(excluded_ids, list) or any(not isinstance(x, str) for x in excluded_ids):
+        raise ValueError("weak-exclude-ids must be a JSON list of entity keys")
+    provisional_excluded = json.loads(args.provisional_exclude_ids.read_text()) if args.provisional_exclude_ids else []
+    if not isinstance(provisional_excluded, list) or any(not isinstance(x, str) for x in provisional_excluded):
+        raise ValueError("provisional-exclude-ids must be a JSON list of entity keys")
+    provisional_excluded = set(provisional_excluded)
+    if args.assistant_train:
+        additional = json.loads(args.assistant_train.read_text())
+        if additional.get('assessor') != 'assistant_provisional_not_human':
+            raise ValueError('Additional labels must explicitly identify provisional assistant assessment')
+        rows = additional['queries']
+        if any(row.get('split') != 'train' for row in rows):
+            raise ValueError('Additional assistant data must be train-only')
+        if (set(excluded_ids) | provisional_excluded) & {j['entity_key'] for row in rows for j in row['judgments']}:
+            raise ValueError('Assistant training judgments overlap held-out IDs')
+        cases = cases + rows
     engine = SearchEngine(args.catalog, semantic=False, llm_enabled=False)
     validate_cases(cases, engine.catalog)
     if not (args.index / "manifest.json").exists():
         build_index(engine, args.encoder, args.index)
     backend = RelevanceBackend(engine, args.index, require_model=False)
     engine._relevance = backend
-    synthetic = weak_queries(engine.catalog, cases, args.local_queries, args.synthetic_limit)
+    synthetic = weak_queries(engine.catalog, cases, args.local_queries, args.synthetic_limit,
+                             exclude_ids=excluded_ids)
     human, human_status = resolved_human_pool(args.human_pool)
     if human:
         raise ValueError(
@@ -396,7 +423,10 @@ def main():
         "Synthetic candidates", len(synthetic), Counter(r["source"] for r in synthetic), flush=True
     )
     update_job(args.output, stage="preparing_training")
-    groups = prepare_training(backend, cases, synthetic, args.output)
+    if set(excluded_ids) & {row['target'] for row in synthetic}:
+        raise ValueError("Weak training target overlaps held-out IDs")
+    groups = prepare_training(backend, cases, synthetic, args.output, weak_exclude_ids=excluded_ids,
+                              provisional_exclude_ids=provisional_excluded)
     # Cache evaluation features only, with their exact candidate filters. Training
     # never reads validation/test labels; only final evaluation sees test labels.
     original_prepare = backend.prepare
@@ -539,6 +569,7 @@ def main():
     report = {
         "catalog_sha256": engine.manifest["catalog_sha256"],
         "cases_sha256": sha256(cases_path),
+        "assistant_train_sha256": sha256(args.assistant_train) if args.assistant_train else None,
         "feature_names": FEATURES,
         "fixed_configuration_report_sha256": sha256(args.fixed_config_from_report)
         if args.fixed_config_from_report else None,
@@ -547,6 +578,8 @@ def main():
         "selected": chosen,
         "policy": backend.policy,
         "training_groups": dict(Counter(g["source"] for g in groups)),
+        "weak_exclude_ids_sha256": sha256(args.weak_exclude_ids) if args.weak_exclude_ids else None,
+        "provisional_exclude_ids_sha256": sha256(args.provisional_exclude_ids) if args.provisional_exclude_ids else None,
         "training_rows": sum(len(g["features"]) for g in groups),
         "explicit_pair_preferences": sum(
             len(g["pairs"]) for g in groups if g["source"] != "synthetic"
@@ -580,6 +613,7 @@ def main():
         trained_on=training_source_for_regime(chosen["regime"]),
         selected=chosen,
         cases_sha256=sha256(cases_path),
+        assistant_train_sha256=sha256(args.assistant_train) if args.assistant_train else None,
         source_hashes=code_hashes(),
         training_preferences_sha256=sha256(args.output / "training_preferences.jsonl"),
     )

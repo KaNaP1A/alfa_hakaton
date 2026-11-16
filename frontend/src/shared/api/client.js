@@ -45,6 +45,7 @@ export const api={
   events(limit=50,signal){return request(`${PREFIX}/me/events?${params({limit})}`,{signal});},
   addEvent({generation,event_id,entity_key,action,position=null}){return request(`${PREFIX}/me/events`,{method:'POST',body:{generation,event_id,entity_key,action,position}});},
   catalog({q='',kind='',limit=20,offset=0}={},signal){return request(`${PREFIX}/catalog?${params({q,kind,limit,offset})}`,{signal});},
+  interests(signal){return request(`${PREFIX}/interests`,{signal});},
   suggest(q,signal){return request(`${PREFIX}/suggest?${params({q:String(q??'').trim().slice(0,300),limit:6})}`,{signal});},
   search({q,kind='',selection,clarification,signal,top=12}){
     const data={q:checkQuery(q),kind,top};

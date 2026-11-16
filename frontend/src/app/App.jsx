@@ -10,7 +10,6 @@ import { SearchBar } from '../features/search/SearchBar.jsx';
 import { SearchResults } from '../features/search/SearchResults.jsx';
 import { useCatalog } from '../features/catalog/useCatalog.js';
 import { Catalog } from '../features/catalog/Catalog.jsx';
-import { DemoCatalog } from '../features/catalog/DemoCatalog.jsx';
 import { useRecommendations } from '../features/recommendations/useRecommendations.js';
 import { Recommendations } from '../features/recommendations/Recommendations.jsx';
 import { useLearningPlan } from '../features/learning-plan/useLearningPlan.js';
@@ -20,13 +19,13 @@ import { MaterialDialog } from '../shared/ui/MaterialDialog.jsx';
 const EXAMPLES=['Хочу научиться управлять командой','Как давать обратную связь сотрудникам','Как автоматизировать бизнес с ИИ'];
 export default function App(){
  const auth=useAuth();
- const [generation,setGeneration]=useState(null),[healthError,setHealthError]=useState(''),[tab,setTab]=useState('search'),[catalogSource,setCatalogSource]=useState('demo');
+ const [generation,setGeneration]=useState(null),[healthError,setHealthError]=useState(''),[tab,setTab]=useState('search');
  const [modal,setModal]=useState(null),[modalBusy,setModalBusy]=useState(false),[modalError,setModalError]=useState('');
  const [onboarding,setOnboarding]=useState(false),[mobileMenu,setMobileMenu]=useState(false),[profileReady,setProfileReady]=useState(false);
  const profileState=useProfile();const {profile}=profileState;
  const search=useSearch(generation,()=>{refreshGeneration()});
  const recommendations=useRecommendations(),plan=useLearningPlan(),catalog=useCatalog();
- async function refreshGeneration(){try{const state=await api.health();setGeneration(state.generation);setHealthError('');await profileState.refresh();await catalog.load(state.generation);}
+ async function refreshGeneration(){try{const state=await api.health();setGeneration(state.generation);setHealthError('');await profileState.refresh();setProfileReady(true);await catalog.load(state.generation);}
  catch(e){setHealthError(e.message)}}
  useEffect(()=>{if(!auth.authenticated){setProfileReady(false);return;}
   let cancelled=false;const c=new AbortController();
@@ -36,11 +35,12 @@ export default function App(){
  },[auth.authenticated]);
  function navigate(next){setMobileMenu(false);search.cancel();recommendations.cancel();plan.cancel();setTab(next);if(next==='recommend')recommendations.load(generation);if(next==='plan')plan.load(generation)}
  function runSearch(q=search.query,k=search.kind,options={}){navigate('search');search.search(q,k,options)}
- async function handleFinish(data){await profileState.saveProfile({...profile,...data});setOnboarding(false);setTab('recommend');recommendations.load(generation)}
- async function setInterests(categories){try{await profileState.saveProfile({...profile,categories})}catch(e){setHealthError(e.message)}}
+ async function handleFinish(data){await profileState.saveProfile({...profile,...data,selected_facets:[]});setOnboarding(false);setTab('recommend');recommendations.load(generation)}
+ async function setInterests(categories){try{await profileState.saveProfile({...profile,categories,selected_facets:[]})}catch(e){setHealthError(e.message)}}
+ async function setFacets(selected_facets){try{await profileState.saveProfile({...profile,selected_facets})}catch(e){setHealthError(e.message)}}
  async function openMaterial(item){setModal(item);setModalError('');try{await profileState.addActivity(item,'viewed',generation)}catch(e){setModalError(`Не удалось сохранить просмотр: ${e.message}`)}}
  async function completeMaterial(item){setModalBusy(true);setModalError('');try{await profileState.addActivity(item,'completed',generation);setModal(null)}catch(e){setModalError(e.message)}finally{setModalBusy(false)}}
- function clicked(item,action){profileState.addActivity(item,action,generation).catch(()=>{});}
+ function clicked(item,action){profileState.addActivity(item,action,generation).catch(e=>setModalError(`Не удалось сохранить переход: ${e.message}`));}
  async function logout(){catalog.clear();try{await auth.logout()}catch(e){setHealthError(e.message)}finally{profileState.clear();setGeneration(null);setModal(null)}}
  const headings={search:search.submitted?'Результаты поиска':'Каталог образовательных материалов',recommend:'Подобрано для вас',plan:'Ваш учебный маршрут'};
  const subtitles={search:search.submitted?`По запросу: «${search.submitted}»`:'Изучите доступные курсы и статьи или найдите материал под свою задачу.',recommend:'Подбор по сохранённым интересам и активности.',plan:'Следующие тематические шаги по вашей истории.'};
@@ -58,10 +58,10 @@ export default function App(){
  <section className="workspace shell"><div className="tabs" role="tablist" aria-label="Разделы"><button role="tab" aria-selected={tab==='search'} className={tab==='search'?'active':''} onClick={()=>navigate('search')}><Search size={18}/>Поиск</button><button role="tab" aria-selected={tab==='recommend'} className={tab==='recommend'?'active':''} onClick={()=>navigate('recommend')}><Sparkles size={18}/>Для вас</button><button role="tab" aria-selected={tab==='plan'} className={tab==='plan'?'active':''} onClick={()=>navigate('plan')}><Compass size={18}/>Учебный маршрут</button></div>
  <div className="workspace-heading"><div><span className="section-kicker">РЕКОМЕНДАЦИИ АЛЬФА-КУРСА</span><h2>{headings[tab]}</h2><p>{subtitles[tab]}</p></div>{tab==='search'&&search.submitted&&<button className="outline" onClick={()=>search.reset()}>Вернуться к каталогу</button>}</div>
  {healthError&&<p className="notice" role="alert">{healthError} <button className="outline" onClick={refreshGeneration}>Повторить</button></p>}
- {!profileReady?<p>Загружаем профиль...</p>:tab==='search'?(search.submitted?<SearchResults state={search} profile={profileState} onOpen={openMaterial}/>:<><div className="filterbar" aria-label="Источник каталога"><button className={catalogSource==='demo'?'selected':''} onClick={()=>setCatalogSource('demo')}>Демо: все карточки</button><button className={catalogSource==='model'?'selected':''} onClick={()=>setCatalogSource('model')}>Каталог алгоритма</button></div>{catalogSource==='demo'?<DemoCatalog/>:<Catalog state={catalog} profile={profileState} onOpen={openMaterial} onFilter={kind=>catalog.load(generation,kind)} onMore={()=>catalog.load(generation,catalog.kind,true)} onRetry={()=>catalog.load(generation,catalog.kind)}/>}</>):tab==='recommend'?<Recommendations state={recommendations} profile={profileState} onOpen={openMaterial} onInterests={setInterests} onRetry={()=>recommendations.load(generation)} onOnboarding={()=>setOnboarding(true)}/>:<LearningPlan state={plan} onOpen={openMaterial} onRetry={()=>plan.load(generation)}/>}
+ {!profileReady?<p>Загружаем профиль...</p>:tab==='search'?(search.submitted?<SearchResults state={search} profile={profileState} onOpen={openMaterial}/>:<Catalog state={catalog} profile={profileState} onOpen={openMaterial} onFilter={kind=>catalog.load(generation,kind)} onMore={()=>catalog.load(generation,catalog.kind,true)} onRetry={()=>catalog.load(generation,catalog.kind)}/>):tab==='recommend'?<Recommendations generation={generation} state={recommendations} profile={profileState} onOpen={openMaterial} onInterests={setInterests} onFacets={setFacets} onRetry={()=>recommendations.load(generation)} onOnboarding={()=>setOnboarding(true)}/>:<LearningPlan state={plan} onOpen={openMaterial} onRetry={()=>plan.load(generation)}/>}
  {tab==='recommend'&&profile.goal&&<div className="onboarding-goal"><strong>Ваша цель:</strong> {profile.goal}<button className="outline" onClick={()=>runSearch(profile.goal)}>Найти по цели <Search size={15}/></button></div>}
  </section><section className="bottom-banner"><div className="shell banner-inner"><div><span>ОБРАЗОВАНИЕ ДЛЯ БИЗНЕСА</span><h2>Развивайте дело.<br/>Знания мы поможем найти.</h2></div><a href="https://kurs.alfabank.ru/" target="_blank" rel="noreferrer">На Альфа-Курс <ArrowUpRight size={18}/></a></div></section></main>
- <footer className="shell footer"><span>альфа<span>курс</span></span><p>Демо-сервис. История и анкета сохраняются на сервере. Завершение курса — отметка пользователя.</p><a href="https://github.com/KaNaP1A/alfa_hakaton" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14}/></a></footer>
+ <footer className="shell footer"><span>альфа<span>курс</span></span><p>История и анкета сохраняются на сервере. Завершение курса — отметка пользователя.</p><a href="https://github.com/KaNaP1A/alfa_hakaton" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14}/></a></footer>
  {modal&&createPortal(<MaterialDialog item={modal} completed={profileState.completed.includes(modal.entity_key)} busy={modalBusy} error={modalError} onComplete={completeMaterial} onStarted={clicked} onClose={()=>setModal(null)}/>,document.body)}
  {onboarding&&createPortal(<Onboarding initial={{...profile,goal:profile.goal||''}} onFinish={handleFinish} onClose={()=>setOnboarding(false)}/>,document.body)}
  </div>;

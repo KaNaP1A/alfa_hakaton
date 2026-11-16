@@ -22,6 +22,14 @@ class MixedCatalogSimulatorTests(unittest.TestCase):
         self.assertEqual(location[0], location[60])
         self.assertEqual(len(set(location)), len(self.catalog))
 
+    def test_simulation_includes_lessons_and_excludes_glossary(self):
+        catalog = [
+            {'entity_key': 'lesson:1', 'title': 'Урок', 'kind': 'lesson'},
+            {'entity_key': 'glossary:1', 'title': 'Термин', 'kind': 'glossary'},
+        ]
+        splits = split_catalog(catalog)
+        self.assertEqual([index for values in splits.values() for index in values], [0])
+
     def test_simulated_offers_and_unexamined_labels_are_explicit(self):
         rows = sample_sessions(self.catalog, self.vectors, list(range(len(self.catalog))), 20, 7)
         self.assertEqual(len(rows), 200)
@@ -36,6 +44,13 @@ class MixedCatalogSimulatorTests(unittest.TestCase):
         self.assertEqual(len(x), sum(row['examined'] for row in rows))
         self.assertEqual(len(x), len(y))
         self.assertTrue(all(row['snapshot_access'] == 'unknown' for row in rows))
+
+    def test_observed_price_point_is_only_a_simulated_offer(self):
+        rows = sample_sessions(self.catalog, self.vectors, list(range(len(self.catalog))),
+                               20, 7, price_pool=[3000])
+        self.assertTrue(any(row['synthetic_price_rub'] == 3000 for row in rows))
+        self.assertTrue(all(row['synthetic'] for row in rows))
+        self.assertLessEqual({row['synthetic_price_rub'] for row in rows}, {0, 3000})
 
 
 if __name__ == '__main__':

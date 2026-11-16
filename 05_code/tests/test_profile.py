@@ -228,6 +228,31 @@ class ProfileTests(unittest.TestCase):
         })
         self.assertEqual(result["goal_search"]["alternatives"], [])
 
+    def test_goal_search_applies_allowed_materials_and_topics_before_ranking(self):
+        self.engine.metadata["alternatives"] = [self.engine.catalog[2], self.engine.catalog[4]]
+        result = recommend_for_profile(
+            self.engine,
+            {**self.base, "goal": "команда", "categories": ["team"]},
+            candidate_keys={"course:next", "article:tax"},
+            selected_facets={"Управление командой"},
+        )
+        self.assertEqual(self.engine.last_options["candidate_keys"], {"course:next"})
+        self.assertEqual([item["entity_key"] for item in result["results"]], ["course:next"])
+        self.assertEqual(result["goal_search"]["alternatives"], [])
+
+    def test_selected_topics_are_a_boundary_for_activity_recommendations(self):
+        with patch("alfa_reco.profile.recommend") as mocked:
+            mocked.return_value = [dict(self.engine.catalog[4]), dict(self.engine.catalog[1])]
+            result = recommend_for_profile(
+                self.engine,
+                {**self.base, "categories": ["team"], "events": [
+                    {"entity_key": "course:base", "action": "viewed"},
+                ]},
+                selected_facets={"Управление командой"},
+            )
+        self.assertTrue(result["results"])
+        self.assertTrue(all("Управление командой" in item["topics"] for item in result["results"]))
+
     def test_plan_does_not_assume_same_title_means_same_material(self):
         copy = material("webinar:copy", "Управление командой сотрудников", ["Управление командой"])
         self.engine.catalog.append(copy)

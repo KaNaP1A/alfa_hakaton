@@ -3,6 +3,7 @@
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from functools import partial
+from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,6 +18,7 @@ from infrastructure.database import connect, initialize
 from infrastructure.python_recommender import PythonRecommender
 from infrastructure.recommender import DemoRecommender, HttpRecommender
 from infrastructure.uow import SqlAlchemyUnitOfWork
+from repositories.unified_catalog import UnifiedCatalog
 from services.dependencies import ServiceDependencies
 
 
@@ -32,11 +34,15 @@ def create_app(
     engine, sessions = storage if storage is not None else (None, None)
     if uow_factory is None:
         assert sessions is not None
+        unified = (
+            UnifiedCatalog(Path(settings.unified_catalog)) if settings.unified_catalog else None
+        )
         uow_factory = partial(
             SqlAlchemyUnitOfWork,
             sessions,
             catalog_source=settings.catalog_source,
             generation=settings.catalog_generation,
+            unified_catalog=unified,
         )
     upstream = recommender
     if upstream is None:

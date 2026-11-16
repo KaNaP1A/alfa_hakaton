@@ -30,6 +30,8 @@ class ActivityService:
             raise AppError(404, "Material unavailable")
         if data.action in {"started", "completed"} and allowed[data.entity_key].kind != "course":
             raise AppError(422, "Only courses can be started or completed")
+        if data.action in {"started", "completed"} and not allowed[data.entity_key].access_verified:
+            raise AppError(403, "Course access is not verified")
         existing = self.repository.find_event(user.id, data.event_id)
         if existing:
             if any((getattr(existing, key) != value for key, value in data.model_dump().items())):

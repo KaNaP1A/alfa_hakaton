@@ -218,6 +218,21 @@ class ApiTests(unittest.TestCase):
         self.assertTrue(result["results"][0]["evidence"]["facts"])
         self.assertEqual(result["confidence"]["status"], "uncertain")
 
+    def test_negated_goal_and_partial_clarification_do_not_return_opposite_results(self):
+        query = "не хочу открывать кофейню"
+        for clarification in (None, "кофейня"):
+            params = {"q": query, "mode": "hybrid"}
+            if clarification:
+                params["clarification_text"] = clarification
+            with self.subTest(clarification=clarification):
+                status, result = self.request("/search", params)
+                self.assertEqual(status, 200)
+                self.assertEqual(result["query"], query)
+                self.assertEqual(result["results"], [])
+                self.assertEqual(result["alternatives"], [])
+                self.assertEqual(result["confidence"]["reason"], "unresolved_negation")
+                self.assertTrue(result["clarification"]["allow_text"])
+
     def test_requested_format_does_not_return_a_different_kind(self):
         status, result = self.request(
             "/search", {"q": "курс по кофейне", "mode": "hybrid"}

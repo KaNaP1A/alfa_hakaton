@@ -100,6 +100,30 @@ class PythonRecommender:
     def suggest(self, q: str, limit: int) -> JsonObject:
         return self._call(lambda: self._engine.suggest(q, limit))
 
+    def interests(self) -> JsonObject:
+        def run() -> object:
+            directory = import_module("alfa_reco.interests").interest_directory
+            return directory(self._engine.catalog, self._engine.generation)
+
+        return self._call(run)
+
+    def recommend_by_interests(
+        self, generation: str, categories: list[str], facets: list[str], viewed: list[str]
+    ) -> JsonObject:
+        def run() -> object:
+            recommend = import_module("alfa_reco.interests").recommend_by_interests
+            return recommend(
+                self._engine.catalog,
+                generation,
+                categories,
+                facets,
+                viewed,
+                current_generation=self._engine.generation,
+                vectors=self._engine.relevance_backend().vectors["card"],
+            )
+
+        return self._call(run)
+
     def recommend(
         self,
         generation: str,
@@ -122,5 +146,96 @@ class PythonRecommender:
                 "generation": generation,
                 "results": recommend(self._engine.catalog, categories, viewed, vectors=vectors),
             }
+
+        return self._call(run)
+
+    def recommend_profile(
+        self,
+        generation: str,
+        profile: JsonObject,
+        viewed: list[str],
+        completed: list[str],
+        *,
+        plan: bool = False,
+        allowed_keys: set[str] | None = None,
+    ) -> JsonObject:
+        def run() -> object:
+            if generation != self._engine.generation:
+                raise ValueError("Catalog changed; refresh local profile")
+            metadata = import_module("alfa_reco.profile_metadata")
+            module = import_module("alfa_reco.profile")
+            done = set(completed)
+            events = [
+                {"entity_key": key, "action": "completed" if key in done else "viewed"}
+                for key in viewed
+            ]
+            data = {
+                "generation": generation,
+                "categories": profile.get("categories", []),
+                "goal": profile.get("goal"),
+                "industry": profile.get("industry"),
+                "region": profile.get("region"),
+                "preferred_kinds": profile.get("preferred_kinds", []),
+                "business_stage": profile.get("business_stage")
+                if profile.get("business_stage") in metadata.STAGES
+                else None,
+                "experience": profile.get("experience")
+                if profile.get("experience") in metadata.EXPERIENCE
+                else None,
+                "events": events,
+            }
+            vectors = self._engine.relevance_backend().vectors["card"]
+            if plan:
+                return module.development_plan_for_profile(self._engine, data, vectors=vectors)
+            selected = profile.get("selected_facets", [])
+            if selected:
+                if not isinstance(selected, list) or not all(
+                    isinstance(value, str) for value in selected
+                ):
+                    raise ValueError("Invalid selected topics")
+                interests = import_module("alfa_reco.interests")
+                eligibility = import_module("alfa_reco.eligibility")
+                directory = interests.interest_directory(self._engine.catalog, generation)
+                categories = data["categories"]
+                if not isinstance(categories, list):
+                    raise ValueError("Invalid categories")
+                allowed = {
+                    interests.normalize_facet(topic["value"]).casefold()
+                    for category in directory["categories"]
+                    if category["id"] in categories
+                    for topic in category["topics"]
+                }
+                chosen = {interests.normalize_facet(value).casefold() for value in selected}
+                if not chosen <= allowed:
+                    raise ValueError("Selected topics are unavailable; refresh interests")
+                spellings: set[str] = set()
+                candidates: set[str] = set()
+                for item in self._engine.catalog:
+                    if item.get("kind") not in eligibility.USER_KINDS:
+                        continue
+                    matches = {
+                        value
+                        for field in ("topics", "tags")
+                        for value in item.get(field) or []
+                        if interests.normalize_facet(value).casefold() in chosen
+                    }
+                    if (
+                        matches
+                        and item["entity_key"] not in viewed
+                        and (allowed_keys is None or item["entity_key"] in allowed_keys)
+                    ):
+                        spellings.update(matches)
+                        candidates.add(item["entity_key"])
+                return module.recommend_for_profile(
+                    self._engine,
+                    data,
+                    limit=20,
+                    vectors=vectors,
+                    candidate_keys=candidates,
+                    selected_facets=spellings,
+                )
+            return module.recommend_for_profile(
+                self._engine, data, limit=20, vectors=vectors, candidate_keys=allowed_keys
+            )
 
         return self._call(run)
